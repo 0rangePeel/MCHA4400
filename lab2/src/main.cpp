@@ -77,14 +77,6 @@ int main(int argc, char *argv[])
     }
 
     // Check if input is an image or video (or neither)
-    //bool isVideo = false; // TODO
-    //bool isImage = false; // TODO
-
-    ////
-    // Assign if input file is neither
-    //bool isVideo = false;
-    //bool isImage = false;
-
     // Read the input file
     cv::VideoCapture cap(inputPath.string());
 
@@ -92,7 +84,6 @@ int main(int argc, char *argv[])
     bool isVideo = cap.get(cv::CAP_PROP_FRAME_COUNT) > 1;
 
     // Check if the input is an image
-    //bool isImage = cap.get(cv::CAP_PROP_FRAME_COUNT) == 1;
     bool isImage = !isVideo;
 
     ////

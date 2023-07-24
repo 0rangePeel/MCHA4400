@@ -234,10 +234,31 @@ cv::Mat detectAndDrawArUco(const cv::Mat & img, int maxNumFeatures)
 
     if (arucoNum > 0) {
         std::cout << "Number of ArUco in image: " << arucoNum << std::endl;
+
+        // Initialize a vector to store the indices of the original array
+        std::vector<int> indices(arucoNum);
         for (int i = 0; i < arucoNum; ++i) {
-            std::cout << "  idx: " << ids[i] << "  with corners: (" << corners[i][0];
+            indices[i] = i;
+        }
+
+        // Perform a selection sort on the indices based on the values in the original array
+        for (int i = 0; i < arucoNum - 1; ++i) {
+            int maxIndex = i;
+            for (int j = i + 1; j < arucoNum; ++j) {
+                if (ids[indices[j]] > ids[indices[maxIndex]]) {
+                    maxIndex = j;
+                }
+            }
+            if (maxIndex != i) {
+                std::swap(indices[i], indices[maxIndex]);
+            }
+        }
+
+        // Output to console
+        for (int i = 0; i < arucoNum; ++i) {
+            std::cout << "  idx: " << ids[indices[i]] << "  with corners: (" << corners[indices[i]][0];
             for (int j = 1; j < 4; j++){
-                std::cout << ", " << corners[i][j];
+                std::cout << ", " << corners[indices[i]][j];
             }
             std::cout << ")" << std::endl;
         }
