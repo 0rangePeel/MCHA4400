@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
     //bool isImage = false;
 
     // Read the input file
-    cv::VideoCapture cap(argv[1]);
+    cv::VideoCapture cap(inputPath.string());
 
     // Check if the input is a video
     bool isVideo = cap.get(cv::CAP_PROP_FRAME_COUNT) > 1;

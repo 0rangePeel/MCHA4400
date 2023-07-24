@@ -222,7 +222,7 @@ cv::Mat detectAndDrawArUco(const cv::Mat & img, int maxNumFeatures)
     cv::aruco::DetectorParameters detectorParams = cv::aruco::DetectorParameters();
     cv::aruco::Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
     cv::aruco::ArucoDetector detector(dictionary, detectorParams);
-
+    
     std::vector<int> ids;
     std::vector<std::vector<cv::Point2f>> corners, rejected;
 
@@ -246,7 +246,5 @@ cv::Mat detectAndDrawArUco(const cv::Mat & img, int maxNumFeatures)
         std::cout << "Error: no Aruco tags found"  << std::endl;
     }
     
-    
-
     return imgout;
 }
