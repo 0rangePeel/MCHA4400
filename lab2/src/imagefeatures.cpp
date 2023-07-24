@@ -16,7 +16,9 @@ cv::Mat detectAndDrawHarris(const cv::Mat & img, int maxNumFeatures)
     int blockSize = 2;
     int apertureSize = 3;
     double k = 0.04;
-    double thresh = 200.0;
+    //double thresh = 100.0;//lab
+    //double thresh = 105.0;//descriptor0
+    double thresh = 90.0;//outdoor
 
     // Harris Preprocessing
     cv::Mat dst;
@@ -82,6 +84,11 @@ cv::Mat detectAndDrawHarris(const cv::Mat & img, int maxNumFeatures)
     std::cout << std::endl;
     */
 
+    // Check if number of features is under the max number of threshold features
+    if (features < maxNumFeatures){
+        maxNumFeatures = features;
+    }
+
     // Print Max Features and plot on image
     for (int i =0; i < maxNumFeatures; ++i) {
         std::cout << "  idx: " << i << "  at point: (" << x[indices[i]] << "," << y[indices[i]] << ")      Harris Score: " << score[indices[i]] << std::endl;
@@ -103,7 +110,7 @@ cv::Mat detectAndDrawShiAndTomasi(const cv::Mat & img, int maxNumFeatures)
 
     // Shi tuning parameters
     int myShiTomasi_qualityLevel = 50;
-    int max_qualityLevel = 100;
+    int max_qualityLevel = 200;
 
     int blockSize = 3;
     int apertureSize = 3;
@@ -154,6 +161,11 @@ cv::Mat detectAndDrawShiAndTomasi(const cv::Mat & img, int maxNumFeatures)
         if (maxIndex != i) {
             std::swap(indices[i], indices[maxIndex]);
         }
+    }
+
+    // Check if number of features is under the max number of threshold features
+    if (features < maxNumFeatures){
+        maxNumFeatures = features;
     }
 
     // Print Max Features and plot on image
