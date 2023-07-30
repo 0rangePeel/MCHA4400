@@ -44,3 +44,12 @@
 7300	7807	7123977076830369	tests.exe	1bad530894c8dee5
 7808	7967	0	CMakeFiles/run_tests	439338273db3859d
 7808	7967	0	C:/Users/olive/Documents/MCHA4400/lab3/build/CMakeFiles/run_tests	439338273db3859d
+59	99	0	C:/Users/olive/Documents/MCHA4400/lab3/build/CMakeFiles/cmake.verify_globs	89cafd495af2c1cb
+43	84	0	C:/Users/olive/Documents/MCHA4400/lab3/build/CMakeFiles/cmake.verify_globs	89cafd495af2c1cb
+95	6841	7123982051597970	CMakeFiles/common.dir/src/Camera.cpp.obj	edabda5def63b68b
+6842	7384	7123982056928186	libcommon.dll	2b835b9568d1d848
+6842	7384	7123982056928186	libcommon.dll.a	2b835b9568d1d848
+7384	7897	7123982062077639	lab3.exe	5e402257d37f8598
+7391	7927	7123982062368016	tests.exe	1bad530894c8dee5
+7928	8093	0	CMakeFiles/run_tests	439338273db3859d
+7928	8093	0	C:/Users/olive/Documents/MCHA4400/lab3/build/CMakeFiles/run_tests	439338273db3859d

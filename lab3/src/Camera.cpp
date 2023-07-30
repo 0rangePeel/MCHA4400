@@ -50,27 +50,22 @@ ChessboardImage::ChessboardImage(const cv::Mat & image_, const Chessboard & ches
     , filename(filename_)
     , isFound(false)
 {
-    cv::Mat grayImage;
-    cv::cvtColor(image, grayImage, cv::COLOR_BGR2GRAY);
-
     // TODO:
     //  - Detect chessboard corners in image and set the corners member
     //  - (optional) Do subpixel refinement of detected corners
-    // Using cv::findChessboardCorners and cv::cornerSubPix
+    // Convert image to grayscale for corner detection
+    cv::Mat grayImage;
+    cv::cvtColor(image, grayImage, cv::COLOR_BGR2GRAY);
+    
+    // Detect the corners in the image
+    isFound = cv::findChessboardCorners(grayImage, chessboard.boardSize, corners, 
+        cv::CALIB_CB_ADAPTIVE_THRESH + cv::CALIB_CB_NORMALIZE_IMAGE + cv::CALIB_CB_FAST_CHECK);
 
-    // Detect chessboard corners in image and set the corners member
-    std::vector<cv::Point2f> corners;
-    //bool found = cv::findChessboardCorners(image, cv::Size(8,8), corners,cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE | cv::CALIB_CB_FAST_CHECK);
-    bool found = cv::findChessboardCorners(grayImage, chessboard.boardSize, corners,cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_NORMALIZE_IMAGE | cv::CALIB_CB_FAST_CHECK);
-
-    if (found) {
-        // If corners are found, set the isFound flag to true and store the corners in the ChessboardImage object
-        isFound = true;
-        //cornersImage = corners;
-
-        // Optional subpixel refinement of detected corners
-        //cv::cornerSubPix(image, cornersImage, cv::Size(11, 11), cv::Size(-1, -1), cv::TermCriteria(cv::TermCriteria::EPS + cv::TermCriteria::COUNT, 30, 0.1));
-        cv::cornerSubPix(grayImage, corners, cv::Size(5, 5), cv::Size(-1, -1), cv::TermCriteria(cv::TermCriteria::EPS + cv::TermCriteria::COUNT, 30, 0.1));
+    if (isFound)
+    {
+        // Optional: refine the corner locations at the subpixel level
+        cv::TermCriteria criteria(cv::TermCriteria::EPS + cv::TermCriteria::MAX_ITER, 30, 0.1);
+        cv::cornerSubPix(grayImage, corners, cv::Size(5,5), cv::Size(-1,-1), criteria);
     }
 
 }
@@ -245,53 +240,54 @@ void Camera::printCalibration() const
 
 void Camera::calcFieldOfView()
 {
-    // In the Camera::calcFieldOfView function, calculate the horizontal, vertical and diagonal field
-    // of view of the camera, using the intrinsic parameters of the camera. This can be done by finding
-    // the angles between direction vectors that correspond to some of the edge and corner pixels in
-    // the image with the help of Camera::pixelToVector.
-
     assert(cameraMatrix.rows == 3);
     assert(cameraMatrix.cols == 3);
     assert(cameraMatrix.type() == CV_64F);
 
     // TODO:
-    /*
     hFOV = 0.0;
     vFOV = 0.0;
     dFOV = 0.0;
-    */
 
-    // Define four corners and center of the image in pixel coordinates
-    cv::Vec2d topLeft(0.0, 0.0);
-    cv::Vec2d topRight(imageSize.width - 1.0, 0.0);
-    cv::Vec2d bottomLeft(0.0, imageSize.height - 1.0);
-    cv::Vec2d bottomRight(imageSize.width - 1.0, imageSize.height - 1.0);
-    cv::Vec2d center(imageSize.width / 2.0, imageSize.height / 2.0);
+    // TODO:
+    // Get the center, corner, and edge points in the image
+    cv::Vec2d centerPoint(imageSize.width / 2.0, imageSize.height / 2.0);
+    cv::Vec2d cornerPoint(0, 0);
+    cv::Vec2d edgePointX(imageSize.width, imageSize.height / 2.0);
+    cv::Vec2d edgePointY(imageSize.width / 2.0, imageSize.height);
 
-    // Convert pixel coordinates to unit vectors in camera coordinates
-    cv::Vec3d topDir = pixelToVector(topLeft);
-    cv::Vec3d rightDir = pixelToVector(topRight);
-    cv::Vec3d bottomDir = pixelToVector(bottomLeft);
-    //cv::Vec3d leftDir = pixelToVector(bottomRight);
-    cv::Vec3d centerDir = pixelToVector(center);
+    // Compute the direction vectors for these points
+    cv::Vec3d centerVector = pixelToVector(centerPoint);
+    cv::Vec3d cornerVector = pixelToVector(cornerPoint);
+    cv::Vec3d edgeVectorX = pixelToVector(edgePointX);
+    cv::Vec3d edgeVectorY = pixelToVector(edgePointY);
 
-    // Calculate horizontal and vertical FOV as the angles between the corresponding vectors
-    hFOV = std::acos(topDir.dot(rightDir));
-    vFOV = std::acos(topDir.dot(bottomDir));
+    // Compute the dot product between the center vector and other vectors
+    double centerCornerDotProduct = centerVector.dot(cornerVector);
+    double centerEdgeDotProductX = centerVector.dot(edgeVectorX);
+    double centerEdgeDotProductY = centerVector.dot(edgeVectorY);
 
-    // Calculate diagonal FOV as the angle between the top-left and bottom-right corner vectors
-    dFOV = std::acos(topDir.dot(centerDir));
+    // Compute the magnitudes of the vectors
+    double centerVectorMagnitude = cv::norm(centerVector);
+    double cornerVectorMagnitude = cv::norm(cornerVector);
+    double edgeVectorMagnitudeX = cv::norm(edgeVectorX);
+    double edgeVectorMagnitudeY = cv::norm(edgeVectorY);
 
-    std::cout << "hFOV: " << hFOV << " vFOV: " << vFOV << " dFOV: " << dFOV << std::endl;
-
+    // Compute the field of view angles using the dot product formula: dot(v1, v2) = ||v1|| ||v2|| cos(theta)
+    hFOV = std::acos(centerEdgeDotProductX / (centerVectorMagnitude * edgeVectorMagnitudeX));
+    vFOV = std::acos(centerEdgeDotProductY / (centerVectorMagnitude * edgeVectorMagnitudeY));
+    dFOV = std::acos(centerCornerDotProduct / (centerVectorMagnitude * cornerVectorMagnitude));
+    
+    // Convert radians to degrees
+    hFOV = hFOV;
+    vFOV = vFOV;
+    dFOV = dFOV;
 }
 
 cv::Vec3d Camera::worldToVector(const cv::Vec3d & rPNn, const Pose & pose) const
 {
     cv::Vec3d uPCc;
     // TODO: Compute the unit vector uPCc from the world position rPNn and camera pose
-    // by doing the following mathematically
-    // uPCc = rPCc/norm(rPCc)
     // Convert the world point to a camera point
     cv::Vec3d rPCc = pose.Rnc.t() * (rPNn - pose.rCNn);
 
@@ -308,17 +304,12 @@ cv::Vec2d Camera::worldToPixel(const cv::Vec3d & rPNn, const Pose & pose) const
 
 cv::Vec2d Camera::vectorToPixel(const cv::Vec3d & rPCc) const
 {
-    //In the Camera::vectorToPixel function, use cv::projectPoints to map from a vector in
-    //camera coordinates, rPCc, to a pixel location in image coordinates, rQOi
-    //cv::Vec2d rQOi;
-    // TODO: Compute the pixel location (rQOi) for the given unit vector (uPCc)
-    //return rQOi;
-    // Project the given vector (rPCc) to a pixel location in image coordinates (rQOi)
-
     cv::Vec2d rQOi;
+    // TODO: Compute the pixel location (rQOi) for the given unit vector (uPCc)
+    cv::Vec3d uPCc = rPCc/cv::norm(rPCc);
 
     // Form a vector of object points from the unit vector
-    std::vector<cv::Vec3d> objectPoints{rPCc};
+    std::vector<cv::Vec3d> objectPoints{uPCc};
 
     // Vector to hold output image points
     std::vector<cv::Vec2d> imagePoints;
@@ -328,40 +319,38 @@ cv::Vec2d Camera::vectorToPixel(const cv::Vec3d & rPCc) const
 
     // Extract the first (and only) projected image point
     rQOi = imagePoints[0];
-
-
+    
     return rQOi;
 }
 
 cv::Vec3d Camera::pixelToVector(const cv::Vec2d & rQOi) const
 {
-    //In the Camera::pixelToVector function, return the unit vector uPCc that corresponds to the
-    //provided pixel coordinates rQOi. This can be done with the help of the cv::undistortPoints function.
-    //cv::Vec3d uPCc;
+    cv::Vec3d uPCc;
     // TODO: Compute unit vector (uPCc) for the given pixel location (rQOi)
-    // Undistort the pixel coordinates to remove lens distortion
+    // Form a vector of image points from the given pixel coordinate
+    std::vector<cv::Vec2d> imagePoints{rQOi};
+    
+    // Vector to hold output object points
+    std::vector<cv::Vec2d> objectPoints;
 
-    cv::Mat rQOiMat = (cv::Mat_<double>(1, 2) << rQOi[0], rQOi[1]);
-    cv::Mat rQOiUndistorted;
-    cv::undistortPoints(rQOiMat, rQOiUndistorted, cameraMatrix, distCoeffs);
+    // Convert the 2D image points to normalized 2D points
+    cv::undistortPoints(imagePoints, objectPoints, cameraMatrix, distCoeffs);
 
-    // Convert the undistorted pixel coordinates to a unit vector in camera coordinates
-    cv::Vec3d uPCc = cv::Vec3d(rQOiUndistorted.at<double>(0, 0), rQOiUndistorted.at<double>(0, 1), 1.0);
-    uPCc /= cv::norm(uPCc); // Normalize the vector to get the unit vector
+    // Convert the 2D point to a 3D unit vector
+    uPCc = cv::Vec3d(objectPoints[0][0], objectPoints[0][1], 1.0);
 
+    // Normalize the vector
+    uPCc = uPCc / cv::norm(uPCc);
+    
     return uPCc;
 }
 
 bool Camera::isVectorWithinFOV(const cv::Vec3d & rPCc) const
 {
-    // In the Camera::isVectorWithinFOV function, determine if the 
-    // provided vector rPCc lies within the camera field of view.
-
-    /////////// TODO: Check if uPCc lies in the image //////////////////////
-
     cv::Vec3d uPCc = rPCc/cv::norm(rPCc);
     assert(std::abs(cv::norm(uPCc) - 1.0) < 100*std::numeric_limits<double>::epsilon());
-
+    
+    /////////// TODO: Check if uPCc lies in the image //////////////////////
     // Project the vector to pixel coordinates
     cv::Vec2d rQOi = vectorToPixel(uPCc);
 
@@ -374,6 +363,9 @@ bool Camera::isVectorWithinFOV(const cv::Vec3d & rPCc) const
     {
         return true;
     }
+    //////////////////////////////////////////////////////////////
+
+    return false;
 }
 
 bool Camera::isWorldWithinFOV(const cv::Vec3d & rPNn, const Pose & pose) const
