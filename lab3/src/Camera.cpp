@@ -78,6 +78,17 @@ void ChessboardImage::drawCorners(const Chessboard & chessboard)
 void ChessboardImage::drawBox(const Chessboard & chessboard, const Camera & camera)
 {
     // TODO
+    this->recoverPose(chessboard, camera);
+
+    cv::Vec3d startPoint(0, 0, 0);
+    cv::Vec2d origin = camera.worldToPixel(startPoint, cameraPose);
+
+    cv::Vec3d nextPoint(9*0.022, 6*0.022, 0);
+    cv::Vec2d point = camera.worldToPixel(nextPoint, cameraPose);
+
+    
+    cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,255,0));
+    
 }
 
 void ChessboardImage::recoverPose(const Chessboard & chessboard, const Camera & camera)
@@ -245,11 +256,6 @@ void Camera::calcFieldOfView()
     assert(cameraMatrix.type() == CV_64F);
 
     // TODO:
-    hFOV = 0.0;
-    vFOV = 0.0;
-    dFOV = 0.0;
-
-    // TODO:
     // Get the center, corner, and edge points in the image
     cv::Vec2d centerPoint(imageSize.width / 2.0, imageSize.height / 2.0);
     cv::Vec2d cornerPoint(0, 0);
@@ -278,10 +284,6 @@ void Camera::calcFieldOfView()
     vFOV = std::acos(centerEdgeDotProductY / (centerVectorMagnitude * edgeVectorMagnitudeY));
     dFOV = std::acos(centerCornerDotProduct / (centerVectorMagnitude * cornerVectorMagnitude));
     
-    // Convert radians to degrees
-    hFOV = hFOV;
-    vFOV = vFOV;
-    dFOV = dFOV;
 }
 
 cv::Vec3d Camera::worldToVector(const cv::Vec3d & rPNn, const Pose & pose) const
@@ -355,17 +357,14 @@ bool Camera::isVectorWithinFOV(const cv::Vec3d & rPCc) const
     cv::Vec2d rQOi = vectorToPixel(uPCc);
 
     // Check if the pixel is within the image bounds
-    if (rQOi[0] >= 0 && rQOi[0] < imageSize.width && rQOi[1] >= 0 && rQOi[1] < imageSize.height)
-    {
-        return false;
-    }
-    else
+    if (rQOi[0] >= 0 && rQOi[0] < hFOV && rQOi[1] >= 0 && rQOi[1] < vFOV)
     {
         return true;
     }
-    //////////////////////////////////////////////////////////////
-
-    return false;
+    else
+    {
+        return false;
+    }
 }
 
 bool Camera::isWorldWithinFOV(const cv::Vec3d & rPNn, const Pose & pose) const
