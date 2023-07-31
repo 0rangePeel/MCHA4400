@@ -67,8 +67,8 @@ SCENARIO("Camera model")
 
                 THEN("Vector is outside field of view")
                 {
-                    //CHECK_FALSE(isWithinFOV);
-                    CHECK(true);
+                    CHECK_FALSE(isWithinFOV);
+                    //CHECK(true);
                 }
             }
         }

@@ -78,8 +78,9 @@ void ChessboardImage::drawCorners(const Chessboard & chessboard)
 void ChessboardImage::drawBox(const Chessboard & chessboard, const Camera & camera)
 {
     // TODO
-    this->recoverPose(chessboard, camera);
-
+    
+    //this->recoverPose(chessboard, camera);
+    /*
     cv::Vec3d startPoint(0, 0, 0);
     cv::Vec2d origin = camera.worldToPixel(startPoint, cameraPose);
 
@@ -88,6 +89,136 @@ void ChessboardImage::drawBox(const Chessboard & chessboard, const Camera & came
 
     
     cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,255,0));
+
+    cv::Vec3d startPoint2(9*0.022, 0, 0);
+    cv::Vec2d origin2 = camera.worldToPixel(startPoint2, cameraPose);
+
+    cv::Vec3d nextPoint2(0, 6*0.022, 0);
+    cv::Vec2d point2 = camera.worldToPixel(nextPoint2, cameraPose);
+
+    
+    cv::line(image, cv::Point (origin2[0], origin2[1]), cv::Point (point2[0], point2[1]), cv::Scalar(0,255,0));
+    */  
+    cv::Vec3d startPoint(0, 0, 0);
+    cv::Vec3d nextPoint(0, 0, 0);
+    cv::Vec2d origin(0,0);
+    cv::Vec2d point(0,0);
+    
+   
+    double n1 = 9*0.022;
+    double n2 = 6*0.022;
+    double n3 = -0.23;
+    double i = 0.0;
+    double increment = 0.001;
+    
+    while(i < n1){
+        startPoint = cv::Vec3d(i, 0, 0);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(i + increment, 0, 0);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,255,0), 3);
+        }
+        
+        startPoint = cv::Vec3d(i, n2, 0);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(i + increment, n2, 0);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,255,0), 3);
+        }
+
+        startPoint = cv::Vec3d(i, 0, n3);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(i + increment, 0, n3);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,255,0), 3);
+        }
+        
+        startPoint = cv::Vec3d(i, n2, n3);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(i + increment, n2, n3);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,255,0), 3);
+        }
+        
+        i += increment;
+    }
+    i = 0.0;
+    while(i < n2){
+        startPoint = cv::Vec3d(0, i, 0);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(0, i + increment, 0);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(255,0,0), 3);
+        }
+        
+        startPoint = cv::Vec3d(n1, i, 0);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(n1, i + increment, 0);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(255,0,0), 3);
+        }
+        
+        startPoint = cv::Vec3d(0, i, n3);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(0, i + increment, n3);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(255,0,0), 3);
+        }
+        
+        startPoint = cv::Vec3d(n1, i, n3);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(n1, i + increment, n3);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(255,0,0), 3);
+        }
+        
+        i += increment;
+    }
+    
+    i = 0.0;
+    while(i > n3){
+        startPoint = cv::Vec3d(0, 0, i);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(0, 0, i + increment);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,0,255), 3);
+        }
+        
+        startPoint = cv::Vec3d(n1, 0, i);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(n1, 0, i + increment);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,0,255), 3);
+        }
+        
+        startPoint = cv::Vec3d(0, n2, i);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(0, n2, i + increment);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,0,255), 3);
+        }
+        
+        startPoint = cv::Vec3d(n1, n2, i);
+        origin = camera.worldToPixel(startPoint, cameraPose);
+        nextPoint = cv::Vec3d(n1, n2, i + increment);
+        point = camera.worldToPixel(nextPoint, cameraPose);
+        if (camera.isWorldWithinFOV(nextPoint, cameraPose)){
+            cv::line(image, cv::Point (origin[0], origin[1]), cv::Point (point[0], point[1]), cv::Scalar(0,0,255), 3);
+        }
+        
+        i -= increment;
+    }
     
 }
 
@@ -196,8 +327,8 @@ void Camera::calibrate(ChessboardData & chessboardData)
 
     // TODO: Calibrate camera from detected chessboard corners
     // Calibrate the camera
-    rms = cv::calibrateCamera(objectPoints, rQOi_all, imageSize, cameraMatrix, distCoeffs, rNCc_all, Thetacn_all, flags);
-
+    //rms = cv::calibrateCamera(objectPoints, rQOi_all, imageSize, cameraMatrix, distCoeffs, rNCc_all, Thetacn_all, flags);
+    rms = cv::calibrateCamera(objectPoints, rQOi_all, imageSize, cameraMatrix, distCoeffs, Thetacn_all, rNCc_all, flags);
     std::cout << "done" << std::endl;
     
     // Calculate horizontal, vertical and diagonal field of view
@@ -256,34 +387,42 @@ void Camera::calcFieldOfView()
     assert(cameraMatrix.type() == CV_64F);
 
     // TODO:
-    // Get the center, corner, and edge points in the image
-    cv::Vec2d centerPoint(imageSize.width / 2.0, imageSize.height / 2.0);
-    cv::Vec2d cornerPoint(0, 0);
-    cv::Vec2d edgePointX(imageSize.width, imageSize.height / 2.0);
-    cv::Vec2d edgePointY(imageSize.width / 2.0, imageSize.height);
+    // Assuming imageSize contains the size of the image (cv::Size)
+    cv::Vec2d cornerPointTL(0, 0); // Top-left corner
+    cv::Vec2d cornerPointBR(imageSize.width, imageSize.height); // Bottom-right corner
+    cv::Vec2d edgePointL(0, imageSize.height / 2.0); // Left edge
+    cv::Vec2d edgePointR(imageSize.width, imageSize.height / 2.0); // Right edge
+    cv::Vec2d edgePointT(imageSize.width / 2.0, 0); // Top edge
+    cv::Vec2d edgePointB(imageSize.width / 2.0, imageSize.height); // Bottom edge
 
     // Compute the direction vectors for these points
-    cv::Vec3d centerVector = pixelToVector(centerPoint);
-    cv::Vec3d cornerVector = pixelToVector(cornerPoint);
-    cv::Vec3d edgeVectorX = pixelToVector(edgePointX);
-    cv::Vec3d edgeVectorY = pixelToVector(edgePointY);
+    cv::Vec3d cornerVectorTL = pixelToVector(cornerPointTL);
+    cv::Vec3d cornerVectorBR = pixelToVector(cornerPointBR);
+    cv::Vec3d edgeVectorL = pixelToVector(edgePointL);
+    cv::Vec3d edgeVectorR = pixelToVector(edgePointR);
+    cv::Vec3d edgeVectorT = pixelToVector(edgePointT);
+    cv::Vec3d edgeVectorB = pixelToVector(edgePointB);
 
-    // Compute the dot product between the center vector and other vectors
-    double centerCornerDotProduct = centerVector.dot(cornerVector);
-    double centerEdgeDotProductX = centerVector.dot(edgeVectorX);
-    double centerEdgeDotProductY = centerVector.dot(edgeVectorY);
+    // Compute the dot product between vectors
+    double cornerTL_BR_DotProduct = cornerVectorTL.dot(cornerVectorBR);
+    double edgeL_R_DotProduct = edgeVectorL.dot(edgeVectorR);
+    double edgeT_B_DotProduct = edgeVectorT.dot(edgeVectorB);
 
     // Compute the magnitudes of the vectors
-    double centerVectorMagnitude = cv::norm(centerVector);
-    double cornerVectorMagnitude = cv::norm(cornerVector);
-    double edgeVectorMagnitudeX = cv::norm(edgeVectorX);
-    double edgeVectorMagnitudeY = cv::norm(edgeVectorY);
+    double cornerTL_Magnitude = cv::norm(cornerVectorTL);
+    double cornerBR_Magnitude = cv::norm(cornerVectorBR);
+    double edgeL_Magnitude = cv::norm(edgeVectorL);
+    double edgeR_Magnitude = cv::norm(edgeVectorR);
+    double edgeT_Magnitude = cv::norm(edgeVectorT);
+    double edgeB_Magnitude = cv::norm(edgeVectorB);
 
     // Compute the field of view angles using the dot product formula: dot(v1, v2) = ||v1|| ||v2|| cos(theta)
-    hFOV = std::acos(centerEdgeDotProductX / (centerVectorMagnitude * edgeVectorMagnitudeX));
-    vFOV = std::acos(centerEdgeDotProductY / (centerVectorMagnitude * edgeVectorMagnitudeY));
-    dFOV = std::acos(centerCornerDotProduct / (centerVectorMagnitude * cornerVectorMagnitude));
-    
+    hFOV = std::acos(edgeL_R_DotProduct / (edgeL_Magnitude * edgeR_Magnitude));
+    vFOV = std::acos(edgeT_B_DotProduct / (edgeT_Magnitude * edgeB_Magnitude));
+    dFOV = std::acos(cornerTL_BR_DotProduct / (cornerTL_Magnitude * cornerBR_Magnitude));
+
+
+
 }
 
 cv::Vec3d Camera::worldToVector(const cv::Vec3d & rPNn, const Pose & pose) const
@@ -354,11 +493,14 @@ bool Camera::isVectorWithinFOV(const cv::Vec3d & rPCc) const
     
     /////////// TODO: Check if uPCc lies in the image //////////////////////
     // Project the vector to pixel coordinates
-    cv::Vec2d rQOi = vectorToPixel(uPCc);
+    //double projectionXY = sqrt(uPCc[0] * uPCc[0] + uPCc[1] * uPCc[1]);
+    //double diagonal = atan2(projectionXY, uPCc[2]); // In radians
 
-    // Check if the pixel is within the image bounds
-    if (rQOi[0] >= 0 && rQOi[0] < hFOV && rQOi[1] >= 0 && rQOi[1] < vFOV)
-    {
+    double diagonal = acos(uPCc[2]);
+
+    double bias = 0.05;
+
+    if (diagonal + bias < dFOV/2 && uPCc[2] > 0){
         return true;
     }
     else
