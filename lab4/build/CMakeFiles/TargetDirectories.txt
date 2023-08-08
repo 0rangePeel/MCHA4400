@@ -1,0 +1,9 @@
+C:/Users/olive/Documents/MCHA4400/lab4/build/CMakeFiles/common.dir
+C:/Users/olive/Documents/MCHA4400/lab4/build/CMakeFiles/lab4.dir
+C:/Users/olive/Documents/MCHA4400/lab4/build/CMakeFiles/tests.dir
+C:/Users/olive/Documents/MCHA4400/lab4/build/CMakeFiles/run_tests.dir
+C:/Users/olive/Documents/MCHA4400/lab4/build/CMakeFiles/edit_cache.dir
+C:/Users/olive/Documents/MCHA4400/lab4/build/CMakeFiles/rebuild_cache.dir
+C:/Users/olive/Documents/MCHA4400/lab4/build/_deps/nanobench-build/CMakeFiles/nanobench.dir
+C:/Users/olive/Documents/MCHA4400/lab4/build/_deps/nanobench-build/CMakeFiles/edit_cache.dir
+C:/Users/olive/Documents/MCHA4400/lab4/build/_deps/nanobench-build/CMakeFiles/rebuild_cache.dir
