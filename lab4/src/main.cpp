@@ -6,20 +6,20 @@
 int main(int argc, char *argv[])
 {
     std::cout << "Eigen version: ";
-    // TODO
+    // TODO a)
     std::cout << EIGEN_WORLD_VERSION << "." << EIGEN_MAJOR_VERSION << "." << EIGEN_MINOR_VERSION << std::endl;
     std::cout << "\n" << std::endl;
 
     std::cout << "Create a column vector:" << std::endl;
     Eigen::VectorXd x(3);
-    // TODO
+    // TODO b)
     x << 1, 3.2, 0.01; // Populate the vector using the << assignment operator
     std::cout << "x = \n" << x << "\n" << std::endl;
 
     std::cout << "Create a matrix:" << std::endl;
     Eigen::MatrixXd A;
-    // TODO: Don't just use a for loop or hardcode all the elements
-    //       Try and be creative :)
+    // TODO: c) Don't just use a for loop or hardcode all the elements
+    //          Try and be creative :)
 
     // Create row and column vectors for broadcasting
     Eigen::VectorXd row_vector = Eigen::VectorXd::LinSpaced(4, 1, 4);
@@ -36,50 +36,53 @@ int main(int argc, char *argv[])
 
     std::cout << "Matrix multiplication:" << std::endl;
     Eigen::VectorXd Ax;
-    // TODO
+    // TODO d)
     Ax = A * x;
 
     std::cout << "A*x = \n" << Ax << "\n" << std::endl;
 
     std::cout << "Matrix concatenation:" << std::endl;
     Eigen::MatrixXd B(A.rows(), 2 * A.cols());
-    // TODO
+    // TODO e)
     B << A, A;
     std::cout << "B = \n" << B << "\n" << std::endl;
     Eigen::MatrixXd C(2 * A.rows(), A.cols());
-    // TODO
+    // TODO e)
     C << A, A;
     std::cout << "C = \n" << C << "\n" << std::endl;
 
     std::cout << "Submatrix via block:" << std::endl;
     Eigen::MatrixXd D;
-    // TODO
+    // TODO f)
     D = B.block(1, 2, 1, 3);
     std::cout << "D = \n" << D << "\n" << std::endl;
     std::cout << "Submatrix via slicing:" << std::endl;
-    // TODO
+    // TODO f)
     D = B(Eigen::seq(1, 1), Eigen::seqN(2, 3));
     std::cout << "D = \n" << D << "\n" << std::endl;
 
     std::cout << "Broadcasting:" << std::endl;
     Eigen::VectorXd v(6);
     Eigen::MatrixXd E;
-    // TODO
+    // TODO g)
     v << 1, 3, 5, 7, 4, 6;
     E = B.rowwise() + v.transpose();
     std::cout << "E = \n" << E << "\n" << std::endl;
 
     std::cout << "Index subscripting:" << std::endl;
     Eigen::MatrixXd F;
-    // TODO
+    // TODO h)
 
-    std::vector<int> r{1,3,2,4};
-    std::vector<int> c{1,4,2,5,3,6};
+    // Define the vectors r and c
+    Eigen::VectorXi r(4);
+    r << 1, 3, 2, 4;
+    Eigen::VectorXi c(6);
+    c << 1, 4, 2, 5, 3, 6;
 
-    F = B(r,c);
+    F = B(r.array() - 1, c.array() - 1);
 
     std::cout << "F = \n" << F << "\n" << std::endl;
-
+    // TODO i)
     std::cout << "Memory mapping:" << std::endl;
     float array[9] = {1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f, 9.0f};
     //Eigen::Matrix3f G;              // TODO: Replace this with an Eigen::Map
@@ -89,6 +92,7 @@ int main(int argc, char *argv[])
     G(2,0) = -7.0f;                 // Change an element via the view
     assert(G(2,0) == array[6]);     // Ensure the change is reflected in the raw storage
     std::cout << "G = \n" << G << "\n" << std::endl;
+    std::cout << "Array = \n" << array[2] << "\n" << std::endl;
 
     return EXIT_SUCCESS;
 }
