@@ -267,7 +267,37 @@ void plot_simulation(
 
     // Bottom right
     // -----------------------------------------------
+    /*
+    vtkChart *bottomRighthart = matrix->GetChart(vtkVector2i(1, 0));
 
+    // Background
+    bottomRightChart->GetBackgroundBrush()->SetColorF(
+      colors->GetColor3d("SlateGray").GetData());
+    bottomRightChart->GetBackgroundBrush()->SetOpacityF(0.4);
+    
+    // Title
+    bottomRightChart->SetTitle("Velocity");
+    bottomRightChart->GetTitleProperties()->SetFontSize(title_fontsize);
+    bottomRightChart->GetTitleProperties()->SetColor(colors->GetColor3d(title_fontcolour).GetData());
+
+    // X axis
+    xAxis = bottomRightChart->GetAxis(vtkAxis::BOTTOM);
+    xAxis->GetGridPen()->SetColor(colors->GetColor4ub("LightCyan"));
+    xAxis->SetTitle("Time [s]");
+    xAxis->GetTitleProperties()->SetFontSize(axis_fontsize);
+    xAxis->GetTitleProperties()->SetColor(colors->GetColor3d(axis_fontcolour).GetData());
+    xAxis->GetLabelProperties()->SetFontSize(label_fontsize);
+    xAxis->GetLabelProperties()->SetColor(colors->GetColor3d(label_fontcolour).GetData());
+
+    // Y axis
+    yAxis = bottomLeftChart->GetAxis(vtkAxis::LEFT);
+    yAxis->GetGridPen()->SetColor(colors->GetColor4ub("LightCyan"));
+    yAxis->SetTitle("Baslistic Coeff. [m^2/kg]");
+    yAxis->GetTitleProperties()->SetFontSize(axis_fontsize);
+    yAxis->GetTitleProperties()->SetColor(colors->GetColor3d(axis_fontcolour).GetData());
+    yAxis->GetLabelProperties()->SetFontSize(label_fontsize);
+    yAxis->GetLabelProperties()->SetColor(colors->GetColor3d(label_fontcolour).GetData());
+    */
     /*
      *          __.--,
      *     ,--'~-.,;=/

@@ -63,13 +63,36 @@ Gaussian Gaussian::conditional(const IndexTypeA & idxA, const IndexTypeB & idxB,
     // FIXME: The following implementation is in error, but it does pass some of the unit tests
     Gaussian out;
     
-    out.mu_ = mu_(idxA) +
-        S_(idxB, idxA).transpose()*
-        S_(idxB, idxB).eval().template triangularView<Eigen::Upper>().transpose().solve(xB - mu_(idxB));
+    // Assign S_b and S_a
+    Eigen::MatrixXd S_b = S_(Eigen::all,idxB);
+    Eigen::MatrixXd S_a = S_(Eigen::all,idxA);
+    
+    // Make concatenate matrix
+    Eigen::MatrixXd S(S_a.rows(), S_a.cols() + S_b.cols());
 
-    out.S_ = S_(idxA, idxA);
+    // Concatenate Sa and Sb horizontally
+    S.block(0, 0, S_b.rows(), S_b.cols()) = S_b;
+    S.block(0, S_b.cols(), S_a.rows(), S_a.cols()) = S_a;
 
+    // Create R matrix and perform QR decomposition
+    Eigen::MatrixXd R;
+    Eigen::HouseholderQR<Eigen::MatrixXd> qr(S);
 
+    R = qr.matrixQR().triangularView<Eigen::Upper>();
+
+    // Get size of A and B
+    int nb = idxB.size();
+    int na = idxA.size();
+
+    // Extract Elements from R
+    Eigen::MatrixXd R1 = R.block(0, 0, nb, nb);      // Top Left Matrix Block
+    Eigen::MatrixXd R2 = R.block(0, nb, nb, na);     // Top Right Matrix Block
+    Eigen::MatrixXd R3 = R.block(nb, nb, na, na);    // Bottom Right Matrix Block -> Bottom Left Matrix Block is zeros
+
+    // Plug and Chug maths
+    out.mu_ = mu_(idxA) + ((R1.transpose()).triangularView<Eigen::Lower>().solve<Eigen::OnTheRight>(R2.transpose()))*(xB - mu_(idxB));
+
+    out.S_ = R3;
 
     return out;
 }
