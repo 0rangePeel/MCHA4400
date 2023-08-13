@@ -266,9 +266,8 @@ void plot_simulation(
     yAxis->GetLabelProperties()->SetColor(colors->GetColor3d(label_fontcolour).GetData());
 
     // Bottom right
-    // -----------------------------------------------
-    /*
-    vtkChart *bottomRighthart = matrix->GetChart(vtkVector2i(1, 0));
+    // -----------------------------------------------  
+    vtkChart *bottomRightChart = matrix->GetChart(vtkVector2i(1, 0));
 
     // Background
     bottomRightChart->GetBackgroundBrush()->SetColorF(
@@ -290,14 +289,14 @@ void plot_simulation(
     xAxis->GetLabelProperties()->SetColor(colors->GetColor3d(label_fontcolour).GetData());
 
     // Y axis
-    yAxis = bottomLeftChart->GetAxis(vtkAxis::LEFT);
+    yAxis = bottomRightChart->GetAxis(vtkAxis::LEFT);
     yAxis->GetGridPen()->SetColor(colors->GetColor4ub("LightCyan"));
-    yAxis->SetTitle("Baslistic Coeff. [m^2/kg]");
+    yAxis->SetTitle("Baslistic Coeff. [m\u00B2/kg]");
     yAxis->GetTitleProperties()->SetFontSize(axis_fontsize);
     yAxis->GetTitleProperties()->SetColor(colors->GetColor3d(axis_fontcolour).GetData());
     yAxis->GetLabelProperties()->SetFontSize(label_fontsize);
     yAxis->GetLabelProperties()->SetColor(colors->GetColor3d(label_fontcolour).GetData());
-    */
+    
     /*
      *          __.--,
      *     ,--'~-.,;=/
@@ -509,6 +508,32 @@ void plot_simulation(
 
     // Bottom right plot
     // -----------------------------------------------
+    area = dynamic_cast<vtkPlotArea *>(bottomRightChart->AddPlot(vtkChart::AREA));
+    area->SetInputData(table);
+    area->SetInputArray(0, KEY(TABLE_TIME));
+    area->SetInputArray(1, KEY(TABLE_MU3_PLUS_SIGMA3));
+    area->SetInputArray(2, KEY(TABLE_MU3_MINUS_SIGMA3));
+    area->GetBrush()->SetColorF(color3d.GetRed(), color3d.GetGreen(),
+                                color3d.GetBlue(), .3);
+    area->SetLabel("99.7% confidence region");
+
+    line = bottomRightChart->AddPlot(vtkChart::LINE);
+    line->SetInputData(table, 0, TABLE_BCOEFF_TRUE);
+    line->SetColor(0, 0, 255, 255);
+    line->SetWidth(linewidth);
+    line->SetLabel("True");
+
+    line = bottomRightChart->AddPlot(vtkChart::LINE);
+    line->SetInputData(table, 0, TABLE_BCOEFF_EST);
+    line->SetColor(255, 125, 0, 255);
+    line->SetWidth(linewidth);    
+    line->SetLabel("Estimated");
+
+    // Show legend
+    bottomRightChart->SetShowLegend(true);
+    bottomRightChart->GetLegend()->SetHorizontalAlignment(vtkChartLegend::RIGHT);
+    bottomRightChart->GetLegend()->SetVerticalAlignment(vtkChartLegend::BOTTOM);
+    bottomRightChart->GetLegend()->SetLabelSize(legend_fontsize);
 
     /*
      *          __.--,
