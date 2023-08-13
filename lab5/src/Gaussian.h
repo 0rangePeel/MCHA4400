@@ -45,8 +45,14 @@ Gaussian Gaussian::marginal(const IndexType & idx) const
 {
     Gaussian out(idx.size());
     // TODO
-    // out.mu_ = ???;
-    // out.S_ = ???;
+    out.mu_ = mu_(idx);
+
+    // Perform QR decomposition
+    Eigen::HouseholderQR<Eigen::MatrixXd> qr(S_(Eigen::all,idx));
+
+    // Extract upper triangular matrix
+    out.S_ = qr.matrixQR().triangularView<Eigen::Upper>();
+
     return out;
 }
 
@@ -56,10 +62,15 @@ Gaussian Gaussian::conditional(const IndexTypeA & idxA, const IndexTypeB & idxB,
 {
     // FIXME: The following implementation is in error, but it does pass some of the unit tests
     Gaussian out;
+    
     out.mu_ = mu_(idxA) +
         S_(idxB, idxA).transpose()*
         S_(idxB, idxB).eval().template triangularView<Eigen::Upper>().transpose().solve(xB - mu_(idxB));
+
     out.S_ = S_(idxA, idxA);
+
+
+
     return out;
 }
 

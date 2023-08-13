@@ -24,7 +24,18 @@ StateBallistic::StateBallistic(const Gaussian & density)
 Eigen::VectorXd StateBallistic::dynamics(const Eigen::VectorXd & x) const
 {
     Eigen::VectorXd f(x.size());
-    // TODO: Set f
+
+    double h = x(0);
+    double v = x(1);
+    double c = x(2);
+
+    double d = 0.5*((M*p0)/R)*(1/(T0 - L*h))*pow((1 - (L*h)/(T0)),((g*M)/(R*L)))*pow(v,2)*c;
+
+    double f1 = v;
+    double f2 = d - g;
+    double f3 = 0;
+
+    f << f1, f2, f3; 
 
     return f;
 }
@@ -36,6 +47,19 @@ Eigen::VectorXd StateBallistic::dynamics(const Eigen::VectorXd & x, Eigen::Matri
 
     J.resize(x.size(), x.size());
     // TODO: Set J
+
+    double h = x(0);
+    double v = x(1);
+    double c = x(2);
+
+    double j21 = (L * M * c * p0 * v * v * pow(1 - (L * h) / T0, (M * g) / (L * R))) / (2 * R * pow(T0 - L * h, 2)) - (pow(M, 2) * c * g * p0 * v * v * pow(1 - (L * h) / T0, (M * g) / (L * R) - 1)) / (2 * R * R * T0 * (T0 - L * h));
+    double j22 = (M * c * p0 * v * pow(1 - (L * h) / T0, (M * g) / (L * R))) / (R * (T0 - L * h));
+    double j23 = (M * p0 * v * v * pow(1 - (L * h) / T0, (M * g) / (L * R))) / (2 * R * (T0 - L * h));
+
+    J << 0,    1,   0,
+        j21, j22, j23,
+         0,    0,   0;
+
 
     return f;
 }

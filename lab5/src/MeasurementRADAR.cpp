@@ -21,6 +21,9 @@ Eigen::VectorXd MeasurementRADAR::predict(const Eigen::VectorXd & x) const
 {
     Eigen::VectorXd h(1);
     // TODO: Set h
+
+    h << hypot(r1, (x(0) - r2));
+
     return h;
 }
 
@@ -31,6 +34,8 @@ Eigen::VectorXd MeasurementRADAR::predict(const Eigen::VectorXd & x, Eigen::Matr
 
     J.resize(h.size(), x.size());
     // TODO: Set J
+    double j1 = (x(0) - r2)/(hypot(r1, (x(0) - r2)));
+    J << j1, 0, 0;
 
     return h;
 }
