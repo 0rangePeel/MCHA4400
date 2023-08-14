@@ -44,10 +44,10 @@ void conditionGaussianOnMarginal(const Eigen::VectorXd & muyxjoint, const Eigen:
 
     // Solve the computational part - note 'Lower' -> because S1 is upper triangle and has been tranposed
     // template m.triangularView<Eigen::Upper>().solve(n)
-    Eigen::MatrixXd S_solve = (S1.transpose()).triangularView<Eigen::Lower>().solve(y - muy);
+    //Eigen::MatrixXd S_solve = (S1.transpose()).triangularView<Eigen::Lower>().solve(y - muy);
 
     // Equation 8a - Plug and Chug Mathematics
-    muxcond = mux + S2.transpose()*S_solve;
+    muxcond = mux + S2.transpose()*(S1.transpose()).triangularView<Eigen::Lower>().solve(y - muy);
 
     // Equation 8b
     Sxcond = S3;

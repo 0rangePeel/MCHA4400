@@ -44,7 +44,7 @@ template <typename IndexType>
 Gaussian Gaussian::marginal(const IndexType & idx) const
 {
     Gaussian out(idx.size());
-    // TODO
+
     out.mu_ = mu_(idx);
 
     // Perform QR decomposition
@@ -60,39 +60,46 @@ Gaussian Gaussian::marginal(const IndexType & idx) const
 template <typename IndexTypeA, typename IndexTypeB>
 Gaussian Gaussian::conditional(const IndexTypeA & idxA, const IndexTypeB & idxB, const Eigen::VectorXd & xB) const
 {
-    // FIXME: The following implementation is in error, but it does pass some of the unit tests
     Gaussian out;
-    
-    // Assign S_b and S_a
-    Eigen::MatrixXd S_b = S_(Eigen::all,idxB);
-    Eigen::MatrixXd S_a = S_(Eigen::all,idxA);
-    
-    // Make concatenate matrix
-    Eigen::MatrixXd S(S_a.rows(), S_a.cols() + S_b.cols());
 
-    // Concatenate Sa and Sb horizontally
-    S.block(0, 0, S_b.rows(), S_b.cols()) = S_b;
-    S.block(0, S_b.cols(), S_a.rows(), S_a.cols()) = S_a;
+    // Get size of A and B indexes
+    const int &nb = idxB.size();
+    const int &na = idxA.size();
+    
+    // Make Horizontal concatenate matrix
+    Eigen::MatrixXd S(S_.rows(), nb + na);
 
-    // Create R matrix and perform QR decomposition
-    Eigen::MatrixXd R;
+    // Concatenate indexed B and A horizontally
+    S << S_(Eigen::all,idxB), S_(Eigen::all,idxA);
+
+    // Perform QR decomposition
     Eigen::HouseholderQR<Eigen::MatrixXd> qr(S);
+    Eigen::MatrixXd R = qr.matrixQR().triangularView<Eigen::Upper>();
 
-    R = qr.matrixQR().triangularView<Eigen::Upper>();
+    /*
+        Where R = [ R1 R2 ]
+                  [  0 R3 ]
+        
+        Hence,
+            - R1 = R.topLeftCorner(nb, nb);
+            - R2 = R.topRightCorner(nb, na);
+            - R3 = R.bottomRightCorner(na, na); 
 
-    // Get size of A and B
-    int nb = idxB.size();
-    int na = idxA.size();
+        Used for equation 31) Lab5
 
-    // Extract Elements from R
-    Eigen::MatrixXd R1 = R.block(0, 0, nb, nb);      // Top Left Matrix Block
-    Eigen::MatrixXd R2 = R.block(0, nb, nb, na);     // Top Right Matrix Block
-    Eigen::MatrixXd R3 = R.block(nb, nb, na, na);    // Bottom Right Matrix Block -> Bottom Left Matrix Block is zeros
+            mu_A/B = mu_A + R2.T*R1.-T*( xB - mu_B )
 
-    // Plug and Chug maths
-    out.mu_ = mu_(idxA) + ((R1.transpose()).triangularView<Eigen::Lower>().solve<Eigen::OnTheRight>(R2.transpose()))*(xB - mu_(idxB));
+        and 
 
-    out.S_ = R3;
+            S_A/B = R3 
+    */
+
+    // Plug and Chug maths - Note the solve -> 'Lower' used becuase R1 is transposed upper triangle
+    out.mu_ = mu_(idxA) + 
+              R.topRightCorner(nb, na).transpose()*
+              (R.topLeftCorner(nb, nb).transpose()).triangularView<Eigen::Lower>().solve(xB - mu_(idxB));
+
+    out.S_ = R.bottomRightCorner(na, na);
 
     return out;
 }
