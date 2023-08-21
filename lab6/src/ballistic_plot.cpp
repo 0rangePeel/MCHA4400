@@ -266,6 +266,38 @@ void plot_simulation(
     yAxis->GetLabelProperties()->SetColor(colors->GetColor3d(label_fontcolour).GetData());
 
     // Bottom right
+    // -----------------------------------------------  
+    vtkChart *bottomRightChart = matrix->GetChart(vtkVector2i(1, 0));
+
+    // Background
+    bottomRightChart->GetBackgroundBrush()->SetColorF(
+      colors->GetColor3d("SlateGray").GetData());
+    bottomRightChart->GetBackgroundBrush()->SetOpacityF(0.4);
+    
+    // Title
+    bottomRightChart->SetTitle("Velocity");
+    bottomRightChart->GetTitleProperties()->SetFontSize(title_fontsize);
+    bottomRightChart->GetTitleProperties()->SetColor(colors->GetColor3d(title_fontcolour).GetData());
+
+    // X axis
+    xAxis = bottomRightChart->GetAxis(vtkAxis::BOTTOM);
+    xAxis->GetGridPen()->SetColor(colors->GetColor4ub("LightCyan"));
+    xAxis->SetTitle("Time [s]");
+    xAxis->GetTitleProperties()->SetFontSize(axis_fontsize);
+    xAxis->GetTitleProperties()->SetColor(colors->GetColor3d(axis_fontcolour).GetData());
+    xAxis->GetLabelProperties()->SetFontSize(label_fontsize);
+    xAxis->GetLabelProperties()->SetColor(colors->GetColor3d(label_fontcolour).GetData());
+
+    // Y axis
+    yAxis = bottomRightChart->GetAxis(vtkAxis::LEFT);
+    yAxis->GetGridPen()->SetColor(colors->GetColor4ub("LightCyan"));
+    yAxis->SetTitle("Baslistic Coeff. [m\u00B2/kg]");
+    yAxis->GetTitleProperties()->SetFontSize(axis_fontsize);
+    yAxis->GetTitleProperties()->SetColor(colors->GetColor3d(axis_fontcolour).GetData());
+    yAxis->GetLabelProperties()->SetFontSize(label_fontsize);
+    yAxis->GetLabelProperties()->SetColor(colors->GetColor3d(label_fontcolour).GetData());
+
+    // Bottom right
     // -----------------------------------------------
 
     /*
@@ -476,6 +508,35 @@ void plot_simulation(
     bottomLeftChart->GetLegend()->SetHorizontalAlignment(vtkChartLegend::RIGHT);
     bottomLeftChart->GetLegend()->SetVerticalAlignment(vtkChartLegend::BOTTOM);
     bottomLeftChart->GetLegend()->SetLabelSize(legend_fontsize);
+
+    // Bottom right plot
+    // -----------------------------------------------
+    area = dynamic_cast<vtkPlotArea *>(bottomRightChart->AddPlot(vtkChart::AREA));
+    area->SetInputData(table);
+    area->SetInputArray(0, KEY(TABLE_TIME));
+    area->SetInputArray(1, KEY(TABLE_MU3_PLUS_SIGMA3));
+    area->SetInputArray(2, KEY(TABLE_MU3_MINUS_SIGMA3));
+    area->GetBrush()->SetColorF(color3d.GetRed(), color3d.GetGreen(),
+                                color3d.GetBlue(), .3);
+    area->SetLabel("99.7% confidence region");
+
+    line = bottomRightChart->AddPlot(vtkChart::LINE);
+    line->SetInputData(table, 0, TABLE_BCOEFF_TRUE);
+    line->SetColor(0, 0, 255, 255);
+    line->SetWidth(linewidth);
+    line->SetLabel("True");
+
+    line = bottomRightChart->AddPlot(vtkChart::LINE);
+    line->SetInputData(table, 0, TABLE_BCOEFF_EST);
+    line->SetColor(255, 125, 0, 255);
+    line->SetWidth(linewidth);    
+    line->SetLabel("Estimated");
+
+    // Show legend
+    bottomRightChart->SetShowLegend(true);
+    bottomRightChart->GetLegend()->SetHorizontalAlignment(vtkChartLegend::RIGHT);
+    bottomRightChart->GetLegend()->SetVerticalAlignment(vtkChartLegend::BOTTOM);
+    bottomRightChart->GetLegend()->SetLabelSize(legend_fontsize);
 
     // Bottom right plot
     // -----------------------------------------------

@@ -44,7 +44,7 @@ SCENARIO("MeasurementRADAR")
                 }
             }
         }
-/* TODO: Uncomment if using analytical derivatives
+//TODO: Uncomment if using analytical derivatives
         WHEN("Evaluating h = measurement.predict(x, J)")
         {
             Eigen::MatrixXd J;
@@ -141,7 +141,7 @@ SCENARIO("MeasurementRADAR")
                 }
             }
         }
-*/
+//
         WHEN("Evaluating h = measurement.logLikelihood(x)")
         {
             double logLik = measurement.logLikelihood(x);

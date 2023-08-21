@@ -94,9 +94,17 @@ public:
     template <typename IndexType>
     Gaussian marginal(const IndexType & idx) const
     {
+        // Same as LAB 5
         Gaussian out;
-        // out.mu_ = ???
-        // out.S_ = ???
+
+        out.mu_ = mu_(idx);
+
+        // Perform QR decomposition
+        Eigen::HouseholderQR<Eigen::MatrixXd> qr(S_(Eigen::all,idx));
+
+        // Extract upper triangular matrix
+        out.S_ = qr.matrixQR().triangularView<Eigen::Upper>();   
+
         return out;
     }
 
@@ -104,12 +112,48 @@ public:
     template <typename IndexTypeA, typename IndexTypeB>
     Gaussian conditional(const IndexTypeA & idxA, const IndexTypeB & idxB, const Eigen::VectorX<Scalar> & xB) const
     {
-        // FIXME: The following implementation is in error, but it does pass some of the unit tests
+        // Same as LAB 5
         Gaussian out;
-        out.mu_ = mu_(idxA) +
-            S_(idxB, idxA).transpose()*
-            S_(idxB, idxB).eval().template triangularView<Eigen::Upper>().transpose().solve(xB - mu_(idxB));
-        out.S_ = S_(idxA,idxA);
+
+        // Get size of A and B indexes
+        const int &nb = idxB.size();
+        const int &na = idxA.size();
+        
+        // Make Horizontal concatenate matrix
+        Eigen::MatrixXd S(S_.rows(), nb + na);
+
+        // Concatenate indexed B and A horizontally
+        S << S_(Eigen::all,idxB), S_(Eigen::all,idxA);
+
+        // Perform QR decomposition
+        Eigen::HouseholderQR<Eigen::MatrixXd> qr(S);
+        Eigen::MatrixXd R = qr.matrixQR().triangularView<Eigen::Upper>();
+
+        /*
+            Where R = [ R1 R2 ]
+                    [  0 R3 ]
+            
+            Hence,
+                - R1 = R.topLeftCorner(nb, nb);
+                - R2 = R.topRightCorner(nb, na);
+                - R3 = R.bottomRightCorner(na, na); 
+
+            Used for equation 31) Lab5
+
+                mu_A/B = mu_A + R2.T*R1.-T*( xB - mu_B )
+
+            and 
+
+                S_A/B = R3 
+        */
+
+        // Plug and Chug maths - Note the solve -> 'Lower' used becuase R1 is transposed upper triangle
+        out.mu_ = mu_(idxA) + 
+                R.topRightCorner(nb, na).transpose()*
+                (R.topLeftCorner(nb, nb).transpose()).triangularView<Eigen::Lower>().solve(xB - mu_(idxB));
+
+        out.S_ = R.bottomRightCorner(na, na);
+
         return out;
     }
 
@@ -148,29 +192,43 @@ public:
         assert(x.cols() == 1);
         assert(x.size() == size());
 
-        // Compute log N(x; mu, P) where P = S.'*S
-        // log N(x; mu, P) = -0.5*(x - mu).'*inv(P)*(x - mu) - 0.5*log(det(2*pi*P))
-
-        // TODO: Numerically stable version
+        // From LAB 1 MCHA4100 'logGaussian.m' utilising the same notation
+        Eigen::MatrixX<Scalar> w = S_.transpose().template triangularView<Eigen::Lower>().solve(x - mu_);
         
-        // Really bad version
-        Eigen::MatrixX<Scalar> P = S_.transpose()*S_;   // Bad, because unnecessary and loss of precision
-        Eigen::MatrixX<Scalar> Pinv = P.inverse();      // Bad, because you should know better (https://www.johndcook.com/blog/2010/01/19/dont-invert-that-matrix/)
-        Scalar quadraticForm = (x - mu_).transpose()*Pinv*(x - mu_);
-        using std::log, std::sqrt, std::exp;            // Bring selected math functions into global namespace, to merge with autodiff:: provided functions
-        return log( 1.0/sqrt( (2*M_PI*P).determinant() )*exp(-0.5*quadraticForm) ); // Bad, because determinant, underflow, overflow and loss of precision
+        // https://eigen.tuxfamily.org/dox/group__TutorialReductionsVisitorsBroadcasting.html
+        // "...(squaredNorm) is equal to the dot product of the vector by itself, and equivalently 
+        // to the sum of squared absolute values of its coefficients"
+        Scalar quadraticForm = w.squaredNorm();
+
+        // https://au.mathworks.com/matlabcentral/fileexchange/22026-safe-computation-of-logarithm-determinat-of-large-matrix//
+        // The above was used to get logdet out
+        // Line from function library
+        // v = 2 * sum(log(diag(chol(A))));
+        // Note that the 2 multiple is ommitted because of the 0.5 in the final equation
+        Scalar logdet = S_.template diagonal().array().abs().log().sum(); 
+ 
+        // Note that the determinant is log form which follows the log rule log(AB) = log(A) + log(B)
+        // The following rule is also used log(m)^n = n*log(m)
+        // Equation from Week 6 Lecture page 14
+        Scalar loglikelihood = -0.5 * x.size() * std::log(2 * M_PI) - logdet - 0.5 * quadraticForm;
+
+        return loglikelihood;
     }
 
     Scalar log(const Eigen::VectorX<Scalar> & x, Eigen::VectorX<Scalar> & g) const
     {
-        // TODO: Compute gradient of log N(x; mu, P) w.r.t x and write it to g
+        // Compute gradient of log N(x; mu, P) w.r.t x and write it to g
+
+        g = -S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(x - mu_));
 
         return log(x);
     }
 
     Scalar log(const Eigen::VectorX<Scalar> & x, Eigen::VectorX<Scalar> & g, Eigen::MatrixX<Scalar> & H) const
     {
-        // TODO: Compute Hessian of log N(x; mu, P) w.r.t x and write it to H
+        // Compute Hessian of log N(x; mu, P) w.r.t x and write it to H
+
+        H = -S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(Eigen::MatrixXd::Identity(S_.rows(), S_.cols())));
 
         return log(x, g);
     }

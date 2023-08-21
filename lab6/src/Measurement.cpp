@@ -126,7 +126,7 @@ double Measurement::logLikelihood(const Eigen::VectorXd & x) const
 double Measurement::logLikelihood(const Eigen::VectorXd & x, Eigen::VectorXd & g) const
 {
     // i) Analyical derivatives
-    Eigen::MatrixXd dhdx;
+    Eigen::MatrixXd dhdx; // this is J from MeasurementRADAR.cpp
     Eigen::VectorXd h = predict(x, dhdx);
     Gaussian likelihood(h, noise_.sqrtCov());
 
@@ -153,7 +153,8 @@ double Measurement::logLikelihood(const Eigen::VectorXd & x, Eigen::VectorXd & g
     //               dx_i   dy_k
     //
 
-    // TODO: g = ???;
+    g = -dhdx.transpose() * loglikGrad;
+
     return logLik;
 }
 
@@ -193,7 +194,7 @@ double Measurement::logLikelihood(const Eigen::VectorXd & x, Eigen::VectorXd & g
     //               dx_i   dy_k
     //
 
-    // TODO: g = ???;
+    g = -dhdx.transpose() * loglikGrad;
 
     // Hessian of log likelihood:
     //
@@ -209,8 +210,33 @@ double Measurement::logLikelihood(const Eigen::VectorXd & x, Eigen::VectorXd & g
     // H_{ij} = sum_k sum_l ---- * --------------------- * ---- - sum_k --------- * ---- log N(y; h(x), R)
     //                      dx_i         dy_k dy_l         dx_j         dx_i dx_j   dy_k   
     //
+    
+    int nx = dhdx.cols();
+    int nh = dhdx.rows();
+    
 
-    // TODO: H = ???;
+    Eigen::MatrixXd linearTerm;
+    Eigen::MatrixXd nonlinearTerm;
+    Eigen::VectorXd temp(nh);
+
+    H.resize(nx,nx);
+    linearTerm.resize(nx,nx);
+    nonlinearTerm.resize(nx,nx);
+
+    linearTerm = dhdx.transpose()*logLikHess*dhdx;
+
+    for (int i = 0; i < nx; i++){
+        for (int j = 0; j < nx; j++){
+            for (int k = 0; k < nh; ++k) {
+                temp(k) = d2hdx2(k, i, j) * loglikGrad(k);
+            }
+            nonlinearTerm(i, j) = temp.sum();        
+        }
+    }
+
+    H = linearTerm - nonlinearTerm;
+
+    //H(i,j) = d2hdx2(0,i,j) * loglikGrad - dhdx(i) * logLikHess;
 
     // Hint: In Matlab, this operation would look like the following:
     //       nh = length(h);

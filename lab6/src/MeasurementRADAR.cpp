@@ -51,7 +51,8 @@ Eigen::VectorXd MeasurementRADAR::predict(const Eigen::VectorXd & x, Eigen::Matr
 
     J.resize(h.size(), x.size());
     J.setZero();
-    // TODO: Set non-zero elements of J
+
+    J << (x(0) - r2)/h(0), 0, 0;
 
     return h;
 }
@@ -66,6 +67,9 @@ Eigen::VectorXd MeasurementRADAR::predict(const Eigen::VectorXd & x, Eigen::Matr
     H.resize(h.size(), x.size(), x.size());
     H.setZero();
     // TODO: Set non-zero elements of H
+
+    H(0,0,0)    =   (h(0) - (x(0) - r2)*J(0))/(h(0)*h(0));
+
 
     return h;
 }

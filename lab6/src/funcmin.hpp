@@ -1,6 +1,7 @@
 #ifndef FUNCMIN_HPP
 #define FUNCMIN_HPP
 
+#include <iostream>
 #include <cmath>
 #include <cstdio>
 #include <cassert>

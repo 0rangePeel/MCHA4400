@@ -22,11 +22,38 @@ int main(int argc, char *argv[])
     std::cout << "Initial x =\n" << x << "\n" << std::endl;
 
     RosenbrockAnalytical func;
-    // TODO: Call funcmin::NewtonTrust
-    // TODO: Display results
+
+    int verbosity = 3;
+    Eigen::VectorXd g;
+    Eigen::MatrixXd H;
+
+    double f = std::pow((1 - x(0)),2) + 100*std::pow((x(1) - std::pow(x(1),2)),2);
+
+    std::cout << "f =\n" << f << "\n" << std::endl;
+
+    g.resize(2, 1);
+    g << -2 + 2*x(0) - 400*x(1)*x(0) + 400*std::pow(x(0),3), 200*x(1) - 200*std::pow(x(0),2);
+
+    std::cout << "g =\n" << g << "\n" << std::endl;
+
+    H.resize(2, 2);
+    H << 800*pow(x(0),2) - 400*(x(1) - pow(x(0),2)) + 2   , -400*x(0),
+         -400*x(0)                                        ,   200;
+
+    std::cout << "H =\n" << H << "\n" << std::endl;
+
+    //funcmin::NewtonTrust(func, x, g, H, verbosity);
+    funcmin::SR1Trust(func, x, g, H, verbosity);
+
+    f = std::pow((1 - x(0)),2) + 100*std::pow((x(1) - std::pow(x(1),2)),2);
+
+    std::cout << "\n" << "Final x = \n" << x << "\n" << std::endl;
+    std::cout << "f = " << f << "\n" << std::endl;
+    std::cout << "g = \n" << g << "\n" << std::endl;
+    std::cout << "H = \n" << H << "\n" << std::endl;
 
     // Comment out the following line to move on to Problem 3
-    return EXIT_SUCCESS;
+    // return EXIT_SUCCESS;
 
     // ------------------------------------------------------
     // PROBLEM 3: Iterated EKF
