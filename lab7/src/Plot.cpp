@@ -188,16 +188,16 @@ void QuadricPlot::update(const Gaussian<double> & positionDensity)
     Eigen::Matrix4d Q = positionDensity.quadricSurface(3);
     double a0, a1, a2, a3, a4, a5, a6, a7, a8, a9;
     
-    a0 = 0;     // TODO: Lab 7
-    a1 = 0;     // TODO: Lab 7
-    a2 = 0;     // TODO: Lab 7
-    a3 = 0;     // TODO: Lab 7
-    a4 = 0;     // TODO: Lab 7
-    a5 = 0;     // TODO: Lab 7
-    a6 = 0;     // TODO: Lab 7
-    a7 = 0;     // TODO: Lab 7
-    a8 = 0;     // TODO: Lab 7
-    a9 = 0;     // TODO: Lab 7
+    a0 = Q(0,0);     // TODO: Lab 7
+    a1 = Q(1,1);     // TODO: Lab 7
+    a2 = Q(2,2);     // TODO: Lab 7
+    a3 = 0.5*Q(0,1);     // TODO: Lab 7
+    a4 = 0.5*Q(1,2);     // TODO: Lab 7
+    a5 = 0.5*Q(0,2);     // TODO: Lab 7
+    a6 = 0.5*Q(0,3);     // TODO: Lab 7
+    a7 = 0.5*Q(1,3);     // TODO: Lab 7
+    a8 = 0.5*Q(2,3);     // TODO: Lab 7
+    a9 = Q(3,3);     // TODO: Lab 7
 
     quadric->SetCoefficients(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9);
 

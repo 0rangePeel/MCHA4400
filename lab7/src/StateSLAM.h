@@ -98,6 +98,9 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeature(const Eigen::VectorX<Scalar> & 
     Eigen::Matrix3<Scalar> Rnc;
     // TODO: Lab 7
 
+    Rnc = Rnb * Rbc;
+    rCNn = Rnb*rCBb + rBNn;
+
     // Obtain landmark position from state
     std::size_t idx = landmarkPositionIndex(idxLandmark);
     Eigen::Vector3<Scalar> rPNn = x.template segment<3>(idx);
@@ -106,9 +109,13 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeature(const Eigen::VectorX<Scalar> & 
     Eigen::Vector3<Scalar> rPCc;
     // TODO: Lab 7
 
+    rPCc = Rnc.transpose() * (rPNn - rCNn);
+
     // Pixel coordinates
     Eigen::Vector2<Scalar> rQOi;
     // TODO: Lab 7
+    rQOi = cam.vectorToPixel(rPCc);
+
     return rQOi;
 }
 

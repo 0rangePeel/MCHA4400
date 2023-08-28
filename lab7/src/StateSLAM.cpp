@@ -134,7 +134,25 @@ Eigen::Vector2d StateSLAM::predictFeature(const Eigen::VectorXd & x, Eigen::Matr
 {
     // Set elements of J
     // TODO: Lab 7 (optional)
-    return predictFeature(x, cam, idxLandmark);
+    Eigen::Vector3<autodiff::dual> xdual = x.cast<autodiff::dual>();
+    Eigen::Vector2<autodiff::dual> fdual;
+    J = jacobian(cam.vectorToPixel<autodiff::dual>, wrt(xdual), at(cam, xdual), fdual);
+    return fdual.cast<double>(); // cast return value to double
+/*
+    Eigen::Vector3<autodiff::dual> fvar;
+    Eigen::VectorX<autodiff::dual> x_dual = x.cast<autodiff::dual>();  
+    J = jacobian(cam.vectorToPixel<autodiff::dual>, wrt(x_dual), at(cam, x_dual), fvar);
+    return fvar.cast<double>(); // cast return value to double
+*/
+/*
+    Eigen::VectorX<autodiff::var> xvar = x.cast<autodiff::var>();
+    Eigen::VectorX<autodiff::var> fvar = f(xvar); // Build expression tree
+    J.resize(fvar.size(), xvar.size());
+    for (Eigen::Index i = 0; i < fvar.size(); ++i)
+    J.row(i) = gradient(fvar(i), xvar); // Evaluate derivatives from tree
+    return fvar.cast<double>(); // cast return value to double
+*/   
+    //return predictFeature(x, cam, idxLandmark);
     // Note: If you use autodiff, return the evaluated function value (cast with double scalar type) instead of calling predictFeature as above
 }
 
@@ -165,6 +183,7 @@ Eigen::VectorXd StateSLAM::predictFeatureBundle(const Eigen::VectorXd & x, Eigen
     {
         Eigen::MatrixXd Jfeature;
         Eigen::Vector2d rQOi = predictFeature(x, Jfeature, cam, idxLandmarks[i]);
+
         // Set pair of elements of h
         // TODO: Lab 8
         // Set pair of rows of J

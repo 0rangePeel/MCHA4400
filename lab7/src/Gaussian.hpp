@@ -259,25 +259,49 @@ public:
     }
 
     // https://en.wikipedia.org/wiki/Inverse-chi-squared_distribution
+    #include <boost/math/special_functions/gamma.hpp>
     static double chi2inv(double p, double nu)
     {
         assert(p >= 0);
         assert(p < 1);
-        // TODO: Lab 7
-        return 0.0;
+
+        // Calculate the inverse of the incomplete gamma function to get the chi-square inverse
+        double chi2_inv = 2 * boost::math::gamma_p_inv(nu / 2.0, p);
+
+        return chi2_inv;
     }
 
+    #include <boost/math/special_functions/erf.hpp>
     static double normcdf(double w)
     {
-        // TODO: Lab 7
-        return 0.0;
+
+    // Calculate the cumulative distribution function (CDF) of the standard normal distribution
+    double cdf = 0.5 * boost::math::erfc(-w / std::sqrt(2.0));
+
+    return cdf;
     }
 
     bool isWithinConfidenceRegion(const Eigen::VectorX<Scalar> & x, double nSigma = 3.0)
     {
         const Eigen::Index & n = size();
-        // TODO: Lab 7
-        return false;
+        
+        double c = 2 * normcdf(nSigma) - 1;
+        double chi2_inv = chi2inv(c, n);
+
+        // From LAB 1 MCHA4100 'logGaussian.m' utilising the same notation
+        Eigen::MatrixX<Scalar> w = S_.transpose().template triangularView<Eigen::Lower>().solve(x - mu_);
+        
+        // https://eigen.tuxfamily.org/dox/group__TutorialReductionsVisitorsBroadcasting.html
+        // "...(squaredNorm) is equal to the dot product of the vector by itself, and equivalently 
+        // to the sum of squared absolute values of its coefficients"
+        Scalar quadraticForm = w.squaredNorm();
+
+        if (quadraticForm <= chi2_inv){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     // Points on boundary of confidence ellipse for a given number of standard deviations
@@ -287,7 +311,26 @@ public:
         assert(n == 2);
 
         Eigen::Matrix<Scalar, 2, Eigen::Dynamic> X(2, nSamples);
-        // TODO: Lab 7
+        
+        double c = 2 * normcdf(nSigma) - 1;
+        Eigen::VectorXd t = Eigen::VectorXd::LinSpaced(nSamples, 0.0, 2.0 * M_PI);
+
+        double r = std::sqrt(chi2inv(c,n));
+
+        Eigen::MatrixXd w(2, nSamples);
+
+        for (int i = 0; i < nSamples; i++){
+            w(0, i) = r * std::cos(t(i));  // Filling the first row with cos(t) values
+            w(1, i) = r * std::sin(t(i));  // Filling the second row with sin(t) values
+        }
+
+        X = S_.transpose() * w;
+
+        for (int i = 0; i < nSamples; i++){
+            X(0, i) = mu_(0) + X(0, i);
+            X(1, i) = mu_(1) + X(1, i);
+        }
+
         assert(X.cols() == nSamples);
         assert(X.rows() == 2);
         return X;
@@ -300,7 +343,27 @@ public:
         assert(n == 3);
         
         Eigen::Matrix4<Scalar> Q;
-        // TODO: Lab 7
+        
+        //Q(1,1) = S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(Eigen::MatrixXd::Identity(S_.rows(), S_.cols())));
+        //Q(1,1) = S_.transpose()*(S_.transpose()).triangularView<Eigen::Lower>().solve(S_.rows(), S_.cols());
+        Q.topLeftCorner(3,3) = S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(Eigen::MatrixX<Scalar>::Identity(S_.rows(), S_.cols())));
+
+        Eigen::MatrixX<Scalar> z;
+        z = S_.transpose().template triangularView<Eigen::Lower>().solve(mu_);
+
+        Eigen::MatrixX<Scalar> y;
+        y = S_.template triangularView<Eigen::Upper>().solve(z);
+
+        Q.topRightCorner(3, 1) = -y;
+        Q.bottomLeftCorner(1, 3) = -y.transpose();
+
+        double c = 2 * normcdf(nSigma) - 1;
+        double chi2_inv = chi2inv(c, 3);
+
+        Scalar z_Norm = z.squaredNorm();
+
+        Q(3,3) = z_Norm - chi2_inv;
+
         return Q;
     }
 

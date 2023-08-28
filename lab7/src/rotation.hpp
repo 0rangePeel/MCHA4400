@@ -8,7 +8,13 @@ Eigen::Matrix3<Scalar> rotx(const Scalar & x)
 {
     using std::cos, std::sin;
     Eigen::Matrix3<Scalar> R = Eigen::Matrix3<Scalar>::Identity();
-    // TODO: Lab 7
+    
+    R(1, 1) = cos(x);
+    R(2, 1) = sin(x);
+
+    R(1, 2) = -sin(x);
+    R(2, 2) = cos(x);
+
     return R;
 }
 
@@ -31,7 +37,13 @@ Eigen::Matrix3<Scalar> roty(const Scalar & x)
 {
     using std::cos, std::sin;
     Eigen::Matrix3<Scalar> R = Eigen::Matrix3<Scalar>::Identity();
-    // TODO: Lab 7
+
+    R(0,0)    =  cos(x);
+    R(2,0)    = -sin(x);
+
+    R(0,2)    =  sin(x);
+    R(2,2)    =  cos(x);
+
     return R;
 }
 
@@ -54,7 +66,13 @@ Eigen::Matrix3<Scalar> rotz(const Scalar & x)
 {
     using std::cos, std::sin;
     Eigen::Matrix3<Scalar> R = Eigen::Matrix3<Scalar>::Identity();
-    // TODO: Lab 7
+    
+    R(0,0)    =  cos(x);
+    R(1,0)    =  sin(x);
+
+    R(0,1)    = -sin(x);
+    R(1,1)    =  cos(x);
+
     return R;
 }
 
@@ -77,7 +95,9 @@ Eigen::Matrix3<Scalar> rpy2rot(const Eigen::Vector3<Scalar> & Theta)
 {
     // R = Rz*Ry*Rx
     Eigen::Matrix3<Scalar> R;
-    // TODO: Lab 7
+    
+    R = rotz(Theta(2))*roty(Theta(1))*rotx(Theta(0));
+
     return R;
 }
 
@@ -86,7 +106,11 @@ Eigen::Vector3<Scalar> rot2rpy(const Eigen::Matrix3<Scalar> & R)
 {
     using std::atan2, std::hypot;
     Eigen::Vector3<Scalar> Theta;
-    // TODO: Lab 7
+
+    Theta(2) = atan2(R(1,0),R(0,0));
+    Theta(1) = atan2(-R(2,0),hypot(R(2,1),R(2,2)));
+    Theta(0) = atan2(R(2,1),R(2,2));
+
     return Theta;
 }
 

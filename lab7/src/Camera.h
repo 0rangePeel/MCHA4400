@@ -125,7 +125,63 @@ Eigen::Vector2<Scalar> Camera::vectorToPixel(const Eigen::Vector3<Scalar> & rPCc
     assert(isRationalModel && isThinPrismModel);
 
     Eigen::Vector2<Scalar> rQOi;
-    // TODO: Lab 7 (optional)
+    // Lab 7 - Option 2 
+
+    // Extract the x, y, and z components of rPCc
+    Scalar x = rPCc(0);  // Assuming x() returns the x-component
+    Scalar y = rPCc(1);  // Assuming y() returns the y-component
+    Scalar z = rPCc(2);  // Assuming z() returns the z-component
+
+    Scalar u = x/z;
+    Scalar v = y/z;
+    Scalar r = hypot(u,v);
+
+    // Apply distortion model to correct pixel coordinates
+    Scalar r2 = r * r;
+    Scalar r4 = r2 * r2;
+    Scalar r6 = r2 * r4;
+
+    // Assuming you have distortion coefficients in distCoeffs
+    Scalar k1 = distCoeffs.at<Scalar>(0);  // First distortion coefficient
+    Scalar k2 = distCoeffs.at<Scalar>(1);  // Second distortion coefficient
+    Scalar p1 = distCoeffs.at<Scalar>(2);  // Third distortion coefficient
+    Scalar p2 = distCoeffs.at<Scalar>(3);  // Fourth distortion coefficient
+    Scalar k3 = distCoeffs.at<Scalar>(4);  // Fifth distortion coefficient
+    Scalar k4 = distCoeffs.at<Scalar>(5);  // Sixth distortion coefficient
+    Scalar k5 = distCoeffs.at<Scalar>(6);  // Seventh distortion coefficient
+    Scalar k6 = distCoeffs.at<Scalar>(7);  // Eigth distortion coefficient
+    Scalar s1 = distCoeffs.at<Scalar>(8);  // Nineth distortion coefficient
+    Scalar s2 = distCoeffs.at<Scalar>(9);  // Tenth distortion coefficient
+    Scalar s3 = distCoeffs.at<Scalar>(10);  // Eleventh distortion coefficient
+    Scalar s4 = distCoeffs.at<Scalar>(11);  // Twelvth distortion coefficient
+
+    // Assuming you have the camera matrix (3x3 matrix) as cameraMatrix
+    Scalar fx = cameraMatrix.at<Scalar>(0, 0);  // Focal length in x
+    Scalar fy = cameraMatrix.at<Scalar>(1, 1);  // Focal length in y
+    Scalar cx = cameraMatrix.at<Scalar>(0, 2);  // Principal point x-coordinate
+    Scalar cy = cameraMatrix.at<Scalar>(1, 2);  // Principal point y-coordinate
+
+    // Calculate Radial Distortion
+    Scalar alpha = k1*r2 + k2*r4 + k3*r6;
+    Scalar beta = k4*r2 + k5*r4 + k6*r6;
+    Scalar c = (1 + alpha)/(1 + beta);
+
+    // Calculate Decentering Distortion
+    Scalar dist_Top = 2 * p1 * u * v + p2 * ( r2 + 2 * u * u);
+    Scalar dist_Bottom = p1 * ( r2 + 2 * v * v) + 2 * p2 * u * v;
+
+    // Calculate Thin Prism Distortion
+    Scalar thin_Top = s1 * r2 + s2 * r4;
+    Scalar thin_Bottom = s3 * r2 + s4 * r4;
+
+    // Full Distortion
+    Scalar u_ = c * u + dist_Top + thin_Top; 
+    Scalar v_ = c * v + dist_Bottom + thin_Bottom; 
+
+    // Final Values
+    rQOi[0] = fx * u_ + cx;
+    rQOi[1] = fy * v_ + cy;
+
     return rQOi;
 }
 

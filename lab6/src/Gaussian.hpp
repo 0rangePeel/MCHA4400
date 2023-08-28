@@ -228,7 +228,7 @@ public:
     {
         // Compute Hessian of log N(x; mu, P) w.r.t x and write it to H
 
-        H = -S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(Eigen::MatrixXd::Identity(S_.rows(), S_.cols())));
+        H = -S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(Eigen::MatrixX<Scalar>::Identity(S_.rows(), S_.cols())));
 
         return log(x, g);
     }
