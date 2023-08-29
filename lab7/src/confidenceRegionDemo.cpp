@@ -59,7 +59,6 @@ void calibrationConfidenceRegionDemo(const Camera & cam, ChessboardData & chessb
 
     // Initialise plot
     Plot plot(state, cam);
-
     // for (const auto & chessboardImage : chessboardData.chessboardImages)
     for (std::size_t i = 0; i < chessboardData.chessboardImages.size(); ++i)
     {
@@ -83,21 +82,25 @@ void calibrationConfidenceRegionDemo(const Camera & cam, ChessboardData & chessb
 
         // Update plot
         plot.render();
-
+        std::cout << "confidenceRegionDemo.cpp We rendering = " << std::endl << std::endl << std::endl << std::endl;
         std::filesystem::path outputPath;
         if (doExport)
         {
+            std::cout << "confidenceRegionDemo.cpp Enter 1st = " << std::endl << std::endl << std::endl << std::endl;
             std::string outputFilename = chessboardImage.filename.stem().string()
                                        + "_out"
                                        + chessboardImage.filename.extension().string();
             outputPath = outputDirectory / outputFilename;
             cv::imwrite(outputPath.string(), plot.getFrame());
+            std::cout << "confidenceRegionDemo.cpp We plotting boi 1! = " << std::endl << std::endl << std::endl << std::endl;
         }
 
         if (interactive == 2 || (interactive == 1 && i + 1 == chessboardData.chessboardImages.size()))
         {
+            std::cout << "confidenceRegionDemo.cpp Enter 2nd = " << std::endl << std::endl << std::endl << std::endl;
             // Start handling plot GUI events (blocking)
             plot.start();
+            std::cout << "confidenceRegionDemo.cpp We plotting boi 2! = " << std::endl << std::endl << std::endl << std::endl;
         }
     }
 }

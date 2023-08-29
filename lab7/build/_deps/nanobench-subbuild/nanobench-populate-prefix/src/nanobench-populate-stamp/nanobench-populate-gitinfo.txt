@@ -3,7 +3,7 @@
 # No other meaning or use of this file is supported.
 
 method=git
-command=C:/msys64/mingw64/bin/cmake.exe;-P;C:/Users/olive/Documents/MCHA4400/lab7/build/_deps/nanobench-subbuild/nanobench-populate-prefix/tmp/nanobench-populate-gitclone.cmake
+command=C:/msys64/clang64/bin/cmake.exe;-P;C:/Users/olive/Documents/MCHA4400/lab7/build/_deps/nanobench-subbuild/nanobench-populate-prefix/tmp/nanobench-populate-gitclone.cmake
 source_dir=C:/Users/olive/Documents/MCHA4400/lab7/build/_deps/nanobench-src
 work_dir=C:/Users/olive/Documents/MCHA4400/lab7/build/_deps
 repository=https://github.com/martinus/nanobench.git

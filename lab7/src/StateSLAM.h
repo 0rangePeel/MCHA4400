@@ -115,6 +115,7 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeature(const Eigen::VectorX<Scalar> & 
     Eigen::Vector2<Scalar> rQOi;
     // TODO: Lab 7
     rQOi = cam.vectorToPixel(rPCc);
+    //std::cout << "tateSlam.h predictFeature = " << rQOi << std::endl;
 
     return rQOi;
 }

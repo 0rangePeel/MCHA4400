@@ -123,6 +123,7 @@ Gaussian<double> StateSLAM::landmarkPositionDensity(std::size_t idxLandmark) con
 {
     assert(idxLandmark < numberLandmarks());
     std::size_t idx = landmarkPositionIndex(idxLandmark);
+    //std::cout << "StateSLAM.cpp idx =" << idx <<  std::endl;
     return density.marginal(Eigen::seqN(idx, 3));
 }
 
@@ -132,11 +133,73 @@ Gaussian<double> StateSLAM::landmarkPositionDensity(std::size_t idxLandmark) con
 // Image feature location for a given landmark and Jacobian
 Eigen::Vector2d StateSLAM::predictFeature(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark) const
 {
+    /*
     // Set elements of J
-    // TODO: Lab 7 (optional)
-    Eigen::Vector3<autodiff::dual> xdual = x.cast<autodiff::dual>();
+    Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
     Eigen::Vector2<autodiff::dual> fdual;
-    J = jacobian(cam.vectorToPixel<autodiff::dual>, wrt(xdual), at(cam, xdual), fdual);
+    J = jacobian(, wrt(xdual), at(xdual), fdual);
+    // Define a lambda function that captures the arguments and calls the .h implementation
+    
+    auto predictFeatureLambda = [&](const Eigen::VectorX<autodiff::dual> & xdual) {
+        return predictFeature(xdual, cam, idxLandmark);
+    };
+    */
+
+    Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
+    Eigen::Vector2<autodiff::dual> fdual;
+    // Define a lambda function that captures the arguments and calls the .h implementation
+    auto predictFeatureLambda = [&](const Eigen::VectorX<autodiff::dual> & xdual) {
+        return predictFeature(xdual, cam, idxLandmark);
+    };
+
+    // Compute the jacobian using the lambda function
+    J = jacobian(predictFeatureLambda, wrt(xdual), at(xdual), fdual);
+
+    /*
+    std::cout << "StateSLAM.cpp J =" << J <<  std::endl;
+    std::cout << "StateSLAM.cpp fdual =" << fdual.cast<double>() <<  std::endl;
+    std::cout << "StateSLAM.cpp x =" << x <<  std::endl;
+    std::cout << "StateSLAM.cpp xdual =" << xdual <<  std::endl;
+    */
+    
+    /*
+    // Obtain body pose from state
+    Eigen::Vector3d rBNn = x.segment<3>(6);
+    Eigen::Vector3d Thetanb = x.segment<3>(9);
+    Eigen::Matrix3d Rnb = rpy2rot(Thetanb); 
+
+    // Pose of camera w.r.t. body
+    const Eigen::Vector3d & rCBb = cam.rCBb;
+    const Eigen::Matrix3d & Rbc = cam.Rbc;
+
+    // Obtain camera pose from body pose
+    Eigen::Vector3d rCNn;
+    Eigen::Matrix3d Rnc;
+    // TODO: Lab 7
+
+    Rnc = Rnb * Rbc;
+    rCNn = Rnb*rCBb + rBNn;
+
+    // Obtain landmark position from state
+    std::size_t idx = landmarkPositionIndex(idxLandmark);
+    Eigen::Vector3d rPNn = x.segment<3>(idx);
+
+    // Camera vector
+    Eigen::Vector3d rPCc;
+    // TODO: Lab 7
+
+    rPCc = Rnc.transpose() * (rPNn - rCNn);
+
+    Eigen::VectorX<autodiff::dual> xdual = rPCc.cast<autodiff::dual>();
+    Eigen::Vector2<autodiff::dual> fdual;
+    J = jacobian(cam.vectorToPixel(rPCc), wrt(xdual), at(xdual), fdual);
+
+    std::cout << "StateSLAM.cpp J =" << J <<  std::endl;
+    std::cout << "StateSLAM.cpp fdual =" << fdual.cast<double>() <<  std::endl;
+    std::cout << "StateSLAM.cpp x =" << x <<  std::endl;
+    std::cout << "StateSLAM.cpp xdual =" << xdual <<  std::endl;
+    */
+
     return fdual.cast<double>(); // cast return value to double
 /*
     Eigen::Vector3<autodiff::dual> fvar;

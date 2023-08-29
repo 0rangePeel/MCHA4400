@@ -95,16 +95,53 @@ public:
     template <typename IndexType>
     Gaussian marginal(const IndexType & idx) const
     {
-        Gaussian out;
-
+        /*
+        Gaussian out;        
         out.mu_ = mu_(idx);
+
+        Eigen::HouseholderQR<Eigen::MatrixXd> qr(S_(Eigen::all,idx));
+        Eigen::MatrixXd temp = qr.matrixQR();
+        if (S_.rows() != S_.cols()){
+            temp.conservativeResize(S_.cols(),S_.cols());
+        }
+        
+        out.S_ = temp.triangularView<Eigen::Upper>();
 
         // Perform QR decomposition
         Eigen::HouseholderQR<Eigen::MatrixXd> qr(S_(Eigen::all,idx));
+        // Extract upper triangular matrix
+        out.S_ = qr.matrixQR().triangularView<Eigen::Upper>();
+
+        std::cout << "Gaussian.hpp S1_ = " << out.S_ << std::endl;
+        std::cout << "Gaussian.hpp S_ = " << S_ << std::endl;
+        std::cout << "Gaussian.hpp Marginal out.mu_ = " << out.mu_ << std::endl;
+        std::cout << "Gaussian.hpp Marginal mu= " << mu_ << std::endl;
+
+        return out;
+        */
+        Gaussian out(idx.size());
+        out.mu_ = mu_(idx);
+
+        Eigen::MatrixXd temp = S_(Eigen::all, idx);
+
+        Eigen::HouseholderQR<Eigen::MatrixXd> qr(temp);
 
         // Extract upper triangular matrix
-        out.S_ = qr.matrixQR().triangularView<Eigen::Upper>(); 
+        Eigen::MatrixXd qr_matrix = qr.matrixQR();
 
+        
+        if (qr_matrix.rows() != qr_matrix.cols()) {
+            int required_rows = qr_matrix.cols();
+            qr_matrix.conservativeResize(required_rows, qr_matrix.cols()); // Resize to square by removing rows
+        }
+
+        out.S_ = qr_matrix.triangularView<Eigen::Upper>();
+        /*
+        std::cout << "Gaussian.hpp S1_ = " << out.S_ << std::endl;
+        std::cout << "Gaussian.hpp S_ = " << S_ << std::endl;
+        std::cout << "Gaussian.hpp Marginal out.mu_ = " << out.mu_ << std::endl;
+        std::cout << "Gaussian.hpp Marginal mu= " << mu_ << std::endl;
+        */
         return out;
     }
 
@@ -166,6 +203,7 @@ public:
         Eigen::MatrixX<Scalar> SS = S_*C.transpose();
         Eigen::HouseholderQR<Eigen::Ref<Eigen::MatrixX<Scalar>>> qr(SS);   // In-place QR decomposition
         out.S_ = SS.topRows(ny).template triangularView<Eigen::Upper>();
+        //std::cout << "Gaussian.hpp S2_ = " << out.S_ << std::endl;
         return out;
     }
 
@@ -182,6 +220,7 @@ public:
         SS << S_*C.transpose(), noise.sqrtCov();
         Eigen::HouseholderQR<Eigen::Ref<Eigen::MatrixX<Scalar>>> qr(SS);   // In-place QR decomposition
         out.S_ = SS.topRows(ny).template triangularView<Eigen::Upper>();
+        //std::cout << "Gaussian.hpp S3_ = " << out.S_ << std::endl;
         return out;
     }
 
@@ -204,7 +243,7 @@ public:
         // Line from function library
         // v = 2 * sum(log(diag(chol(A))));
         // Note that the 2 multiple is ommitted because of the 0.5 in the final equation
-        Scalar logdet = S_.template diagonal().array().abs().log().sum(); 
+        Scalar logdet = S_.diagonal().array().abs().log().sum(); 
  
         // Note that the determinant is log form which follows the log rule log(AB) = log(A) + log(B)
         // The following rule is also used log(m)^n = n*log(m)
@@ -343,16 +382,19 @@ public:
         assert(n == 3);
         
         Eigen::Matrix4<Scalar> Q;
-        
-        //Q(1,1) = S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(Eigen::MatrixXd::Identity(S_.rows(), S_.cols())));
-        //Q(1,1) = S_.transpose()*(S_.transpose()).triangularView<Eigen::Lower>().solve(S_.rows(), S_.cols());
-        Q.topLeftCorner(3,3) = S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(Eigen::MatrixX<Scalar>::Identity(S_.rows(), S_.cols())));
 
+        //std::cout << "Gaussian.hpp S4_ = " << S_ << std::endl;
+        //std::cout << "Gaussian.hpp mu_ = " << mu_ << std::endl;
+        
+        Q.topLeftCorner(3,3) = S_.template triangularView<Eigen::Upper>().solve(S_.transpose().template triangularView<Eigen::Lower>().solve(Eigen::MatrixX<Scalar>::Identity(S_.rows(), S_.cols())));
+        //std::cout << "Gaussian.hpp TopLeft = " << Q.topLeftCorner(3,3) << std::endl;
         Eigen::MatrixX<Scalar> z;
         z = S_.transpose().template triangularView<Eigen::Lower>().solve(mu_);
+        //std::cout << "Gaussian.hpp z = " << z << std::endl;
 
         Eigen::MatrixX<Scalar> y;
         y = S_.template triangularView<Eigen::Upper>().solve(z);
+        //std::cout << "Gaussian.hpp y = " << y << std::endl;
 
         Q.topRightCorner(3, 1) = -y;
         Q.bottomLeftCorner(1, 3) = -y.transpose();
@@ -363,6 +405,7 @@ public:
         Scalar z_Norm = z.squaredNorm();
 
         Q(3,3) = z_Norm - chi2_inv;
+        //std::cout << "Gausian.hpp Q =  "<< Q << std::endl;
 
         return Q;
     }

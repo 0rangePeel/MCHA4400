@@ -46,6 +46,12 @@ static void testMarginal(const Gaussian<double> & p, const IndexType & idx)
         CAPTURE_EIGEN(Pm_expected);
         CHECK(Pm.isApprox(Pm_expected));
     }
+    /*
+    THEN{"Marginal output is Square matrix"}
+    {
+        REQUIRE(m.rows() == m.cols());
+    }
+    */
 }
 
 SCENARIO("Gaussian marginal density")
@@ -96,4 +102,29 @@ SCENARIO("Gaussian marginal density")
             testMarginal(p, idx);
         }
     }
+/*
+    GIVEN("Lab 7 - Non square S matrix")
+    {
+        Eigen::VectorXd mu(3);
+        mu << 1, 2, 3;
+        Eigen::MatrixXd S(5, 3);
+        S <<
+            10, 11, 12,
+             0, 15, 16,
+             0,  0, 19,
+             0,  0,  0,
+             0,  0,  0;
+        REQUIRE_MESSAGE(S.isUpperTriangular(), "S must be upper triangular");
+
+        Gaussian p(mu, S);
+        REQUIRE(p.size() == 3);
+
+        WHEN("Extracting marginal head (size = 2)")
+        {
+            std::vector<int> idx = {0, 1};
+            testMarginal(p, idx);
+        }
+        
+    }
+    */
 }

@@ -191,12 +191,12 @@ void QuadricPlot::update(const Gaussian<double> & positionDensity)
     a0 = Q(0,0);     // TODO: Lab 7
     a1 = Q(1,1);     // TODO: Lab 7
     a2 = Q(2,2);     // TODO: Lab 7
-    a3 = 0.5*Q(0,1);     // TODO: Lab 7
-    a4 = 0.5*Q(1,2);     // TODO: Lab 7
-    a5 = 0.5*Q(0,2);     // TODO: Lab 7
-    a6 = 0.5*Q(0,3);     // TODO: Lab 7
-    a7 = 0.5*Q(1,3);     // TODO: Lab 7
-    a8 = 0.5*Q(2,3);     // TODO: Lab 7
+    a3 = 2*Q(0,1);     // TODO: Lab 7
+    a4 = 2*Q(1,2);     // TODO: Lab 7
+    a5 = 2*Q(0,2);     // TODO: Lab 7
+    a6 = 2*Q(0,3);     // TODO: Lab 7
+    a7 = 2*Q(1,3);     // TODO: Lab 7
+    a8 = 2*Q(2,3);     // TODO: Lab 7
     a9 = Q(3,3);     // TODO: Lab 7
 
     quadric->SetCoefficients(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9);
@@ -539,7 +539,7 @@ Plot::Plot(const StateSLAM & state, const Camera & camera)
 {
     double aspectRatio  = (1.0*camera.imageSize.width)/camera.imageSize.height;
 
-    double windowHeight       = 2*540;
+    double windowHeight       = 540;
     double windowWidth        = 2*aspectRatio*windowHeight;
 
     vtkNew<vtkNamedColors> colors;
@@ -594,6 +594,7 @@ void Plot::render()
 
     Bounds globalBounds;
     qpCamera.bounds.setExtremity(globalBounds); 
+    //std::cout << "Plot.cpp We in render" << std::endl;
 
     // Grow landmark quadric plots to match number of landmarks
     while (qpLandmarks.size() < pState->numberLandmarks())
@@ -602,16 +603,19 @@ void Plot::render()
         qpLandmarks.push_back(qp);
         threeDimRenderer->AddActor(qpLandmarks.back().getActor());
     }
+    //std::cout << "Plot.cpp First while loop" << std::endl;
 
     // Shrink landmark quadric plots to match number of landmarks
     while (qpLandmarks.size() > pState->numberLandmarks())
     {
         threeDimRenderer->RemoveActor(qpLandmarks.back().getActor());
         qpLandmarks.pop_back();
-    }    
+    }
+    //std::cout << "Plot.cpp Second while loop" << std::endl;    
 
     for (std::size_t i = 0; i < pState->numberLandmarks(); ++i)
     {
+        //std::cout << "Plot.cpp Number of Landmarks " << pState->numberLandmarks() << std::endl;
         // Add components to render
         hsv2rgb(300*(i)/(pState->numberLandmarks()), 1., 1., r, g, b);
         Eigen::Vector3d rgb;
@@ -621,12 +625,16 @@ void Plot::render()
 
         Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(2, 2); // Assume 1 pixel st.dev. of noise
         Gaussian noise(SR);
+        
         Gaussian prQOi = pState->predictFeatureDensity(camera, i, noise);
         plotGaussianConfidenceEllipse(pState->view(), prQOi, rgb);
 
         QuadricPlot & qp = qpLandmarks[i];
+        //std::cout << "Plot.cpp Here 1 : i = " << i << std::endl;
         qp.update(pState->landmarkPositionDensity(i));
+        //std::cout << "Plot.cpp Here 2" << std::endl;
         qp.getActor()->GetProperty()->SetOpacity(0.5);
+        //std::cout << "Plot.cpp Here 3" << std::endl;
         qp.getActor()->GetProperty()->SetColor(r,g,b);
         qp.bounds.setExtremity(globalBounds); 
     }

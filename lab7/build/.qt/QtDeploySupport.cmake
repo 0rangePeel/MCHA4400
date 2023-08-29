@@ -30,7 +30,7 @@ endif()
 # These are internal implementation details. They may be removed at any time.
 set(__QT_DEPLOY_SYSTEM_NAME "Windows")
 set(__QT_DEPLOY_IS_SHARED_LIBS_BUILD "ON")
-set(__QT_DEPLOY_TOOL "C:/msys64/mingw64/bin/windeployqt-qt6.exe")
+set(__QT_DEPLOY_TOOL "C:/msys64/clang64/bin/windeployqt-qt6.exe")
 set(__QT_DEPLOY_IMPL_DIR "C:/Users/olive/Documents/MCHA4400/lab7/build/.qt")
 set(__QT_DEPLOY_VERBOSE "")
 set(__QT_CMAKE_EXPORT_NAMESPACE "Qt6")
@@ -39,7 +39,7 @@ set(__QT_DEPLOY_ACTIVE_CONFIG "Release")
 set(__QT_NO_CREATE_VERSIONLESS_FUNCTIONS "")
 set(__QT_DEFAULT_MAJOR_VERSION "6")
 set(__QT_DEPLOY_QT_ADDITIONAL_PACKAGES_PREFIX_PATH "")
-set(__QT_DEPLOY_QT_INSTALL_PREFIX "C:/msys64/mingw64")
+set(__QT_DEPLOY_QT_INSTALL_PREFIX "C:/msys64/clang64")
 set(__QT_DEPLOY_QT_INSTALL_BINS "bin")
 set(__QT_DEPLOY_QT_INSTALL_PLUGINS "share/qt6/plugins")
 set(__QT_DEPLOY_QT_INSTALL_TRANSLATIONS "share/qt6/translations")
@@ -50,8 +50,8 @@ set(__QT_DEPLOY_PATCHELF_EXECUTABLE "")
 
 # Define the CMake commands to be made available during deployment.
 set(__qt_deploy_support_files
-    "C:/msys64/mingw64/lib/cmake/Qt6Core/Qt6CoreDeploySupport.cmake"
-    "C:/msys64/mingw64/lib/cmake/Qt6Qml/Qt6QmlDeploySupport.cmake"
+    "C:/msys64/clang64/lib/cmake/Qt6Core/Qt6CoreDeploySupport.cmake"
+    "C:/msys64/clang64/lib/cmake/Qt6Qml/Qt6QmlDeploySupport.cmake"
 )
 foreach(__qt_deploy_support_file IN LISTS __qt_deploy_support_files)
     include("${__qt_deploy_support_file}")

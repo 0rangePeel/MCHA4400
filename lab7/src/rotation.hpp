@@ -2,6 +2,7 @@
 #define ROTATION_HPP
 
 #include <Eigen/Core>
+#include <iostream>
 
 template<typename Scalar>
 Eigen::Matrix3<Scalar> rotx(const Scalar & x)
@@ -97,7 +98,6 @@ Eigen::Matrix3<Scalar> rpy2rot(const Eigen::Vector3<Scalar> & Theta)
     Eigen::Matrix3<Scalar> R;
     
     R = rotz(Theta(2))*roty(Theta(1))*rotx(Theta(0));
-
     return R;
 }
 
