@@ -131,8 +131,7 @@ public:
 
         
         if (qr_matrix.rows() != qr_matrix.cols()) {
-            int required_rows = qr_matrix.cols();
-            qr_matrix.conservativeResize(required_rows, qr_matrix.cols()); // Resize to square by removing rows
+            qr_matrix.conservativeResize(qr_matrix.cols(), qr_matrix.cols()); // Resize to square by removing rows
         }
 
         out.S_ = qr_matrix.triangularView<Eigen::Upper>();

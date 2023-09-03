@@ -61,8 +61,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-6dyr98"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-6dyr98"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-hfd6tw"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-hfd6tw"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -71,15 +71,15 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-6dyr98
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-hfd6tw
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_77c7e && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -v -MD -MT CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_77c7e.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_a1b89 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -v -MD -MT CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_a1b89.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c
         clang version 16.0.5
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
          (in-process)
-         "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-6dyr98 -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_77c7e.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-6dyr98 -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -x c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c
+         "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-hfd6tw -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_a1b89.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-hfd6tw -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -x c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c
         clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu\x0d
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"\x0d
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"\x0d
@@ -88,12 +88,12 @@ events:
          C:/msys64/clang64/lib/clang/16/include\x0d
          C:/msys64/clang64/include\x0d
         End of search list.\x0d
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe  -v CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -o cmTC_77c7e.exe -Wl,--out-implib,libcmTC_77c7e.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe  -v CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -o cmTC_a1b89.exe -Wl,--out-implib,libcmTC_a1b89.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
         clang version 16.0.5
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
-         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_77c7e.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_77c7e.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_a1b89.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_a1b89.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
         
       exitCode: 0
   -
@@ -123,15 +123,15 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld\\.lld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-6dyr98]
+        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-hfd6tw]
         ignore line: []
-        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_77c7e && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -v -MD -MT CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_77c7e.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_a1b89 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -v -MD -MT CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles\\cmTC_a1b89.dir\\CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [clang version 16.0.5]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-6dyr98 -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_77c7e.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-6dyr98 -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -x c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [ "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-hfd6tw -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_a1b89.dir\\\\CMakeCCompilerABI.c.obj.d" -MT CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-hfd6tw -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -x c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu\x0d]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"\x0d]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"\x0d]
@@ -140,27 +140,27 @@ events:
         ignore line: [ C:/msys64/clang64/lib/clang/16/include\x0d]
         ignore line: [ C:/msys64/clang64/include\x0d]
         ignore line: [End of search list.\x0d]
-        ignore line: [[2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe  -v CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj -o cmTC_77c7e.exe -Wl --out-implib libcmTC_77c7e.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [[2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe  -v CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj -o cmTC_a1b89.exe -Wl --out-implib libcmTC_a1b89.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
         ignore line: [clang version 16.0.5]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
-        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_77c7e.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_77c7e.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_a1b89.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj --out-implib libcmTC_a1b89.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
           arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_77c7e.exe] ==> ignore
+          arg [cmTC_a1b89.exe] ==> ignore
           arg [C:/msys64/clang64/lib/crt2.o] ==> obj [C:/msys64/clang64/lib/crt2.o]
           arg [C:/msys64/clang64/lib/crtbegin.o] ==> obj [C:/msys64/clang64/lib/crtbegin.o]
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
           arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
           arg [-LC:/msys64/clang64/lib/clang/16/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/16/lib/windows]
-          arg [CMakeFiles/cmTC_77c7e.dir/CMakeCCompilerABI.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_a1b89.dir/CMakeCCompilerABI.c.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_77c7e.dll.a] ==> ignore
+          arg [libcmTC_a1b89.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -206,8 +206,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-mwe1dk"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-mwe1dk"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-jjj3lh"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-jjj3lh"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -216,15 +216,15 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-mwe1dk
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-jjj3lh
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_9a4a5 && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -v -MD -MT CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_9a4a5.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -c C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_44b36 && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -v -MD -MT CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_44b36.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -c C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         clang version 16.0.5
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
          (in-process)
-         "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-mwe1dk -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_9a4a5.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-mwe1dk -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+         "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-jjj3lh -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_44b36.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-jjj3lh -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"
@@ -235,12 +235,12 @@ events:
          C:/msys64/clang64/lib/clang/16/include\x0d
          C:/msys64/clang64/include\x0d
         End of search list.\x0d
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe  -v CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_9a4a5.exe -Wl,--out-implib,libcmTC_9a4a5.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe  -v CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_44b36.exe -Wl,--out-implib,libcmTC_44b36.dll.a -Wl,--major-image-version,0,--minor-image-version,0   && cd ."
         clang version 16.0.5
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
-         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_9a4a5.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_9a4a5.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_44b36.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_44b36.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
         
       exitCode: 0
   -
@@ -272,15 +272,15 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld\\.lld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-mwe1dk]
+        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-jjj3lh]
         ignore line: []
-        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_9a4a5 && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -v -MD -MT CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_9a4a5.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -c C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_44b36 && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -v -MD -MT CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles\\cmTC_44b36.dir\\CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -c C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang version 16.0.5]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-mwe1dk -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_9a4a5.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-mwe1dk -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [ "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-jjj3lh -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_44b36.dir\\\\CMakeCXXCompilerABI.cpp.obj.d" -MT CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-jjj3lh -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"]
@@ -291,27 +291,27 @@ events:
         ignore line: [ C:/msys64/clang64/lib/clang/16/include\x0d]
         ignore line: [ C:/msys64/clang64/include\x0d]
         ignore line: [End of search list.\x0d]
-        ignore line: [[2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe  -v CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_9a4a5.exe -Wl --out-implib libcmTC_9a4a5.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
+        ignore line: [[2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe  -v CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_44b36.exe -Wl --out-implib libcmTC_44b36.dll.a -Wl --major-image-version 0 --minor-image-version 0   && cd ."]
         ignore line: [clang version 16.0.5]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
-        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_9a4a5.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_9a4a5.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_44b36.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj --out-implib libcmTC_44b36.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
           arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_9a4a5.exe] ==> ignore
+          arg [cmTC_44b36.exe] ==> ignore
           arg [C:/msys64/clang64/lib/crt2.o] ==> obj [C:/msys64/clang64/lib/crt2.o]
           arg [C:/msys64/clang64/lib/crtbegin.o] ==> obj [C:/msys64/clang64/lib/crtbegin.o]
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
           arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
           arg [-LC:/msys64/clang64/lib/clang/16/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/16/lib/windows]
-          arg [CMakeFiles/cmTC_9a4a5.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
+          arg [CMakeFiles/cmTC_44b36.dir/CMakeCXXCompilerABI.cpp.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_9a4a5.dll.a] ==> ignore
+          arg [libcmTC_44b36.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -366,8 +366,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e6zb7q"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e6zb7q"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-t7yiw6"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-t7yiw6"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -377,26 +377,26 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e6zb7q
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-t7yiw6
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_48649 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_48649.dir/src.c.obj -MF CMakeFiles\\cmTC_48649.dir\\src.c.obj.d -o CMakeFiles/cmTC_48649.dir/src.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e6zb7q/src.c
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_48649.dir/src.c.obj -o cmTC_48649.exe -Wl,--out-implib,libcmTC_48649.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
-        \x1b[31mFAILED: \x1b[0mcmTC_48649.exe 
-        cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_48649.dir/src.c.obj -o cmTC_48649.exe -Wl,--out-implib,libcmTC_48649.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_371b2 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_371b2.dir/src.c.obj -MF CMakeFiles\\cmTC_371b2.dir\\src.c.obj.d -o CMakeFiles/cmTC_371b2.dir/src.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-t7yiw6/src.c
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_371b2.dir/src.c.obj -o cmTC_371b2.exe -Wl,--out-implib,libcmTC_371b2.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        \x1b[31mFAILED: \x1b[0mcmTC_371b2.exe 
+        cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_371b2.dir/src.c.obj -o cmTC_371b2.exe -Wl,--out-implib,libcmTC_371b2.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         ld.lld: error: undefined symbol: pthread_create
-        >>> referenced by CMakeFiles/cmTC_48649.dir/src.c.obj:(main)
+        >>> referenced by CMakeFiles/cmTC_371b2.dir/src.c.obj:(main)
         
         ld.lld: error: undefined symbol: pthread_detach
-        >>> referenced by CMakeFiles/cmTC_48649.dir/src.c.obj:(main)\x0d
+        >>> referenced by CMakeFiles/cmTC_371b2.dir/src.c.obj:(main)\x0d
         \x0d
         ld.lld: error: undefined symbol: pthread_cancel\x0d
-        >>> referenced by CMakeFiles/cmTC_48649.dir/src.c.obj:(main)\x0d
+        >>> referenced by CMakeFiles/cmTC_371b2.dir/src.c.obj:(main)\x0d
         \x0d
         ld.lld: error: undefined symbol: pthread_join\x0d
-        >>> referenced by CMakeFiles/cmTC_48649.dir/src.c.obj:(main)\x0d
+        >>> referenced by CMakeFiles/cmTC_371b2.dir/src.c.obj:(main)\x0d
         \x0d
         ld.lld: error: undefined symbol: pthread_exit\x0d
-        >>> referenced by CMakeFiles/cmTC_48649.dir/src.c.obj:(main)\x0d
+        >>> referenced by CMakeFiles/cmTC_371b2.dir/src.c.obj:(main)\x0d
         cc: error: linker command failed with exit code 1 (use -v to see invocation)\x0d
         ninja: build stopped: subcommand failed.
         
@@ -416,8 +416,8 @@ events:
     checks:
       - "Check if compiler accepts -pthread"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-dn0uhn"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-dn0uhn"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bsf5u0"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bsf5u0"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -427,10 +427,10 @@ events:
       variable: "THREADS_HAVE_PTHREAD_ARG"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-dn0uhn
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bsf5u0
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_6223a && [1/2] C:\\msys64\\clang64\\bin\\cc.exe    -MD -MT CMakeFiles/cmTC_6223a.dir/CheckForPthreads.c.obj -MF CMakeFiles\\cmTC_6223a.dir\\CheckForPthreads.c.obj.d -o CMakeFiles/cmTC_6223a.dir/CheckForPthreads.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-dn0uhn/CheckForPthreads.c
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_6223a.dir/CheckForPthreads.c.obj -o cmTC_6223a.exe -Wl,--out-implib,libcmTC_6223a.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -pthread  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_c6975 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe    -MD -MT CMakeFiles/cmTC_c6975.dir/CheckForPthreads.c.obj -MF CMakeFiles\\cmTC_c6975.dir\\CheckForPthreads.c.obj.d -o CMakeFiles/cmTC_c6975.dir/CheckForPthreads.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bsf5u0/CheckForPthreads.c
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_c6975.dir/CheckForPthreads.c.obj -o cmTC_c6975.exe -Wl,--out-implib,libcmTC_c6975.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -pthread  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         
       exitCode: 0
   -
@@ -454,8 +454,8 @@ events:
     checks:
       - "Performing Test HAVE_STDATOMIC"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-r36x7x"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-r36x7x"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bspkec"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bspkec"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-Wall"
       CMAKE_CXX_FLAGS_DEBUG: "-g -O0"
@@ -465,10 +465,10 @@ events:
       variable: "HAVE_STDATOMIC"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-r36x7x
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bspkec
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_c81ad && [1/2] C:\\msys64\\clang64\\bin\\c++.exe -DHAVE_STDATOMIC  -Wall  -std=c++17 -MD -MT CMakeFiles/cmTC_c81ad.dir/src.cxx.obj -MF CMakeFiles\\cmTC_c81ad.dir\\src.cxx.obj.d -o CMakeFiles/cmTC_c81ad.dir/src.cxx.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-r36x7x/src.cxx
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe -Wall  CMakeFiles/cmTC_c81ad.dir/src.cxx.obj -o cmTC_c81ad.exe -Wl,--out-implib,libcmTC_c81ad.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_aa947 && [1/2] C:\\msys64\\clang64\\bin\\c++.exe -DHAVE_STDATOMIC  -Wall  -std=c++17 -MD -MT CMakeFiles/cmTC_aa947.dir/src.cxx.obj -MF CMakeFiles\\cmTC_aa947.dir\\src.cxx.obj.d -o CMakeFiles/cmTC_aa947.dir/src.cxx.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bspkec/src.cxx
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe -Wall  CMakeFiles/cmTC_aa947.dir/src.cxx.obj -o cmTC_aa947.exe -Wl,--out-implib,libcmTC_aa947.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         
       exitCode: 0
   -
@@ -493,18 +493,18 @@ events:
       stdout: |
         Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_e8d5e && [1/2] C:\\msys64\\clang64\\bin\\cc.exe    -MD -MT CMakeFiles/cmTC_e8d5e.dir/cmake_hdf5_test.c.obj -MF CMakeFiles\\cmTC_e8d5e.dir\\cmake_hdf5_test.c.obj.d -o CMakeFiles/cmTC_e8d5e.dir/cmake_hdf5_test.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/hdf5/cmake_hdf5_test.c
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_e8d5e.dir/cmake_hdf5_test.c.obj -o cmTC_e8d5e.exe -Wl,--out-implib,libcmTC_e8d5e.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
-        \x1b[31mFAILED: \x1b[0mcmTC_e8d5e.exe 
-        cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_e8d5e.dir/cmake_hdf5_test.c.obj -o cmTC_e8d5e.exe -Wl,--out-implib,libcmTC_e8d5e.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_d12c8 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe    -MD -MT CMakeFiles/cmTC_d12c8.dir/cmake_hdf5_test.c.obj -MF CMakeFiles\\cmTC_d12c8.dir\\cmake_hdf5_test.c.obj.d -o CMakeFiles/cmTC_d12c8.dir/cmake_hdf5_test.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/hdf5/cmake_hdf5_test.c
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_d12c8.dir/cmake_hdf5_test.c.obj -o cmTC_d12c8.exe -Wl,--out-implib,libcmTC_d12c8.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        \x1b[31mFAILED: \x1b[0mcmTC_d12c8.exe 
+        cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe   CMakeFiles/cmTC_d12c8.dir/cmake_hdf5_test.c.obj -o cmTC_d12c8.exe -Wl,--out-implib,libcmTC_d12c8.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         ld.lld: error: undefined symbol: H5check_version
-        >>> referenced by CMakeFiles/cmTC_e8d5e.dir/cmake_hdf5_test.c.obj:(main)
+        >>> referenced by CMakeFiles/cmTC_d12c8.dir/cmake_hdf5_test.c.obj:(main)
         
         ld.lld: error: undefined symbol: H5open\x0d
-        >>> referenced by CMakeFiles/cmTC_e8d5e.dir/cmake_hdf5_test.c.obj:(main)\x0d
+        >>> referenced by CMakeFiles/cmTC_d12c8.dir/cmake_hdf5_test.c.obj:(main)\x0d
         \x0d
         ld.lld: error: undefined symbol: H5Fcreate\x0d
-        >>> referenced by CMakeFiles/cmTC_e8d5e.dir/cmake_hdf5_test.c.obj:(main)\x0d
+        >>> referenced by CMakeFiles/cmTC_d12c8.dir/cmake_hdf5_test.c.obj:(main)\x0d
         cc: error: linker command failed with exit code 1 (use -v to see invocation)\x0d
         ninja: build stopped: subcommand failed.
         
@@ -519,8 +519,8 @@ events:
       - "CMakeLists.txt:53 (find_package)"
     description: "Detecting C OpenMP compiler info"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -530,15 +530,15 @@ events:
       variable: "OpenMP_COMPILE_RESULT_C_fopenmplibomp"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_cf585 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -fopenmp=libomp -v -MD -MT CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -MF CMakeFiles\\cmTC_cf585.dir\\OpenMPTryFlag.c.obj.d -o CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm/OpenMPTryFlag.c
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_96415 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -fopenmp=libomp -v -MD -MT CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -MF CMakeFiles\\cmTC_96415.dir\\OpenMPTryFlag.c.obj.d -o CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w/OpenMPTryFlag.c
         clang version 16.0.5
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
          (in-process)
-         "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_cf585.dir\\\\OpenMPTryFlag.c.obj.d" -MT CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -x c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm/OpenMPTryFlag.c
+         "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_96415.dir\\\\OpenMPTryFlag.c.obj.d" -MT CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -x c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w/OpenMPTryFlag.c
         clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu\x0d
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"\x0d
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"\x0d
@@ -547,12 +547,12 @@ events:
          C:/msys64/clang64/lib/clang/16/include\x0d
          C:/msys64/clang64/include\x0d
         End of search list.\x0d
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe -fopenmp=libomp -v  CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -o cmTC_cf585.exe -Wl,--out-implib,libcmTC_cf585.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -v  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe -fopenmp=libomp -v  CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -o cmTC_96415.exe -Wl,--out-implib,libcmTC_96415.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -v  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         clang version 16.0.5
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
-         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_cf585.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj --out-implib libcmTC_cf585.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_96415.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj --out-implib libcmTC_96415.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
         
       exitCode: 0
   -
@@ -566,15 +566,15 @@ events:
     message: |
       Parsed C OpenMP implicit link information from above output:
         link line regex: [^( *|.*[/\\])(ld\\.lld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm]
+        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w]
         ignore line: []
-        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_cf585 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -fopenmp=libomp -v -MD -MT CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -MF CMakeFiles\\cmTC_cf585.dir\\OpenMPTryFlag.c.obj.d -o CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm/OpenMPTryFlag.c]
+        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_96415 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -fopenmp=libomp -v -MD -MT CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -MF CMakeFiles\\cmTC_96415.dir\\OpenMPTryFlag.c.obj.d -o CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w/OpenMPTryFlag.c]
         ignore line: [clang version 16.0.5]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_cf585.dir\\\\OpenMPTryFlag.c.obj.d" -MT CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -x c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-e0q5dm/OpenMPTryFlag.c]
+        ignore line: [ "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_96415.dir\\\\OpenMPTryFlag.c.obj.d" -MT CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -x c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-yb1i6w/OpenMPTryFlag.c]
         ignore line: [clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu\x0d]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"\x0d]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"\x0d]
@@ -583,25 +583,25 @@ events:
         ignore line: [ C:/msys64/clang64/lib/clang/16/include\x0d]
         ignore line: [ C:/msys64/clang64/include\x0d]
         ignore line: [End of search list.\x0d]
-        ignore line: [[2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe -fopenmp=libomp -v  CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj -o cmTC_cf585.exe -Wl --out-implib libcmTC_cf585.dll.a -Wl --major-image-version 0 --minor-image-version 0  -v  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."]
+        ignore line: [[2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe -fopenmp=libomp -v  CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj -o cmTC_96415.exe -Wl --out-implib libcmTC_96415.dll.a -Wl --major-image-version 0 --minor-image-version 0  -v  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."]
         ignore line: [clang version 16.0.5]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
-        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_cf585.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj --out-implib libcmTC_cf585.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_96415.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj --out-implib libcmTC_96415.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
           arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_cf585.exe] ==> ignore
+          arg [cmTC_96415.exe] ==> ignore
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
           arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
           arg [-LC:/msys64/clang64/lib/clang/16/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/16/lib/windows]
-          arg [CMakeFiles/cmTC_cf585.dir/OpenMPTryFlag.c.obj] ==> ignore
+          arg [CMakeFiles/cmTC_96415.dir/OpenMPTryFlag.c.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_cf585.dll.a] ==> ignore
+          arg [libcmTC_96415.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -658,8 +658,8 @@ events:
       - "CMakeLists.txt:53 (find_package)"
     description: "Detecting CXX OpenMP compiler info"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-Wall"
       CMAKE_CXX_FLAGS_DEBUG: "-g -O0"
@@ -669,15 +669,15 @@ events:
       variable: "OpenMP_COMPILE_RESULT_CXX_fopenmplibomp"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_12c31 && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -Wall -fopenmp=libomp -v -std=c++17 -MD -MT CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -MF CMakeFiles\\cmTC_12c31.dir\\OpenMPTryFlag.cpp.obj.d -o CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel/OpenMPTryFlag.cpp
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_2a7ee && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -Wall -fopenmp=libomp -v -std=c++17 -MD -MT CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -MF CMakeFiles\\cmTC_2a7ee.dir\\OpenMPTryFlag.cpp.obj.d -o CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx/OpenMPTryFlag.cpp
         clang version 16.0.5
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
          (in-process)
-         "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_12c31.dir\\\\OpenMPTryFlag.cpp.obj.d" -MT CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -Wall -std=c++17 -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -x c++ C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel/OpenMPTryFlag.cpp
+         "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_2a7ee.dir\\\\OpenMPTryFlag.cpp.obj.d" -MT CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -Wall -std=c++17 -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -x c++ C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx/OpenMPTryFlag.cpp
         clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"
         ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"
@@ -688,12 +688,12 @@ events:
          C:/msys64/clang64/lib/clang/16/include\x0d
          C:/msys64/clang64/include\x0d
         End of search list.\x0d
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe -Wall -fopenmp=libomp -v  CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -o cmTC_12c31.exe -Wl,--out-implib,libcmTC_12c31.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -v  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe -Wall -fopenmp=libomp -v  CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -o cmTC_2a7ee.exe -Wl,--out-implib,libcmTC_2a7ee.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -v  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         clang version 16.0.5
         Target: x86_64-w64-windows-gnu
         Thread model: posix
         InstalledDir: C:/msys64/clang64/bin
-         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_12c31.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj --out-implib libcmTC_12c31.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lc++ -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_2a7ee.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj --out-implib libcmTC_2a7ee.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lc++ -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d
         
       exitCode: 0
   -
@@ -707,15 +707,15 @@ events:
     message: |
       Parsed CXX OpenMP implicit link information from above output:
         link line regex: [^( *|.*[/\\])(ld\\.lld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel]
+        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx]
         ignore line: []
-        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_12c31 && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -Wall -fopenmp=libomp -v -std=c++17 -MD -MT CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -MF CMakeFiles\\cmTC_12c31.dir\\OpenMPTryFlag.cpp.obj.d -o CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel/OpenMPTryFlag.cpp]
+        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_2a7ee && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -Wall -fopenmp=libomp -v -std=c++17 -MD -MT CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -MF CMakeFiles\\cmTC_2a7ee.dir\\OpenMPTryFlag.cpp.obj.d -o CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx/OpenMPTryFlag.cpp]
         ignore line: [clang version 16.0.5]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
         ignore line: [ (in-process)]
-        ignore line: [ "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_12c31.dir\\\\OpenMPTryFlag.cpp.obj.d" -MT CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -Wall -std=c++17 -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -x c++ C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-bizmel/OpenMPTryFlag.cpp]
+        ignore line: [ "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file "CMakeFiles\\\\cmTC_2a7ee.dir\\\\OpenMPTryFlag.cpp.obj.d" -MT CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -Wall -std=c++17 -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -x c++ C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-ni1ytx/OpenMPTryFlag.cpp]
         ignore line: [clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"]
         ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"]
@@ -726,25 +726,25 @@ events:
         ignore line: [ C:/msys64/clang64/lib/clang/16/include\x0d]
         ignore line: [ C:/msys64/clang64/include\x0d]
         ignore line: [End of search list.\x0d]
-        ignore line: [[2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe -Wall -fopenmp=libomp -v  CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj -o cmTC_12c31.exe -Wl --out-implib libcmTC_12c31.dll.a -Wl --major-image-version 0 --minor-image-version 0  -v  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."]
+        ignore line: [[2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe -Wall -fopenmp=libomp -v  CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj -o cmTC_2a7ee.exe -Wl --out-implib libcmTC_2a7ee.dll.a -Wl --major-image-version 0 --minor-image-version 0  -v  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."]
         ignore line: [clang version 16.0.5]
         ignore line: [Target: x86_64-w64-windows-gnu]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: C:/msys64/clang64/bin]
-        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_12c31.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj --out-implib libcmTC_12c31.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lc++ -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_2a7ee.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj --out-implib libcmTC_2a7ee.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lc++ -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o\x0d]
           arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
           arg [-m] ==> ignore
           arg [i386pep] ==> ignore
           arg [-Bdynamic] ==> search dynamic
           arg [-o] ==> ignore
-          arg [cmTC_12c31.exe] ==> ignore
+          arg [cmTC_2a7ee.exe] ==> ignore
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
           arg [-LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
           arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
           arg [-LC:/msys64/clang64/lib/clang/16/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/16/lib/windows]
-          arg [CMakeFiles/cmTC_12c31.dir/OpenMPTryFlag.cpp.obj] ==> ignore
+          arg [CMakeFiles/cmTC_2a7ee.dir/OpenMPTryFlag.cpp.obj] ==> ignore
           arg [--out-implib] ==> ignore
-          arg [libcmTC_12c31.dll.a] ==> ignore
+          arg [libcmTC_2a7ee.dll.a] ==> ignore
           arg [--major-image-version] ==> ignore
           arg [0] ==> ignore
           arg [--minor-image-version] ==> ignore
@@ -802,8 +802,8 @@ events:
       - "CMakeLists.txt:53 (find_package)"
     description: "Detecting C OpenMP version"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-fvhhop"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-fvhhop"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-1rdw0l"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-1rdw0l"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -813,10 +813,10 @@ events:
       variable: "OpenMP_SPECTEST_C_"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-fvhhop
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-1rdw0l
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_4a140 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -fopenmp=libomp -MD -MT CMakeFiles/cmTC_4a140.dir/OpenMPCheckVersion.c.obj -MF CMakeFiles\\cmTC_4a140.dir\\OpenMPCheckVersion.c.obj.d -o CMakeFiles/cmTC_4a140.dir/OpenMPCheckVersion.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-fvhhop/OpenMPCheckVersion.c
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe -fopenmp=libomp  CMakeFiles/cmTC_4a140.dir/OpenMPCheckVersion.c.obj -o cmTC_4a140.exe -Wl,--out-implib,libcmTC_4a140.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_c43b1 && [1/2] C:\\msys64\\clang64\\bin\\cc.exe   -fopenmp=libomp -MD -MT CMakeFiles/cmTC_c43b1.dir/OpenMPCheckVersion.c.obj -MF CMakeFiles\\cmTC_c43b1.dir\\OpenMPCheckVersion.c.obj.d -o CMakeFiles/cmTC_c43b1.dir/OpenMPCheckVersion.c.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-1rdw0l/OpenMPCheckVersion.c
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\cc.exe -fopenmp=libomp  CMakeFiles/cmTC_c43b1.dir/OpenMPCheckVersion.c.obj -o cmTC_c43b1.exe -Wl,--out-implib,libcmTC_c43b1.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         
       exitCode: 0
   -
@@ -829,8 +829,8 @@ events:
       - "CMakeLists.txt:53 (find_package)"
     description: "Detecting CXX OpenMP version"
     directories:
-      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-9agdnh"
-      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-9agdnh"
+      source: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-59xrgk"
+      binary: "C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-59xrgk"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "-Wall"
       CMAKE_CXX_FLAGS_DEBUG: "-g -O0"
@@ -840,10 +840,10 @@ events:
       variable: "OpenMP_SPECTEST_CXX_"
       cached: true
       stdout: |
-        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-9agdnh
+        Change Dir: C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-59xrgk
         
-        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_2b3ab && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -Wall -fopenmp=libomp -std=c++17 -MD -MT CMakeFiles/cmTC_2b3ab.dir/OpenMPCheckVersion.cpp.obj -MF CMakeFiles\\cmTC_2b3ab.dir\\OpenMPCheckVersion.cpp.obj.d -o CMakeFiles/cmTC_2b3ab.dir/OpenMPCheckVersion.cpp.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-9agdnh/OpenMPCheckVersion.cpp
-        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe -Wall -fopenmp=libomp  CMakeFiles/cmTC_2b3ab.dir/OpenMPCheckVersion.cpp.obj -o cmTC_2b3ab.exe -Wl,--out-implib,libcmTC_2b3ab.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+        Run Build Command(s):C:/msys64/clang64/bin/ninja.exe -v cmTC_0451e && [1/2] C:\\msys64\\clang64\\bin\\c++.exe   -Wall -fopenmp=libomp -std=c++17 -MD -MT CMakeFiles/cmTC_0451e.dir/OpenMPCheckVersion.cpp.obj -MF CMakeFiles\\cmTC_0451e.dir\\OpenMPCheckVersion.cpp.obj.d -o CMakeFiles/cmTC_0451e.dir/OpenMPCheckVersion.cpp.obj -c C:/Users/olive/Documents/MCHA4400/lab7/build/CMakeFiles/CMakeScratch/TryCompile-59xrgk/OpenMPCheckVersion.cpp
+        [2/2] cmd.exe /C "cd . && C:\\msys64\\clang64\\bin\\c++.exe -Wall -fopenmp=libomp  CMakeFiles/cmTC_0451e.dir/OpenMPCheckVersion.cpp.obj -o cmTC_0451e.exe -Wl,--out-implib,libcmTC_0451e.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
         
       exitCode: 0
 ...
