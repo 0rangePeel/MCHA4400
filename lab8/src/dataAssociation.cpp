@@ -36,10 +36,10 @@ double snn(const StateSLAM & state, const std::vector<std::size_t> & idxLandmark
     assert(Y.rows() == 2);
     assert(Y.cols() > 0);
     int m = Y.cols();
-
+    std::cout << "HERE" << std::endl;
     // Pre-compute terms
     Gaussian<double> featureBundleDensity = state.predictFeatureBundleDensity(camera, idxLandmarks);
-
+    
     // Index
     idx.clear();
     idx.resize(n, -1);     // -1 is the sentinel index for unassociated landmarks
@@ -124,8 +124,8 @@ double snn(const StateSLAM & state, const std::vector<std::size_t> & idxLandmark
 }
 
 bool individualCompatibility(const int & i, const int & j, const Eigen::Matrix<double, 2, Eigen::Dynamic> & Y, const Gaussian<double> & density, const double & nSigma)
-{
-    return false;       // TODO: Lab 8
+{  
+    return density.marginal(Eigen::seqN(2 * j,2)).isWithinConfidenceRegion(Y.col(i), nSigma);
 }
 
 bool jointCompatibility(const std::vector<int> & idx, const double & sU, const Eigen::Matrix<double, 2, Eigen::Dynamic> & Y, const Gaussian<double> & density, const double & nSigma, double & surprisal)
@@ -156,11 +156,19 @@ bool jointCompatibility(const std::vector<int> & idx, const double & sU, const E
     // Set surprisal and return joint compatibility
     if (nA > 0)
     {
-        // Surprisal for unassociated landmarks plus surprisal for associated landmarks
-        surprisal = 0;      // TODO: Lab 8
-
         // Joint compatibility
-        return false;       // TODO: Lab 8
+        Gaussian pA = density.marginal(idxyj);
+
+        Eigen::VectorXd YA(2 * nA);
+
+        for (int i = 0; i < nA; ++i) {
+            YA.segment(2 * i, 2) = Y.col(idxi[i]);
+        }
+
+        // Surprisal for unassociated landmarks plus surprisal for associated landmarks
+        surprisal = nU * sU - pA.log(YA);
+        
+        return pA.isWithinConfidenceRegion(YA, nSigma);
     }
     else
     {

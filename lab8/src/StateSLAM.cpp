@@ -177,10 +177,10 @@ Eigen::VectorXd StateSLAM::predictFeatureBundle(const Eigen::VectorXd & x, Eigen
     {
         Eigen::MatrixXd Jfeature;
         Eigen::Vector2d rQOi = predictFeature(x, Jfeature, cam, idxLandmarks[i]);
-        // Set pair of elements of h
-        // TODO: Lab 8
-        // Set pair of rows of J
-        // TODO: Lab 8
+
+        h.segment(2*i,2) = rQOi;
+
+        J.block(2*i, 0 , 2 , nx) = Jfeature;
     }
     return h;
 }

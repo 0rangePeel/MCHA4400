@@ -95,6 +95,10 @@ public:
     template <typename IndexType>
     Gaussian marginal(const IndexType & idx) const
     {
+
+        //std::cout << "Gaussian.hpp S_ = " << S_ << std::endl;
+        //std::cout << "Gaussian.hpp Marginal mu= " << mu_ << std::endl;
+
         Gaussian out(idx.size());
         out.mu_ = mu_(idx);
 
@@ -111,12 +115,10 @@ public:
         }
 
         out.S_ = qr_matrix.triangularView<Eigen::Upper>();
-        /*
-        std::cout << "Gaussian.hpp S1_ = " << out.S_ << std::endl;
-        std::cout << "Gaussian.hpp S_ = " << S_ << std::endl;
-        std::cout << "Gaussian.hpp Marginal out.mu_ = " << out.mu_ << std::endl;
-        std::cout << "Gaussian.hpp Marginal mu= " << mu_ << std::endl;
-        */
+        
+        //std::cout << "Gaussian.hpp out.S_ = " << out.S_ << std::endl;
+        //std::cout << "Gaussian.hpp Marginal out.mu_ = " << out.mu_ << std::endl;
+        
         return out;
     }
 
