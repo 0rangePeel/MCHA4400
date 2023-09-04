@@ -58,7 +58,17 @@ int main(int argc, char* argv [])
     {
         std::cout << "Calibrating camera" << std::endl;
         std::cout << "Configuration file: " << inputPath.string() << std::endl;
-        calibrateCamera(inputPath);
+
+        // Check if file path is correct
+        if (!std::filesystem::exists(inputPath.string()))
+        {
+            std::cout << "File: " << inputPath.string() << " does not exist" << std::endl;
+            return EXIT_FAILURE;
+        }
+        else{
+            std::cout << std::endl << "main.cpp: File path is correct. Proceeding to Calibration" << std::endl;
+            calibrateCamera(inputPath);
+        }
     }
     else
     {

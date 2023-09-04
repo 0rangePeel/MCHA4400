@@ -1,0 +1,1049 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineSystem.cmake:204 (message)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      The system is: Windows - 6.2.9200 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: C:/msys64/clang64/bin/cc.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+      
+      The C compiler identification is Clang, found in:
+        C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/3.26.4/CompilerIdC/a.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: C:/msys64/clang64/bin/c++.exe 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+      
+      The CXX compiler identification is Clang, found in:
+        C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/3.26.4/CompilerIdCXX/a.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_e7b41/fast && /usr/bin/make  -f CMakeFiles/cmTC_e7b41.dir/build.make CMakeFiles/cmTC_e7b41.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp'
+        Building C object CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj
+        /C/msys64/clang64/bin/cc.exe   -v -MD -MT CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj -c /C/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c
+        clang version 16.0.5
+        Target: x86_64-w64-windows-gnu
+        Thread model: posix
+        InstalledDir: C:/msys64/clang64/bin
+         (in-process)
+         "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj.d -MT CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj -x c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c
+        clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         C:/msys64/clang64/lib/clang/16/include
+         C:/msys64/clang64/include
+        End of search list.
+        Linking C executable cmTC_e7b41.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_e7b41.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_e7b41.dir/objects.a "CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj" 
+        /C/msys64/clang64/bin/cc.exe  -v -Wl,--whole-archive CMakeFiles/cmTC_e7b41.dir/objects.a -Wl,--no-whole-archive -o cmTC_e7b41.exe -Wl,--out-implib,libcmTC_e7b41.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+        clang version 16.0.5
+        Target: x86_64-w64-windows-gnu
+        Thread model: posix
+        InstalledDir: C:/msys64/clang64/bin
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_e7b41.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows --whole-archive CMakeFiles/cmTC_e7b41.dir/objects.a --no-whole-archive --out-implib libcmTC_e7b41.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [C:/msys64/clang64/lib/clang/16/include]
+          add: [C:/msys64/clang64/include]
+        end of search list found
+        collapse include dir [C:/msys64/clang64/lib/clang/16/include] ==> [C:/msys64/clang64/lib/clang/16/include]
+        collapse include dir [C:/msys64/clang64/include] ==> [C:/msys64/clang64/include]
+        implicit include dirs: [C:/msys64/clang64/lib/clang/16/include;C:/msys64/clang64/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld\\.lld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp]
+        ignore line: []
+        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_e7b41/fast && /usr/bin/make  -f CMakeFiles/cmTC_e7b41.dir/build.make CMakeFiles/cmTC_e7b41.dir/build]
+        ignore line: [make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp']
+        ignore line: [Building C object CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/C/msys64/clang64/bin/cc.exe   -v -MD -MT CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj -c /C/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang version 16.0.5]
+        ignore line: [Target: x86_64-w64-windows-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: C:/msys64/clang64/bin]
+        ignore line: [ (in-process)]
+        ignore line: [ "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj.d -MT CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-tw92jp -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj -x c C:/msys64/clang64/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ C:/msys64/clang64/lib/clang/16/include]
+        ignore line: [ C:/msys64/clang64/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking C executable cmTC_e7b41.exe]
+        ignore line: [/C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_e7b41.dir/objects.a]
+        ignore line: [/C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_e7b41.dir/objects.a "CMakeFiles/cmTC_e7b41.dir/CMakeCCompilerABI.c.obj" ]
+        ignore line: [/C/msys64/clang64/bin/cc.exe  -v -Wl --whole-archive CMakeFiles/cmTC_e7b41.dir/objects.a -Wl --no-whole-archive -o cmTC_e7b41.exe -Wl --out-implib libcmTC_e7b41.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+        ignore line: [clang version 16.0.5]
+        ignore line: [Target: x86_64-w64-windows-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: C:/msys64/clang64/bin]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_e7b41.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows --whole-archive CMakeFiles/cmTC_e7b41.dir/objects.a --no-whole-archive --out-implib libcmTC_e7b41.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o]
+          arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_e7b41.exe] ==> ignore
+          arg [C:/msys64/clang64/lib/crt2.o] ==> obj [C:/msys64/clang64/lib/crt2.o]
+          arg [C:/msys64/clang64/lib/crtbegin.o] ==> obj [C:/msys64/clang64/lib/crtbegin.o]
+          arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
+          arg [-LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
+          arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
+          arg [-LC:/msys64/clang64/lib/clang/16/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/16/lib/windows]
+          arg [--whole-archive] ==> ignore
+          arg [CMakeFiles/cmTC_e7b41.dir/objects.a] ==> ignore
+          arg [--no-whole-archive] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_e7b41.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a] ==> lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+          arg [-lunwind] ==> lib [unwind]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a] ==> lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+          arg [-lunwind] ==> lib [unwind]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [C:/msys64/clang64/lib/crtend.o] ==> obj [C:/msys64/clang64/lib/crtend.o]
+        remove lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+        remove lib [msvcrt]
+        remove lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+        remove lib [msvcrt]
+        collapse library dir [C:/msys64/clang64/x86_64-w64-mingw32/lib] ==> [C:/msys64/clang64/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
+        collapse library dir [C:/msys64/clang64/lib] ==> [C:/msys64/clang64/lib]
+        collapse library dir [C:/msys64/clang64/lib/clang/16/lib/windows] ==> [C:/msys64/clang64/lib/clang/16/lib/windows]
+        implicit libs: [mingw32;unwind;moldname;mingwex;advapi32;shell32;user32;kernel32;mingw32;unwind;moldname;mingwex;kernel32]
+        implicit objs: [C:/msys64/clang64/lib/crt2.o;C:/msys64/clang64/lib/crtbegin.o;C:/msys64/clang64/lib/crtend.o]
+        implicit dirs: [C:/msys64/clang64/x86_64-w64-mingw32/lib;C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib;C:/msys64/clang64/lib;C:/msys64/clang64/lib/clang/16/lib/windows]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_0ef59/fast && /usr/bin/make  -f CMakeFiles/cmTC_0ef59.dir/build.make CMakeFiles/cmTC_0ef59.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn'
+        Building CXX object CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj
+        /C/msys64/clang64/bin/c++.exe   -v -MD -MT CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj -c /C/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang version 16.0.5
+        Target: x86_64-w64-windows-gnu
+        Thread model: posix
+        InstalledDir: C:/msys64/clang64/bin
+         (in-process)
+         "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj.d -MT CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         C:/msys64/clang64/include/c++/v1
+         C:/msys64/clang64/lib/clang/16/include
+         C:/msys64/clang64/include
+        End of search list.
+        Linking CXX executable cmTC_0ef59.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_0ef59.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_0ef59.dir/objects.a "CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj" 
+        /C/msys64/clang64/bin/c++.exe  -v -Wl,--whole-archive CMakeFiles/cmTC_0ef59.dir/objects.a -Wl,--no-whole-archive -o cmTC_0ef59.exe -Wl,--out-implib,libcmTC_0ef59.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+        clang version 16.0.5
+        Target: x86_64-w64-windows-gnu
+        Thread model: posix
+        InstalledDir: C:/msys64/clang64/bin
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_0ef59.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows --whole-archive CMakeFiles/cmTC_0ef59.dir/objects.a --no-whole-archive --out-implib libcmTC_0ef59.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [C:/msys64/clang64/include/c++/v1]
+          add: [C:/msys64/clang64/lib/clang/16/include]
+          add: [C:/msys64/clang64/include]
+        end of search list found
+        collapse include dir [C:/msys64/clang64/include/c++/v1] ==> [C:/msys64/clang64/include/c++/v1]
+        collapse include dir [C:/msys64/clang64/lib/clang/16/include] ==> [C:/msys64/clang64/lib/clang/16/include]
+        collapse include dir [C:/msys64/clang64/include] ==> [C:/msys64/clang64/include]
+        implicit include dirs: [C:/msys64/clang64/include/c++/v1;C:/msys64/clang64/lib/clang/16/include;C:/msys64/clang64/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:152 (message)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld\\.lld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn]
+        ignore line: []
+        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_0ef59/fast && /usr/bin/make  -f CMakeFiles/cmTC_0ef59.dir/build.make CMakeFiles/cmTC_0ef59.dir/build]
+        ignore line: [make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn']
+        ignore line: [Building CXX object CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [/C/msys64/clang64/bin/c++.exe   -v -MD -MT CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj -c /C/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang version 16.0.5]
+        ignore line: [Target: x86_64-w64-windows-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: C:/msys64/clang64/bin]
+        ignore line: [ (in-process)]
+        ignore line: [ "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj.d -MT CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-csejgn -ferror-limit 19 -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj -x c++ C:/msys64/clang64/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ C:/msys64/clang64/include/c++/v1]
+        ignore line: [ C:/msys64/clang64/lib/clang/16/include]
+        ignore line: [ C:/msys64/clang64/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking CXX executable cmTC_0ef59.exe]
+        ignore line: [/C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_0ef59.dir/objects.a]
+        ignore line: [/C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_0ef59.dir/objects.a "CMakeFiles/cmTC_0ef59.dir/CMakeCXXCompilerABI.cpp.obj" ]
+        ignore line: [/C/msys64/clang64/bin/c++.exe  -v -Wl --whole-archive CMakeFiles/cmTC_0ef59.dir/objects.a -Wl --no-whole-archive -o cmTC_0ef59.exe -Wl --out-implib libcmTC_0ef59.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+        ignore line: [clang version 16.0.5]
+        ignore line: [Target: x86_64-w64-windows-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: C:/msys64/clang64/bin]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_0ef59.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows --whole-archive CMakeFiles/cmTC_0ef59.dir/objects.a --no-whole-archive --out-implib libcmTC_0ef59.dll.a --major-image-version 0 --minor-image-version 0 -lc++ -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o]
+          arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_0ef59.exe] ==> ignore
+          arg [C:/msys64/clang64/lib/crt2.o] ==> obj [C:/msys64/clang64/lib/crt2.o]
+          arg [C:/msys64/clang64/lib/crtbegin.o] ==> obj [C:/msys64/clang64/lib/crtbegin.o]
+          arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
+          arg [-LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
+          arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
+          arg [-LC:/msys64/clang64/lib/clang/16/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/16/lib/windows]
+          arg [--whole-archive] ==> ignore
+          arg [CMakeFiles/cmTC_0ef59.dir/objects.a] ==> ignore
+          arg [--no-whole-archive] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_0ef59.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-lc++] ==> lib [c++]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a] ==> lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+          arg [-lunwind] ==> lib [unwind]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a] ==> lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+          arg [-lunwind] ==> lib [unwind]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [C:/msys64/clang64/lib/crtend.o] ==> obj [C:/msys64/clang64/lib/crtend.o]
+        remove lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+        remove lib [msvcrt]
+        remove lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+        remove lib [msvcrt]
+        collapse library dir [C:/msys64/clang64/x86_64-w64-mingw32/lib] ==> [C:/msys64/clang64/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
+        collapse library dir [C:/msys64/clang64/lib] ==> [C:/msys64/clang64/lib]
+        collapse library dir [C:/msys64/clang64/lib/clang/16/lib/windows] ==> [C:/msys64/clang64/lib/clang/16/lib/windows]
+        implicit libs: [c++;mingw32;unwind;moldname;mingwex;advapi32;shell32;user32;kernel32;mingw32;unwind;moldname;mingwex;kernel32]
+        implicit objs: [C:/msys64/clang64/lib/crt2.o;C:/msys64/clang64/lib/crtbegin.o;C:/msys64/clang64/lib/crtend.o]
+        implicit dirs: [C:/msys64/clang64/x86_64-w64-mingw32/lib;C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib;C:/msys64/clang64/lib;C:/msys64/clang64/lib/clang/16/lib/windows]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/CheckCSourceCompiles.cmake:76 (cmake_check_source_compiles)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/Qt6Dependencies.cmake:24 (_qt_internal_find_third_party_dependencies)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/Qt6Config.cmake:112 (include)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:115 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-qqdqvs"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-qqdqvs"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-qqdqvs
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_82420/fast && /usr/bin/make  -f CMakeFiles/cmTC_82420.dir/build.make CMakeFiles/cmTC_82420.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-qqdqvs'
+        Building C object CMakeFiles/cmTC_82420.dir/src.c.obj
+        /C/msys64/clang64/bin/cc.exe -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_82420.dir/src.c.obj -MF CMakeFiles/cmTC_82420.dir/src.c.obj.d -o CMakeFiles/cmTC_82420.dir/src.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-qqdqvs/src.c
+        Linking C executable cmTC_82420.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_82420.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_82420.dir/objects.a "CMakeFiles/cmTC_82420.dir/src.c.obj" 
+        /C/msys64/clang64/bin/cc.exe -Wl,--whole-archive CMakeFiles/cmTC_82420.dir/objects.a -Wl,--no-whole-archive -o cmTC_82420.exe -Wl,--out-implib,libcmTC_82420.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        ld.lld: error: undefined symbol: pthread_create
+        >>> referenced by objects.a(src.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: pthread_detach
+        >>> referenced by objects.a(src.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: pthread_cancel
+        >>> referenced by objects.a(src.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: pthread_join
+        >>> referenced by objects.a(src.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: pthread_exit
+        >>> referenced by objects.a(src.c.obj):(main)
+        cc: error: linker command failed with exit code 1 (use -v to see invocation)
+        make[1]: *** [CMakeFiles/cmTC_82420.dir/build.make:101: cmTC_82420.exe] Error 1
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-qqdqvs'
+        make: *** [Makefile:127: cmTC_82420/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/FindThreads.cmake:136 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindThreads.cmake:169 (_threads_check_flag_pthread)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/Qt6Dependencies.cmake:24 (_qt_internal_find_third_party_dependencies)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/Qt6Config.cmake:112 (include)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:115 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    checks:
+      - "Check if compiler accepts -pthread"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-0ad91r"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-0ad91r"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "THREADS_HAVE_PTHREAD_ARG"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-0ad91r
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_3a9a9/fast && /usr/bin/make  -f CMakeFiles/cmTC_3a9a9.dir/build.make CMakeFiles/cmTC_3a9a9.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-0ad91r'
+        Building C object CMakeFiles/cmTC_3a9a9.dir/CheckForPthreads.c.obj
+        /C/msys64/clang64/bin/cc.exe    -MD -MT CMakeFiles/cmTC_3a9a9.dir/CheckForPthreads.c.obj -MF CMakeFiles/cmTC_3a9a9.dir/CheckForPthreads.c.obj.d -o CMakeFiles/cmTC_3a9a9.dir/CheckForPthreads.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-0ad91r/CheckForPthreads.c
+        Linking C executable cmTC_3a9a9.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_3a9a9.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_3a9a9.dir/objects.a "CMakeFiles/cmTC_3a9a9.dir/CheckForPthreads.c.obj" 
+        /C/msys64/clang64/bin/cc.exe -Wl,--whole-archive CMakeFiles/cmTC_3a9a9.dir/objects.a -Wl,--no-whole-archive -o cmTC_3a9a9.exe -Wl,--out-implib,libcmTC_3a9a9.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -pthread -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-0ad91r'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/CheckCXXSourceCompiles.cmake:76 (cmake_check_source_compiles)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/FindWrapAtomic.cmake:36 (check_cxx_source_compiles)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:36 (find_dependency)"
+      - "C:/msys64/clang64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake:30 (_qt_internal_find_third_party_dependencies)"
+      - "C:/msys64/clang64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake:40 (include)"
+      - "C:/msys64/clang64/share/cmake/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake:111 (find_dependency)"
+      - "C:/msys64/clang64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake:39 (_qt_internal_find_qt_dependencies)"
+      - "C:/msys64/clang64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake:40 (include)"
+      - "C:/msys64/clang64/lib/cmake/Qt6/Qt6Config.cmake:157 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:115 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    checks:
+      - "Performing Test HAVE_STDATOMIC"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-r9c9s6"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-r9c9s6"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-Wall"
+      CMAKE_CXX_FLAGS_DEBUG: "-g -O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HAVE_STDATOMIC"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-r9c9s6
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_c746c/fast && /usr/bin/make  -f CMakeFiles/cmTC_c746c.dir/build.make CMakeFiles/cmTC_c746c.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-r9c9s6'
+        Building CXX object CMakeFiles/cmTC_c746c.dir/src.cxx.obj
+        /C/msys64/clang64/bin/c++.exe -DHAVE_STDATOMIC  -Wall  -std=c++17 -MD -MT CMakeFiles/cmTC_c746c.dir/src.cxx.obj -MF CMakeFiles/cmTC_c746c.dir/src.cxx.obj.d -o CMakeFiles/cmTC_c746c.dir/src.cxx.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-r9c9s6/src.cxx
+        Linking CXX executable cmTC_c746c.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_c746c.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_c746c.dir/objects.a "CMakeFiles/cmTC_c746c.dir/src.cxx.obj" 
+        /C/msys64/clang64/bin/c++.exe -Wall  -Wl,--whole-archive CMakeFiles/cmTC_c746c.dir/objects.a -Wl,--no-whole-archive -o cmTC_c746c.exe -Wl,--out-implib,libcmTC_c746c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-r9c9s6'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/lib/cmake/vtk/patches/99/FindHDF5.cmake:241 (try_compile)"
+      - "C:/msys64/clang64/lib/cmake/vtk/patches/99/FindHDF5.cmake:596 (_HDF5_test_regular_compiler_C)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:1308 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HDF5_C_COMPILER_NO_INTERROGATE"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_f7c1b/fast && /usr/bin/make  -f CMakeFiles/cmTC_f7c1b.dir/build.make CMakeFiles/cmTC_f7c1b.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_f7c1b.dir/cmake_hdf5_test.c.obj
+        /C/msys64/clang64/bin/cc.exe    -MD -MT CMakeFiles/cmTC_f7c1b.dir/cmake_hdf5_test.c.obj -MF CMakeFiles/cmTC_f7c1b.dir/cmake_hdf5_test.c.obj.d -o CMakeFiles/cmTC_f7c1b.dir/cmake_hdf5_test.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/cmake_hdf5_test.c
+        Linking C executable cmTC_f7c1b.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_f7c1b.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_f7c1b.dir/objects.a "CMakeFiles/cmTC_f7c1b.dir/cmake_hdf5_test.c.obj" 
+        /C/msys64/clang64/bin/cc.exe -Wl,--whole-archive CMakeFiles/cmTC_f7c1b.dir/objects.a -Wl,--no-whole-archive -o cmTC_f7c1b.exe -Wl,--out-implib,libcmTC_f7c1b.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        ld.lld: error: undefined symbol: H5check_version
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: H5open
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: H5Fcreate
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        cc: error: linker command failed with exit code 1 (use -v to see invocation)
+        make[1]: *** [CMakeFiles/cmTC_f7c1b.dir/build.make:101: cmTC_f7c1b.exe] Error 1
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        make: *** [Makefile:127: cmTC_f7c1b/fast] Error 2
+        
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:219 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:483 (_OPENMP_GET_FLAGS)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:2736 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    description: "Detecting C OpenMP compiler info"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "OpenMP_COMPILE_RESULT_C_fopenmplibomp"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_237f5/fast && /usr/bin/make  -f CMakeFiles/cmTC_237f5.dir/build.make CMakeFiles/cmTC_237f5.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp'
+        Building C object CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj
+        /C/msys64/clang64/bin/cc.exe   -fopenmp=libomp -v -MD -MT CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj -MF CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj.d -o CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp/OpenMPTryFlag.c
+        clang version 16.0.5
+        Target: x86_64-w64-windows-gnu
+        Thread model: posix
+        InstalledDir: C:/msys64/clang64/bin
+         (in-process)
+         "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj.d -MT CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj -x c C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp/OpenMPTryFlag.c
+        clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         C:/msys64/clang64/lib/clang/16/include
+         C:/msys64/clang64/include
+        End of search list.
+        Linking C executable cmTC_237f5.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_237f5.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_237f5.dir/objects.a "CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj" 
+        /C/msys64/clang64/bin/cc.exe  -fopenmp=libomp -v -Wl,--whole-archive CMakeFiles/cmTC_237f5.dir/objects.a -Wl,--no-whole-archive -o cmTC_237f5.exe -Wl,--out-implib,libcmTC_237f5.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -v -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        clang version 16.0.5
+        Target: x86_64-w64-windows-gnu
+        Thread model: posix
+        InstalledDir: C:/msys64/clang64/bin
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_237f5.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows --whole-archive CMakeFiles/cmTC_237f5.dir/objects.a --no-whole-archive --out-implib libcmTC_237f5.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:262 (message)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:483 (_OPENMP_GET_FLAGS)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:2736 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    message: |
+      Parsed C OpenMP implicit link information from above output:
+        link line regex: [^( *|.*[/\\])(ld\\.lld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp]
+        ignore line: []
+        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_237f5/fast && /usr/bin/make  -f CMakeFiles/cmTC_237f5.dir/build.make CMakeFiles/cmTC_237f5.dir/build]
+        ignore line: [make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp']
+        ignore line: [Building C object CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj]
+        ignore line: [/C/msys64/clang64/bin/cc.exe   -fopenmp=libomp -v -MD -MT CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj -MF CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj.d -o CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp/OpenMPTryFlag.c]
+        ignore line: [clang version 16.0.5]
+        ignore line: [Target: x86_64-w64-windows-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: C:/msys64/clang64/bin]
+        ignore line: [ (in-process)]
+        ignore line: [ "C:/msys64/clang64/bin/cc.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.c -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj.d -MT CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj -sys-header-deps -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -exception-model=seh -faddrsig -o CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj -x c C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-ylkvxp/OpenMPTryFlag.c]
+        ignore line: [clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ C:/msys64/clang64/lib/clang/16/include]
+        ignore line: [ C:/msys64/clang64/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking C executable cmTC_237f5.exe]
+        ignore line: [/C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_237f5.dir/objects.a]
+        ignore line: [/C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_237f5.dir/objects.a "CMakeFiles/cmTC_237f5.dir/OpenMPTryFlag.c.obj" ]
+        ignore line: [/C/msys64/clang64/bin/cc.exe  -fopenmp=libomp -v -Wl --whole-archive CMakeFiles/cmTC_237f5.dir/objects.a -Wl --no-whole-archive -o cmTC_237f5.exe -Wl --out-implib libcmTC_237f5.dll.a -Wl --major-image-version 0 --minor-image-version 0  -v -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 ]
+        ignore line: [clang version 16.0.5]
+        ignore line: [Target: x86_64-w64-windows-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: C:/msys64/clang64/bin]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_237f5.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows --whole-archive CMakeFiles/cmTC_237f5.dir/objects.a --no-whole-archive --out-implib libcmTC_237f5.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o]
+          arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_237f5.exe] ==> ignore
+          arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
+          arg [-LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
+          arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
+          arg [-LC:/msys64/clang64/lib/clang/16/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/16/lib/windows]
+          arg [--whole-archive] ==> ignore
+          arg [CMakeFiles/cmTC_237f5.dir/objects.a] ==> ignore
+          arg [--no-whole-archive] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_237f5.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lgdi32] ==> lib [gdi32]
+          arg [-lwinspool] ==> lib [winspool]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-lole32] ==> lib [ole32]
+          arg [-loleaut32] ==> lib [oleaut32]
+          arg [-luuid] ==> lib [uuid]
+          arg [-lcomdlg32] ==> lib [comdlg32]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lomp] ==> lib [omp]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a] ==> lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+          arg [-lunwind] ==> lib [unwind]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a] ==> lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+          arg [-lunwind] ==> lib [unwind]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+        remove lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+        remove lib [msvcrt]
+        remove lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+        remove lib [msvcrt]
+        collapse library dir [C:/msys64/clang64/x86_64-w64-mingw32/lib] ==> [C:/msys64/clang64/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
+        collapse library dir [C:/msys64/clang64/lib] ==> [C:/msys64/clang64/lib]
+        collapse library dir [C:/msys64/clang64/lib/clang/16/lib/windows] ==> [C:/msys64/clang64/lib/clang/16/lib/windows]
+        implicit libs: [kernel32;user32;gdi32;winspool;shell32;ole32;oleaut32;uuid;comdlg32;advapi32;omp;mingw32;unwind;moldname;mingwex;advapi32;shell32;user32;kernel32;mingw32;unwind;moldname;mingwex;kernel32]
+        implicit objs: []
+        implicit dirs: [C:/msys64/clang64/x86_64-w64-mingw32/lib;C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib;C:/msys64/clang64/lib;C:/msys64/clang64/lib/clang/16/lib/windows]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:219 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:483 (_OPENMP_GET_FLAGS)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:2736 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    description: "Detecting CXX OpenMP compiler info"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-Wall"
+      CMAKE_CXX_FLAGS_DEBUG: "-g -O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "OpenMP_COMPILE_RESULT_CXX_fopenmplibomp"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_7a601/fast && /usr/bin/make  -f CMakeFiles/cmTC_7a601.dir/build.make CMakeFiles/cmTC_7a601.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen'
+        Building CXX object CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj
+        /C/msys64/clang64/bin/c++.exe   -Wall -fopenmp=libomp -v -std=c++17 -MD -MT CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj -MF CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj.d -o CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen/OpenMPTryFlag.cpp
+        clang version 16.0.5
+        Target: x86_64-w64-windows-gnu
+        Thread model: posix
+        InstalledDir: C:/msys64/clang64/bin
+         (in-process)
+         "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj.d -MT CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -Wall -std=c++17 -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj -x c++ C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen/OpenMPTryFlag.cpp
+        clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"
+        ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         C:/msys64/clang64/include/c++/v1
+         C:/msys64/clang64/lib/clang/16/include
+         C:/msys64/clang64/include
+        End of search list.
+        Linking CXX executable cmTC_7a601.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_7a601.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_7a601.dir/objects.a "CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj" 
+        /C/msys64/clang64/bin/c++.exe -Wall -fopenmp=libomp -v -Wl,--whole-archive CMakeFiles/cmTC_7a601.dir/objects.a -Wl,--no-whole-archive -o cmTC_7a601.exe -Wl,--out-implib,libcmTC_7a601.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -v -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        clang version 16.0.5
+        Target: x86_64-w64-windows-gnu
+        Thread model: posix
+        InstalledDir: C:/msys64/clang64/bin
+         "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_7a601.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows --whole-archive CMakeFiles/cmTC_7a601.dir/objects.a --no-whole-archive --out-implib libcmTC_7a601.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lc++ -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:262 (message)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:483 (_OPENMP_GET_FLAGS)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:2736 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    message: |
+      Parsed CXX OpenMP implicit link information from above output:
+        link line regex: [^( *|.*[/\\])(ld\\.lld\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen]
+        ignore line: []
+        ignore line: [Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_7a601/fast && /usr/bin/make  -f CMakeFiles/cmTC_7a601.dir/build.make CMakeFiles/cmTC_7a601.dir/build]
+        ignore line: [make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen']
+        ignore line: [Building CXX object CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj]
+        ignore line: [/C/msys64/clang64/bin/c++.exe   -Wall -fopenmp=libomp -v -std=c++17 -MD -MT CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj -MF CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj.d -o CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen/OpenMPTryFlag.cpp]
+        ignore line: [clang version 16.0.5]
+        ignore line: [Target: x86_64-w64-windows-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: C:/msys64/clang64/bin]
+        ignore line: [ (in-process)]
+        ignore line: [ "C:/msys64/clang64/bin/c++.exe" -cc1 -triple x86_64-w64-windows-gnu -emit-obj -mrelax-all -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name OpenMPTryFlag.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=none -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -mms-bitfields -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen -resource-dir C:/msys64/clang64/lib/clang/16 -dependency-file CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj.d -MT CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj -sys-header-deps -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1 -internal-isystem C:/msys64/clang64/include/c++/v1 -internal-isystem C:/msys64/clang64/lib/clang/16/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/include -internal-isystem C:/msys64/clang64/x86_64-w64-mingw32/usr/include -internal-isystem C:/msys64/clang64/include -Wall -std=c++17 -fdeprecated-macro -fdebug-compilation-dir=C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen -ferror-limit 19 -fopenmp -fno-use-cxa-atexit -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -exception-model=seh -faddrsig -o CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj -x c++ C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3wvyen/OpenMPTryFlag.cpp]
+        ignore line: [clang -cc1 version 16.0.5 based upon LLVM 16.0.5 default target x86_64-w64-windows-gnu]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include/c++/v1"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/include"]
+        ignore line: [ignoring nonexistent directory "C:/msys64/clang64/x86_64-w64-mingw32/usr/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ C:/msys64/clang64/include/c++/v1]
+        ignore line: [ C:/msys64/clang64/lib/clang/16/include]
+        ignore line: [ C:/msys64/clang64/include]
+        ignore line: [End of search list.]
+        ignore line: [Linking CXX executable cmTC_7a601.exe]
+        ignore line: [/C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_7a601.dir/objects.a]
+        ignore line: [/C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_7a601.dir/objects.a "CMakeFiles/cmTC_7a601.dir/OpenMPTryFlag.cpp.obj" ]
+        ignore line: [/C/msys64/clang64/bin/c++.exe -Wall -fopenmp=libomp -v -Wl --whole-archive CMakeFiles/cmTC_7a601.dir/objects.a -Wl --no-whole-archive -o cmTC_7a601.exe -Wl --out-implib libcmTC_7a601.dll.a -Wl --major-image-version 0 --minor-image-version 0  -v -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 ]
+        ignore line: [clang version 16.0.5]
+        ignore line: [Target: x86_64-w64-windows-gnu]
+        ignore line: [Thread model: posix]
+        ignore line: [InstalledDir: C:/msys64/clang64/bin]
+        link line: [ "C:/msys64/clang64/bin/ld.lld" -m i386pep -Bdynamic -o cmTC_7a601.exe C:/msys64/clang64/lib/crt2.o C:/msys64/clang64/lib/crtbegin.o -LC:/msys64/clang64/x86_64-w64-mingw32/lib -LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib -LC:/msys64/clang64/lib -LC:/msys64/clang64/lib/clang/16/lib/windows --whole-archive CMakeFiles/cmTC_7a601.dir/objects.a --no-whole-archive --out-implib libcmTC_7a601.dll.a --major-image-version 0 --minor-image-version 0 -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 -lc++ -lomp -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -ladvapi32 -lshell32 -luser32 -lkernel32 -lmingw32 C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a -lunwind -lmoldname -lmingwex -lmsvcrt -lkernel32 C:/msys64/clang64/lib/crtend.o]
+          arg [C:/msys64/clang64/bin/ld.lld] ==> ignore
+          arg [-m] ==> ignore
+          arg [i386pep] ==> ignore
+          arg [-Bdynamic] ==> search dynamic
+          arg [-o] ==> ignore
+          arg [cmTC_7a601.exe] ==> ignore
+          arg [-LC:/msys64/clang64/x86_64-w64-mingw32/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/lib]
+          arg [-LC:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
+          arg [-LC:/msys64/clang64/lib] ==> dir [C:/msys64/clang64/lib]
+          arg [-LC:/msys64/clang64/lib/clang/16/lib/windows] ==> dir [C:/msys64/clang64/lib/clang/16/lib/windows]
+          arg [--whole-archive] ==> ignore
+          arg [CMakeFiles/cmTC_7a601.dir/objects.a] ==> ignore
+          arg [--no-whole-archive] ==> ignore
+          arg [--out-implib] ==> ignore
+          arg [libcmTC_7a601.dll.a] ==> ignore
+          arg [--major-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [--minor-image-version] ==> ignore
+          arg [0] ==> ignore
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lgdi32] ==> lib [gdi32]
+          arg [-lwinspool] ==> lib [winspool]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-lole32] ==> lib [ole32]
+          arg [-loleaut32] ==> lib [oleaut32]
+          arg [-luuid] ==> lib [uuid]
+          arg [-lcomdlg32] ==> lib [comdlg32]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lc++] ==> lib [c++]
+          arg [-lomp] ==> lib [omp]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a] ==> lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+          arg [-lunwind] ==> lib [unwind]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-ladvapi32] ==> lib [advapi32]
+          arg [-lshell32] ==> lib [shell32]
+          arg [-luser32] ==> lib [user32]
+          arg [-lkernel32] ==> lib [kernel32]
+          arg [-lmingw32] ==> lib [mingw32]
+          arg [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a] ==> lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+          arg [-lunwind] ==> lib [unwind]
+          arg [-lmoldname] ==> lib [moldname]
+          arg [-lmingwex] ==> lib [mingwex]
+          arg [-lmsvcrt] ==> lib [msvcrt]
+          arg [-lkernel32] ==> lib [kernel32]
+        remove lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+        remove lib [msvcrt]
+        remove lib [C:/msys64/clang64/lib/clang/16/lib/windows/libclang_rt.builtins-x86_64.a]
+        remove lib [msvcrt]
+        collapse library dir [C:/msys64/clang64/x86_64-w64-mingw32/lib] ==> [C:/msys64/clang64/x86_64-w64-mingw32/lib]
+        collapse library dir [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib] ==> [C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib]
+        collapse library dir [C:/msys64/clang64/lib] ==> [C:/msys64/clang64/lib]
+        collapse library dir [C:/msys64/clang64/lib/clang/16/lib/windows] ==> [C:/msys64/clang64/lib/clang/16/lib/windows]
+        implicit libs: [kernel32;user32;gdi32;winspool;shell32;ole32;oleaut32;uuid;comdlg32;advapi32;c++;omp;mingw32;unwind;moldname;mingwex;advapi32;shell32;user32;kernel32;mingw32;unwind;moldname;mingwex;kernel32]
+        implicit objs: []
+        implicit dirs: [C:/msys64/clang64/x86_64-w64-mingw32/lib;C:/msys64/clang64/x86_64-w64-mingw32/mingw/lib;C:/msys64/clang64/lib;C:/msys64/clang64/lib/clang/16/lib/windows]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:419 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:557 (_OPENMP_GET_SPEC_DATE)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:2736 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    description: "Detecting C OpenMP version"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3f8e4j"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3f8e4j"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "OpenMP_SPECTEST_C_"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3f8e4j
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_3ae0c/fast && /usr/bin/make  -f CMakeFiles/cmTC_3ae0c.dir/build.make CMakeFiles/cmTC_3ae0c.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3f8e4j'
+        Building C object CMakeFiles/cmTC_3ae0c.dir/OpenMPCheckVersion.c.obj
+        /C/msys64/clang64/bin/cc.exe   -fopenmp=libomp -MD -MT CMakeFiles/cmTC_3ae0c.dir/OpenMPCheckVersion.c.obj -MF CMakeFiles/cmTC_3ae0c.dir/OpenMPCheckVersion.c.obj.d -o CMakeFiles/cmTC_3ae0c.dir/OpenMPCheckVersion.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3f8e4j/OpenMPCheckVersion.c
+        Linking C executable cmTC_3ae0c.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_3ae0c.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_3ae0c.dir/objects.a "CMakeFiles/cmTC_3ae0c.dir/OpenMPCheckVersion.c.obj" 
+        /C/msys64/clang64/bin/cc.exe  -fopenmp=libomp -Wl,--whole-archive CMakeFiles/cmTC_3ae0c.dir/objects.a -Wl,--no-whole-archive -o cmTC_3ae0c.exe -Wl,--out-implib,libcmTC_3ae0c.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-3f8e4j'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:419 (try_compile)"
+      - "C:/msys64/clang64/share/cmake/Modules/FindOpenMP.cmake:557 (_OPENMP_GET_SPEC_DATE)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:2736 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    description: "Detecting CXX OpenMP version"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-6yvzvy"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-6yvzvy"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "-Wall"
+      CMAKE_CXX_FLAGS_DEBUG: "-g -O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "OpenMP_SPECTEST_CXX_"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-6yvzvy
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_29e9a/fast && /usr/bin/make  -f CMakeFiles/cmTC_29e9a.dir/build.make CMakeFiles/cmTC_29e9a.dir/build
+        make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-6yvzvy'
+        Building CXX object CMakeFiles/cmTC_29e9a.dir/OpenMPCheckVersion.cpp.obj
+        /C/msys64/clang64/bin/c++.exe   -Wall -fopenmp=libomp -std=c++17 -MD -MT CMakeFiles/cmTC_29e9a.dir/OpenMPCheckVersion.cpp.obj -MF CMakeFiles/cmTC_29e9a.dir/OpenMPCheckVersion.cpp.obj.d -o CMakeFiles/cmTC_29e9a.dir/OpenMPCheckVersion.cpp.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-6yvzvy/OpenMPCheckVersion.cpp
+        Linking CXX executable cmTC_29e9a.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_29e9a.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_29e9a.dir/objects.a "CMakeFiles/cmTC_29e9a.dir/OpenMPCheckVersion.cpp.obj" 
+        /C/msys64/clang64/bin/c++.exe -Wall -fopenmp=libomp -Wl,--whole-archive CMakeFiles/cmTC_29e9a.dir/objects.a -Wl,--no-whole-archive -o cmTC_29e9a.exe -Wl,--out-implib,libcmTC_29e9a.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/CMakeScratch/TryCompile-6yvzvy'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/lib/cmake/vtk/patches/99/FindHDF5.cmake:241 (try_compile)"
+      - "C:/msys64/clang64/lib/cmake/vtk/patches/99/FindHDF5.cmake:596 (_HDF5_test_regular_compiler_C)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:1308 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HDF5_C_COMPILER_NO_INTERROGATE"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_d4286/fast && make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        /usr/bin/make  -f CMakeFiles/cmTC_d4286.dir/build.make CMakeFiles/cmTC_d4286.dir/build
+        make[2]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_d4286.dir/cmake_hdf5_test.c.obj
+        /C/msys64/clang64/bin/cc.exe    -MD -MT CMakeFiles/cmTC_d4286.dir/cmake_hdf5_test.c.obj -MF CMakeFiles/cmTC_d4286.dir/cmake_hdf5_test.c.obj.d -o CMakeFiles/cmTC_d4286.dir/cmake_hdf5_test.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/cmake_hdf5_test.c
+        Linking C executable cmTC_d4286.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_d4286.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_d4286.dir/objects.a "CMakeFiles/cmTC_d4286.dir/cmake_hdf5_test.c.obj" 
+        /C/msys64/clang64/bin/cc.exe -Wl,--whole-archive CMakeFiles/cmTC_d4286.dir/objects.a -Wl,--no-whole-archive -o cmTC_d4286.exe -Wl,--out-implib,libcmTC_d4286.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        ld.lld: error: undefined symbol: H5check_version
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: H5open
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: H5Fcreate
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        cc: error: linker command failed with exit code 1 (use -v to see invocation)
+        make[2]: *** [CMakeFiles/cmTC_d4286.dir/build.make:101: cmTC_d4286.exe] Error 1
+        make[2]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        make[1]: *** [Makefile:127: cmTC_d4286/fast] Error 2
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        
+      exitCode: 2
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/lib/cmake/vtk/patches/99/FindHDF5.cmake:241 (try_compile)"
+      - "C:/msys64/clang64/lib/cmake/vtk/patches/99/FindHDF5.cmake:596 (_HDF5_test_regular_compiler_C)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:1308 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HDF5_C_COMPILER_NO_INTERROGATE"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_16587/fast && make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        /usr/bin/make  -f CMakeFiles/cmTC_16587.dir/build.make CMakeFiles/cmTC_16587.dir/build
+        make[2]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_16587.dir/cmake_hdf5_test.c.obj
+        /C/msys64/clang64/bin/cc.exe    -MD -MT CMakeFiles/cmTC_16587.dir/cmake_hdf5_test.c.obj -MF CMakeFiles/cmTC_16587.dir/cmake_hdf5_test.c.obj.d -o CMakeFiles/cmTC_16587.dir/cmake_hdf5_test.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/cmake_hdf5_test.c
+        Linking C executable cmTC_16587.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_16587.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_16587.dir/objects.a "CMakeFiles/cmTC_16587.dir/cmake_hdf5_test.c.obj" 
+        /C/msys64/clang64/bin/cc.exe -Wl,--whole-archive CMakeFiles/cmTC_16587.dir/objects.a -Wl,--no-whole-archive -o cmTC_16587.exe -Wl,--out-implib,libcmTC_16587.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        ld.lld: error: undefined symbol: H5check_version
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: H5open
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: H5Fcreate
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        cc: error: linker command failed with exit code 1 (use -v to see invocation)
+        make[2]: *** [CMakeFiles/cmTC_16587.dir/build.make:101: cmTC_16587.exe] Error 1
+        make[2]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        make[1]: *** [Makefile:127: cmTC_16587/fast] Error 2
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        
+      exitCode: 2
+...

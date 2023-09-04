@@ -76,6 +76,9 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "regex": "cpp",
-        "condition_variable": "cpp"
+        "condition_variable": "cpp",
+        "queue": "cpp",
+        "ranges": "cpp",
+        "span": "cpp"
     }
 }
