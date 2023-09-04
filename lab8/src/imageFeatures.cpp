@@ -44,7 +44,7 @@ std::vector<PointFeature> detectFeatures(const cv::Mat & img, const int & maxNum
 
     // Shi tuning parameters
     int myShiTomasi_qualityLevel = 40;
-    int max_qualityLevel = 100;
+    int max_qualityLevel = 500;
 
     int blockSize = 3;
     int apertureSize = 3;
@@ -67,10 +67,10 @@ std::vector<PointFeature> detectFeatures(const cv::Mat & img, const int & maxNum
     for(int i = 0; i < grayImg.rows; i++) {
         for(int j = 0; j < grayImg.cols; j++) {
             if(myShiTomasi_dst.at<float>(i,j) > myShiTomasi_minVal + ( myShiTomasi_maxVal - myShiTomasi_minVal )*myShiTomasi_qualityLevel/max_qualityLevel) {
-                circle(imgout, cv::Point(j,i), 5, cv::Scalar(0,0,255), 2, 8, 0);
+                circle(imgout, cv::Point(i,j), 5, cv::Scalar(0,0,255), 2, 8, 0);
                 NumFeatures += 1;
-                x.push_back(i);
-                y.push_back(j);
+                x.push_back(j);
+                y.push_back(i);
                 score.push_back(myShiTomasi_dst.at<float>(i,j));
             }
         }
@@ -100,7 +100,7 @@ std::vector<PointFeature> detectFeatures(const cv::Mat & img, const int & maxNum
     // Print Max Features
     for (int i = 0; i < std::min(NumFeatures,maxNumFeatures); ++i) {
         // std::cout << "  idx: " << i << "  at point: (" << x[indices[i]] << "," << y[indices[i]] << ")      Eigenvalue: " << score[indices[i]] << std::endl;
-        PointFeature feature(score[indices[i]], y[indices[i]], x[indices[i]]);
+        PointFeature feature(score[indices[i]], x[indices[i]], y[indices[i]]);
         features.push_back(feature);
     }
     

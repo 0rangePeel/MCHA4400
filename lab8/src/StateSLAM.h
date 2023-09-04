@@ -125,11 +125,9 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureBundle(const Eigen::VectorX<Scal
     {
         Eigen::Vector2<Scalar> rQOi = predictFeature(x, cam, idxLandmarks[i]);
         // Set pair of elements of h
-        h(2 * i)        = rQOi(0);     // Set the first value
-        h(2 * i + 1)    = rQOi(1);     // Set the second value
+        h.segment(2*i,2) = rQOi;
 
     }
-    //std::cout << "h:" << h << std::endl;
     return h;
 }
 

@@ -36,7 +36,7 @@ double snn(const StateSLAM & state, const std::vector<std::size_t> & idxLandmark
     assert(Y.rows() == 2);
     assert(Y.cols() > 0);
     int m = Y.cols();
-    std::cout << "HERE" << std::endl;
+
     // Pre-compute terms
     Gaussian<double> featureBundleDensity = state.predictFeatureBundleDensity(camera, idxLandmarks);
     
