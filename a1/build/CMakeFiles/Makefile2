@@ -178,8 +178,8 @@ CMakeFiles/tests.dir/clean:
 # Target rules for target CMakeFiles/run_tests.dir
 
 # All Build rule for target.
-CMakeFiles/run_tests.dir/all: CMakeFiles/a1.dir/all
 CMakeFiles/run_tests.dir/all: CMakeFiles/tests.dir/all
+CMakeFiles/run_tests.dir/all: CMakeFiles/a1.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/run_tests.dir/build.make CMakeFiles/run_tests.dir/build
 .PHONY : CMakeFiles/run_tests.dir/all

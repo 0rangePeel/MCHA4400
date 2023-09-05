@@ -277,21 +277,20 @@ ChessboardData::ChessboardData(const std::filesystem::path & configPath)
 
                         for (int frameCount = 0; frameCount < totalVideoFrames; frameCount += frameSkip){
                             
-                            cap.set(cv::CAP_PROP_POS_FRAMES, frameCount); // Frame numbering starts from 0 in C++
+                            cap.set(cv::CAP_PROP_POS_FRAMES, frameCount);
                             // Save Frame to image
                             bool ret = cap.read(image);
                             // Fram Succesffully Read
                             if (ret) {
-                                std::cout << frameCount/frameSkip << ":Frame:" << std::setw(4) << std::setfill('0') << frameCount << " read from " << combinedString << std::setfill(' ') << " : ";
+                                std::cout << std::setw(4) << std::setfill('0') << frameCount/frameSkip << ":Frame:" << std::setw(4) << std::setfill('0') << frameCount << " read from " << combinedString << std::setfill(' ') << " : ";
                             }
                             else{
                                 std::cout << "Error: Couldn't read a frame from the video." << std::endl;
                             }
 
                             // Check for chessboard
-                            cv::Mat imageClone = image.clone();
                             std::cout << "done, detecting chessboard..." << std::flush;
-                            ChessboardImage ci(imageClone, chessboard, p.path().filename());
+                            ChessboardImage ci(image.clone(), chessboard, p.path().filename());
                             std::cout << (ci.isFound ? "found" : "not found") << std::endl;
                             if (ci.isFound){
                                 chessboardImages.push_back(ci);
