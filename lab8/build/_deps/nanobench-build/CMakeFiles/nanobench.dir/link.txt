@@ -1,0 +1,2 @@
+C:/msys64/clang64/bin/llvm-ar.exe qc libnanobench.a CMakeFiles/nanobench.dir/src/test/app/nanobench.cpp.obj
+C:/msys64/clang64/bin/llvm-ranlib.exe libnanobench.a

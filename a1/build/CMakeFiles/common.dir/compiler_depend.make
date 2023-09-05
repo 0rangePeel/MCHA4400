@@ -2997,7 +2997,9 @@ CMakeFiles/common.dir/src/visualNavigation.cpp.obj: C:/Users/olive/Documents/MCH
   C:/msys64/clang64/include/opencv4/opencv2/core/utility.hpp \
   C:/msys64/clang64/include/opencv4/opencv2/core/optim.hpp \
   C:/msys64/clang64/include/opencv4/opencv2/core/ovx.hpp \
-  C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.h
+  C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.h \
+  C:/Users/olive/Documents/MCHA4400/a1/src/Camera.h \
+  C:/Users/olive/Documents/MCHA4400/a1/src/serialisation.hpp
 
 
 C:/Users/olive/Documents/MCHA4400/a1/src/serialisation.hpp:

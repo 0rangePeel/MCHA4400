@@ -4,6 +4,8 @@
 #include <opencv2/core/mat.hpp>
 #include "BufferedVideo.h"
 #include "visualNavigation.h"
+#include "Camera.h"
+//#include "Plot.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)
 {
@@ -21,8 +23,17 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     }
 
     // Load camera calibration
+    Camera cam;
+    if (!std::filesystem::exists(cameraPath))
+    {
+        std::cout << "File: " << cameraPath << " does not exist" << std::endl;
+    }
+    cv::FileStorage fs(cameraPath.string(), cv::FileStorage::READ);
+    assert(fs.isOpened());
+    fs["camera"] >> cam;
 
     // Display loaded calibration data
+    cam.printCalibration();
 
     // Open input video
     cv::VideoCapture cap(videoPath.string());
@@ -65,6 +76,11 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         // Update state
 
         // Update plot
+        // Get a copy of the image for plot to draw on
+        //state.view() = chessboardImage.image.clone();
+
+        // Update plot
+        //plot.render();
 
         // Write output frame 
         if (doExport)

@@ -240,13 +240,68 @@ ChessboardData::ChessboardData(const std::filesystem::path & configPath)
                 if (std::regex_match(p.path().filename().string(), re))
                 {
                     std::cout << "Loading " << p.path().filename().string() << "..." << std::flush;
-                    cv::Mat image = cv::imread(p.path().string());
-                    std::cout << "done, detecting chessboard..." << std::flush;
-                    ChessboardImage ci(image, chessboard, p.path().filename());
-                    std::cout << (ci.isFound ? "found" : "not found") << std::endl;
-                    if (ci.isFound)
-                    {
-                        chessboardImages.push_back(ci);
+
+                    // Check if input is an image or video (or neither)
+                    // Read the input file
+                    std::string combinedString = root.string() + "/" + p.path().filename().string();
+                    cv::VideoCapture cap(combinedString);
+
+                    // Check if the input is a video
+                    bool isVideo = cap.get(cv::CAP_PROP_FRAME_COUNT) > 1;
+
+                    // Check if the input is an image
+                    bool isImage = !isVideo;
+
+                    cv::Mat image;
+
+                    // Loading Image
+                    if (isImage){
+                        std::cout << "Loading Image " << std::endl;
+                        image = cv::imread(p.path().string());
+                        // Check for chessboard
+                        std::cout << "done, detecting chessboard..." << std::flush;
+                        ChessboardImage ci(image, chessboard, p.path().filename());
+                        std::cout << (ci.isFound ? "found" : "not found") << std::endl;
+                        if (ci.isFound){
+                            chessboardImages.push_back(ci);
+                        }
+                    }
+
+                    // Loading Video
+                    if (isVideo){    
+                        std::cout << std::endl << std::endl << "Loading Video " << std::endl;                  
+                        int totalVideoFrames = static_cast<int>(cap.get(cv::CAP_PROP_FRAME_COUNT));
+                        int totalCalibrationFrames = 50; //  Set this to change the number of frames used for calibration
+                        std::cout << std::endl << "Number of Calibration Frames " << totalCalibrationFrames << std::endl << std::endl; 
+                        int frameSkip = (totalVideoFrames + 1) / totalCalibrationFrames;
+
+                        for (int frameCount = 0; frameCount < totalVideoFrames; frameCount += frameSkip){
+                            
+                            cap.set(cv::CAP_PROP_POS_FRAMES, frameCount); // Frame numbering starts from 0 in C++
+                            // Save Frame to image
+                            bool ret = cap.read(image);
+                            // Fram Succesffully Read
+                            if (ret) {
+                                std::cout << frameCount/frameSkip << ":Frame:" << std::setw(4) << std::setfill('0') << frameCount << " read from " << combinedString << std::setfill(' ') << " : ";
+                            }
+                            else{
+                                std::cout << "Error: Couldn't read a frame from the video." << std::endl;
+                            }
+
+                            // Check for chessboard
+                            cv::Mat imageClone = image.clone();
+                            std::cout << "done, detecting chessboard..." << std::flush;
+                            ChessboardImage ci(imageClone, chessboard, p.path().filename());
+                            std::cout << (ci.isFound ? "found" : "not found") << std::endl;
+                            if (ci.isFound){
+                                chessboardImages.push_back(ci);
+                            }
+                        }
+                    }
+
+                    // Failed to read file
+                    if (!isImage && !isVideo){
+                        std::cout << "Could not read file: " << p.path().filename().string() << std::endl;
                     }
                 }
             }
@@ -321,14 +376,9 @@ void Camera::calibrate(ChessboardData & chessboardData)
         cv::Rodrigues(Thetacn_all[i], Rcn);
         Pose & cameraPose = chessboardData.chessboardImages[i].cameraPose;
         
-        
-        // TODO: Set the camera orientation and position (extrinsic camera parameters)
-        // cameraPose.Rnc = ???;
         cameraPose.Rnc = cv::Matx33d(Rcn).t();
 
-        // cameraPose.rCNn = ???;
         cameraPose.rCNn = -cameraPose.Rnc * cv::Vec3d(rNCc_all[i]);
-
     }
     
     printCalibration();
