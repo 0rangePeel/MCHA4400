@@ -230,6 +230,102 @@ src/Camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Camera.cpp.s
 .PHONY : src/Camera.cpp.s
 
+src/Plot.obj: src/Plot.cpp.obj
+.PHONY : src/Plot.obj
+
+# target to build an object file
+src/Plot.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Plot.cpp.obj
+.PHONY : src/Plot.cpp.obj
+
+src/Plot.i: src/Plot.cpp.i
+.PHONY : src/Plot.i
+
+# target to preprocess a source file
+src/Plot.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Plot.cpp.i
+.PHONY : src/Plot.cpp.i
+
+src/Plot.s: src/Plot.cpp.s
+.PHONY : src/Plot.s
+
+# target to generate assembly for a file
+src/Plot.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Plot.cpp.s
+.PHONY : src/Plot.cpp.s
+
+src/State.obj: src/State.cpp.obj
+.PHONY : src/State.obj
+
+# target to build an object file
+src/State.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/State.cpp.obj
+.PHONY : src/State.cpp.obj
+
+src/State.i: src/State.cpp.i
+.PHONY : src/State.i
+
+# target to preprocess a source file
+src/State.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/State.cpp.i
+.PHONY : src/State.cpp.i
+
+src/State.s: src/State.cpp.s
+.PHONY : src/State.s
+
+# target to generate assembly for a file
+src/State.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/State.cpp.s
+.PHONY : src/State.cpp.s
+
+src/StateSLAM.obj: src/StateSLAM.cpp.obj
+.PHONY : src/StateSLAM.obj
+
+# target to build an object file
+src/StateSLAM.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAM.cpp.obj
+.PHONY : src/StateSLAM.cpp.obj
+
+src/StateSLAM.i: src/StateSLAM.cpp.i
+.PHONY : src/StateSLAM.i
+
+# target to preprocess a source file
+src/StateSLAM.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAM.cpp.i
+.PHONY : src/StateSLAM.cpp.i
+
+src/StateSLAM.s: src/StateSLAM.cpp.s
+.PHONY : src/StateSLAM.s
+
+# target to generate assembly for a file
+src/StateSLAM.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAM.cpp.s
+.PHONY : src/StateSLAM.cpp.s
+
+src/StateSLAMPointLandmarks.obj: src/StateSLAMPointLandmarks.cpp.obj
+.PHONY : src/StateSLAMPointLandmarks.obj
+
+# target to build an object file
+src/StateSLAMPointLandmarks.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAMPointLandmarks.cpp.obj
+.PHONY : src/StateSLAMPointLandmarks.cpp.obj
+
+src/StateSLAMPointLandmarks.i: src/StateSLAMPointLandmarks.cpp.i
+.PHONY : src/StateSLAMPointLandmarks.i
+
+# target to preprocess a source file
+src/StateSLAMPointLandmarks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAMPointLandmarks.cpp.i
+.PHONY : src/StateSLAMPointLandmarks.cpp.i
+
+src/StateSLAMPointLandmarks.s: src/StateSLAMPointLandmarks.cpp.s
+.PHONY : src/StateSLAMPointLandmarks.s
+
+# target to generate assembly for a file
+src/StateSLAMPointLandmarks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAMPointLandmarks.cpp.s
+.PHONY : src/StateSLAMPointLandmarks.cpp.s
+
 src/calibrate.obj: src/calibrate.cpp.obj
 .PHONY : src/calibrate.obj
 
@@ -369,6 +465,18 @@ help:
 	@echo "... src/Camera.obj"
 	@echo "... src/Camera.i"
 	@echo "... src/Camera.s"
+	@echo "... src/Plot.obj"
+	@echo "... src/Plot.i"
+	@echo "... src/Plot.s"
+	@echo "... src/State.obj"
+	@echo "... src/State.i"
+	@echo "... src/State.s"
+	@echo "... src/StateSLAM.obj"
+	@echo "... src/StateSLAM.i"
+	@echo "... src/StateSLAM.s"
+	@echo "... src/StateSLAMPointLandmarks.obj"
+	@echo "... src/StateSLAMPointLandmarks.i"
+	@echo "... src/StateSLAMPointLandmarks.s"
 	@echo "... src/calibrate.obj"
 	@echo "... src/calibrate.i"
 	@echo "... src/calibrate.s"
