@@ -6,13 +6,16 @@
 #include <vector>
 #include <filesystem>
 #include <regex>
+#include <Eigen/Core>
 #include <opencv2/opencv.hpp>
+#include <opencv2/core/eigen.hpp>
 #include <opencv2/core/types.hpp>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/core/persistence.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/calib3d.hpp>
+#include "rotation.hpp"
 #include "Camera.h"
 
 void Chessboard::write(cv::FileStorage& fs) const
@@ -51,10 +54,6 @@ ChessboardImage::ChessboardImage(const cv::Mat & image_, const Chessboard & ches
     , filename(filename_)
     , isFound(false)
 {
-    // TODO:
-    //  - Detect chessboard corners in image and set the corners member
-    //  - (optional) Do subpixel refinement of detected corners
-    // Convert image to grayscale for corner detection
     cv::Mat grayImage;
     cv::cvtColor(image, grayImage, cv::COLOR_BGR2GRAY);
     
@@ -68,7 +67,6 @@ ChessboardImage::ChessboardImage(const cv::Mat & image_, const Chessboard & ches
         cv::TermCriteria criteria(cv::TermCriteria::EPS + cv::TermCriteria::MAX_ITER, 30, 0.1);
         cv::cornerSubPix(grayImage, corners, cv::Size(5,5), cv::Size(-1,-1), criteria);
     }
-
 }
 
 void ChessboardImage::drawCorners(const Chessboard & chessboard)
@@ -77,11 +75,12 @@ void ChessboardImage::drawCorners(const Chessboard & chessboard)
 }
 
 void ChessboardImage::drawBox(const Chessboard & chessboard, const Camera & camera)
-{ 
+{
     cv::Vec3d startPoint(0, 0, 0);
     cv::Vec3d nextPoint(0, 0, 0);
     cv::Vec2d origin(0,0);
     cv::Vec2d point(0,0);
+    
    
     double n1 = 9*0.022;
     double n2 = 6*0.022;
@@ -197,7 +196,6 @@ void ChessboardImage::drawBox(const Chessboard & chessboard, const Camera & came
         
         i -= increment;
     }
-    
 }
 
 void ChessboardImage::recoverPose(const Chessboard & chessboard, const Camera & camera)
@@ -244,7 +242,7 @@ ChessboardData::ChessboardData(const std::filesystem::path & configPath)
                     // Check if input is an image or video (or neither)
                     // Read the input file
                     std::string combinedString = root.string() + "/" + p.path().filename().string();
-                    cv::VideoCapture cap(combinedString);
+                    cv::VideoCapture cap("../data/calibration.MOV");
 
                     // Check if the input is a video
                     bool isVideo = cap.get(cv::CAP_PROP_FRAME_COUNT) > 1;
@@ -352,15 +350,13 @@ void Camera::calibrate(ChessboardData & chessboardData)
     distCoeffs = cv::Mat::zeros(12, 1, CV_64F);
     std::vector<cv::Mat> Thetacn_all, rNCc_all;
     double rms;
-    std::cout << "Calibrating camera..." << std::flush;
-    
+    std::cout << "Calibrating camera... " << std::flush;
+
     // Prepare a vector of vector of 3D points for cv::calibrateCamera
     std::vector<std::vector<cv::Point3f>> objectPoints(chessboardData.chessboardImages.size(), rPNn_all);
 
-    // TODO: Calibrate camera from detected chessboard corners
-    // Calibrate the camera
-    //rms = cv::calibrateCamera(objectPoints, rQOi_all, imageSize, cameraMatrix, distCoeffs, rNCc_all, Thetacn_all, flags);
     rms = cv::calibrateCamera(objectPoints, rQOi_all, imageSize, cameraMatrix, distCoeffs, Thetacn_all, rNCc_all, flags);
+    
     std::cout << "done" << std::endl;
     
     // Calculate horizontal, vertical and diagonal field of view
@@ -374,9 +370,8 @@ void Camera::calibrate(ChessboardData & chessboardData)
         cv::Mat Rcn;
         cv::Rodrigues(Thetacn_all[i], Rcn);
         Pose & cameraPose = chessboardData.chessboardImages[i].cameraPose;
-        
-        cameraPose.Rnc = cv::Matx33d(Rcn).t();
 
+        cameraPose.Rnc = cv::Matx33d(Rcn).t();
         cameraPose.rCNn = -cameraPose.Rnc * cv::Vec3d(rNCc_all[i]);
     }
     
@@ -413,7 +408,6 @@ void Camera::calcFieldOfView()
     assert(cameraMatrix.cols == 3);
     assert(cameraMatrix.type() == CV_64F);
 
-    // TODO:
     // Assuming imageSize contains the size of the image (cv::Size)
     cv::Vec2d cornerPointTL(0, 0); // Top-left corner
     cv::Vec2d cornerPointBR(imageSize.width, imageSize.height); // Bottom-right corner
@@ -448,20 +442,18 @@ void Camera::calcFieldOfView()
     vFOV = std::acos(edgeT_B_DotProduct / (edgeT_Magnitude * edgeB_Magnitude));
     dFOV = std::acos(cornerTL_BR_DotProduct / (cornerTL_Magnitude * cornerBR_Magnitude));
 
-
-
 }
 
 cv::Vec3d Camera::worldToVector(const cv::Vec3d & rPNn, const Pose & pose) const
 {
     cv::Vec3d uPCc;
-    // TODO: Compute the unit vector uPCc from the world position rPNn and camera pose
+
     // Convert the world point to a camera point
     cv::Vec3d rPCc = pose.Rnc.t() * (rPNn - pose.rCNn);
 
     // Normalize the vector
     uPCc = rPCc / cv::norm(rPCc);
-    
+
     return uPCc;
 }
 
@@ -470,10 +462,23 @@ cv::Vec2d Camera::worldToPixel(const cv::Vec3d & rPNn, const Pose & pose) const
     return vectorToPixel(worldToVector(rPNn, pose));
 }
 
+Eigen::Vector2d Camera::worldToPixel(const Eigen::Vector3d & rPNn, const Eigen::Vector6d & eta, Eigen::Matrix23d & JrPNn, Eigen::Matrix26d & Jeta) const
+{
+    // Set elements of JrPNn
+    // TODO: Lab 7
+
+    // Set elements of Jeta
+    // TODO: Lab 7
+
+    return worldToPixel(rPNn, eta);
+    // Note: If you use autodiff, return the evaluated function value (cast with double scalar type) instead of calling worldToPixel as above
+}
+
 cv::Vec2d Camera::vectorToPixel(const cv::Vec3d & rPCc) const
 {
     cv::Vec2d rQOi;
-    // TODO: Compute the pixel location (rQOi) for the given unit vector (uPCc)
+
+    // Compute the pixel location (rQOi) for the given unit vector (uPCc)
     cv::Vec3d uPCc = rPCc/cv::norm(rPCc);
 
     // Form a vector of object points from the unit vector
@@ -487,14 +492,21 @@ cv::Vec2d Camera::vectorToPixel(const cv::Vec3d & rPCc) const
 
     // Extract the first (and only) projected image point
     rQOi = imagePoints[0];
-    
+
+    return rQOi;
+}
+
+Eigen::Vector2d Camera::vectorToPixel(const Eigen::Vector3d & rPCc, Eigen::Matrix23d & J) const
+{
+    Eigen::Vector2d rQOi;
+    // TODO: Lab 7 (optional)
     return rQOi;
 }
 
 cv::Vec3d Camera::pixelToVector(const cv::Vec2d & rQOi) const
 {
     cv::Vec3d uPCc;
-    // TODO: Compute unit vector (uPCc) for the given pixel location (rQOi)
+    
     // Form a vector of image points from the given pixel coordinate
     std::vector<cv::Vec2d> imagePoints{rQOi};
     
@@ -509,7 +521,7 @@ cv::Vec3d Camera::pixelToVector(const cv::Vec2d & rQOi) const
 
     // Normalize the vector
     uPCc = uPCc / cv::norm(uPCc);
-    
+
     return uPCc;
 }
 
@@ -518,7 +530,7 @@ bool Camera::isVectorWithinFOV(const cv::Vec3d & rPCc) const
     cv::Vec3d uPCc = rPCc/cv::norm(rPCc);
     assert(std::abs(cv::norm(uPCc) - 1.0) < 100*std::numeric_limits<double>::epsilon());
     
-    /////////// TODO: Check if uPCc lies in the image //////////////////////
+    /////////// Check if uPCc lies in the image //////////////////////
     // Project the vector to pixel coordinates
     //double projectionXY = sqrt(uPCc[0] * uPCc[0] + uPCc[1] * uPCc[1]);
     //double diagonal = atan2(projectionXY, uPCc[2]); // In radians

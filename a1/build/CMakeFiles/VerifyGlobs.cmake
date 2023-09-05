@@ -32,6 +32,7 @@ endif()
 # SRC_BIN at CMakeLists.txt:86 (file)
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/olive/Documents/MCHA4400/a1/src/*.hpp")
 set(OLD_GLOB
+  "C:/Users/olive/Documents/MCHA4400/a1/src/rotation.hpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/serialisation.hpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
