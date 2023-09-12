@@ -136,7 +136,7 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureBundle(const Eigen::VectorX<Scal
 
 // Image feature location for a given ARUCO Tag point
 template <typename Scalar>
-Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, const int j) const
+Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, int j) const
 {
     // Obtain camera pose from state
     Eigen::Vector3<Scalar> rCNn = cameraPosition(cam, x);

@@ -16,20 +16,20 @@ class MeasurementPoseBundle : public Measurement
 public:
     MeasurementPoseBundle(double time, const Eigen::VectorXd & y, const Camera & camera);
     virtual double logLikelihood(const State & state, const Eigen::VectorXd & x) const override;
-    virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const override;
-    virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const override;
+    //virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const override;
+    //virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const override;
 
-    //virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, const int j, Eigen::VectorXd & g) const;
-    //virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, const int j, Eigen::VectorXd & g, Eigen::MatrixXd & H) const;
+    virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, int j, Eigen::VectorXd & g) const override;
+    virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, int j, Eigen::VectorXd & g, Eigen::MatrixXd & H) const override;
 
 protected:
     virtual void update(State & state) override;
     const Camera & camera_;
-    //template <typename Scalar> Scalar logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const Camera & cam, const StateSLAM stateSLAM, std::size_t idxLandmark, const int j) const;
+    template <typename Scalar> Scalar logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const Camera & cam, const StateSLAM stateSLAM, std::size_t idxLandmark, const int j) const;
 };
-/*
+
 template <typename Scalar>
-Scalar MeasurementPoseBundle::logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const Camera & cam, const StateSLAM stateSLAM, std::size_t idxLandmark, const int j) const
+Scalar MeasurementPoseBundle::logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const Camera & cam, const StateSLAM stateSLAM, std::size_t idxLandmark, int j) const
 {
     Eigen::VectorX<Scalar> y = y_.cast<Scalar>();
     Eigen::VectorX<Scalar> h = stateSLAM.predictFeatureTag(x, cam, idxLandmark, j);
@@ -37,5 +37,5 @@ Scalar MeasurementPoseBundle::logLikelihoodImpl(const Eigen::VectorX<Scalar> & x
     Gaussian<Scalar> likelihood(h, SR);
     return likelihood.log(y);
 }
-*/
+
 #endif

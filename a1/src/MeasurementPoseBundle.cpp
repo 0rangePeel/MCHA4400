@@ -75,11 +75,11 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     return 0;
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const
+double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, int j, Eigen::VectorXd & g) const
 {
     // Evaluate gradient for SR1 and Newton methods
     // TODO: Assignment(s)
-    /*
+    
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
     g.resize(x.size());
     g.setZero();
@@ -87,30 +87,32 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     autodiff::dual fdual;
     g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, camera_, stateSLAM, idxLandmark, j), fdual);
     return val(fdual);
-    */
-
+    
+    /*
     g.resize(x.size());
     g.setZero();
     return logLikelihood(state, x);
+    */
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
+double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, int j, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
 {
     // Evaluate Hessian for Newton method
     // TODO: Assignment(s)
-    /*
+    
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
     H.resize(x.size());
     H.setZero();
     Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
     autodiff::dual fdual;
-    H = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, camera_, stateSLAM, idxLandmark, j), fdual);
+    H = hessian(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, camera_, stateSLAM, idxLandmark, j), fdual, g);
     return val(fdual);
-    */
-
+    
+    /*
     H.resize(x.size(), x.size());
     H.setZero();
     return logLikelihood(state, x, g);
+    */
 }
 
 void MeasurementPoseBundle::update(State & state)
