@@ -95,11 +95,13 @@ struct Camera
     double dFOV = 0.0;                                      // Diagonal field of view
 
     Eigen::Vector3d rCBb = Eigen::Vector3d::Zero();         // TODO: Assignment(s)
-    Eigen::Matrix3d Rbc = Eigen::Matrix3d::Identity();      // TODO: Assignment(s)
+    //Eigen::Matrix3d Rbc = Eigen::Matrix3d::Identity();      // TODO: Assignment(s)
     //Rbc should be 
     // 0 1 0
     // 0 0 1
     // 1 0 0
+    Eigen::Matrix3d Rbc = (Eigen::Matrix3d() << 0, 1, 0, 0, 0, 1, 1, 0, 0).finished();
+
 
 };
 

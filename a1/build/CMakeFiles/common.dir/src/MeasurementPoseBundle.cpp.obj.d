@@ -815,6 +815,7 @@ CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj: \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/StlIterators.h \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
+  C:/Users/olive/Documents/MCHA4400/a1/src/rotation.hpp \
   C:/Users/olive/Documents/MCHA4400/a1/src/State.h \
   C:/Users/olive/Documents/MCHA4400/a1/src/Gaussian.hpp \
   C:/msys64/clang64/include/boost/random/mersenne_twister.hpp \
@@ -1400,7 +1401,6 @@ CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj: \
   C:/msys64/clang64/include/opencv4/opencv2/flann/config.h \
   C:/msys64/clang64/include/opencv4/opencv2/core/affine.hpp \
   C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAM.h \
-  C:/Users/olive/Documents/MCHA4400/a1/src/rotation.hpp \
   C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPoseLandmarks.h \
   C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.h \
   C:/Users/olive/Documents/MCHA4400/a1/src/Measurement.h \
@@ -1415,4 +1415,125 @@ CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj: \
   C:/msys64/clang64/include/autodiff/forward/dual/eigen.hpp \
   C:/msys64/clang64/include/autodiff/forward/utils/gradient.hpp \
   C:/msys64/clang64/include/autodiff/common/eigen.hpp \
-  C:/msys64/clang64/include/autodiff/common/classtraits.hpp
+  C:/msys64/clang64/include/autodiff/common/classtraits.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/highgui.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/imgcodecs.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/videoio.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/eigen.hpp \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/Tensor \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../../../Eigen/Core \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../SpecialFunctions \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../../../Eigen/src/Core/util/DisableStupidWarnings.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/BesselFunctionsImpl.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/BesselFunctionsBFloat16.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/BesselFunctionsHalf.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/BesselFunctionsPacketMath.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/BesselFunctionsFunctors.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/BesselFunctionsArrayAPI.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/SpecialFunctionsImpl.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/SpecialFunctionsBFloat16.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/SpecialFunctionsHalf.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/SpecialFunctionsPacketMath.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/SpecialFunctionsFunctors.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../src/SpecialFunctions/SpecialFunctionsArrayAPI.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/../../../Eigen/src/Core/util/ReenableStupidWarnings.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Meta.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/util/EmulateArray.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/util/CXX11Workarounds.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/util/MaxSizeVector.h \
+  C:/msys64/clang64/include/c++/v1/random \
+  C:/msys64/clang64/include/c++/v1/__random/bernoulli_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/uniform_real_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/generate_canonical.h \
+  C:/msys64/clang64/include/c++/v1/__random/binomial_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/cauchy_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/chi_squared_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/gamma_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/exponential_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/clamp_to_integral.h \
+  C:/msys64/clang64/include/c++/v1/__random/default_random_engine.h \
+  C:/msys64/clang64/include/c++/v1/__random/linear_congruential_engine.h \
+  C:/msys64/clang64/include/c++/v1/__random/is_seed_sequence.h \
+  C:/msys64/clang64/include/c++/v1/__random/discard_block_engine.h \
+  C:/msys64/clang64/include/c++/v1/__random/discrete_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/extreme_value_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/fisher_f_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/geometric_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/negative_binomial_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/poisson_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/normal_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/independent_bits_engine.h \
+  C:/msys64/clang64/include/c++/v1/__random/knuth_b.h \
+  C:/msys64/clang64/include/c++/v1/__random/shuffle_order_engine.h \
+  C:/msys64/clang64/include/c++/v1/__random/lognormal_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/mersenne_twister_engine.h \
+  C:/msys64/clang64/include/c++/v1/__random/piecewise_constant_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/piecewise_linear_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/random_device.h \
+  C:/msys64/clang64/include/c++/v1/__random/ranlux.h \
+  C:/msys64/clang64/include/c++/v1/__random/subtract_with_carry_engine.h \
+  C:/msys64/clang64/include/c++/v1/__random/seed_seq.h \
+  C:/msys64/clang64/include/c++/v1/__random/student_t_distribution.h \
+  C:/msys64/clang64/include/c++/v1/__random/weibull_distribution.h \
+  C:/msys64/clang64/include/c++/v1/thread \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMacros.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorForwardDeclarations.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMeta.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorFunctors.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorCostModel.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceDefault.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceThreadPool.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceGpu.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDeviceSycl.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIndexList.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDimensionList.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDimensions.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorInitializer.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorTraits.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorRandom.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorUInt128.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIntDiv.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorGlobalFunctions.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBase.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBlock.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorEvaluator.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorExpr.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorReduction.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorReductionGpu.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorArgMax.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConcatenation.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionMapper.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionBlocking.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContraction.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionThreadPool.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorContractionGpu.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConversion.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorConvolution.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorFFT.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorPatch.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorImagePatch.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorVolumePatch.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorBroadcasting.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorChipping.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorInflation.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorLayoutSwap.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMorphing.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorPadding.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorReverse.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorShuffling.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorStriding.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorCustomOp.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorEvalTo.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorForcedEval.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorGenerator.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorAssign.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorScan.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorTrace.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorExecutor.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorDevice.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorStorage.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/Tensor.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorFixedSize.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorMap.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorRef.h \
+  C:/msys64/clang64/include/eigen3/unsupported/Eigen/CXX11/src/Tensor/TensorIO.h

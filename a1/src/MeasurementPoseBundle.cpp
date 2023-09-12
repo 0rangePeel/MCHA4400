@@ -2,11 +2,18 @@
 #include <numeric>
 #include <vector>
 #include <Eigen/Core>
+#include "rotation.hpp"
 #include "State.h"
 #include "Camera.h"
 #include "StateSLAM.h"
 #include "StateSLAMPoseLandmarks.h"
 #include "MeasurementPoseBundle.h"
+
+#include <opencv2/core.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/core/mat.hpp>
+#include <opencv2/core/eigen.hpp>
+#include <opencv2/imgcodecs.hpp>
 
 #include <autodiff/forward/dual.hpp>
 #include <autodiff/forward/dual/eigen.hpp>
@@ -27,15 +34,45 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
 {
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
 
-    // Select visible landmarks
+    Pose cameraPose;
+    // Extract Thetanb from x
+    Eigen::Vector3d thetanb = x.segment(9, 3);
+    
+    // Get Pose Matrix
+    Eigen::Matrix3d Rnb = rpy2rot(thetanb);
+
+    // Fill Pose from camera.h
+    Eigen::Matrix3d Rnc = Rnb * camera_.Rbc;
+    cv::eigen2cv(Rnc, cameraPose.Rnc);
+
+    Eigen::Vector3d rBNn = x.segment(6, 3);
+    cv::eigen2cv(rBNn, cameraPose.rCNn); // "Assume that B and C coincide"
+
     std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
+    for (std::size_t j = 0; j < stateSLAM.numberLandmarks(); ++j)
+    {
+        Eigen::Vector3d murPNn = stateSLAM.landmarkPositionDensity(j).mean();
+        cv::Vec3d rPNn;
+        cv::eigen2cv(murPNn, rPNn);
+        if (camera_.isWorldWithinFOV(rPNn, cameraPose))
+        {
+            std::cout << "Landmark " << j << " is expected to be within camera FOV" << std::endl;
+            idxLandmarks.push_back(j);
+        }
+        else
+        {
+            std::cout << "Landmark " << j << " is NOT expected to be within camera FOV" << std::endl;
+        }
+    }
+    
     // TODO: Assignment(s)
-    std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
+    //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
 
-    Eigen::VectorXd h = stateSLAM.predictFeatureBundle(x, camera_, idxLandmarks);
+    //Eigen::VectorXd h = stateSLAM.predictFeatureBundle(x, camera_, idxLandmarks);
 
-    Gaussian likelihood(h, noise_.sqrtCov());
-    return likelihood.log(y_);
+    //Gaussian likelihood(h, noise_.sqrtCov());
+    //return likelihood.log(y_);
+    return 0;
 }
 
 double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const
