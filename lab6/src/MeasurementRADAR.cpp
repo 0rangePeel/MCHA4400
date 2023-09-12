@@ -7,7 +7,8 @@
 #define DERIVATIVE_REVERSE_AUTODIFF 3
 
 #ifndef DERIVATIVE_MODE
-#define DERIVATIVE_MODE DERIVATIVE_ANALYTICAL // Set the derivative mode here to easily switch between methods
+//#define DERIVATIVE_MODE DERIVATIVE_ANALYTICAL // Set the derivative mode here to easily switch between methods
+#define DERIVATIVE_MODE DERIVATIVE_FORWARD_AUTODIFF // Set the derivative mode here to easily switch between methods
 #endif
 
 // If using autodiff, include either the forward-mode headers or the
@@ -91,6 +92,12 @@ double MeasurementRADAR::logLikelihood(const Eigen::VectorXd & x, Eigen::VectorX
 #elif DERIVATIVE_MODE == DERIVATIVE_FORWARD_AUTODIFF
     // ii) Forward-mode autodifferentiation
     // TODO
+    
+    Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
+    autodiff::dual fdual;
+    g = gradient(&MeasurementRADAR::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual), fdual);
+    return val(fdual);
+    
 #elif DERIVATIVE_MODE == DERIVATIVE_REVERSE_AUTODIFF
     // iii) Reverse-mode autodifferentiation
     // TODO
@@ -105,6 +112,12 @@ double MeasurementRADAR::logLikelihood(const Eigen::VectorXd & x, Eigen::VectorX
 #elif DERIVATIVE_MODE == DERIVATIVE_FORWARD_AUTODIFF
     // ii) Forward-mode autodifferentiation
     // TODO
+    
+    Eigen::VectorX<autodiff::dual2nd> xdual = x.cast<autodiff::dual2nd>();
+    autodiff::dual2nd fdual;
+    H = hessian(&MeasurementRADAR::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual), fdual, g);
+    return val(fdual);
+    
 #elif DERIVATIVE_MODE == DERIVATIVE_REVERSE_AUTODIFF
     // iii) Reverse-mode autodifferentiation
     // TODO

@@ -7,11 +7,17 @@ file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/olive/Documents/MCHA4400/a1/s
 set(OLD_GLOB
   "C:/Users/olive/Documents/MCHA4400/a1/src/BufferedVideo.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/Camera.cpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/Event.cpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/Measurement.cpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPointBundle.cpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/Plot.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/State.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAM.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.cpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPoseLandmarks.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/calibrate.cpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/funcmin.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/main.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.cpp"
@@ -26,10 +32,15 @@ file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/olive/Documents/MCHA4400/a1/s
 set(OLD_GLOB
   "C:/Users/olive/Documents/MCHA4400/a1/src/BufferedVideo.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/Camera.h"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/Event.h"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/Measurement.h"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPointBundle.h"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/Plot.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/State.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAM.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.h"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPoseLandmarks.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/calibrate.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.h"
@@ -43,6 +54,7 @@ endif()
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "C:/Users/olive/Documents/MCHA4400/a1/src/*.hpp")
 set(OLD_GLOB
   "C:/Users/olive/Documents/MCHA4400/a1/src/Gaussian.hpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/funcmin.hpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/rotation.hpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/serialisation.hpp"
   )

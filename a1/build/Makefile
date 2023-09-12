@@ -230,6 +230,102 @@ src/Camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Camera.cpp.s
 .PHONY : src/Camera.cpp.s
 
+src/Event.obj: src/Event.cpp.obj
+.PHONY : src/Event.obj
+
+# target to build an object file
+src/Event.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Event.cpp.obj
+.PHONY : src/Event.cpp.obj
+
+src/Event.i: src/Event.cpp.i
+.PHONY : src/Event.i
+
+# target to preprocess a source file
+src/Event.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Event.cpp.i
+.PHONY : src/Event.cpp.i
+
+src/Event.s: src/Event.cpp.s
+.PHONY : src/Event.s
+
+# target to generate assembly for a file
+src/Event.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Event.cpp.s
+.PHONY : src/Event.cpp.s
+
+src/Measurement.obj: src/Measurement.cpp.obj
+.PHONY : src/Measurement.obj
+
+# target to build an object file
+src/Measurement.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Measurement.cpp.obj
+.PHONY : src/Measurement.cpp.obj
+
+src/Measurement.i: src/Measurement.cpp.i
+.PHONY : src/Measurement.i
+
+# target to preprocess a source file
+src/Measurement.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Measurement.cpp.i
+.PHONY : src/Measurement.cpp.i
+
+src/Measurement.s: src/Measurement.cpp.s
+.PHONY : src/Measurement.s
+
+# target to generate assembly for a file
+src/Measurement.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/Measurement.cpp.s
+.PHONY : src/Measurement.cpp.s
+
+src/MeasurementPointBundle.obj: src/MeasurementPointBundle.cpp.obj
+.PHONY : src/MeasurementPointBundle.obj
+
+# target to build an object file
+src/MeasurementPointBundle.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.obj
+.PHONY : src/MeasurementPointBundle.cpp.obj
+
+src/MeasurementPointBundle.i: src/MeasurementPointBundle.cpp.i
+.PHONY : src/MeasurementPointBundle.i
+
+# target to preprocess a source file
+src/MeasurementPointBundle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.i
+.PHONY : src/MeasurementPointBundle.cpp.i
+
+src/MeasurementPointBundle.s: src/MeasurementPointBundle.cpp.s
+.PHONY : src/MeasurementPointBundle.s
+
+# target to generate assembly for a file
+src/MeasurementPointBundle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.s
+.PHONY : src/MeasurementPointBundle.cpp.s
+
+src/MeasurementPoseBundle.obj: src/MeasurementPoseBundle.cpp.obj
+.PHONY : src/MeasurementPoseBundle.obj
+
+# target to build an object file
+src/MeasurementPoseBundle.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj
+.PHONY : src/MeasurementPoseBundle.cpp.obj
+
+src/MeasurementPoseBundle.i: src/MeasurementPoseBundle.cpp.i
+.PHONY : src/MeasurementPoseBundle.i
+
+# target to preprocess a source file
+src/MeasurementPoseBundle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.i
+.PHONY : src/MeasurementPoseBundle.cpp.i
+
+src/MeasurementPoseBundle.s: src/MeasurementPoseBundle.cpp.s
+.PHONY : src/MeasurementPoseBundle.s
+
+# target to generate assembly for a file
+src/MeasurementPoseBundle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.s
+.PHONY : src/MeasurementPoseBundle.cpp.s
+
 src/Plot.obj: src/Plot.cpp.obj
 .PHONY : src/Plot.obj
 
@@ -326,6 +422,30 @@ src/StateSLAMPointLandmarks.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAMPointLandmarks.cpp.s
 .PHONY : src/StateSLAMPointLandmarks.cpp.s
 
+src/StateSLAMPoseLandmarks.obj: src/StateSLAMPoseLandmarks.cpp.obj
+.PHONY : src/StateSLAMPoseLandmarks.obj
+
+# target to build an object file
+src/StateSLAMPoseLandmarks.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAMPoseLandmarks.cpp.obj
+.PHONY : src/StateSLAMPoseLandmarks.cpp.obj
+
+src/StateSLAMPoseLandmarks.i: src/StateSLAMPoseLandmarks.cpp.i
+.PHONY : src/StateSLAMPoseLandmarks.i
+
+# target to preprocess a source file
+src/StateSLAMPoseLandmarks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAMPoseLandmarks.cpp.i
+.PHONY : src/StateSLAMPoseLandmarks.cpp.i
+
+src/StateSLAMPoseLandmarks.s: src/StateSLAMPoseLandmarks.cpp.s
+.PHONY : src/StateSLAMPoseLandmarks.s
+
+# target to generate assembly for a file
+src/StateSLAMPoseLandmarks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/StateSLAMPoseLandmarks.cpp.s
+.PHONY : src/StateSLAMPoseLandmarks.cpp.s
+
 src/calibrate.obj: src/calibrate.cpp.obj
 .PHONY : src/calibrate.obj
 
@@ -349,6 +469,30 @@ src/calibrate.s: src/calibrate.cpp.s
 src/calibrate.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/calibrate.cpp.s
 .PHONY : src/calibrate.cpp.s
+
+src/funcmin.obj: src/funcmin.cpp.obj
+.PHONY : src/funcmin.obj
+
+# target to build an object file
+src/funcmin.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/funcmin.cpp.obj
+.PHONY : src/funcmin.cpp.obj
+
+src/funcmin.i: src/funcmin.cpp.i
+.PHONY : src/funcmin.i
+
+# target to preprocess a source file
+src/funcmin.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/funcmin.cpp.i
+.PHONY : src/funcmin.cpp.i
+
+src/funcmin.s: src/funcmin.cpp.s
+.PHONY : src/funcmin.s
+
+# target to generate assembly for a file
+src/funcmin.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/funcmin.cpp.s
+.PHONY : src/funcmin.cpp.s
 
 src/imagefeatures.obj: src/imagefeatures.cpp.obj
 .PHONY : src/imagefeatures.obj
@@ -489,6 +633,18 @@ help:
 	@echo "... src/Camera.obj"
 	@echo "... src/Camera.i"
 	@echo "... src/Camera.s"
+	@echo "... src/Event.obj"
+	@echo "... src/Event.i"
+	@echo "... src/Event.s"
+	@echo "... src/Measurement.obj"
+	@echo "... src/Measurement.i"
+	@echo "... src/Measurement.s"
+	@echo "... src/MeasurementPointBundle.obj"
+	@echo "... src/MeasurementPointBundle.i"
+	@echo "... src/MeasurementPointBundle.s"
+	@echo "... src/MeasurementPoseBundle.obj"
+	@echo "... src/MeasurementPoseBundle.i"
+	@echo "... src/MeasurementPoseBundle.s"
 	@echo "... src/Plot.obj"
 	@echo "... src/Plot.i"
 	@echo "... src/Plot.s"
@@ -501,9 +657,15 @@ help:
 	@echo "... src/StateSLAMPointLandmarks.obj"
 	@echo "... src/StateSLAMPointLandmarks.i"
 	@echo "... src/StateSLAMPointLandmarks.s"
+	@echo "... src/StateSLAMPoseLandmarks.obj"
+	@echo "... src/StateSLAMPoseLandmarks.i"
+	@echo "... src/StateSLAMPoseLandmarks.s"
 	@echo "... src/calibrate.obj"
 	@echo "... src/calibrate.i"
 	@echo "... src/calibrate.s"
+	@echo "... src/funcmin.obj"
+	@echo "... src/funcmin.i"
+	@echo "... src/funcmin.s"
 	@echo "... src/imagefeatures.obj"
 	@echo "... src/imagefeatures.i"
 	@echo "... src/imagefeatures.s"
