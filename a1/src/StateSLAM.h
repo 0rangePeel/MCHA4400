@@ -7,6 +7,7 @@
 #include "Gaussian.hpp"
 #include "Camera.h"
 #include "State.h"
+#include "rotation.hpp"
 
 /*
  * State containing body velocities, body pose and landmark states
@@ -53,6 +54,8 @@ public:
     Eigen::VectorXd predictFeatureBundle(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const;
     Gaussian<double> predictFeatureBundleDensity(const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const;
     Gaussian<double> predictFeatureBundleDensity(const Camera & cam, const std::vector<std::size_t> & idxLandmarks, const Gaussian<double> & noise) const;
+
+    template <typename Scalar> Eigen::Vector2<Scalar> predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, const int j) const;
 
     cv::Mat & view();
     const cv::Mat & view() const;
@@ -128,6 +131,57 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureBundle(const Eigen::VectorX<Scal
         // TODO: Lab 8
     }
     return h;
+}
+
+// Image feature location for a given ARUCO Tag point
+template <typename Scalar>
+Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, const int j) const
+{
+    // Obtain camera pose from state
+    Eigen::Vector3<Scalar> rCNn = cameraPosition(cam, x);
+    Eigen::Matrix3<Scalar> Rnc = cameraOrientation(cam, x);
+
+    // Obtain landmark position from state
+    std::size_t idx = landmarkPositionIndex(idxLandmark);
+    Eigen::Vector3<Scalar> rjNn = x.template segment<3>(idx);
+
+    Eigen::Vector3<Scalar> thetanj = x.template segment<3>(idx + 3);
+
+    Eigen::Matrix3<Scalar> Rnj = rpy2rot(thetanj);
+
+    Eigen::Vector3<Scalar> rjcNj;
+
+    const double l = 0.166;
+    
+    // Corner offset given which corner from j
+    switch (j) {
+        case 1:
+            rjcNj << -l/2, l/2, 0;
+            break;
+        case 2:
+            rjcNj << l/2, l/2, 0;
+            break;
+        case 3:
+            rjcNj << l/2, -l/2, 0;
+            break;
+        case 4:
+            rjcNj<< -l/2, -l/2, 0;
+            break;
+        default:
+            std::cout << "Invalid choice. Please enter a number between 1 and 4." << std::endl;
+    }
+
+    Eigen::Vector3<Scalar> rjcNn = Rnj * rjcNj + rjNn;
+
+    // Camera vector
+    Eigen::Vector3<Scalar> rPCc = Rnc.transpose() * (rjcNn - rCNn);
+
+    // Pixel coordinates
+    Eigen::Vector2<Scalar> rQOi;
+    
+    rQOi = cam.vectorToPixel(rPCc);
+
+    return rQOi;
 }
 
 #endif

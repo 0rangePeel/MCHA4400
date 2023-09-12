@@ -12,6 +12,7 @@ set(OLD_GLOB
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAM.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/calibrate.cpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/main.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.cpp"
   )
@@ -30,6 +31,7 @@ set(OLD_GLOB
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAM.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/calibrate.h"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.h"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")

@@ -1,30 +1,62 @@
-CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
-  C:/Users/olive/Documents/MCHA4400/a1/test/src/camera.cpp \
-  C:/msys64/clang64/include/doctest/doctest.h \
-  C:/msys64/clang64/include/c++/v1/ciso646 \
+CMakeFiles/common.dir/src/imagefeatures.cpp.obj: \
+  C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.cpp \
+  C:/msys64/clang64/include/c++/v1/iostream \
   C:/msys64/clang64/include/c++/v1/__assert \
   C:/msys64/clang64/include/c++/v1/__config \
   C:/msys64/clang64/include/c++/v1/__config_site \
   C:/msys64/clang64/include/c++/v1/__verbose_abort \
   C:/msys64/clang64/include/c++/v1/__availability \
-  C:/msys64/clang64/include/c++/v1/cstddef \
-  C:/msys64/clang64/include/c++/v1/__type_traits/enable_if.h \
-  C:/msys64/clang64/include/c++/v1/__type_traits/integral_constant.h \
-  C:/msys64/clang64/include/c++/v1/__type_traits/is_integral.h \
-  C:/msys64/clang64/include/c++/v1/__type_traits/remove_cv.h \
-  C:/msys64/clang64/include/c++/v1/__type_traits/remove_const.h \
-  C:/msys64/clang64/include/c++/v1/__type_traits/remove_volatile.h \
   C:/msys64/clang64/include/c++/v1/version \
+  C:/msys64/clang64/include/c++/v1/ios \
+  C:/msys64/clang64/include/c++/v1/__ios/fpos.h \
+  C:/msys64/clang64/include/c++/v1/iosfwd \
+  C:/msys64/clang64/include/c++/v1/__fwd/string.h \
+  C:/msys64/clang64/include/c++/v1/__fwd/memory_resource.h \
+  C:/msys64/clang64/include/c++/v1/__mbstate_t.h \
+  C:/msys64/clang64/include/c++/v1/wchar.h \
   C:/msys64/clang64/include/c++/v1/stddef.h \
   C:/msys64/clang64/lib/clang/16/include/stddef.h \
   C:/msys64/clang64/lib/clang/16/include/__stddef_max_align_t.h \
-  C:/msys64/clang64/include/c++/v1/ostream \
+  C:/msys64/clang64/include/wchar.h C:/msys64/clang64/include/corecrt.h \
+  C:/msys64/clang64/include/_mingw.h \
+  C:/msys64/clang64/include/_mingw_mac.h \
+  C:/msys64/clang64/include/_mingw_secapi.h \
+  C:/msys64/clang64/lib/clang/16/include/vadefs.h \
+  C:/msys64/clang64/include/vadefs.h \
+  C:/msys64/clang64/include/sdks/_mingw_ddk.h \
+  C:/msys64/clang64/include/corecrt_stdio_config.h \
+  C:/msys64/clang64/include/corecrt_wstdlib.h \
+  C:/msys64/clang64/include/_mingw_off_t.h \
+  C:/msys64/clang64/include/_mingw_stat64.h \
+  C:/msys64/clang64/include/swprintf.inl \
+  C:/msys64/clang64/include/sec_api/wchar_s.h \
+  C:/msys64/clang64/include/c++/v1/__locale \
+  C:/msys64/clang64/include/c++/v1/cctype \
+  C:/msys64/clang64/include/c++/v1/ctype.h \
+  C:/msys64/clang64/include/ctype.h C:/msys64/clang64/include/crtdefs.h \
+  C:/msys64/clang64/include/c++/v1/cstdint \
+  C:/msys64/clang64/include/c++/v1/stdint.h \
+  C:/msys64/clang64/lib/clang/16/include/stdint.h \
+  C:/msys64/clang64/include/stdint.h \
+  C:/msys64/clang64/include/c++/v1/locale.h \
+  C:/msys64/clang64/include/locale.h \
+  C:/msys64/clang64/include/c++/v1/stdio.h \
+  C:/msys64/clang64/include/stdio.h \
+  C:/msys64/clang64/include/sec_api/stdio_s.h \
+  C:/msys64/clang64/include/c++/v1/mutex \
   C:/msys64/clang64/include/c++/v1/__memory/shared_ptr.h \
   C:/msys64/clang64/include/c++/v1/__compare/compare_three_way.h \
   C:/msys64/clang64/include/c++/v1/__compare/three_way_comparable.h \
   C:/msys64/clang64/include/c++/v1/__compare/common_comparison_category.h \
   C:/msys64/clang64/include/c++/v1/__compare/ordering.h \
+  C:/msys64/clang64/include/c++/v1/__type_traits/enable_if.h \
   C:/msys64/clang64/include/c++/v1/__type_traits/is_same.h \
+  C:/msys64/clang64/include/c++/v1/__type_traits/integral_constant.h \
+  C:/msys64/clang64/include/c++/v1/cstddef \
+  C:/msys64/clang64/include/c++/v1/__type_traits/is_integral.h \
+  C:/msys64/clang64/include/c++/v1/__type_traits/remove_cv.h \
+  C:/msys64/clang64/include/c++/v1/__type_traits/remove_const.h \
+  C:/msys64/clang64/include/c++/v1/__type_traits/remove_volatile.h \
   C:/msys64/clang64/include/c++/v1/__concepts/common_reference_with.h \
   C:/msys64/clang64/include/c++/v1/__concepts/convertible_to.h \
   C:/msys64/clang64/include/c++/v1/__type_traits/is_convertible.h \
@@ -85,17 +117,10 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/new \
   C:/msys64/clang64/include/c++/v1/cstdlib \
   C:/msys64/clang64/include/c++/v1/stdlib.h \
-  C:/msys64/clang64/include/stdlib.h C:/msys64/clang64/include/corecrt.h \
-  C:/msys64/clang64/include/_mingw.h \
-  C:/msys64/clang64/include/_mingw_mac.h \
-  C:/msys64/clang64/include/_mingw_secapi.h \
-  C:/msys64/clang64/lib/clang/16/include/vadefs.h \
-  C:/msys64/clang64/include/vadefs.h \
-  C:/msys64/clang64/include/sdks/_mingw_ddk.h \
-  C:/msys64/clang64/include/corecrt_wstdlib.h \
+  C:/msys64/clang64/include/stdlib.h \
   C:/msys64/clang64/include/c++/v1/limits.h \
   C:/msys64/clang64/lib/clang/16/include/limits.h \
-  C:/msys64/clang64/include/limits.h C:/msys64/clang64/include/crtdefs.h \
+  C:/msys64/clang64/include/limits.h \
   C:/msys64/clang64/include/sec_api/stdlib_s.h \
   C:/msys64/clang64/include/malloc.h \
   C:/msys64/clang64/lib/clang/16/include/mm_malloc.h \
@@ -180,27 +205,12 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/__type_traits/remove_pointer.h \
   C:/msys64/clang64/include/c++/v1/__type_traits/result_of.h \
   C:/msys64/clang64/include/c++/v1/__type_traits/type_identity.h \
-  C:/msys64/clang64/include/c++/v1/cstdint \
-  C:/msys64/clang64/include/c++/v1/stdint.h \
-  C:/msys64/clang64/lib/clang/16/include/stdint.h \
-  C:/msys64/clang64/include/stdint.h \
   C:/msys64/clang64/include/c++/v1/__memory/pointer_traits.h \
   C:/msys64/clang64/include/c++/v1/limits \
   C:/msys64/clang64/include/c++/v1/__undef_macros \
   C:/msys64/clang64/include/c++/v1/__memory/allocator.h \
   C:/msys64/clang64/include/c++/v1/__memory/allocate_at_least.h \
   C:/msys64/clang64/include/c++/v1/stdexcept \
-  C:/msys64/clang64/include/c++/v1/iosfwd \
-  C:/msys64/clang64/include/c++/v1/__fwd/string.h \
-  C:/msys64/clang64/include/c++/v1/__fwd/memory_resource.h \
-  C:/msys64/clang64/include/c++/v1/__mbstate_t.h \
-  C:/msys64/clang64/include/c++/v1/wchar.h \
-  C:/msys64/clang64/include/wchar.h \
-  C:/msys64/clang64/include/corecrt_stdio_config.h \
-  C:/msys64/clang64/include/_mingw_off_t.h \
-  C:/msys64/clang64/include/_mingw_stat64.h \
-  C:/msys64/clang64/include/swprintf.inl \
-  C:/msys64/clang64/include/sec_api/wchar_s.h \
   C:/msys64/clang64/include/c++/v1/__memory/allocator_destructor.h \
   C:/msys64/clang64/include/c++/v1/__memory/auto_ptr.h \
   C:/msys64/clang64/include/c++/v1/__memory/compressed_pair.h \
@@ -329,14 +339,10 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/__compare/compare_strong_order_fallback.h \
   C:/msys64/clang64/include/c++/v1/__compare/compare_weak_order_fallback.h \
   C:/msys64/clang64/include/c++/v1/__compare/is_eq.h \
-  C:/msys64/clang64/include/c++/v1/bitset \
-  C:/msys64/clang64/include/c++/v1/__algorithm/fill.h \
-  C:/msys64/clang64/include/c++/v1/__algorithm/fill_n.h \
-  C:/msys64/clang64/include/c++/v1/__bit_reference \
-  C:/msys64/clang64/include/c++/v1/__algorithm/copy_n.h \
-  C:/msys64/clang64/include/c++/v1/__bit/countr.h \
-  C:/msys64/clang64/include/c++/v1/__bit/rotate.h \
-  C:/msys64/clang64/include/c++/v1/__bit/popcount.h \
+  C:/msys64/clang64/include/c++/v1/__mutex_base \
+  C:/msys64/clang64/include/c++/v1/system_error \
+  C:/msys64/clang64/include/c++/v1/__errc \
+  C:/msys64/clang64/include/c++/v1/cerrno \
   C:/msys64/clang64/include/c++/v1/string \
   C:/msys64/clang64/include/c++/v1/__algorithm/max.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/max_element.h \
@@ -345,7 +351,6 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/__algorithm/find_if.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/remove_if.h \
   C:/msys64/clang64/include/c++/v1/__format/enable_insertable.h \
-  C:/msys64/clang64/include/c++/v1/__ios/fpos.h \
   C:/msys64/clang64/include/c++/v1/__iterator/wrap_iter.h \
   C:/msys64/clang64/include/c++/v1/__memory/swap_allocator.h \
   C:/msys64/clang64/include/c++/v1/__memory_resource/polymorphic_allocator.h \
@@ -361,18 +366,14 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/__utility/rel_ops.h \
   C:/msys64/clang64/include/c++/v1/__utility/to_underlying.h \
   C:/msys64/clang64/include/c++/v1/__string/char_traits.h \
+  C:/msys64/clang64/include/c++/v1/__algorithm/copy_n.h \
+  C:/msys64/clang64/include/c++/v1/__algorithm/fill_n.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/find_end.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/search.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/find_first_of.h \
   C:/msys64/clang64/include/c++/v1/cstdio \
-  C:/msys64/clang64/include/c++/v1/stdio.h \
-  C:/msys64/clang64/include/stdio.h \
-  C:/msys64/clang64/include/sec_api/stdio_s.h \
   C:/msys64/clang64/include/c++/v1/cwchar \
   C:/msys64/clang64/include/c++/v1/cwctype \
-  C:/msys64/clang64/include/c++/v1/cctype \
-  C:/msys64/clang64/include/c++/v1/ctype.h \
-  C:/msys64/clang64/include/ctype.h \
   C:/msys64/clang64/include/c++/v1/wctype.h \
   C:/msys64/clang64/include/wctype.h \
   C:/msys64/clang64/include/c++/v1/__string/extern_template_lists.h \
@@ -399,6 +400,7 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/__algorithm/equal.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/equal_range.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/upper_bound.h \
+  C:/msys64/clang64/include/c++/v1/__algorithm/fill.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/find_if_not.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/for_each.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/for_each_n.h \
@@ -445,13 +447,16 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/bit \
   C:/msys64/clang64/include/c++/v1/__bit/bit_ceil.h \
   C:/msys64/clang64/include/c++/v1/__bit/countl.h \
+  C:/msys64/clang64/include/c++/v1/__bit/rotate.h \
   C:/msys64/clang64/include/c++/v1/__bit/bit_floor.h \
   C:/msys64/clang64/include/c++/v1/__bit/bit_log2.h \
   C:/msys64/clang64/include/c++/v1/__bit/bit_width.h \
   C:/msys64/clang64/include/c++/v1/__bit/blsr.h \
   C:/msys64/clang64/include/c++/v1/__bit/byteswap.h \
+  C:/msys64/clang64/include/c++/v1/__bit/countr.h \
   C:/msys64/clang64/include/c++/v1/__bit/endian.h \
   C:/msys64/clang64/include/c++/v1/__bit/has_single_bit.h \
+  C:/msys64/clang64/include/c++/v1/__bit/popcount.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/partial_sort_copy.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/make_projected.h \
   C:/msys64/clang64/include/c++/v1/__algorithm/partition.h \
@@ -639,6 +644,7 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/__node_handle \
   C:/msys64/clang64/include/c++/v1/optional \
   C:/msys64/clang64/include/c++/v1/vector \
+  C:/msys64/clang64/include/c++/v1/__bit_reference \
   C:/msys64/clang64/include/c++/v1/__format/formatter.h \
   C:/msys64/clang64/include/c++/v1/__memory/temp_value.h \
   C:/msys64/clang64/include/c++/v1/__split_buffer \
@@ -653,22 +659,64 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/__functional/pointer_to_binary_function.h \
   C:/msys64/clang64/include/c++/v1/__functional/pointer_to_unary_function.h \
   C:/msys64/clang64/include/c++/v1/__functional/unary_negate.h \
-  C:/msys64/clang64/include/c++/v1/ios \
-  C:/msys64/clang64/include/c++/v1/__locale \
-  C:/msys64/clang64/include/c++/v1/locale.h \
-  C:/msys64/clang64/include/locale.h \
-  C:/msys64/clang64/include/c++/v1/mutex \
-  C:/msys64/clang64/include/c++/v1/__mutex_base \
-  C:/msys64/clang64/include/c++/v1/system_error \
-  C:/msys64/clang64/include/c++/v1/__errc \
-  C:/msys64/clang64/include/c++/v1/cerrno \
   C:/msys64/clang64/include/c++/v1/__support/win32/locale_win32.h \
+  C:/msys64/clang64/include/c++/v1/istream \
+  C:/msys64/clang64/include/c++/v1/ostream \
+  C:/msys64/clang64/include/c++/v1/bitset \
   C:/msys64/clang64/include/c++/v1/locale \
   C:/msys64/clang64/include/c++/v1/streambuf \
   C:/msys64/clang64/include/c++/v1/__bsd_locale_defaults.h \
   C:/msys64/clang64/include/c++/v1/cstdarg \
   C:/msys64/clang64/lib/clang/16/include/stdarg.h \
-  C:/msys64/clang64/include/c++/v1/istream \
+  C:/msys64/clang64/include/opencv4/opencv2/imgproc.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/cvdef.h \
+  C:/msys64/clang64/include/opencv4/opencv2/core/version.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/hal/interface.h \
+  C:/msys64/clang64/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
+  C:/msys64/clang64/lib/clang/16/include/emmintrin.h \
+  C:/msys64/clang64/lib/clang/16/include/xmmintrin.h \
+  C:/msys64/clang64/lib/clang/16/include/mmintrin.h \
+  C:/msys64/clang64/include/opencv4/opencv2/core/base.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/opencv_modules.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/cvstd.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/neon_utils.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/vsx_utils.hpp \
+  C:/msys64/clang64/include/assert.h \
+  C:/msys64/clang64/include/opencv4/opencv2/core/check.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/traits.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/matx.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/saturate.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/fast_math.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/types.hpp \
+  C:/msys64/clang64/include/c++/v1/cfloat \
+  C:/msys64/clang64/include/c++/v1/float.h \
+  C:/msys64/clang64/lib/clang/16/include/float.h \
+  C:/msys64/clang64/include/float.h \
+  C:/msys64/clang64/include/opencv4/opencv2/core/mat.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/bufferpool.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/mat.inl.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/persistence.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/operations.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/cvstd.inl.hpp \
+  C:/msys64/clang64/include/c++/v1/complex \
+  C:/msys64/clang64/include/c++/v1/sstream \
+  C:/msys64/clang64/include/opencv4/opencv2/core/utility.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/optim.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/core/ovx.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/./imgproc/segmentation.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/features2d.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/flann/miniflann.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/flann/defines.h \
+  C:/msys64/clang64/include/opencv4/opencv2/flann/config.h \
+  C:/msys64/clang64/include/opencv4/opencv2/aruco.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/objdetect/aruco_detector.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/objdetect/aruco_dictionary.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/objdetect/aruco_board.hpp \
+  C:/msys64/clang64/include/opencv4/opencv2/aruco/aruco_calib.hpp \
+  C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h \
+  C:/Users/olive/Documents/MCHA4400/a1/src/Camera.h \
   C:/msys64/clang64/include/c++/v1/filesystem \
   C:/msys64/clang64/include/c++/v1/__filesystem/copy_options.h \
   C:/msys64/clang64/include/c++/v1/__filesystem/directory_entry.h \
@@ -687,41 +735,10 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/c++/v1/__filesystem/path_iterator.h \
   C:/msys64/clang64/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   C:/msys64/clang64/include/c++/v1/__filesystem/u8path.h \
-  C:/msys64/clang64/include/opencv4/opencv2/core/matx.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/cvdef.h \
-  C:/msys64/clang64/include/opencv4/opencv2/core/version.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/hal/interface.h \
-  C:/msys64/clang64/include/opencv4/opencv2/core/cv_cpu_dispatch.h \
-  C:/msys64/clang64/lib/clang/16/include/emmintrin.h \
-  C:/msys64/clang64/lib/clang/16/include/xmmintrin.h \
-  C:/msys64/clang64/lib/clang/16/include/mmintrin.h \
-  C:/msys64/clang64/include/opencv4/opencv2/core/base.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/opencv_modules.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/cvstd.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/cvstd_wrapper.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/neon_utils.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/vsx_utils.hpp \
-  C:/msys64/clang64/include/assert.h \
-  C:/msys64/clang64/include/opencv4/opencv2/core/check.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/traits.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/saturate.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/fast_math.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/persistence.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/types.hpp \
-  C:/msys64/clang64/include/c++/v1/cfloat \
-  C:/msys64/clang64/include/c++/v1/float.h \
-  C:/msys64/clang64/lib/clang/16/include/float.h \
-  C:/msys64/clang64/include/float.h \
-  C:/msys64/clang64/include/opencv4/opencv2/core/mat.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/bufferpool.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/mat.inl.hpp \
-  C:/Users/olive/Documents/MCHA4400/a1/test/src/../../src/Camera.h \
   C:/msys64/clang64/include/eigen3/Eigen/Core \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/util/Macros.h \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/util/ConfigureVectorization.h \
-  C:/msys64/clang64/include/c++/v1/complex \
-  C:/msys64/clang64/include/c++/v1/sstream \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/util/MKL_support.h \
   C:/msys64/clang64/include/omp.h \
   C:/msys64/clang64/include/c++/v1/cassert \
@@ -846,16 +863,6 @@ CMakeFiles/tests.dir/test/src/camera.cpp.obj: \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/StlIterators.h \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/GlobalFunctions.h \
   C:/msys64/clang64/include/eigen3/Eigen/src/Core/util/ReenableStupidWarnings.h \
-  C:/Users/olive/Documents/MCHA4400/a1/test/src/../../src/serialisation.hpp \
+  C:/Users/olive/Documents/MCHA4400/a1/src/serialisation.hpp \
   C:/msys64/clang64/include/opencv4/opencv2/calib3d.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/operations.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/cvstd.inl.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/utility.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/optim.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/core/ovx.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/features2d.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/flann/miniflann.hpp \
-  C:/msys64/clang64/include/opencv4/opencv2/flann/defines.h \
-  C:/msys64/clang64/include/opencv4/opencv2/flann/config.h \
   C:/msys64/clang64/include/opencv4/opencv2/core/affine.hpp

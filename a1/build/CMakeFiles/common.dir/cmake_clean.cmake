@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/common.dir/src/StateSLAMPointLandmarks.cpp.obj.d"
   "CMakeFiles/common.dir/src/calibrate.cpp.obj"
   "CMakeFiles/common.dir/src/calibrate.cpp.obj.d"
+  "CMakeFiles/common.dir/src/imagefeatures.cpp.obj"
+  "CMakeFiles/common.dir/src/imagefeatures.cpp.obj.d"
   "CMakeFiles/common.dir/src/visualNavigation.cpp.obj"
   "CMakeFiles/common.dir/src/visualNavigation.cpp.obj.d"
   "libcommon.dll"

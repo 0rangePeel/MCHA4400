@@ -13,6 +13,7 @@
 #include "Camera.h"
 #include "Plot.h"
 #include "StateSLAMPointLandmarks.h"
+#include "imagefeatures.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)
 {
@@ -73,22 +74,6 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     Eigen::VectorXd mu(24);
     mu.setZero();
 
-
-    // Config file
-    //std::filesystem::path configPath = cameraPath.parent_path() / "config.xml";
-    // Read chessboard data using configuration file
-    //ChessboardData chessboardData(configPath);
-
-    // Reconstruct extrinsic parameters (camera pose) for each chessboard image
-    //chessboardData.recoverPoses(cam);
-
-    // Landmark position mean
-    //const Chessboard & cb = chessboardData.chessboard;
-    //mu.segment(12, 3) << 0, 0, 0;
-    //mu.segment(15, 3) << (cb.boardSize.width - 1)*cb.squareSize, (cb.boardSize.height - 1)*cb.squareSize, 0;
-    //mu.segment(18, 3) << (cb.boardSize.width - 1)*cb.squareSize, 0, 0;
-    //mu.segment(21, 3) << 0, (cb.boardSize.height - 1)*cb.squareSize, 0;
-
     // Initial state square-root covariance
     Eigen::MatrixXd S(24,24);
     S.setZero();
@@ -113,6 +98,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
                      0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,    0.004455890451,  -7.292307362e-05,  -0.0001515464566,
                      0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,   0.0009998014985,   -0.002569854609,
                      0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,                 0,     0.01460277367;
+
 
     // Initialise state
     StateSLAMPointLandmarks state(Gaussian(mu, S));
@@ -148,7 +134,9 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         // -Update plot
         // Get a copy of the image for plot to draw on
 
-        state.view() = imgin.clone();
+        cv::Mat outputframe = detectAndDrawArUco(imgin, 0, cam);
+
+        state.view() = outputframe.clone();
         //state.view() = imgin;
         
         // Set local copy of state for plot to use
@@ -159,11 +147,12 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         
 
         i += 1;
+        std::cout << i << std::endl;
 
         // Write output frame 
         if (doExport)
         {
-            cv::Mat imgout /*= plot.getFrame()*/;
+            cv::Mat imgout = plot.getFrame();
             bufferedVideoWriter.write(imgout);
         }
 

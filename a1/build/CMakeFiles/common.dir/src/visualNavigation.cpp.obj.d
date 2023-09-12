@@ -1673,4 +1673,5 @@ CMakeFiles/common.dir/src/visualNavigation.cpp.obj: \
   C:/msys64/clang64/include/eigen3/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
   C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAM.h \
   C:/Users/olive/Documents/MCHA4400/a1/src/State.h \
-  C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.h
+  C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.h \
+  C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h
