@@ -142,11 +142,12 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
     Eigen::Matrix3<Scalar> Rnc = cameraOrientation(cam, x);
 
     // Obtain landmark position from state
+    // idx is equuivalent to mj which is a 6x1 which contains
+    // position and rotation of tag centre
+    // This is placed into rjNn and thetanj respectively
     std::size_t idx = landmarkPositionIndex(idxLandmark);
     Eigen::Vector3<Scalar> rjNn = x.template segment<3>(idx);
-
     Eigen::Vector3<Scalar> thetanj = x.template segment<3>(idx + 3);
-
     Eigen::Matrix3<Scalar> Rnj = rpy2rot(thetanj);
 
     Eigen::Vector3<Scalar> rjcNj;
@@ -171,15 +172,15 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
             std::cout << "Invalid choice. Please enter a number between 1 and 4." << std::endl;
     }
 
-    Eigen::Vector3<Scalar> rjcNn = Rnj * rjcNj + rjNn;
-
+    // Equation 9 from Assignemnt 1
+    // Eigen::Vector3<Scalar> rjcNn = Rnj * rjcNj + rjNn;
     // Camera vector
-    Eigen::Vector3<Scalar> rPCc = Rnc.transpose() * (rjcNn - rCNn);
-
+    //Eigen::Vector3<Scalar> rPCc = Rnc.transpose() * (rjcNn - rCNn);
     // Pixel coordinates
-    Eigen::Vector2<Scalar> rQOi;
-    
-    rQOi = cam.vectorToPixel(rPCc);
+    //Eigen::Vector2<Scalar> rQOi = cam.vectorToPixel(rPCc);
+
+    // The above has been squeezed down into
+    Eigen::Vector2<Scalar> rQOi = cam.vectorToPixel(Rnc.transpose() * ((Rnj * rjcNj + rjNn) - rCNn));
 
     return rQOi;
 }

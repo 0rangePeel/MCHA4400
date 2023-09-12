@@ -13,6 +13,7 @@
 #include "Camera.h"
 #include "Plot.h"
 #include "StateSLAMPointLandmarks.h"
+//#include "StateSLAMPoseLandmarks.h"
 #include "imagefeatures.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)
@@ -101,6 +102,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
 
     // Initialise state
+    //StateSLAMPoseLandmarks state(Gaussian(mu, S));
     StateSLAMPointLandmarks state(Gaussian(mu, S));
 
     // Initialise plot
@@ -134,7 +136,8 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         // -Update plot
         // Get a copy of the image for plot to draw on
 
-        cv::Mat outputframe = detectAndDrawArUco(imgin, 0, cam);
+        ArUcoResult arucoResult = detectAndDrawArUco(imgin, 0, cam);
+        cv::Mat outputframe = arucoResult.imgout;
 
         state.view() = outputframe.clone();
         //state.view() = imgin;
@@ -147,7 +150,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         
 
         i += 1;
-        std::cout << i << std::endl;
+        //std::cout << i << std::endl;
 
         // Write output frame 
         if (doExport)
@@ -159,6 +162,16 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         
         if (interactive == 2 || (interactive == 1 && i + 1 == nFrames))
         {
+            // Print the detected ARUCO tags and corners for when frame is stopped
+            std::cout << "Detected Marker Corners:" << std::endl;
+            for (int i = 0; i < arucoResult.corners.size(); i++) {
+                std::cout << "Marker " << arucoResult.ids[i] << " Corners: ";
+                for (int j = 0; j < arucoResult.corners[i].size(); j++) {
+                    std::cout << "(" << arucoResult.corners[i][j].x << ", " << arucoResult.corners[i][j].y << ") ";
+                }
+                std::cout << std::endl;
+            }
+
             // Start handling plot GUI events (blocking)
             plot.start();
         }

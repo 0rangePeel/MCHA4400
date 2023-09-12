@@ -4,9 +4,12 @@
 #include <opencv2/core.hpp>
 #include "Camera.h"
 
-cv::Mat detectAndDrawHarris(const cv::Mat & img, int maxNumFeatures);
-cv::Mat detectAndDrawShiAndTomasi(const cv::Mat & img, int maxNumFeatures);
-cv::Mat detectAndDrawArUco(const cv::Mat & img, int maxNumFeatures, const Camera & cam);
-cv::Mat detectAndDrawORB(const cv::Mat & img, int maxNumFeatures);
+struct ArUcoResult {
+    cv::Mat imgout;
+    std::vector<int> ids;
+    std::vector<std::vector<cv::Point2f>> corners;
+};
+
+ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Camera &cam);
 
 #endif
