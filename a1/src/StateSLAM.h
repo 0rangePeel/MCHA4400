@@ -56,7 +56,7 @@ public:
     Gaussian<double> predictFeatureBundleDensity(const Camera & cam, const std::vector<std::size_t> & idxLandmarks, const Gaussian<double> & noise) const;
 
     template <typename Scalar> Eigen::Vector2<Scalar> predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, const int j) const;
-    //Eigen::Vector2d predictFeatureTag(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark, const int j) const;
+    Eigen::Vector2d predictFeatureTag(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark, const int j) const;
 
     cv::Mat & view();
     const cv::Mat & view() const;

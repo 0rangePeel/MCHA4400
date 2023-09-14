@@ -15,6 +15,7 @@
 #include "StateSLAMPointLandmarks.h"
 #include "StateSLAMPoseLandmarks.h"
 #include "imagefeatures.h"
+#include "MeasurementPoseBundle.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)
 {
@@ -102,13 +103,14 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
 
     // Initialise state
-    //StateSLAMPoseLandmarks state(Gaussian(mu, S));
-    StateSLAMPointLandmarks state(Gaussian(mu, S));
+    StateSLAMPoseLandmarks state(Gaussian(mu, S));
+    //StateSLAMPointLandmarks state(Gaussian(mu, S));
 
     // Initialise plot
     Plot plot(state, cam);
 
     int i = 0;
+    double dt = 1/fps;
 
     while (true)
     {
@@ -137,6 +139,9 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         // Get a copy of the image for plot to draw on
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, 0, cam);
+
+        //MeasurementPoseBundle PoseBundle(dt, arucoResult.y, cam);
+
         cv::Mat outputframe = arucoResult.imgout;
 
         state.view() = outputframe.clone();
@@ -170,6 +175,10 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
                     std::cout << "(" << arucoResult.corners[i][j].x << ", " << arucoResult.corners[i][j].y << ") ";
                 }
                 std::cout << std::endl;
+            }
+
+            for (int i = 0; i < arucoResult.y.size(); i++){
+                std::cout << arucoResult.y(i) << std::endl;
             }
 
             // Start handling plot GUI events (blocking)

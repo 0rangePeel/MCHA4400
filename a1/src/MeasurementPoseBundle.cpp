@@ -24,7 +24,8 @@ MeasurementPoseBundle::MeasurementPoseBundle(double time, const Eigen::VectorXd 
 {
     // SR is an upper triangular matrix such that SR.'*SR = R is the measurement noise covariance
     const Eigen::Index & ny = y.size();
-    Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(ny, ny); // TODO: Assignment(s)
+    double rms = 1.27127;
+    Eigen::MatrixXd SR = rms*Eigen::MatrixXd::Identity(ny, ny); // TODO: Assignment(s)
     noise_ = Gaussian(SR);
 
     // useQuasiNewton = false;
@@ -125,6 +126,7 @@ void MeasurementPoseBundle::update(State & state)
 
     // What we actually need
     // 
+    
     
     Measurement::update(state);  // Do the actual measurement update
 }

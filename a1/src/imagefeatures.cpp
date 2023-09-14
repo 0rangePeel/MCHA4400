@@ -4,6 +4,7 @@
 #include <opencv2/aruco.hpp>
 #include "imagefeatures.h"
 #include "Camera.h"
+#include <Eigen/Core>
 
 ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Camera &cam) {
     ArUcoResult result;
@@ -29,6 +30,8 @@ ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Cam
     cv::aruco::ArucoDetector detector(dictionary, detectorParams);
     
     std::vector<int> ids;
+    //std::vector<double> y_array;
+    Eigen::VectorXd y_array;
     std::vector<std::vector<cv::Point2f>> corners, rejected;
 
     detector.detectMarkers(img, corners, ids, rejected);
@@ -41,6 +44,14 @@ ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Cam
         // Calculate pose for each marker
         for (int i = 0; i < nMarkers; i++) {
             solvePnP(objPoints, corners.at(i), cameraMatrix, distCoeffs, rvecs.at(i), tvecs.at(i));
+            for (int j = 0; j < corners[i].size(); j++) {
+                    //std::cout << "(" << corners[i][j].x << ", " << corners[i][j].y << ") ";
+                    //y_array.push_back(corners[i][j].x);
+                    //y_array.push_back(corners[i][j].y);
+                    y_array.conservativeResize(y_array.size() + 2);
+                    y_array(y_array.size() - 2) = corners[i][j].x;
+                    y_array(y_array.size() - 1) = corners[i][j].y;
+            }
         }
         // Draw axis for each marker - note 0.01 is the length of the axis
         for(unsigned int i = 0; i < ids.size(); i++) {
@@ -48,10 +59,14 @@ ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Cam
         }
     }
 
+
+
+
     // set results
     result.imgout = imgout;
     result.ids = ids;
     result.corners = corners;
+    result.y = y_array;
 
     return result;
 }

@@ -198,7 +198,7 @@ Gaussian<double> StateSLAM::predictFeatureBundleDensity(const Camera & cam, cons
     auto func = [&](const Eigen::VectorXd & x, Eigen::MatrixXd & J) { return predictFeatureBundle(x, J, cam, idxLandmarks); };
     return density.transform(func, noise);
 }
-/*
+
 // Corner feature location for a given ArUco landmark and Jacobian
 Eigen::Vector2d StateSLAM::predictFeatureTag(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark, int j) const
 {
@@ -218,4 +218,3 @@ Eigen::Vector2d StateSLAM::predictFeatureTag(const Eigen::VectorXd & x, Eigen::M
     //return predictFeature(x, cam, idxLandmark);
     // Note: If you use autodiff, return the evaluated function value (cast with double scalar type) instead of calling predictFeature as above
 }
-*/
