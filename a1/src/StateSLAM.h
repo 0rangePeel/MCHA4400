@@ -56,7 +56,7 @@ public:
     Gaussian<double> predictFeatureBundleDensity(const Camera & cam, const std::vector<std::size_t> & idxLandmarks, const Gaussian<double> & noise) const;
 
     template <typename Scalar> Eigen::Vector2<Scalar> predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, const int j) const;
-    Eigen::Vector2d predictFeatureTag(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark, const int j) const;
+    //Eigen::Vector2d predictFeatureTag(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark, const int j) const;
 
     cv::Mat & view();
     const cv::Mat & view() const;
@@ -136,7 +136,7 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureBundle(const Eigen::VectorX<Scal
 
 // Image feature location for a given ARUCO Tag point
 template <typename Scalar>
-Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, const int j) const
+Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, int j) const
 {
     // Obtain camera pose from state
     Eigen::Vector3<Scalar> rCNn = cameraPosition(cam, x);
@@ -174,16 +174,9 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
     }
 
     // Equation 9 from Assignemnt 1
-    //Eigen::Vector3<Scalar> rjcNn = Rnj * rjcNj + rjNn;
+    Eigen::Vector3<Scalar> rjcNn = Rnj * rjcNj + rjNn;
     // Camera vector
-    //Eigen::Vector3<Scalar> rPCc = Rnc.transpose() * (rjcNn - rCNn);
-    // Pixel coordinates
-    //Eigen::Vector2<Scalar> rQOi = cam.vectorToPixel(rPCc);
-
-
-    // Equation 9 from Assignemnt 1
-    // Camera vector
-    Eigen::Vector3<Scalar> rPCc = Rnc.transpose() * (Rnj * rjcNj + rjNn - rCNn);
+    Eigen::Vector3<Scalar> rPCc = Rnc.transpose() * (rjcNn - rCNn);
     // Pixel coordinates
     Eigen::Vector2<Scalar> rQOi = cam.vectorToPixel(rPCc);
 

@@ -100,8 +100,14 @@ struct Camera
     // 0 1 0
     // 0 0 1
     // 1 0 0
-    Eigen::Matrix3d Rbc = (Eigen::Matrix3d() << 0, 1, 0, 0, 0, 1, 1, 0, 0).finished();
+    //Eigen::Matrix3d Rbc = (Eigen::Matrix3d() << 0, 1, 0, 0, 0, 1, 1, 0, 0).finished();
+    Eigen::Matrix3d Rbc = Eigen::Matrix3d::Zero();
 
+    Camera(){
+        Rbc(0,1) = 1.0;
+        Rbc(1,2) = 1.0;
+        Rbc(2,0) = 1.0;
+    }
 
 };
 

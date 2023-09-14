@@ -66,51 +66,51 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     }
     
     // TODO: Assignment(s)
-    //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
+    std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
 
-    //Eigen::VectorXd h = stateSLAM.predictFeatureBundle(x, camera_, idxLandmarks);
+    Eigen::VectorXd h = stateSLAM.predictFeatureBundle(x, camera_, idxLandmarks);
 
-    //Gaussian likelihood(h, noise_.sqrtCov());
+    Gaussian likelihood(h, noise_.sqrtCov());
     //return likelihood.log(y_);
     return 0;
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const
+double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, const int j, Eigen::VectorXd & g) const
 {
     // Evaluate gradient for SR1 and Newton methods
     // TODO: Assignment(s)
-    /*
-    const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
+    //const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
     g.resize(x.size());
     g.setZero();
     Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
     autodiff::dual fdual;
-    g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, camera_, stateSLAM, idxLandmark, j), fdual);
+    //g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, idxLandmark, j), fdual);
     return val(fdual);
-    */
-
+    /*
     g.resize(x.size());
     g.setZero();
     return logLikelihood(state, x);
+    */
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
+double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, const int j, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
 {
     // Evaluate Hessian for Newton method
     // TODO: Assignment(s)
-    /*
+    
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
-    H.resize(x.size());
-    H.setZero();
-    Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
-    autodiff::dual fdual;
-    H = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, camera_, stateSLAM, idxLandmark, j), fdual);
-    return val(fdual);
-    */
-
     H.resize(x.size(), x.size());
     H.setZero();
-    return logLikelihood(state, x, g);
+    Eigen::VectorX<autodiff::dual2nd> xdual = x.cast<autodiff::dual2nd>();
+    autodiff::dual2nd fdual;
+    //H = hessian(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, idxLandmark, j), fdual, g);
+    return val(fdual);
+    
+    /*
+    H.resize(x.size(), x.size());
+    H.setZero();
+    return logLikelihood(state, x, g);   
+    */ 
 }
 
 void MeasurementPoseBundle::update(State & state)
@@ -122,6 +122,9 @@ void MeasurementPoseBundle::update(State & state)
     // Remove failed landmarks from map (consecutive failures to match)
     // Identify surplus features that do not correspond to landmarks in the map
     // Initialise up to Nmax – N new landmarks from best surplus features
+
+    // What we actually need
+    // 
     
     Measurement::update(state);  // Do the actual measurement update
 }

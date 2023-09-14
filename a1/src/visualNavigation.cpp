@@ -13,7 +13,7 @@
 #include "Camera.h"
 #include "Plot.h"
 #include "StateSLAMPointLandmarks.h"
-//#include "StateSLAMPoseLandmarks.h"
+#include "StateSLAMPoseLandmarks.h"
 #include "imagefeatures.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)

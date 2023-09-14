@@ -14,6 +14,8 @@ public:
     virtual double logLikelihood(const State & state, const Eigen::VectorXd & x) const = 0;
     virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const = 0;
     virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const = 0;
+    virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, const int j, Eigen::VectorXd & g) const = 0;
+    virtual double logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, const int j, Eigen::VectorXd & g, Eigen::MatrixXd & H) const = 0;
 protected:
     double costJointDensity(const Eigen::VectorXd & x, const State & state);
     double costJointDensity(const Eigen::VectorXd & x, const State & state, Eigen::VectorXd & g);
