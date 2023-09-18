@@ -50,7 +50,9 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     cv::eigen2cv(rBNn, cameraPose.rCNn); // "Assume that B and C coincide"
 
     std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
-    for (std::size_t j = 0; j < stateSLAM.numberLandmarks(); ++j)
+    //for (std::size_t j = 0; j < state.stateSLAM.numberLandmarks(); ++j)
+    /*
+    for (std::size_t j = 0; j < state.idxLandmarks.size(); ++j)
     {
         Eigen::Vector3d murPNn = stateSLAM.landmarkPositionDensity(j).mean();
         cv::Vec3d rPNn;
@@ -58,13 +60,14 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
         if (camera_.isWorldWithinFOV(rPNn, cameraPose))
         {
             std::cout << "Landmark " << j << " is expected to be within camera FOV" << std::endl;
-            idxLandmarks.push_back(j);
+            state.idxLandmarks.push_back(j);
         }
         else
         {
             std::cout << "Landmark " << j << " is NOT expected to be within camera FOV" << std::endl;
         }
     }
+    */
     
     // TODO: Assignment(s)
 
@@ -90,15 +93,17 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     // Evaluate gradient for SR1 and Newton methods
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
     // Select visible landmarks
-    std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
+    //std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
     // Select all landmarks
-    std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); 
+    //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); 
 
     g.resize(x.size());
     g.setZero();
     Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
     autodiff::dual fdual;
-    g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, idxLandmarks), fdual);
+    //std::vector<std::size_t> idxLandmarks = state.getIdxLandmarks();
+    //g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, idxLandmarks), fdual);
+    g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual);
     return val(fdual);
 }
 
@@ -107,31 +112,50 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     // Evaluate Hessian for Newton method  
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
     // Select visible landmarks
-    std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
+    //std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
     // Select all landmarks
-    std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); 
+    //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); 
 
     H.resize(x.size(), x.size());
     H.setZero();
     Eigen::VectorX<autodiff::dual2nd> xdual = x.cast<autodiff::dual2nd>();
     autodiff::dual2nd fdual;
     //H = hessian(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, idxLandmarks), fdual, g);
+    //H = hessian(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual, g);
     return val(fdual);
 }
 
 void MeasurementPoseBundle::update(State & state)
 {
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
+/*
+    // If idxLandmark is size 0 then put first idsLandmark inside idsHistLandmark
+    if (state.getIdsHistLandmarks.empty()) {
+        // If it's empty, simply copy all values from idsLandmarks
+        state.setIdsHistLandmarks() = idsLandmarks;
+    } else 
+    {
+        // Get idsLandmarks and see if any mismatch between idsHistLandmarks
+        // If mismatch is there, append idsLandmark to end of idxLandmark
+        // Loop through idsLandmarks and check if each value is in idsHistLandmarks
+        for (const int& id : state.getIdsLandmarks()) {
+            if (std::find(state.idsHistLandmarks.begin(), state.idsHistLandmarks.end(), id) == state.idsHistLandmarks.end()) {
+                // id is not in idsHistLandmarks, so append it
+                state.idsHistLandmarks.push_back(id);
+            }
+        }
+    }
 
-    // TODO: Assignment(s)
-    // Identify landmarks with matching features (data association)
-    // Remove failed landmarks from map (consecutive failures to match)
-    // Identify surplus features that do not correspond to landmarks in the map
-    // Initialise up to Nmax – N new landmarks from best surplus features
-
-    // What we actually need
-    // 
-    
-    
+    // Create idxLandmarks after everything completed by using idsLandmarks then verfering to idsHistLandmarks 
+    // Loop through idsLandmarks and look up values in idsHistLandmarks
+    for (const int& id : state.idsLandmarks) {
+        auto it = std::find(state.idsHistLandmarks.begin(), state.idsHistLandmarks.end(), id);
+        if (it != state.idsHistLandmarks.end()) {
+            // id found in idsHistLandmarks, append its position to idxLandmarks
+            std::size_t position = std::distance(state.idsHistLandmarks.begin(), it);
+            state.idxLandmarks.push_back(position);
+        }
+    }
+  */  
     Measurement::update(state);  // Do the actual measurement update
 }

@@ -121,26 +121,16 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
             break;
         }
 
-        // -Process frame
-        //const ChessboardImage & chessboardImage = chessboardData.chessboardImages[i];
-        //Eigen::Vector3d rCNn;
-        //cv::cv2eigen(chessboardImage.cameraPose.rCNn, rCNn);
-        //Eigen::Matrix3d Rnc;
-        //cv::cv2eigen(chessboardImage.cameraPose.Rnc, Rnc);
-
-        //Eigen::Vector3d Thetanc = rot2rpy(Rnc);
-
-        // -Update state
-        // Update camera pose mean
-        //state.density.mean().segment(6, 3) << rCNn;
-        //state.density.mean().segment(9, 3) << Thetanc;
-
         // -Update plot
         // Get a copy of the image for plot to draw on
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, 0, cam);
 
+        state.setIdsLandmarks(arucoResult.ids);
+
         MeasurementPoseBundle MeasurementPoseBundle(dt, arucoResult.y, cam);
+
+        //MeasurementPoseBundle.process(state);
 
         cv::Mat outputframe = arucoResult.imgout;
 
@@ -155,7 +145,6 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         
 
         i += 1;
-        //std::cout << i << std::endl;
 
         // Write output frame 
         if (doExport)

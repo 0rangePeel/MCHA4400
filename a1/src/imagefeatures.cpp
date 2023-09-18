@@ -30,7 +30,6 @@ ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Cam
     cv::aruco::ArucoDetector detector(dictionary, detectorParams);
     
     std::vector<int> ids;
-    //std::vector<double> y_array;
     Eigen::VectorXd y_array;
     std::vector<std::vector<cv::Point2f>> corners, rejected;
 
@@ -58,10 +57,6 @@ ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Cam
             cv::drawFrameAxes(imgout, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.01);
         }
     }
-
-
-
-
     // set results
     result.imgout = imgout;
     result.ids = ids;

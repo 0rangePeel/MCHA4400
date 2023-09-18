@@ -28,6 +28,38 @@ std::size_t State::size() const
     return density.size();
 }
 
+// Landmark ids and idx functions
+std::vector<int> State::getIdsLandmarks() const {
+    return idsLandmarks;
+}
+std::vector<std::size_t> State::getIdxLandmarks() const {
+    return idxLandmarks;
+}
+std::vector<std::size_t> State::getIdsHistLandmarks() const {
+    return idsHistLandmarks;
+}
+void State::setIdsLandmarks(const std::vector<int>& ids) {
+    idsLandmarks = ids;
+}
+void State::setIdxLandmarks(const std::vector<std::size_t>& idx) {
+    idxLandmarks = idx;
+}
+void State::setIdsHistLandmarks(const std::vector<std::size_t>& idsHist) {
+    idsHistLandmarks = idsHist;
+}
+void State::modifyIdsLandmarks(const std::vector<int>& newIds) {
+    // Append newIds to idsLandmarks
+    idsLandmarks.insert(idsLandmarks.end(), newIds.begin(), newIds.end());
+}
+void State::modifyIdxLandmarks(const std::vector<std::size_t>& newIdx) {
+    // Append newIdx to idxLandmarks
+    idxLandmarks.insert(idxLandmarks.end(), newIdx.begin(), newIdx.end());
+}
+void State::modifyIdsHistLandmarks(const std::vector<std::size_t>& newIdsHist) {
+    // Append newIdsHist to idsHistLandmarks
+    idsHistLandmarks.insert(idsHistLandmarks.end(), newIdsHist.begin(), newIdsHist.end());
+}
+
 // Evaluate F(X) from dX = F(X)*dt + dW
 Eigen::MatrixXd State::augmentedDynamics(const Eigen::MatrixXd & X) const
 {
