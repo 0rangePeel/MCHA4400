@@ -6,6 +6,7 @@
 #include "Gaussian.hpp"
 #include "State.h"
 #include "StateSLAM.h"
+#include "rotation.hpp"
 
 StateSLAM::StateSLAM(const Gaussian<double> & density)
     : State(density)
@@ -15,6 +16,16 @@ StateSLAM::StateSLAM(const Gaussian<double> & density)
 Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x) const
 {
     assert(size() == x.size());
+    /*
+    * State containing body velocities, body pose and landmark states
+    *
+    *     [ vBNb     ]  Body translational velocity (body-fixed)
+    *     [ omegaBNb ]  Body angular velocity (body-fixed)
+    * x = [ rBNn     ]  Body position (world-fixed)
+    *     [ Thetanb  ]  Body orientation (world-fixed)
+    *     [ m        ]  Landmark map states (undefined in this class)
+    *
+    */
     //
     //  dnu/dt =          0 + dwnu/dt
     // deta/dt = JK(eta)*nu +       0
@@ -35,6 +46,13 @@ Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x) const
     Eigen::VectorXd f(x.size());
     f.setZero();
     // TODO: Implement in Assignment(s)
+    Eigen::VectorXd vBNb        = x.segment(0,3);
+    Eigen::VectorXd omegaBNb    = x.segment(3,3);
+    Eigen::VectorXd rBNb        = x.segment(6,3);
+    Eigen::VectorXd Thetanb     = x.segment(9,3);
+
+    //rpy2rot
+
 
     return f;
 }

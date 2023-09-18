@@ -205,7 +205,7 @@ public:
         // Line from function library
         // v = 2 * sum(log(diag(chol(A))));
         // Note that the 2 multiple is ommitted because of the 0.5 in the final equation
-        Scalar logdet = S_.template diagonal().array().abs().log().sum(); 
+        Scalar logdet = S_.diagonal().array().abs().log().sum(); 
  
         // Note that the determinant is log form which follows the log rule log(AB) = log(A) + log(B)
         // The following rule is also used log(m)^n = n*log(m)
