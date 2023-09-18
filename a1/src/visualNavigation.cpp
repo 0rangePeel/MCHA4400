@@ -167,6 +167,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         
         if (interactive == 2 || (interactive == 1 && i + 1 == nFrames))
         {
+            /*
             // Print the detected ARUCO tags and corners for when frame is stopped
             std::cout << "Detected Marker Corners:" << std::endl;
             for (int i = 0; i < arucoResult.corners.size(); i++) {
@@ -180,6 +181,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
             for (int i = 0; i < arucoResult.y.size(); i++){
                 std::cout << arucoResult.y(i) << std::endl;
             }
+            */
 
             // Start handling plot GUI events (blocking)
             plot.start();

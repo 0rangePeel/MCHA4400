@@ -26,15 +26,13 @@ protected:
 };
 
 template <typename Scalar>
-Scalar MeasurementPoseBundle::logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const StateSLAM stateSLAM, std::size_t idxLandmark) const
+Scalar MeasurementPoseBundle::logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const StateSLAM stateSLAM, std::size_t idxLandmarks) const
 {
     Eigen::VectorX<Scalar> y = y_.cast<Scalar>();
-    //Eigen::VectorX<Scalar> y = y_.segment<2>(7*idxLandmark + 2*j);
-    Eigen::VectorX<Scalar> h = stateSLAM.predictFeatureTagBundle<Scalar>(x, camera_, idxLandmark);
+    Eigen::VectorX<Scalar> h = stateSLAM.predictFeatureTagBundle<Scalar>(x, camera_, idxLandmarks);
     Eigen::MatrixX<Scalar> SR = noise_.sqrtCov().cast<Scalar>();
     Gaussian<Scalar> likelihood(h, SR);
     return likelihood.log(y);
-    //return 0;
 }
 
 #endif
