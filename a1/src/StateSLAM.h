@@ -46,7 +46,7 @@ public:
     virtual Gaussian<double> landmarkPositionDensity(std::size_t idxLandmark) const;
     virtual std::size_t landmarkPositionIndex(std::size_t idxLandmark) const = 0;
 
-    template <typename Scalar> Eigen::VectorX<Scalar> dynamics(const Eigen::VectorX<Scalar> & x) const;
+    template <typename Scalar> Eigen::VectorX<Scalar> dynamicsImpl(const Eigen::VectorX<Scalar> & x) const;
 
     template <typename Scalar> Eigen::Vector2<Scalar> predictFeature(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark) const;
     Eigen::Vector2d predictFeature(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark) const;
@@ -73,7 +73,7 @@ protected:
 #include "rotation.hpp"
 
 template <typename Scalar>
-Eigen::VectorX<Scalar> StateSLAM::dynamics(const Eigen::VectorX<Scalar> & x) const
+Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x) const
 {
     assert(size() == x.size());
     /*
@@ -238,7 +238,7 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
             rjcNj<< -l/2, -l/2, 0;
             break;
         default:
-            std::cout << "Invalid choice. Please enter a number between 1 and 4." << std::endl;
+            std::cout << "Invalid choice. Please enter a number between 0 and 3." << std::endl;
     }
 
     // Equation 9 from Assignemnt 1
@@ -266,6 +266,7 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureTagBundle(const Eigen::VectorX<S
         for (int j = 0; j < 4; j++)
         {
             Eigen::Vector2<Scalar> rQOi = predictFeatureTag(x, cam, idxLandmarks[i], j);
+
             // Set pair of elements in h
             h(h_index) = rQOi(0); // First element of rQOi
             h(h_index + 1) = rQOi(1); // Second element of rQOi

@@ -51,6 +51,8 @@ Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x) const
     //        [ TK(thetanb)*omegaBNb ]
     //        [                    0 ] for all map states
     //
+
+    /*
     Eigen::VectorXd f(x.size());
     f.setZero();
 
@@ -80,6 +82,8 @@ Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x) const
     f.segment(9, 3) = secondCalculation;
 
     return f;
+    */
+   return dynamicsImpl(x);
 }
 
 // Evaluate f(x) and its Jacobian J = df/fx from the SDE dx = f(x)*dt + dw
@@ -99,7 +103,7 @@ Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x, Eigen::MatrixXd &
 
     Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
     Eigen::VectorX<autodiff::dual> fdual;
-    J = jacobian(&StateSLAM::dynamics<autodiff::dual>, wrt(xdual), at(this, xdual), fdual);
+    J = jacobian(&StateSLAM::dynamicsImpl<autodiff::dual>, wrt(xdual), at(this, xdual), fdual);
 
     return fdual.cast<double>();
 }

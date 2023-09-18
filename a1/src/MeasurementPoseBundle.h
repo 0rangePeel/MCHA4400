@@ -22,11 +22,11 @@ public:
 protected:
     virtual void update(State & state) override;
     const Camera & camera_;
-    template <typename Scalar> Scalar logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const StateSLAM stateSLAM, std::size_t idxLandmark) const;
+    template <typename Scalar> Scalar logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const StateSLAM & stateSLAM, const std::vector <std::size_t> & idxLandmark) const;
 };
 
 template <typename Scalar>
-Scalar MeasurementPoseBundle::logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const StateSLAM stateSLAM, std::size_t idxLandmarks) const
+Scalar MeasurementPoseBundle::logLikelihoodImpl(const Eigen::VectorX<Scalar> & x, const StateSLAM & stateSLAM, const std::vector <std::size_t> & idxLandmarks) const
 {
     Eigen::VectorX<Scalar> y = y_.cast<Scalar>();
     Eigen::VectorX<Scalar> h = stateSLAM.predictFeatureTagBundle<Scalar>(x, camera_, idxLandmarks);
