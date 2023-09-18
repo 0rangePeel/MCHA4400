@@ -1,6 +1,7 @@
 #ifndef STATESLAM_H
 #define STATESLAM_H
 
+#include <cmath>
 #include <vector>
 #include <Eigen/Core>
 #include <opencv2/core/mat.hpp>
@@ -45,6 +46,8 @@ public:
     virtual Gaussian<double> landmarkPositionDensity(std::size_t idxLandmark) const;
     virtual std::size_t landmarkPositionIndex(std::size_t idxLandmark) const = 0;
 
+    template <typename Scalar> Eigen::VectorX<Scalar> dynamics(const Eigen::VectorX<Scalar> & x) const;
+
     template <typename Scalar> Eigen::Vector2<Scalar> predictFeature(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark) const;
     Eigen::Vector2d predictFeature(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark) const;
     Gaussian<double> predictFeatureDensity(const Camera & cam, std::size_t idxLandmark) const;
@@ -68,6 +71,68 @@ protected:
 };
 
 #include "rotation.hpp"
+
+template <typename Scalar>
+Eigen::VectorX<Scalar> StateSLAM::dynamics(const Eigen::VectorX<Scalar> & x) const
+{
+    assert(size() == x.size());
+    /*
+    * State containing body velocities, body pose and landmark states
+    *
+    *     [ vBNb     ]  Body translational velocity (body-fixed)
+    *     [ omegaBNb ]  Body angular velocity (body-fixed)
+    * x = [ rBNn     ]  Body position (world-fixed)
+    *     [ Thetanb  ]  Body orientation (world-fixed)
+    *     [ m        ]  Landmark map states (undefined in this class)
+    *
+    */
+    //
+    //  dnu/dt =          0 + dwnu/dt
+    // deta/dt = JK(eta)*nu +       0
+    //   dm/dt =          0 +       0
+    // \_____/   \________/   \_____/
+    //  dx/dt  =    f(x)    +  dw/dt
+    //
+    //        [          0 ]
+    // f(x) = [ JK(eta)*nu ]
+    //        [          0 ] for all map states
+    //
+    //        [                    0 ]
+    //        [                    0 ]
+    // f(x) = [    Rnb(thetanb)*vBNb ]
+    //        [ TK(thetanb)*omegaBNb ]
+    //        [                    0 ] for all map states
+    //
+    Eigen::VectorX<Scalar> f(x.size());
+    f.setZero();
+
+    Eigen::Vector3<Scalar> vBNb        = x.template segment(0,3);
+    Eigen::Vector3<Scalar> omegaBNb    = x.template segment(3,3);
+    Eigen::Vector3<Scalar> rBNb        = x.template segment(6,3);
+    Eigen::Vector3<Scalar> Thetanb     = x.template segment(9,3);
+
+    Eigen::Matrix3<Scalar> Rnb         = rpy2rot(Thetanb);
+
+    Eigen::Matrix3<Scalar> Tk; 
+
+    //Thetanb(0) = phi
+    //Thetanb(1) = theta    
+    //Thetanb(2) = psi
+
+    using std::cos, std::sin, std::tan;
+
+    Tk << 1, sin(Thetanb(0))*tan(Thetanb(1)), cos(Thetanb(0))*tan(Thetanb(1)),
+          0,                 cos(Thetanb(0)),                -sin(Thetanb(0)),
+          0, sin(Thetanb(0))/cos(Thetanb(1)), cos(Thetanb(0))/cos(Thetanb(1));
+
+    Eigen::Vector3<Scalar> firstCalculation = Rnb * vBNb;
+    Eigen::Vector3<Scalar> secondCalculation = Tk * omegaBNb;
+
+    f.template segment(6, 3) = firstCalculation;
+    f.template segment(9, 3) = secondCalculation;
+
+    return f;
+}
 
 template <typename Scalar>
 Eigen::Vector3<Scalar> StateSLAM::cameraPosition(const Camera & cam, const Eigen::VectorX<Scalar> & x)

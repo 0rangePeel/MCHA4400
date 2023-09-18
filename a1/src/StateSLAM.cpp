@@ -8,6 +8,14 @@
 #include "StateSLAM.h"
 #include "rotation.hpp"
 
+#include "MeasurementPointBundle.h"
+#include "MeasurementPoseBundle.h"
+
+
+#include <unsupported/Eigen/CXX11/Tensor>
+#include <autodiff/forward/dual.hpp>
+#include <autodiff/forward/dual/eigen.hpp>
+
 StateSLAM::StateSLAM(const Gaussian<double> & density)
     : State(density)
 {}
@@ -45,14 +53,31 @@ Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x) const
     //
     Eigen::VectorXd f(x.size());
     f.setZero();
-    // TODO: Implement in Assignment(s)
-    Eigen::VectorXd vBNb        = x.segment(0,3);
-    Eigen::VectorXd omegaBNb    = x.segment(3,3);
-    Eigen::VectorXd rBNb        = x.segment(6,3);
-    Eigen::VectorXd Thetanb     = x.segment(9,3);
 
-    //rpy2rot
+    Eigen::Vector3d vBNb        = x.segment(0,3);
+    Eigen::Vector3d omegaBNb    = x.segment(3,3);
+    Eigen::Vector3d rBNb        = x.segment(6,3);
+    Eigen::Vector3d Thetanb     = x.segment(9,3);
 
+    Eigen::Matrix3d Rnb         = rpy2rot(Thetanb);
+
+    Eigen::Matrix3d Tk; 
+
+    //Thetanb(0) = phi
+    //Thetanb(1) = theta    
+    //Thetanb(2) = psi
+
+    using std::cos, std::sin, std::tan;
+
+    Tk << 1, sin(Thetanb(0))*tan(Thetanb(1)), cos(Thetanb(0))*tan(Thetanb(1)),
+          0,                 cos(Thetanb(0)),                -sin(Thetanb(0)),
+          0, sin(Thetanb(0))/cos(Thetanb(1)), cos(Thetanb(0))/cos(Thetanb(1));
+
+    Eigen::Vector3d firstCalculation = Rnb * vBNb;
+    Eigen::Vector3d secondCalculation = Tk * omegaBNb;
+
+    f.segment(6, 3) = firstCalculation;
+    f.segment(9, 3) = secondCalculation;
 
     return f;
 }
@@ -62,19 +87,21 @@ Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x, Eigen::MatrixXd &
 {
     Eigen::VectorXd f = dynamics(x);
 
-    // TODO: Implement in Assignment(s)
-
     // Jacobian J = df/dx
     //    
     //     [  0                  0 0 ]
     // J = [ JK d(JK(eta)*nu)/deta 0 ]
     //     [  0                  0 0 ]
     //
+
     J.resize(f.size(), x.size());
     J.setZero();
-    // TODO: Implement in Assignment(s)
 
-    return f;
+    Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
+    Eigen::VectorX<autodiff::dual> fdual;
+    J = jacobian(&StateSLAM::dynamics<autodiff::dual>, wrt(xdual), at(this, xdual), fdual);
+
+    return fdual.cast<double>();
 }
 
 cv::Mat & StateSLAM::view()
