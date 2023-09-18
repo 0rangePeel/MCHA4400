@@ -58,6 +58,9 @@ public:
     template <typename Scalar> Eigen::Vector2<Scalar> predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, const int j) const;
     Eigen::Vector2d predictFeatureTag(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark, const int j) const;
 
+    template <typename Scalar> Eigen::VectorX<Scalar> predictFeatureTagBundle(const Eigen::VectorX<Scalar> & x, const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const;
+    Eigen::VectorXd predictFeatureTagBundle(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const;
+
     cv::Mat & view();
     const cv::Mat & view() const;
 protected:
@@ -157,16 +160,16 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
     
     // Corner offset given which corner from j
     switch (j) {
-        case 1:
+        case 0:
             rjcNj << -l/2, l/2, 0;
             break;
-        case 2:
+        case 1:
             rjcNj << l/2, l/2, 0;
             break;
-        case 3:
+        case 2:
             rjcNj << l/2, -l/2, 0;
             break;
-        case 4:
+        case 3:
             rjcNj<< -l/2, -l/2, 0;
             break;
         default:
@@ -181,6 +184,31 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
     Eigen::Vector2<Scalar> rQOi = cam.vectorToPixel(rPCc);
 
     return rQOi;
+}
+
+// Image feature location for a bundle of ARUCO Tag point
+template <typename Scalar>
+Eigen::VectorX<Scalar> StateSLAM::predictFeatureTagBundle(const Eigen::VectorX<Scalar> & x, const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const
+{
+    const std::size_t & nL = idxLandmarks.size();
+    const std::size_t & nx = size();
+    assert(x.size() == nx);
+
+    Eigen::VectorX<Scalar> h(8*nL);
+    std::size_t h_index = 0; // Initialize the index for h
+    for (std::size_t i = 0; i < nL; ++i)
+    {
+        for (int j = 0; j < 4; j++)
+        {
+            Eigen::Vector2<Scalar> rQOi = predictFeatureTag(x, cam, idxLandmarks[i], j);
+            // Set pair of elements in h
+            h(h_index) = rQOi(0); // First element of rQOi
+            h(h_index + 1) = rQOi(1); // Second element of rQOi
+
+            h_index += 2; // Increment the index by 2 to move to the next pair
+        }
+    }
+    return h;
 }
 
 #endif

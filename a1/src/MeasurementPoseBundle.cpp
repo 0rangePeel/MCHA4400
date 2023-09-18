@@ -22,6 +22,7 @@ MeasurementPoseBundle::MeasurementPoseBundle(double time, const Eigen::VectorXd 
     : Measurement(time, y)
     , camera_(camera)
 {
+    
     // SR is an upper triangular matrix such that SR.'*SR = R is the measurement noise covariance
     const Eigen::Index & ny = y.size();
     double rms = 1.27127;
@@ -29,6 +30,7 @@ MeasurementPoseBundle::MeasurementPoseBundle(double time, const Eigen::VectorXd 
     noise_ = Gaussian(SR);
 
     // useQuasiNewton = false;
+    
 }
 
 double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x) const
@@ -72,11 +74,13 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     Eigen::VectorXd h = stateSLAM.predictFeatureBundle(x, camera_, idxLandmarks);
 
     Gaussian likelihood(h, noise_.sqrtCov());
+
+    //TODO
     //return likelihood.log(y_);
     return 0;
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, const int j, Eigen::VectorXd & g) const
+double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const
 {
     // Evaluate gradient for SR1 and Newton methods
     // TODO: Assignment(s)
@@ -94,7 +98,7 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     */
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, std::size_t idxLandmark, const int j, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
+double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
 {
     // Evaluate Hessian for Newton method
     // TODO: Assignment(s)

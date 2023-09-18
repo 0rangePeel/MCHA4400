@@ -140,7 +140,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, 0, cam);
 
-        //MeasurementPoseBundle PoseBundle(dt, arucoResult.y, cam);
+        MeasurementPoseBundle MeasurementPoseBundle(dt, arucoResult.y, cam);
 
         cv::Mat outputframe = arucoResult.imgout;
 
