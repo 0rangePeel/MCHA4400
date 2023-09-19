@@ -10,10 +10,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.26.4/CMakeSystem.cmake"
   "CMakeLists.txt"
   "nanobench-populate-prefix/tmp/nanobench-populate-mkdirs.cmake"
-  "C:/msys64/clang64/share/cmake/Modules/CMakeDetermineSystem.cmake"
   "C:/msys64/clang64/share/cmake/Modules/CMakeGenericSystem.cmake"
   "C:/msys64/clang64/share/cmake/Modules/CMakeInitializeConfigs.cmake"
-  "C:/msys64/clang64/share/cmake/Modules/CMakeSystem.cmake.in"
   "C:/msys64/clang64/share/cmake/Modules/CMakeSystemSpecificInformation.cmake"
   "C:/msys64/clang64/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake"
   "C:/msys64/clang64/share/cmake/Modules/ExternalProject.cmake"
@@ -34,7 +32,6 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
-  "CMakeFiles/3.26.4/CMakeSystem.cmake"
   "nanobench-populate-prefix/tmp/nanobench-populate-mkdirs.cmake"
   "nanobench-populate-prefix/tmp/nanobench-populate-gitclone.cmake"
   "nanobench-populate-prefix/src/nanobench-populate-stamp/nanobench-populate-gitinfo.txt"

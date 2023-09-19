@@ -15,7 +15,7 @@
 #include "StateSLAMPointLandmarks.h"
 #include "StateSLAMPoseLandmarks.h"
 #include "imagefeatures.h"
-#include "MeasurementPoseBundle.h"
+#include "MeasurementTagBundle.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)
 {
@@ -111,9 +111,9 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         //Set idsLandmarks 
         state.setIdsLandmarks(arucoResult.ids);
 
-        MeasurementPoseBundle MeasurementPoseBundle(time, arucoResult.y, cam);
+        MeasurementTagBundle MeasurementTagBundle(time, arucoResult.y, cam);
 
-        MeasurementPoseBundle.process(state);
+        MeasurementTagBundle.process(state);
 
         cv::Mat outputframe = arucoResult.imgout;
         //cv::Mat outputframe = imgin;

@@ -9,7 +9,7 @@
 #include "rotation.hpp"
 
 #include "MeasurementPointBundle.h"
-#include "MeasurementPoseBundle.h"
+#include "MeasurementTagBundle.h"
 
 
 #include <unsupported/Eigen/CXX11/Tensor>

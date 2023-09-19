@@ -5938,8 +5938,8 @@ CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.obj
  C:/Users/olive/Documents/MCHA4400/a1/src/Measurement.h
  C:/Users/olive/Documents/MCHA4400/a1/src/Event.h
 
-CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj
- C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.cpp
+CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj
+ C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementTagBundle.cpp
  C:/msys64/clang64/include/c++/v1/cstddef
  C:/msys64/clang64/include/c++/v1/__assert
  C:/msys64/clang64/include/c++/v1/__config
@@ -7345,7 +7345,7 @@ CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj
  C:/msys64/clang64/include/opencv4/opencv2/core/affine.hpp
  C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAM.h
  C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPoseLandmarks.h
- C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.h
+ C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementTagBundle.h
  C:/Users/olive/Documents/MCHA4400/a1/src/Measurement.h
  C:/Users/olive/Documents/MCHA4400/a1/src/Event.h
  C:/msys64/clang64/include/autodiff/forward/dual.hpp
@@ -19177,7 +19177,7 @@ CMakeFiles/common.dir/src/visualNavigation.cpp.obj
  C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.h
  C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPoseLandmarks.h
  C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h
- C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.h
+ C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementTagBundle.h
  C:/Users/olive/Documents/MCHA4400/a1/src/Measurement.h
  C:/Users/olive/Documents/MCHA4400/a1/src/Event.h
  C:/msys64/clang64/include/autodiff/forward/dual.hpp

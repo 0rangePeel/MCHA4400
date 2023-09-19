@@ -947,3 +947,53 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/msys64/clang64/lib/cmake/vtk/patches/99/FindHDF5.cmake:241 (try_compile)"
+      - "C:/msys64/clang64/lib/cmake/vtk/patches/99/FindHDF5.cmake:596 (_HDF5_test_regular_compiler_C)"
+      - "C:/msys64/clang64/lib/cmake/vtk/VTK-vtk-module-find-packages.cmake:1308 (find_package)"
+      - "C:/msys64/clang64/lib/cmake/vtk/vtk-config.cmake:152 (include)"
+      - "CMakeLists.txt:53 (find_package)"
+    directories:
+      source: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp"
+      binary: "C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: "C:/msys64/clang64/lib/cmake/vtk/patches/99;C:/msys64/clang64/lib/cmake/vtk;C:/msys64/clang64/lib/cmake/doctest;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin;C:/msys64/clang64/lib/cmake/Qt6;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/extra-cmake-modules/find-modules;C:/msys64/clang64/lib/cmake/Qt6/3rdparty/kwin"
+    buildResult:
+      variable: "HDF5_C_COMPILER_NO_INTERROGATE"
+      cached: true
+      stdout: |
+        Change Dir: C:/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp
+        
+        Run Build Command(s):C:/msys64/clang64/bin/cmake.exe -E env VERBOSE=1 C:/msys64/usr/bin/make.exe -f Makefile cmTC_df6af/fast && make[1]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        /usr/bin/make  -f CMakeFiles/cmTC_df6af.dir/build.make CMakeFiles/cmTC_df6af.dir/build
+        make[2]: Entering directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        Building C object CMakeFiles/cmTC_df6af.dir/cmake_hdf5_test.c.obj
+        /C/msys64/clang64/bin/cc.exe    -MD -MT CMakeFiles/cmTC_df6af.dir/cmake_hdf5_test.c.obj -MF CMakeFiles/cmTC_df6af.dir/cmake_hdf5_test.c.obj.d -o CMakeFiles/cmTC_df6af.dir/cmake_hdf5_test.c.obj -c /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/cmake_hdf5_test.c
+        Linking C executable cmTC_df6af.exe
+        /C/msys64/clang64/bin/cmake.exe -E rm -f CMakeFiles/cmTC_df6af.dir/objects.a
+        /C/msys64/clang64/bin/llvm-ar.exe qc CMakeFiles/cmTC_df6af.dir/objects.a "CMakeFiles/cmTC_df6af.dir/cmake_hdf5_test.c.obj" 
+        /C/msys64/clang64/bin/cc.exe -Wl,--whole-archive CMakeFiles/cmTC_df6af.dir/objects.a -Wl,--no-whole-archive -o cmTC_df6af.exe -Wl,--out-implib,libcmTC_df6af.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+        ld.lld: error: undefined symbol: H5check_version
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: H5open
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        
+        ld.lld: error: undefined symbol: H5Fcreate
+        >>> referenced by objects.a(cmake_hdf5_test.c.obj):(main)
+        cc: error: linker command failed with exit code 1 (use -v to see invocation)
+        make[2]: *** [CMakeFiles/cmTC_df6af.dir/build.make:101: cmTC_df6af.exe] Error 1
+        make[2]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        make[1]: *** [Makefile:127: cmTC_df6af/fast] Error 2
+        make[1]: Leaving directory '/c/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles/hdf5/CMakeFiles/CMakeTmp'
+        
+      exitCode: 2
+...

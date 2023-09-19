@@ -7,7 +7,7 @@
 #include "Camera.h"
 #include "StateSLAM.h"
 #include "StateSLAMPoseLandmarks.h"
-#include "MeasurementPoseBundle.h"
+#include "MeasurementTagBundle.h"
 
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
@@ -18,7 +18,7 @@
 #include <autodiff/forward/dual.hpp>
 #include <autodiff/forward/dual/eigen.hpp>
 
-MeasurementPoseBundle::MeasurementPoseBundle(double time, const Eigen::VectorXd & y, const Camera & camera)
+MeasurementTagBundle::MeasurementTagBundle(double time, const Eigen::VectorXd & y, const Camera & camera)
     : Measurement(time, y)
     , camera_(camera)
 {  
@@ -31,7 +31,7 @@ MeasurementPoseBundle::MeasurementPoseBundle(double time, const Eigen::VectorXd 
     // useQuasiNewton = false;  
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x) const
+double MeasurementTagBundle::logLikelihood(const State & state, const Eigen::VectorXd & x) const
 {
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
     /*
@@ -90,7 +90,7 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     return logLikelihoodImpl(x, stateSLAM, state.getIdxLandmarks());
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const
+double MeasurementTagBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const
 {
     // Evaluate gradient for SR1 and Newton methods
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
@@ -99,11 +99,11 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     g.setZero();
     Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
     autodiff::dual fdual;
-    g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual);
+    g = gradient(&MeasurementTagBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual);
     return val(fdual);
 }
 
-double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
+double MeasurementTagBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
 {
     // Evaluate Hessian for Newton method  
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
@@ -112,11 +112,11 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     H.setZero();
     Eigen::VectorX<autodiff::dual2nd> xdual = x.cast<autodiff::dual2nd>();
     autodiff::dual2nd fdual;
-    H = hessian(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual, g);
+    H = hessian(&MeasurementTagBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual, g);
     return val(fdual);
 }
 
-void MeasurementPoseBundle::update(State & state)
+void MeasurementTagBundle::update(State & state)
 {
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
 

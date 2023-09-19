@@ -302,29 +302,29 @@ src/MeasurementPointBundle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.s
 .PHONY : src/MeasurementPointBundle.cpp.s
 
-src/MeasurementPoseBundle.obj: src/MeasurementPoseBundle.cpp.obj
-.PHONY : src/MeasurementPoseBundle.obj
+src/MeasurementTagBundle.obj: src/MeasurementTagBundle.cpp.obj
+.PHONY : src/MeasurementTagBundle.obj
 
 # target to build an object file
-src/MeasurementPoseBundle.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj
-.PHONY : src/MeasurementPoseBundle.cpp.obj
+src/MeasurementTagBundle.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj
+.PHONY : src/MeasurementTagBundle.cpp.obj
 
-src/MeasurementPoseBundle.i: src/MeasurementPoseBundle.cpp.i
-.PHONY : src/MeasurementPoseBundle.i
+src/MeasurementTagBundle.i: src/MeasurementTagBundle.cpp.i
+.PHONY : src/MeasurementTagBundle.i
 
 # target to preprocess a source file
-src/MeasurementPoseBundle.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.i
-.PHONY : src/MeasurementPoseBundle.cpp.i
+src/MeasurementTagBundle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.i
+.PHONY : src/MeasurementTagBundle.cpp.i
 
-src/MeasurementPoseBundle.s: src/MeasurementPoseBundle.cpp.s
-.PHONY : src/MeasurementPoseBundle.s
+src/MeasurementTagBundle.s: src/MeasurementTagBundle.cpp.s
+.PHONY : src/MeasurementTagBundle.s
 
 # target to generate assembly for a file
-src/MeasurementPoseBundle.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.s
-.PHONY : src/MeasurementPoseBundle.cpp.s
+src/MeasurementTagBundle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.s
+.PHONY : src/MeasurementTagBundle.cpp.s
 
 src/Plot.obj: src/Plot.cpp.obj
 .PHONY : src/Plot.obj
@@ -642,9 +642,9 @@ help:
 	@echo "... src/MeasurementPointBundle.obj"
 	@echo "... src/MeasurementPointBundle.i"
 	@echo "... src/MeasurementPointBundle.s"
-	@echo "... src/MeasurementPoseBundle.obj"
-	@echo "... src/MeasurementPoseBundle.i"
-	@echo "... src/MeasurementPoseBundle.s"
+	@echo "... src/MeasurementTagBundle.obj"
+	@echo "... src/MeasurementTagBundle.i"
+	@echo "... src/MeasurementTagBundle.s"
 	@echo "... src/Plot.obj"
 	@echo "... src/Plot.i"
 	@echo "... src/Plot.s"

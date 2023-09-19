@@ -139,19 +139,19 @@ CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.s"
 	/C/msys64/clang64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /C/Users/olive/Documents/MCHA4400/a1/src/MeasurementPointBundle.cpp -o CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.s
 
-CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj: CMakeFiles/common.dir/flags.make
-CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj: C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.cpp
-CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj: CMakeFiles/common.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj"
-	/C/msys64/clang64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj -MF CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj.d -o CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj -c /C/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.cpp
+CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj: CMakeFiles/common.dir/flags.make
+CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj: C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementTagBundle.cpp
+CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj: CMakeFiles/common.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj"
+	/C/msys64/clang64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj -MF CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj.d -o CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj -c /C/Users/olive/Documents/MCHA4400/a1/src/MeasurementTagBundle.cpp
 
-CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.i"
-	/C/msys64/clang64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /C/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.cpp > CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.i
+CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.i"
+	/C/msys64/clang64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /C/Users/olive/Documents/MCHA4400/a1/src/MeasurementTagBundle.cpp > CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.i
 
-CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.s"
-	/C/msys64/clang64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /C/Users/olive/Documents/MCHA4400/a1/src/MeasurementPoseBundle.cpp -o CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.s
+CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.s"
+	/C/msys64/clang64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /C/Users/olive/Documents/MCHA4400/a1/src/MeasurementTagBundle.cpp -o CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.s
 
 CMakeFiles/common.dir/src/Plot.cpp.obj: CMakeFiles/common.dir/flags.make
 CMakeFiles/common.dir/src/Plot.cpp.obj: C:/Users/olive/Documents/MCHA4400/a1/src/Plot.cpp
@@ -286,7 +286,7 @@ common_OBJECTS = \
 "CMakeFiles/common.dir/src/Event.cpp.obj" \
 "CMakeFiles/common.dir/src/Measurement.cpp.obj" \
 "CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.obj" \
-"CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj" \
+"CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj" \
 "CMakeFiles/common.dir/src/Plot.cpp.obj" \
 "CMakeFiles/common.dir/src/State.cpp.obj" \
 "CMakeFiles/common.dir/src/StateSLAM.cpp.obj" \
@@ -305,7 +305,7 @@ libcommon.dll: CMakeFiles/common.dir/src/Camera.cpp.obj
 libcommon.dll: CMakeFiles/common.dir/src/Event.cpp.obj
 libcommon.dll: CMakeFiles/common.dir/src/Measurement.cpp.obj
 libcommon.dll: CMakeFiles/common.dir/src/MeasurementPointBundle.cpp.obj
-libcommon.dll: CMakeFiles/common.dir/src/MeasurementPoseBundle.cpp.obj
+libcommon.dll: CMakeFiles/common.dir/src/MeasurementTagBundle.cpp.obj
 libcommon.dll: CMakeFiles/common.dir/src/Plot.cpp.obj
 libcommon.dll: CMakeFiles/common.dir/src/State.cpp.obj
 libcommon.dll: CMakeFiles/common.dir/src/StateSLAM.cpp.obj
