@@ -147,7 +147,7 @@ void MeasurementPoseBundle::update(State & state)
             //std::cout << "id " << id << std::endl;
             auto it = std::find(idsHistLandmarks.begin(), idsHistLandmarks.end(), id);
             if (it == idsHistLandmarks.end()) {
-                std::cout << id << " not found in the vector" << std::endl;
+                //std::cout << id << " not found in the vector" << std::endl;
                 state.modifyIdsHistLandmarks(id);
                 idsHistLandmarks.push_back(id);
             }
@@ -189,7 +189,7 @@ void MeasurementPoseBundle::update(State & state)
         if (it != idsHistLandmarks.end()) {
             // id found in idsHistLandmarks, append its position to idxLandmarks
             std::size_t position = std::distance(idsHistLandmarks.begin(), it);
-            std::cout << position << std::endl;
+            //std::cout << position << std::endl;
             state.modifyIdxLandmarks(position);
             //idxLandmarks.push_back(position); // this is not needed
         }

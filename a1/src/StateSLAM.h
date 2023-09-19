@@ -104,13 +104,13 @@ Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x)
     //        [ TK(thetanb)*omegaBNb ]
     //        [                    0 ] for all map states
     //
-    //std::cout << "Inside Dynamics" << std::endl;
+ 
     Eigen::VectorX<Scalar> f(x.size());
     f.setZero();
 
     Eigen::Vector3<Scalar> vBNb        = x.template segment(0,3);
     Eigen::Vector3<Scalar> omegaBNb    = x.template segment(3,3);
-    Eigen::Vector3<Scalar> rBNb        = x.template segment(6,3);
+    Eigen::Vector3<Scalar> rBNn        = x.template segment(6,3);
     Eigen::Vector3<Scalar> Thetanb     = x.template segment(9,3);
 
     Eigen::Matrix3<Scalar> Rnb         = rpy2rot(Thetanb);
@@ -127,13 +127,8 @@ Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x)
           0,                 cos(Thetanb(0)),                -sin(Thetanb(0)),
           0, sin(Thetanb(0))/cos(Thetanb(1)), cos(Thetanb(0))/cos(Thetanb(1));
 
-    Eigen::Vector3<Scalar> firstCalculation = Rnb * vBNb;
-    Eigen::Vector3<Scalar> secondCalculation = Tk * omegaBNb;
-
-    f.template segment(6, 3) = firstCalculation;
-    f.template segment(9, 3) = secondCalculation;
-    //std::cout << "StateSLAM.h - f:" << std::endl;
-    //std::cout << f << std::endl;
+    f.template segment(6, 3) = Rnb * vBNb;
+    f.template segment(9, 3) = Tk * omegaBNb;
 
     return f;
 }
@@ -219,8 +214,8 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
     // position and rotation of tag centre
     // This is placed into rjNn and thetanj respectively
     std::size_t idx = landmarkPositionIndex(idxLandmark);
-    Eigen::Vector3<Scalar> rjNn = x.template segment<3>(idx);
-    Eigen::Vector3<Scalar> thetanj = x.template segment<3>(idx + 3);
+    Eigen::Vector3<Scalar> rjNn = x.template segment(idx,3);
+    Eigen::Vector3<Scalar> thetanj = x.template segment((idx + 3),3);
     Eigen::Matrix3<Scalar> Rnj = rpy2rot(thetanj);
 
     Eigen::Vector3<Scalar> rjcNj;
@@ -259,7 +254,6 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
 template <typename Scalar>
 Eigen::VectorX<Scalar> StateSLAM::predictFeatureTagBundle(const Eigen::VectorX<Scalar> & x, const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const
 {
-    //std::cout << "predictFeatureTagBundle1" << std::endl;
     const std::size_t & nL = idxLandmarks.size();
     const std::size_t & nx = size();
     assert(x.size() == nx);
@@ -270,14 +264,7 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureTagBundle(const Eigen::VectorX<S
     {
         for (int j = 0; j < 4; j++)
         {
-            //std::cout << "predictFeatureTageBundle i: " << i << " j: " << j << std::endl;
-            //std::cout << "x" << std::endl;
-            //std::cout << x << std::endl;
-            //std::cout << "idxLandmarks" << std::endl;
-            //std::cout << idxLandmarks[i] << std::endl;
             Eigen::Vector2<Scalar> rQOi = predictFeatureTag(x, cam, idxLandmarks[i], j);
-            //std::cout << "predictFeatureTageBundle rQOi: " << rQOi <<  std::endl;
-
             // Set pair of elements in h
             h(h_index) = rQOi(0); // First element of rQOi
             h(h_index + 1) = rQOi(1); // Second element of rQOi
@@ -285,7 +272,6 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureTagBundle(const Eigen::VectorX<S
             h_index += 2; // Increment the index by 2 to move to the next pair
         }
     }
-    //std::cout << "predictFeatureTagBundle2" << std::endl;
     return h;
 }
 

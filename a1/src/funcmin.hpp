@@ -181,15 +181,12 @@ int SR1TrustEig(Func costFunc, Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::
 
     // Evaluate initial cost and gradient
     Scalar f = costFunc(x, g);
-    std::cout << "funcmin.hpp  : YAY" << std::endl;
     if (!std::isfinite(f) || !g.allFinite())        // if any nan, -inf or +inf
     {
-        std::cout << "funcmin.hpp  : YAY2" << std::endl;
         if (verbosity > 1)
             std::printf("ERROR: Initial point is not in domain of cost function\n");
         return -1;
     }
-    std::cout << "funcmin.hpp  : " << std::endl;
 
     // Initial Hessian
     H = Q*v.asDiagonal()*Q.transpose();

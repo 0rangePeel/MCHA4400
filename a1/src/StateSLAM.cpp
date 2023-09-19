@@ -24,67 +24,7 @@ StateSLAM::StateSLAM(const Gaussian<double> & density)
 Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x) const
 {
     assert(size() == x.size());
-    /*
-    * State containing body velocities, body pose and landmark states
-    *
-    *     [ vBNb     ]  Body translational velocity (body-fixed)
-    *     [ omegaBNb ]  Body angular velocity (body-fixed)
-    * x = [ rBNn     ]  Body position (world-fixed)
-    *     [ Thetanb  ]  Body orientation (world-fixed)
-    *     [ m        ]  Landmark map states (undefined in this class)
-    *
-    */
-    //
-    //  dnu/dt =          0 + dwnu/dt
-    // deta/dt = JK(eta)*nu +       0
-    //   dm/dt =          0 +       0
-    // \_____/   \________/   \_____/
-    //  dx/dt  =    f(x)    +  dw/dt
-    //
-    //        [          0 ]
-    // f(x) = [ JK(eta)*nu ]
-    //        [          0 ] for all map states
-    //
-    //        [                    0 ]
-    //        [                    0 ]
-    // f(x) = [    Rnb(thetanb)*vBNb ]
-    //        [ TK(thetanb)*omegaBNb ]
-    //        [                    0 ] for all map states
-    //
-
-    /*
-    Eigen::VectorXd f(x.size());
-    f.setZero();
-
-    Eigen::Vector3d vBNb        = x.segment(0,3);
-    Eigen::Vector3d omegaBNb    = x.segment(3,3);
-    Eigen::Vector3d rBNb        = x.segment(6,3);
-    Eigen::Vector3d Thetanb     = x.segment(9,3);
-
-    Eigen::Matrix3d Rnb         = rpy2rot(Thetanb);
-
-    Eigen::Matrix3d Tk; 
-
-    //Thetanb(0) = phi
-    //Thetanb(1) = theta    
-    //Thetanb(2) = psi
-
-    using std::cos, std::sin, std::tan;
-
-    Tk << 1, sin(Thetanb(0))*tan(Thetanb(1)), cos(Thetanb(0))*tan(Thetanb(1)),
-          0,                 cos(Thetanb(0)),                -sin(Thetanb(0)),
-          0, sin(Thetanb(0))/cos(Thetanb(1)), cos(Thetanb(0))/cos(Thetanb(1));
-
-    Eigen::Vector3d firstCalculation = Rnb * vBNb;
-    Eigen::Vector3d secondCalculation = Tk * omegaBNb;
-
-    f.segment(6, 3) = firstCalculation;
-    f.segment(9, 3) = secondCalculation;
-
-    return f;
-    */
-   //std::cout << "Dynamics Time !!!" << std::endl;
-   return dynamicsImpl(x);
+    return dynamicsImpl(x);
 }
 
 // Evaluate f(x) and its Jacobian J = df/fx from the SDE dx = f(x)*dt + dw

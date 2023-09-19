@@ -113,28 +113,19 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         MeasurementPoseBundle MeasurementPoseBundle(time, arucoResult.y, cam);
 
-        std::cout << "visualNavigation.cpp - BeforeProcess" << std::endl;
-
         MeasurementPoseBundle.process(state);
-        std::cout << "visualNavigation.cpp - AfterProcess" << std::endl;
 
         cv::Mat outputframe = arucoResult.imgout;
         //cv::Mat outputframe = imgin;
 
-        std::cout << "visualNavigation.cpp - outputFrame" << std::endl;
-
         state.view() = outputframe.clone();
-        std::cout << "visualNavigation.cpp - state.view" << std::endl;
         //state.view() = imgin;
         
         // Set local copy of state for plot to use
         plot.setState(state);
-        std::cout << "visualNavigation.cpp - plot" << std::endl;
        
         // -Update plot
         plot.render();
-        std::cout << "visualNavigation.cpp - render" << std::endl;
-        
 
         i += 1;
 
@@ -148,7 +139,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         
         if (interactive == 2 || (interactive == 1 && i + 1 == nFrames))
         {
-            /*
+            
             // Print the detected ARUCO tags and corners for when frame is stopped
             std::cout << "Detected Marker Corners:" << std::endl;
             for (int i = 0; i < arucoResult.corners.size(); i++) {
@@ -158,11 +149,11 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
                 }
                 std::cout << std::endl;
             }
-
+            std::cout << "Measurement : y " << std::endl;
             for (int i = 0; i < arucoResult.y.size(); i++){
                 std::cout << arucoResult.y(i) << std::endl;
             }
-            */
+            
             
             
 
