@@ -71,9 +71,9 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     
     // TODO: Assignment(s)
 
-    std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
+    //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
 
-    Eigen::VectorXd h = stateSLAM.predictFeatureTagBundle(x, camera_, idxLandmarks);
+    Eigen::VectorXd h = stateSLAM.predictFeatureTagBundle(x, camera_, state.getIdxLandmarks());
 
     for (int i = 0; i < h.size(); i++){
         std::cout << h(i) << std::endl;
@@ -92,17 +92,11 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
 {
     // Evaluate gradient for SR1 and Newton methods
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
-    // Select visible landmarks
-    //std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
-    // Select all landmarks
-    //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); 
 
     g.resize(x.size());
     g.setZero();
     Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
     autodiff::dual fdual;
-    //std::vector<std::size_t> idxLandmarks = state.getIdxLandmarks();
-    //g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, idxLandmarks), fdual);
     g = gradient(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual);
     return val(fdual);
 }
@@ -111,51 +105,113 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
 {
     // Evaluate Hessian for Newton method  
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
-    // Select visible landmarks
-    //std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
-    // Select all landmarks
-    //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); 
 
     H.resize(x.size(), x.size());
     H.setZero();
     Eigen::VectorX<autodiff::dual2nd> xdual = x.cast<autodiff::dual2nd>();
     autodiff::dual2nd fdual;
-    //H = hessian(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, idxLandmarks), fdual, g);
-    //H = hessian(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual, g);
+    H = hessian(&MeasurementPoseBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual, g);
     return val(fdual);
 }
 
 void MeasurementPoseBundle::update(State & state)
 {
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
-/*
+
+    // Get landmarks
+    std::vector<int> idsLandmarks = state.getIdsLandmarks();
+    std::vector<int> idsHistLandmarks = state.getIdsHistLandmarks();
+    std::vector<std::size_t> idxLandmarks = state.getIdxLandmarks();
+
+    // Initialise New Landmarks //
     // If idxLandmark is size 0 then put first idsLandmark inside idsHistLandmark
-    if (state.getIdsHistLandmarks.empty()) {
+    if (state.getIdsHistLandmarks().empty()) {
         // If it's empty, simply copy all values from idsLandmarks
-        state.setIdsHistLandmarks() = idsLandmarks;
-    } else 
+        for (int i = 0; i < idsLandmarks.size(); i++) {
+            int id = idsLandmarks[i];
+            state.modifyIdsHistLandmarks(id);
+            std::cout << "MeasurementPoseBundle.cpp - 1" << std::endl;
+        }
+    } 
+    else 
     {
         // Get idsLandmarks and see if any mismatch between idsHistLandmarks
-        // If mismatch is there, append idsLandmark to end of idxLandmark
+        // If mismatch is there, append idsLandmark to end of idsHistLandmark
         // Loop through idsLandmarks and check if each value is in idsHistLandmarks
+        /*
+        std::cout << "ids ";
         for (const int& id : state.getIdsLandmarks()) {
-            if (std::find(state.idsHistLandmarks.begin(), state.idsHistLandmarks.end(), id) == state.idsHistLandmarks.end()) {
-                // id is not in idsHistLandmarks, so append it
-                state.idsHistLandmarks.push_back(id);
+            std::cout << id << " ";
+        }
+        std::cout << std::endl;
+        std::cout << "idsHist";
+        for (const int& id : state.getIdsHistLandmarks()) {
+            std::cout << id << " ";
+        }
+        std::cout << std::endl;
+        */
+        /*
+        for (const int& id : state.getIdsLandmarks()) {
+            std::cout << "id " << id << std::endl;
+
+            std::vector<int> numbers = state.getIdsHistLandmarks();
+
+            auto it = std::find(numbers.begin(), numbers.end(), id);
+            if (it == numbers.end()) {
+                std::cout << id << " not found in the vector" << std::endl;
+                state.modifyIdsHistLandmarks(id);
+            }
+        }
+        */
+        for (const int& id : idsLandmarks) {
+            std::cout << "id " << id << std::endl;
+
+            //std::vector<int> numbers = state.getIdsHistLandmarks();
+
+            auto it = std::find(idsHistLandmarks.begin(), idsHistLandmarks.end(), id);
+            if (it == idsHistLandmarks.end()) {
+                std::cout << id << " not found in the vector" << std::endl;
+                state.modifyIdsHistLandmarks(id);
             }
         }
     }
 
+    std::cout << "sqrtSize " << stateSLAM.density.sqrtCov().rows() << std::endl;
+    std::cout << "sqrtSize* " << (12 + 6*state.getIdsHistLandmarks().size()) << std::endl;
+
+    // Increase size of sqrtCov matrix and mu array to match number of ArUco Tags
+    if (stateSLAM.density.sqrtCov().rows() < (12 + 6*state.getIdsHistLandmarks().size()))
+    {
+        int densitySize = 12 + 6*state.getIdsHistLandmarks().size();
+        stateSLAM.density.sqrtCov().conservativeResizeLike(Eigen::MatrixXd::Zero(densitySize,densitySize));
+        stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(densitySize));
+        std::cout << "Increase sqrtCov " << std::endl;
+    }
+
+    std::cout << "sqrtSize after " << stateSLAM.density.sqrtCov().rows() << std::endl;
+    
+    std::cout << "idsSize " << state.getIdsLandmarks().size() << std::endl;
+    std::cout << "idsHistSize " << state.getIdsHistLandmarks().size() << std::endl;
+
+
+    // Data Association //
     // Create idxLandmarks after everything completed by using idsLandmarks then verfering to idsHistLandmarks 
     // Loop through idsLandmarks and look up values in idsHistLandmarks
-    for (const int& id : state.idsLandmarks) {
-        auto it = std::find(state.idsHistLandmarks.begin(), state.idsHistLandmarks.end(), id);
-        if (it != state.idsHistLandmarks.end()) {
+    // Reset idxLandmarks
+    std::vector<std::size_t> emptyVector; // Create an empty vector
+    state.setIdxLandmarks(emptyVector);   // Set idxLandmarks to the empty vector
+
+    for (const int& id : state.getIdsLandmarks()) {
+        auto it = std::find(state.getIdsLandmarks().begin(), state.getIdsHistLandmarks().end(), id);
+        if (it != state.getIdsHistLandmarks().end()) {
             // id found in idsHistLandmarks, append its position to idxLandmarks
-            std::size_t position = std::distance(state.idsHistLandmarks.begin(), it);
-            state.idxLandmarks.push_back(position);
+            std::size_t position = std::distance(state.getIdsHistLandmarks().begin(), it);
+            state.modifyIdxLandmarks(position);
+            std::cout << "MeasurementPoseBundle.cpp - 3" << std::endl;
         }
     }
-  */  
+    std::cout << "idxSize " << state.getIdxLandmarks().size() << std::endl;
+    
+    
     Measurement::update(state);  // Do the actual measurement update
 }

@@ -62,6 +62,9 @@ void Measurement::update(State & state)
     Eigen::VectorXd x = state.density.mean(); // Set initial decision variable to prior mean
     Eigen::MatrixXd & S = state.density.sqrtCov();
 
+    std::cout << "mu size: " << x.size() << std::endl;
+    std::cout << "S size: " << S.rows() << std::endl;
+
     constexpr int verbosity = 1; // 0:none, 1:dots, 2:summary, 3:iter
     if (useQuasiNewton)
     {

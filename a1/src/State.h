@@ -21,19 +21,21 @@ public:
     // Getter functions
     std::vector<int> getIdsLandmarks() const;
     std::vector<std::size_t> getIdxLandmarks() const;
-    std::vector<std::size_t> getIdsHistLandmarks() const;
+    std::vector<int> getIdsHistLandmarks() const;
 
     // Setter functions
     void setIdsLandmarks(const std::vector<int>& ids);
     void setIdxLandmarks(const std::vector<std::size_t>& idx);
-    void setIdsHistLandmarks(const std::vector<std::size_t>& idsHist);
+    void setIdsHistLandmarks(const std::vector<int>& idsHist);
 
     // Function to modify idsLandmarks using a std::vector input
     void modifyIdsLandmarks(const std::vector<int>& newIds);
     // Function to modify idxLandmarks using a std::vector input
-    void modifyIdxLandmarks(const std::vector<std::size_t>& newIdx);
+    //void modifyIdxLandmarks(const std::vector<std::size_t>& newIdx);
+    void modifyIdxLandmarks(int newIdx);
     // Function to modify idsHistLandmarks using a std::vector input
-    void modifyIdsHistLandmarks(const std::vector<std::size_t>& newIdsHist);
+    //void modifyIdsHistLandmarks(const std::vector<int>& newIdsHist);
+    void modifyIdsHistLandmarks(int newIdsHist);
 
 
 protected:
@@ -44,7 +46,7 @@ private:
     double time_;
     std::vector<int> idsLandmarks;
     std::vector<std::size_t> idxLandmarks;
-    std::vector<std::size_t> idsHistLandmarks;
+    std::vector<int> idsHistLandmarks;
 };
 
 #endif

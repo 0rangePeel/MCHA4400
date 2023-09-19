@@ -35,7 +35,7 @@ std::vector<int> State::getIdsLandmarks() const {
 std::vector<std::size_t> State::getIdxLandmarks() const {
     return idxLandmarks;
 }
-std::vector<std::size_t> State::getIdsHistLandmarks() const {
+std::vector<int> State::getIdsHistLandmarks() const {
     return idsHistLandmarks;
 }
 void State::setIdsLandmarks(const std::vector<int>& ids) {
@@ -44,20 +44,20 @@ void State::setIdsLandmarks(const std::vector<int>& ids) {
 void State::setIdxLandmarks(const std::vector<std::size_t>& idx) {
     idxLandmarks = idx;
 }
-void State::setIdsHistLandmarks(const std::vector<std::size_t>& idsHist) {
+void State::setIdsHistLandmarks(const std::vector<int>& idsHist) {
     idsHistLandmarks = idsHist;
 }
 void State::modifyIdsLandmarks(const std::vector<int>& newIds) {
     // Append newIds to idsLandmarks
     idsLandmarks.insert(idsLandmarks.end(), newIds.begin(), newIds.end());
 }
-void State::modifyIdxLandmarks(const std::vector<std::size_t>& newIdx) {
+void State::modifyIdxLandmarks(int newIdx) {
     // Append newIdx to idxLandmarks
-    idxLandmarks.insert(idxLandmarks.end(), newIdx.begin(), newIdx.end());
+    idxLandmarks.push_back(newIdx);
 }
-void State::modifyIdsHistLandmarks(const std::vector<std::size_t>& newIdsHist) {
-    // Append newIdsHist to idsHistLandmarks
-    idsHistLandmarks.insert(idsHistLandmarks.end(), newIdsHist.begin(), newIdsHist.end());
+void State::modifyIdsHistLandmarks(int newIdsHist) {
+    // Append the new value to idsHistLandmarks
+    idsHistLandmarks.push_back(newIdsHist);
 }
 
 // Evaluate F(X) from dX = F(X)*dt + dW
