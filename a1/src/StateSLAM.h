@@ -1,6 +1,7 @@
 #ifndef STATESLAM_H
 #define STATESLAM_H
 
+#include <iostream>
 #include <cmath>
 #include <vector>
 #include <Eigen/Core>
@@ -103,6 +104,7 @@ Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x)
     //        [ TK(thetanb)*omegaBNb ]
     //        [                    0 ] for all map states
     //
+    //std::cout << "Inside Dynamics" << std::endl;
     Eigen::VectorX<Scalar> f(x.size());
     f.setZero();
 
@@ -130,6 +132,8 @@ Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x)
 
     f.template segment(6, 3) = firstCalculation;
     f.template segment(9, 3) = secondCalculation;
+    //std::cout << "StateSLAM.h - f:" << std::endl;
+    //std::cout << f << std::endl;
 
     return f;
 }
@@ -255,6 +259,7 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
 template <typename Scalar>
 Eigen::VectorX<Scalar> StateSLAM::predictFeatureTagBundle(const Eigen::VectorX<Scalar> & x, const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const
 {
+    //std::cout << "predictFeatureTagBundle1" << std::endl;
     const std::size_t & nL = idxLandmarks.size();
     const std::size_t & nx = size();
     assert(x.size() == nx);
@@ -265,7 +270,13 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureTagBundle(const Eigen::VectorX<S
     {
         for (int j = 0; j < 4; j++)
         {
+            //std::cout << "predictFeatureTageBundle i: " << i << " j: " << j << std::endl;
+            //std::cout << "x" << std::endl;
+            //std::cout << x << std::endl;
+            //std::cout << "idxLandmarks" << std::endl;
+            //std::cout << idxLandmarks[i] << std::endl;
             Eigen::Vector2<Scalar> rQOi = predictFeatureTag(x, cam, idxLandmarks[i], j);
+            //std::cout << "predictFeatureTageBundle rQOi: " << rQOi <<  std::endl;
 
             // Set pair of elements in h
             h(h_index) = rQOi(0); // First element of rQOi
@@ -274,6 +285,7 @@ Eigen::VectorX<Scalar> StateSLAM::predictFeatureTagBundle(const Eigen::VectorX<S
             h_index += 2; // Increment the index by 2 to move to the next pair
         }
     }
+    //std::cout << "predictFeatureTagBundle2" << std::endl;
     return h;
 }
 

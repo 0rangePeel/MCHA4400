@@ -126,8 +126,8 @@ CMakeFiles/common.dir/clean:
 # Target rules for target CMakeFiles/a1.dir
 
 # All Build rule for target.
-CMakeFiles/a1.dir/all: CMakeFiles/common.dir/all
 CMakeFiles/a1.dir/all: _deps/nanobench-build/CMakeFiles/nanobench.dir/all
+CMakeFiles/a1.dir/all: CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/a1.dir/build.make CMakeFiles/a1.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/a1.dir/build.make CMakeFiles/a1.dir/build
 .PHONY : CMakeFiles/a1.dir/all
@@ -152,8 +152,8 @@ CMakeFiles/a1.dir/clean:
 # Target rules for target CMakeFiles/tests.dir
 
 # All Build rule for target.
-CMakeFiles/tests.dir/all: CMakeFiles/common.dir/all
 CMakeFiles/tests.dir/all: _deps/nanobench-build/CMakeFiles/nanobench.dir/all
+CMakeFiles/tests.dir/all: CMakeFiles/common.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
 .PHONY : CMakeFiles/tests.dir/all

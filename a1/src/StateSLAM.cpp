@@ -83,6 +83,7 @@ Eigen::VectorXd StateSLAM::dynamics(const Eigen::VectorXd & x) const
 
     return f;
     */
+   //std::cout << "Dynamics Time !!!" << std::endl;
    return dynamicsImpl(x);
 }
 

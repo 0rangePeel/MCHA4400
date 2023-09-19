@@ -29,8 +29,14 @@ double Measurement::costJointDensity(const Eigen::VectorXd & x, const State & st
     Eigen::VectorXd logpriorGrad(x.size());
     double logprior = state.density.log(x, logpriorGrad);
 
+    //std::cout << "logprior" << std::endl;
+    //std::cout << logprior << std::endl;
+
     Eigen::VectorXd loglikGrad(x.size());
     double loglik = logLikelihood(state, x, loglikGrad);
+
+    //std::cout << "loglik" << std::endl;
+    //std::cout << loglik << std::endl;
 
     g = -(logpriorGrad + loglikGrad);
     return -(logprior + loglik);
@@ -65,6 +71,7 @@ void Measurement::update(State & state)
     std::cout << "mu size: " << x.size() << std::endl;
     std::cout << "S size: " << S.rows() << std::endl;
 
+
     constexpr int verbosity = 1; // 0:none, 1:dots, 2:summary, 3:iter
     if (useQuasiNewton)
     {
@@ -86,9 +93,10 @@ void Measurement::update(State & state)
 
         // Create cost function with prototype V = costFunc(x, g)
         auto costFunc = [&](const Eigen::VectorXd & x, Eigen::VectorXd & g){ return costJointDensity(x, state, g); };
-
+        std::cout << "Measurement.cpp - Before Optimisation" << std::endl;
         // Minimise cost
         int ret = funcmin::SR1TrustEig(costFunc, x, g, Q, v, verbosity);
+        std::cout << "Measurement.cpp - After Optimisation" << std::endl;
         assert(ret == 0);
     }
     else
@@ -100,7 +108,6 @@ void Measurement::update(State & state)
         int ret = funcmin::NewtonTrustEig(costFunc, x, g, Q, v, verbosity);
         assert(ret == 0);
     }
-
     // Set posterior mean to maximum a posteriori (MAP) estimate
     state.density.mean() = x;
 

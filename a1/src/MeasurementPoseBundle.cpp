@@ -118,6 +118,9 @@ void MeasurementPoseBundle::update(State & state)
 {
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
 
+    std::cout << "muSize " << stateSLAM.density.mean().size() << std::endl;
+    std::cout << "sqrtSize " << stateSLAM.density.sqrtCov().rows() << " " << stateSLAM.density.sqrtCov().cols() << std::endl;
+
     // Get landmarks
     std::vector<int> idsLandmarks = state.getIdsLandmarks();
     std::vector<int> idsHistLandmarks = state.getIdsHistLandmarks();
@@ -130,7 +133,9 @@ void MeasurementPoseBundle::update(State & state)
         for (int i = 0; i < idsLandmarks.size(); i++) {
             int id = idsLandmarks[i];
             state.modifyIdsHistLandmarks(id);
-            std::cout << "MeasurementPoseBundle.cpp - 1" << std::endl;
+            idsHistLandmarks.push_back(id);
+            //std::cout << "Print Id" << std::endl;
+            //std::cout << id << std::endl;
         }
     } 
     else 
@@ -138,61 +143,39 @@ void MeasurementPoseBundle::update(State & state)
         // Get idsLandmarks and see if any mismatch between idsHistLandmarks
         // If mismatch is there, append idsLandmark to end of idsHistLandmark
         // Loop through idsLandmarks and check if each value is in idsHistLandmarks
-        /*
-        std::cout << "ids ";
-        for (const int& id : state.getIdsLandmarks()) {
-            std::cout << id << " ";
-        }
-        std::cout << std::endl;
-        std::cout << "idsHist";
-        for (const int& id : state.getIdsHistLandmarks()) {
-            std::cout << id << " ";
-        }
-        std::cout << std::endl;
-        */
-        /*
-        for (const int& id : state.getIdsLandmarks()) {
-            std::cout << "id " << id << std::endl;
-
-            std::vector<int> numbers = state.getIdsHistLandmarks();
-
-            auto it = std::find(numbers.begin(), numbers.end(), id);
-            if (it == numbers.end()) {
-                std::cout << id << " not found in the vector" << std::endl;
-                state.modifyIdsHistLandmarks(id);
-            }
-        }
-        */
         for (const int& id : idsLandmarks) {
-            std::cout << "id " << id << std::endl;
-
-            //std::vector<int> numbers = state.getIdsHistLandmarks();
-
+            //std::cout << "id " << id << std::endl;
             auto it = std::find(idsHistLandmarks.begin(), idsHistLandmarks.end(), id);
             if (it == idsHistLandmarks.end()) {
                 std::cout << id << " not found in the vector" << std::endl;
                 state.modifyIdsHistLandmarks(id);
+                idsHistLandmarks.push_back(id);
             }
         }
     }
 
-    std::cout << "sqrtSize " << stateSLAM.density.sqrtCov().rows() << std::endl;
-    std::cout << "sqrtSize* " << (12 + 6*state.getIdsHistLandmarks().size()) << std::endl;
+    //std::cout << "sqrtSize* " << (12 + 6*idsHistLandmarks.size()) << std::endl;
 
     // Increase size of sqrtCov matrix and mu array to match number of ArUco Tags
-    if (stateSLAM.density.sqrtCov().rows() < (12 + 6*state.getIdsHistLandmarks().size()))
+    if (stateSLAM.density.sqrtCov().rows() < (12 + 6*idsHistLandmarks.size()))
     {
-        int densitySize = 12 + 6*state.getIdsHistLandmarks().size();
-        stateSLAM.density.sqrtCov().conservativeResizeLike(Eigen::MatrixXd::Zero(densitySize,densitySize));
-        stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(densitySize));
+        int densitySize = stateSLAM.density.sqrtCov().rows();
+        int idsHistSize = 12 + 6*idsHistLandmarks.size();
+        stateSLAM.density.sqrtCov().conservativeResizeLike(Eigen::MatrixXd::Zero(idsHistSize,idsHistSize));
+
+        // For the newly added diagonal elements, initialise them to 1000 instead of the initial zeros.
+        for (int i = densitySize; i < idsHistSize; ++i)
+        {
+            stateSLAM.density.sqrtCov()(i, i) = 1000.0;
+        }
+        stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(idsHistSize));
         std::cout << "Increase sqrtCov " << std::endl;
     }
 
     std::cout << "sqrtSize after " << stateSLAM.density.sqrtCov().rows() << std::endl;
     
-    std::cout << "idsSize " << state.getIdsLandmarks().size() << std::endl;
-    std::cout << "idsHistSize " << state.getIdsHistLandmarks().size() << std::endl;
-
+    std::cout << "idsSize " << idsLandmarks.size() << std::endl;
+    std::cout << "idsHistSize " << idsHistLandmarks.size() << std::endl;
 
     // Data Association //
     // Create idxLandmarks after everything completed by using idsLandmarks then verfering to idsHistLandmarks 
@@ -201,17 +184,17 @@ void MeasurementPoseBundle::update(State & state)
     std::vector<std::size_t> emptyVector; // Create an empty vector
     state.setIdxLandmarks(emptyVector);   // Set idxLandmarks to the empty vector
 
-    for (const int& id : state.getIdsLandmarks()) {
-        auto it = std::find(state.getIdsLandmarks().begin(), state.getIdsHistLandmarks().end(), id);
-        if (it != state.getIdsHistLandmarks().end()) {
+    for (const int& id : idsLandmarks) {
+        auto it = std::find(idsHistLandmarks.begin(), idsHistLandmarks.end(), id);
+        if (it != idsHistLandmarks.end()) {
             // id found in idsHistLandmarks, append its position to idxLandmarks
-            std::size_t position = std::distance(state.getIdsHistLandmarks().begin(), it);
+            std::size_t position = std::distance(idsHistLandmarks.begin(), it);
+            std::cout << position << std::endl;
             state.modifyIdxLandmarks(position);
-            std::cout << "MeasurementPoseBundle.cpp - 3" << std::endl;
+            //idxLandmarks.push_back(position); // this is not needed
         }
     }
-    std::cout << "idxSize " << state.getIdxLandmarks().size() << std::endl;
-    
-    
+    //std::cout << "idxSize " << idxLandmarks.size() << std::endl;
+       
     Measurement::update(state);  // Do the actual measurement update
 }
