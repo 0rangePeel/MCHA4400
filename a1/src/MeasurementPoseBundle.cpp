@@ -34,8 +34,9 @@ MeasurementPoseBundle::MeasurementPoseBundle(double time, const Eigen::VectorXd 
 double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x) const
 {
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
-
+    /*
     Pose cameraPose;
+    
     // Extract Thetanb from x
     Eigen::Vector3d thetanb = x.segment(9, 3);
     
@@ -51,7 +52,7 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
 
     std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
     //for (std::size_t j = 0; j < state.stateSLAM.numberLandmarks(); ++j)
-    /*
+    
     for (std::size_t j = 0; j < state.idxLandmarks.size(); ++j)
     {
         Eigen::Vector3d murPNn = stateSLAM.landmarkPositionDensity(j).mean();
@@ -72,7 +73,7 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     // TODO: Assignment(s)
 
     //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
-
+    /*
     Eigen::VectorXd h = stateSLAM.predictFeatureTagBundle(x, camera_, state.getIdxLandmarks());
 
     for (int i = 0; i < h.size(); i++){
@@ -82,10 +83,11 @@ double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::Ve
     Gaussian likelihood(h, noise_.sqrtCov());
 
     return likelihood.log(y_);
+    */
 
     // or
 
-    //return MeasurementPoseBundle.logLikelihoodImpl(x, stateSLAM, idxLandmarks);
+    return logLikelihoodImpl(x, stateSLAM, state.getIdxLandmarks());
 }
 
 double MeasurementPoseBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const
@@ -135,7 +137,7 @@ void MeasurementPoseBundle::update(State & state)
             state.modifyIdsHistLandmarks(id);
             idsHistLandmarks.push_back(id);
             //std::cout << "Print Id" << std::endl;
-            //std::cout << id << std::endl;
+            std::cout << id << std::endl;
         }
     } 
     else 
@@ -195,6 +197,22 @@ void MeasurementPoseBundle::update(State & state)
         }
     }
     //std::cout << "idxSize " << idxLandmarks.size() << std::endl;
+
+    std::cout << "ids" << std::endl;
+    const std::vector<int>& idsLandmarkstemp = state.getIdsLandmarks();
+    for (const int& idstemp : idsLandmarkstemp) {
+        std::cout << idstemp << std::endl;
+    }
+    std::cout << "idsHist" << std::endl;
+    const std::vector<int>& idsHistLandmarkstemp = state.getIdsHistLandmarks();
+    for (const int& idsHisttemp : idsHistLandmarkstemp) {
+        std::cout << idsHisttemp << std::endl;
+    }
+    std::cout << "idx" << std::endl;
+    const std::vector<std::size_t>& idxLandmarkstemp = state.getIdxLandmarks();
+    for (std::size_t idxtemp : idxLandmarkstemp) {
+        std::cout << idxtemp << std::endl;
+    }
        
     Measurement::update(state);  // Do the actual measurement update
 }

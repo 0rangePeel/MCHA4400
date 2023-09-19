@@ -1,6 +1,7 @@
 #ifndef MEASUREMENTPOSEBUNDLE_H
 #define MEASUREMENTPOSEBUNDLE_H
 
+#include <iostream>
 #include <Eigen/Core>
 #include "State.h"
 #include "Camera.h"

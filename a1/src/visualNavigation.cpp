@@ -91,6 +91,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     int i = 0;
     double dt = 1/fps;
     double time = 0;
+    //double time = dt;
 
     while (true)
     {
@@ -105,11 +106,10 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         // -Update plot
         // Get a copy of the image for plot to draw on
 
-        ArUcoResult arucoResult = detectAndDrawArUco(imgin, 0, cam);
+        ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
 
+        //Set idsLandmarks 
         state.setIdsLandmarks(arucoResult.ids);
-
-        time = time + dt;
 
         MeasurementPoseBundle MeasurementPoseBundle(time, arucoResult.y, cam);
 
@@ -128,6 +128,8 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         plot.render();
 
         i += 1;
+
+        time = time + dt;
 
         // Write output frame 
         if (doExport)
@@ -149,13 +151,12 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
                 }
                 std::cout << std::endl;
             }
+            /*
             std::cout << "Measurement : y " << std::endl;
             for (int i = 0; i < arucoResult.y.size(); i++){
                 std::cout << arucoResult.y(i) << std::endl;
             }
-            
-            
-            
+            */
 
             // Start handling plot GUI events (blocking)
             plot.start();

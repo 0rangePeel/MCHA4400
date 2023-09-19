@@ -6,7 +6,7 @@
 #include "Camera.h"
 #include <Eigen/Core>
 
-ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Camera &cam) {
+ArUcoResult detectAndDrawArUco(const cv::Mat &img, const Camera &cam) {
     ArUcoResult result;
 
     cv::Mat imgout = img.clone();

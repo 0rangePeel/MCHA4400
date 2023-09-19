@@ -12,6 +12,6 @@ struct ArUcoResult {
     Eigen::VectorXd y;
 };
 
-ArUcoResult detectAndDrawArUco(const cv::Mat &img, int maxNumFeatures, const Camera &cam);
+ArUcoResult detectAndDrawArUco(const cv::Mat &img, const Camera &cam);
 
 #endif
