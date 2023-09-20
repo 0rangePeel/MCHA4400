@@ -83,7 +83,6 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
     // Initialise state
     StateSLAMPoseLandmarks state(Gaussian(mu, S));
-    //StateSLAMPointLandmarks state(Gaussian(mu, S));
 
     // Initialise plot
     Plot plot(state, cam);
@@ -91,7 +90,6 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     int i = 0;
     double dt = 1/fps;
     double time = 0;
-    //double time = dt;
 
     while (true)
     {
@@ -108,6 +106,26 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
 
+        /*
+        std::cout << "Detected Marker Corners:" << std::endl;
+        for (int i = 0; i < arucoResult.corners.size(); i++) {
+            std::cout << "Marker " << arucoResult.ids[i] << " Corners: ";
+            for (int j = 0; j < arucoResult.corners[i].size(); j++) {
+                std::cout << "(" << arucoResult.corners[i][j].x << ", " << arucoResult.corners[i][j].y << ") ";
+            }
+            std::cout << std::endl;
+        }
+
+        std::cout << "Elements of y:" << std::endl;
+        for (int i = 0; i < arucoResult.y.size()/8; ++i) {
+            std::cout << "Marker " << arucoResult.ids[i] << " Corners: ";
+            for (int j = 0; j < 4; ++j){
+                std::cout << "(" << arucoResult.y(8 * i + 2 * j) << ", " << arucoResult.y(8 * i + 2 * j + 1) << ") ";
+            }
+            std::cout << std::endl;
+        }
+        */
+
         //Set idsLandmarks 
         state.setIdsLandmarks(arucoResult.ids);
 
@@ -115,8 +133,8 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         MeasurementTagBundle.process(state);
 
-        cv::Mat outputframe = arucoResult.imgout;
-        //cv::Mat outputframe = imgin;
+        //cv::Mat outputframe = arucoResult.imgout;
+        cv::Mat outputframe = imgin;
 
         state.view() = outputframe.clone();
         //state.view() = imgin;
@@ -140,8 +158,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         
         if (interactive == 2 || (interactive == 1 && i + 1 == nFrames))
-        {
-            
+        { 
             // Print the detected ARUCO tags and corners for when frame is stopped
             std::cout << "Detected Marker Corners:" << std::endl;
             for (int i = 0; i < arucoResult.corners.size(); i++) {
@@ -157,7 +174,16 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
                 std::cout << arucoResult.y(i) << std::endl;
             }
             */
-
+            /*
+            std::cout << "Elements of y:" << std::endl;
+            for (int i = 0; i < arucoResult.y.size()/8; ++i) {
+                std::cout << "Marker " << arucoResult.ids[i] << " Corners: ";
+                for (int j = 0; j < 4; ++j){
+                    std::cout << "(" << arucoResult.y(8 * i + 2 * j) << ", " << arucoResult.y(8 * i + 2 * j + 1) << ") ";
+                }
+                std::cout << std::endl;
+            }
+            */
             // Start handling plot GUI events (blocking)
             plot.start();
         }

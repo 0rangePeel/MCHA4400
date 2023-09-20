@@ -60,7 +60,6 @@ public:
     Gaussian<double> predictFeatureBundleDensity(const Camera & cam, const std::vector<std::size_t> & idxLandmarks, const Gaussian<double> & noise) const;
 
     template <typename Scalar> Eigen::Vector2<Scalar> predictFeatureTag(const Eigen::VectorX<Scalar> & x, const Camera & cam, std::size_t idxLandmark, const int j) const;
-    Eigen::Vector2d predictFeatureTag(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, std::size_t idxLandmark, const int j) const;
 
     template <typename Scalar> Eigen::VectorX<Scalar> predictFeatureTagBundle(const Eigen::VectorX<Scalar> & x, const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const;
     Eigen::VectorXd predictFeatureTagBundle(const Eigen::VectorXd & x, Eigen::MatrixXd & J, const Camera & cam, const std::vector<std::size_t> & idxLandmarks) const;
@@ -127,8 +126,8 @@ Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x)
           0,                 cos(Thetanb(0)),                -sin(Thetanb(0)),
           0, sin(Thetanb(0))/cos(Thetanb(1)), cos(Thetanb(0))/cos(Thetanb(1));
 
-    std::cout <<"Tk"<< std::endl;
-    std::cout << Tk << std::endl;
+    //std::cout <<"Tk"<< std::endl;
+    //std::cout << Tk << std::endl;
 
     f.template segment(6, 3) = Rnb * vBNb;
     f.template segment(9, 3) = Tk * omegaBNb;
@@ -217,8 +216,8 @@ Eigen::Vector2<Scalar> StateSLAM::predictFeatureTag(const Eigen::VectorX<Scalar>
     // position and rotation of tag centre
     // This is placed into rjNn and thetanj respectively
     std::size_t idx = landmarkPositionIndex(idxLandmark);
-    Eigen::Vector3<Scalar> rjNn = x.template segment(idx,3);
-    Eigen::Vector3<Scalar> thetanj = x.template segment((idx + 3),3);
+    Eigen::Vector3<Scalar> rjNn = x.template segment<3>(idx);
+    Eigen::Vector3<Scalar> thetanj = x.template segment<3>(idx+3);
     Eigen::Matrix3<Scalar> Rnj = rpy2rot(thetanj);
 
     Eigen::Vector3<Scalar> rjcNj;

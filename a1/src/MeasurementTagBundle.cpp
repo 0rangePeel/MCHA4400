@@ -25,68 +25,16 @@ MeasurementTagBundle::MeasurementTagBundle(double time, const Eigen::VectorXd & 
     // SR is an upper triangular matrix such that SR.'*SR = R is the measurement noise covariance
     const Eigen::Index & ny = y.size();
     double rms = 1.27127; // Manually put in from Camera Calibration
+    //double rms = 5; // Manually put in from Camera Calibration
     Eigen::MatrixXd SR = rms*Eigen::MatrixXd::Identity(ny, ny); // TODO: Assignment(s)
     noise_ = Gaussian(SR);
 
-    // useQuasiNewton = false;  
+    useQuasiNewton = true;  
 }
 
 double MeasurementTagBundle::logLikelihood(const State & state, const Eigen::VectorXd & x) const
 {
     const StateSLAMPoseLandmarks & stateSLAM = dynamic_cast<const StateSLAMPoseLandmarks &>(state);
-    /*
-    Pose cameraPose;
-    
-    // Extract Thetanb from x
-    Eigen::Vector3d thetanb = x.segment(9, 3);
-    
-    // Get Pose Matrix
-    Eigen::Matrix3d Rnb = rpy2rot(thetanb);
-
-    // Fill Pose from camera.h
-    Eigen::Matrix3d Rnc = Rnb * camera_.Rbc;
-    cv::eigen2cv(Rnc, cameraPose.Rnc);
-
-    Eigen::Vector3d rBNn = x.segment(6, 3);
-    cv::eigen2cv(rBNn, cameraPose.rCNn); // "Assume that B and C coincide"
-
-    std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
-    //for (std::size_t j = 0; j < state.stateSLAM.numberLandmarks(); ++j)
-    
-    for (std::size_t j = 0; j < state.idxLandmarks.size(); ++j)
-    {
-        Eigen::Vector3d murPNn = stateSLAM.landmarkPositionDensity(j).mean();
-        cv::Vec3d rPNn;
-        cv::eigen2cv(murPNn, rPNn);
-        if (camera_.isWorldWithinFOV(rPNn, cameraPose))
-        {
-            std::cout << "Landmark " << j << " is expected to be within camera FOV" << std::endl;
-            state.idxLandmarks.push_back(j);
-        }
-        else
-        {
-            std::cout << "Landmark " << j << " is NOT expected to be within camera FOV" << std::endl;
-        }
-    }
-    */
-    
-    // TODO: Assignment(s)
-
-    //std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
-    /*
-    Eigen::VectorXd h = stateSLAM.predictFeatureTagBundle(x, camera_, state.getIdxLandmarks());
-
-    for (int i = 0; i < h.size(); i++){
-        std::cout << h(i) << std::endl;
-    }
-
-    Gaussian likelihood(h, noise_.sqrtCov());
-
-    return likelihood.log(y_);
-    */
-
-    // or
-
     return logLikelihoodImpl(x, stateSLAM, state.getIdxLandmarks());
 }
 
@@ -213,6 +161,61 @@ void MeasurementTagBundle::update(State & state)
     for (std::size_t idxtemp : idxLandmarkstemp) {
         std::cout << idxtemp << std::endl;
     }
+
+
+    Eigen::MatrixXd sqrtCov = stateSLAM.density.sqrtCov();
+    int n = sqrtCov.rows(); // Assuming a square matrix
+    // Print the diagonal elements
+    std::cout << "Diagonal elements of S:" << std::endl;
+    for (int i = 0; i < n; ++i) {
+        std::cout << sqrtCov(i, i) << " ";
+    }
+    std::cout << std::endl;
+
+    // Assuming stateSLAM.density.mean() is an Eigen array
+    Eigen::ArrayXd mean = stateSLAM.density.mean();
+    // Print the elements of the mean array
+    std::cout << "Mean: ";
+    for (int i = 0; i < mean.size(); ++i) {
+        std::cout << mean(i) << " ";
+    }
+    std::cout << std::endl;
        
     Measurement::update(state);  // Do the actual measurement update
 }
+
+    /*
+    Pose cameraPose;
+    
+    // Extract Thetanb from x
+    Eigen::Vector3d thetanb = x.segment(9, 3);
+    
+    // Get Pose Matrix
+    Eigen::Matrix3d Rnb = rpy2rot(thetanb);
+
+    // Fill Pose from camera.h
+    Eigen::Matrix3d Rnc = Rnb * camera_.Rbc;
+    cv::eigen2cv(Rnc, cameraPose.Rnc);
+
+    Eigen::Vector3d rBNn = x.segment(6, 3);
+    cv::eigen2cv(rBNn, cameraPose.rCNn); // "Assume that B and C coincide"
+
+    std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
+    //for (std::size_t j = 0; j < state.stateSLAM.numberLandmarks(); ++j)
+    
+    for (std::size_t j = 0; j < state.idxLandmarks.size(); ++j)
+    {
+        Eigen::Vector3d murPNn = stateSLAM.landmarkPositionDensity(j).mean();
+        cv::Vec3d rPNn;
+        cv::eigen2cv(murPNn, rPNn);
+        if (camera_.isWorldWithinFOV(rPNn, cameraPose))
+        {
+            std::cout << "Landmark " << j << " is expected to be within camera FOV" << std::endl;
+            state.idxLandmarks.push_back(j);
+        }
+        else
+        {
+            std::cout << "Landmark " << j << " is NOT expected to be within camera FOV" << std::endl;
+        }
+    }
+    */
