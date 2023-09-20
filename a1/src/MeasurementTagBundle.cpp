@@ -66,6 +66,7 @@ double MeasurementTagBundle::logLikelihood(const State & state, const Eigen::Vec
 
 void MeasurementTagBundle::update(State & state)
 {
+    Pose cameraPose;
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
 
     std::cout << "muSize " << stateSLAM.density.mean().size() << std::endl;
@@ -114,15 +115,36 @@ void MeasurementTagBundle::update(State & state)
         stateSLAM.density.sqrtCov().conservativeResizeLike(Eigen::MatrixXd::Zero(idsHistSize,idsHistSize));
 
         // For the newly added diagonal elements, initialise them to 1000 instead of the initial zeros.
-        for (int i = densitySize; i < idsHistSize; ++i)
-        {
+        for (int i = densitySize; i < idsHistSize; ++i){
             stateSLAM.density.sqrtCov()(i, i) = 1000.0;
         }
+
         stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(idsHistSize));
+
+        /*
+        Eigen::Vector3d unitVec(0,0,1);
+        Eigen::Vector3d rBNn_unitVec;
+        Eigen::Matrix3d Rnc = cv::Matrix3d(cameraPose.Rnc);
+        
+        rBNn_unitVec = Rnc * unitVec;
+        */
+
+        
+        for (int i = densitySize; i < idsHistSize; i=i+6){
+            stateSLAM.density.mean()(i)   = 1;
+            stateSLAM.density.mean()(i+1) = 0;
+            stateSLAM.density.mean()(i+2) = -1.7;
+            stateSLAM.density.mean()(i+3) = 0;
+            stateSLAM.density.mean()(i+4) = 0;
+            stateSLAM.density.mean()(i+5) = 3.14;
+        }
+        
+        
         std::cout << "Increase sqrtCov " << std::endl;
     }
 
     std::cout << "sqrtSize after " << stateSLAM.density.sqrtCov().rows() << std::endl;
+    std::cout << "muSize after " << stateSLAM.density.mean().size() << std::endl;
     
     std::cout << "idsSize " << idsLandmarks.size() << std::endl;
     std::cout << "idsHistSize " << idsHistLandmarks.size() << std::endl;
@@ -183,6 +205,10 @@ void MeasurementTagBundle::update(State & state)
        
     Measurement::update(state);  // Do the actual measurement update
 }
+
+
+
+
 
     /*
     Pose cameraPose;

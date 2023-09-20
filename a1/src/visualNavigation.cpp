@@ -75,11 +75,25 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     // Initial state mean
     Eigen::VectorXd mu(12);
     mu.setZero();
+    mu(8) = -1.7;
 
     // Initial state square-root covariance
     Eigen::MatrixXd S(12,12);
     S.setIdentity();
-    S.diagonal().array() = 0.1;
+    //S.diagonal().array() = 0.1;
+    S.diagonal().array() = 0.01;
+
+    /*
+    for (int i = 0; i < 6; ++i)
+    {
+        S(i, i) = 0.1;
+    }
+    for (int i = 6; i < 12; ++i)
+    {
+        S(i, i) = 0.005;
+    }
+    */
+    
 
     // Initialise state
     StateSLAMPoseLandmarks state(Gaussian(mu, S));

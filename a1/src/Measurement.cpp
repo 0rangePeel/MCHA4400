@@ -71,14 +71,16 @@ void Measurement::update(State & state)
     std::cout << "mu size: " << x.size() << std::endl;
     std::cout << "S size: " << S.rows() << std::endl;
 
+    /*
     std::cout << "Measurement.cpp mu Before" << std::endl;
     std::cout << x << std::endl;
 
     std::cout << "Measurement.cpp S Before" << std::endl;
     std::cout << S << std::endl;
+    */
 
 
-    constexpr int verbosity = 1; // 0:none, 1:dots, 2:summary, 3:iter
+    constexpr int verbosity = 3; // 0:none, 1:dots, 2:summary, 3:iter
     if (useQuasiNewton)
     {
         // Generate eigendecomposition of initial Hessian (inverse of prior covariance)
@@ -101,18 +103,25 @@ void Measurement::update(State & state)
         auto costFunc = [&](const Eigen::VectorXd & x, Eigen::VectorXd & g){ return costJointDensity(x, state, g); };
 
         // Minimise cost
+        /*
         std::cout << "Measurement.cpp - Before Optimisation" << std::endl;
+        std::cout << "x size: " << x.size() << std::endl;
         std::cout << "Measurement.cpp x" << std::endl;
         std::cout << x << std::endl;
+        std::cout << "g size: " << g.size() << std::endl;
         std::cout << "Measurement.cpp g" << std::endl;
         std::cout << g << std::endl;
+        std::cout << "Q size: " << Q.size() << std::endl;
         std::cout << "Measurement.cpp Q" << std::endl;
         std::cout << Q << std::endl;
+        std::cout << "v size: " << v.size() << std::endl;
         std::cout << "Measurement.cpp v" << std::endl;
         std::cout << v << std::endl;
+        */
 
         int ret = funcmin::SR1TrustEig(costFunc, x, g, Q, v, verbosity);
 
+        /*
         std::cout << "Measurement.cpp - After Optimisation" << std::endl;
         std::cout << "Measurement.cpp x" << std::endl;
         std::cout << x << std::endl;
@@ -122,6 +131,7 @@ void Measurement::update(State & state)
         std::cout << Q << std::endl;
         std::cout << "Measurement.cpp v" << std::endl;
         std::cout << v << std::endl;
+        */
 
         assert(ret == 0);
     }
@@ -137,19 +147,27 @@ void Measurement::update(State & state)
     // Set posterior mean to maximum a posteriori (MAP) estimate
     state.density.mean() = x;
 
+    /*
     std::cout << "Measurement.cpp mean after" << std::endl;
     std::cout << x << std::endl;
+    std::cout << "Measurement.cpp v after" << std::endl;
+    std::cout << v << std::endl;
+    */
     
 
     // Post-calculate posterior square-root covariance from Hessian eigendecomposition
     S = v.array().rsqrt().matrix().asDiagonal()*Q.transpose();
 
+    /*
     std::cout << "Measurement.cpp S after" << std::endl;
     std::cout << S << std::endl;
+    */
 
     Eigen::HouseholderQR<Eigen::Ref<Eigen::MatrixXd>> qr(S);    // In-place QR decomposition
     S = S.triangularView<Eigen::Upper>();                       // Safe aliasing
     
+    /*
     std::cout << "Measurement.cpp S after triangular" << std::endl;
     std::cout << S << std::endl;
+    */
 }
