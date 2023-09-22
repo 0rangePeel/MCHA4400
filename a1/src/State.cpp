@@ -4,6 +4,7 @@
 #include <Eigen/Core>
 #include "Gaussian.hpp"
 #include "State.h"
+#include <iostream>
 
 State::~State() = default;
 
@@ -87,6 +88,9 @@ Eigen::VectorXd State::RK4SDEHelper(const Eigen::VectorXd & xdw, double dt, Eige
     const std::size_t nx = nxdw/2;
     Eigen::VectorXd x(nx), dw(nx);
 
+    std::cout << "RK4SDEHelper" <<  std::endl;
+    std::cout << xdw.size() <<  std::endl;
+
     x       = xdw.head(nx);
     dw      = xdw.tail(nx);
 
@@ -112,16 +116,35 @@ void State::predict(double time)
 {
     double dt = time - time_;
     assert(dt >= 0);
-    if (dt == 0.0) return;
 
+    if (dt == 0.0) return;
+    
     // Augment state density with independent noise increment dw ~ N(0, Q*dt)
     // [ x] ~ N([mu] , [P,    0])
     // [dw]    ([ 0]   [0, Q*dt])
 
     // p(x, dw) = p(x)*p(dw)
-    Gaussian augmentedDensity = density*Gaussian((SQ_*std::sqrt(dt)).eval());
+
+    std::cout << "Predict SQ_ before" <<  std::endl;
+    std::cout << SQ_.rows() <<  std::endl;
+    // Right, so somewhere you need to update SQ_ to match the size of densitysqrtCov()
+    Eigen::MatrixXd temp(density.sqrtCov().rows(),density.sqrtCov().cols());
+    temp.fill(0);
+
+    Gaussian augmentedDensity = density*Gaussian((temp*std::sqrt(dt)).eval());
+    //Gaussian augmentedDensity = density*Gaussian((SQ_*std::sqrt(dt)).eval());
+
+    std::cout << "What ever this is" <<  std::endl;
+    std::cout << (SQ_*std::sqrt(dt)).eval()<<  std::endl;
+    std::cout << "Predict SQ_ after" <<  std::endl;
+    std::cout << SQ_.rows() <<  std::endl;
+    std::cout << "Predict density unaugmented" <<  std::endl;
+    std::cout << density.mean().size() <<  std::endl;
+    std::cout << "Predict density augmented" <<  std::endl;
+    std::cout << augmentedDensity.mean().size() <<  std::endl;
 
     auto func = [&](const Eigen::VectorXd & x, Eigen::MatrixXd & J){ return RK4SDEHelper(x, dt, J); };
+
     density = augmentedDensity.transform(func);
 
     time_ = time;

@@ -170,4 +170,5 @@ void Measurement::update(State & state)
     std::cout << "Measurement.cpp S after triangular" << std::endl;
     std::cout << S << std::endl;
     */
+    
 }

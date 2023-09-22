@@ -24,8 +24,8 @@ MeasurementTagBundle::MeasurementTagBundle(double time, const Eigen::VectorXd & 
 {  
     // SR is an upper triangular matrix such that SR.'*SR = R is the measurement noise covariance
     const Eigen::Index & ny = y.size();
-    double rms = 1.27127; // Manually put in from Camera Calibration
-    //double rms = 5; // Manually put in from Camera Calibration
+    //double rms = 1.27127; // Manually put in from Camera Calibration
+    double rms = 5;
     Eigen::MatrixXd SR = rms*Eigen::MatrixXd::Identity(ny, ny); // TODO: Assignment(s)
     noise_ = Gaussian(SR);
 
@@ -69,8 +69,26 @@ void MeasurementTagBundle::update(State & state)
     Pose cameraPose;
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
 
+    std::cout << "muSize " << state.density.mean().size() << std::endl;
+    std::cout << "sqrtSize " << state.density.sqrtCov().rows() << " " << state.density.sqrtCov().cols() << std::endl;
+
     std::cout << "muSize " << stateSLAM.density.mean().size() << std::endl;
     std::cout << "sqrtSize " << stateSLAM.density.sqrtCov().rows() << " " << stateSLAM.density.sqrtCov().cols() << std::endl;
+
+    std::cout << "ids Before" << std::endl;
+    for (const int& idstemp : state.getIdsLandmarks()) {
+        std::cout << idstemp << std::endl;
+    }
+    std::cout << "idsHist Before" << std::endl;
+    for (const int& idsHisttemp : state.getIdsHistLandmarks()) {
+        std::cout << idsHisttemp << std::endl;
+    }
+    std::cout << "idx Before" << std::endl;
+    for (std::size_t idxtemp : state.getIdxLandmarks()) {
+        std::cout << idxtemp << std::endl;
+    }
+    std::cout << "End of Before" << std::endl;
+
 
     // Get landmarks
     std::vector<int> idsLandmarks = state.getIdsLandmarks();
@@ -114,9 +132,9 @@ void MeasurementTagBundle::update(State & state)
         int idsHistSize = 12 + 6*idsHistLandmarks.size();
         stateSLAM.density.sqrtCov().conservativeResizeLike(Eigen::MatrixXd::Zero(idsHistSize,idsHistSize));
 
-        // For the newly added diagonal elements, initialise them to 1000 instead of the initial zeros.
+        // For the newly added diagonal elements, initialise them to 10 instead of the initial zeros.
         for (int i = densitySize; i < idsHistSize; ++i){
-            stateSLAM.density.sqrtCov()(i, i) = 1000.0;
+            stateSLAM.density.sqrtCov()(i, i) = 10.0;
         }
 
         stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(idsHistSize));
@@ -128,16 +146,18 @@ void MeasurementTagBundle::update(State & state)
         
         rBNn_unitVec = Rnc * unitVec;
         */
-
         
+        Eigen::Vector3d rBNn    = stateSLAM.density.mean().segment(6,3);
+        Eigen::Vector3d Thetanb = stateSLAM.density.mean().segment(9,3);
+        Eigen::Matrix3d Rnb     = rpy2rot(Thetanb);
+        Eigen::Vector3d rotVec(0,0,M_PI);// Rotate the around n3
+        Eigen::Vector3d unitVec(1,0,0);
+
         for (int i = densitySize; i < idsHistSize; i=i+6){
-            stateSLAM.density.mean()(i)   = 1;
-            stateSLAM.density.mean()(i+1) = 0;
-            stateSLAM.density.mean()(i+2) = -1.7;
-            stateSLAM.density.mean()(i+3) = 0;
-            stateSLAM.density.mean()(i+4) = 0;
-            stateSLAM.density.mean()(i+5) = 3.14;
+            stateSLAM.density.mean().segment<3>(i) = Rnb*unitVec + rBNn;
+            stateSLAM.density.mean().segment<3>(i+3) = Thetanb + rotVec;
         }
+        
         
         
         std::cout << "Increase sqrtCov " << std::endl;
@@ -168,22 +188,18 @@ void MeasurementTagBundle::update(State & state)
     }
     //std::cout << "idxSize " << idxLandmarks.size() << std::endl;
 
-    std::cout << "ids" << std::endl;
-    const std::vector<int>& idsLandmarkstemp = state.getIdsLandmarks();
-    for (const int& idstemp : idsLandmarkstemp) {
+    std::cout << "ids After" << std::endl;
+    for (const int& idstemp : state.getIdsLandmarks()) {
         std::cout << idstemp << std::endl;
     }
-    std::cout << "idsHist" << std::endl;
-    const std::vector<int>& idsHistLandmarkstemp = state.getIdsHistLandmarks();
-    for (const int& idsHisttemp : idsHistLandmarkstemp) {
+    std::cout << "idsHist After" << std::endl;
+    for (const int& idsHisttemp : state.getIdsHistLandmarks()) {
         std::cout << idsHisttemp << std::endl;
     }
-    std::cout << "idx" << std::endl;
-    const std::vector<std::size_t>& idxLandmarkstemp = state.getIdxLandmarks();
-    for (std::size_t idxtemp : idxLandmarkstemp) {
+    std::cout << "idx After" << std::endl;
+    for (std::size_t idxtemp : state.getIdxLandmarks()) {
         std::cout << idxtemp << std::endl;
     }
-
 
     Eigen::MatrixXd sqrtCov = stateSLAM.density.sqrtCov();
     int n = sqrtCov.rows(); // Assuming a square matrix
@@ -202,6 +218,7 @@ void MeasurementTagBundle::update(State & state)
         std::cout << mean(i) << " ";
     }
     std::cout << std::endl;
+
        
     Measurement::update(state);  // Do the actual measurement update
 }

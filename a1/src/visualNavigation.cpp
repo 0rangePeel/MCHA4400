@@ -75,7 +75,8 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     // Initial state mean
     Eigen::VectorXd mu(12);
     mu.setZero();
-    mu(8) = -1.7;
+    mu(8) = -0.1;
+    //mu(8) = -1.7;
 
     // Initial state square-root covariance
     Eigen::MatrixXd S(12,12);
@@ -94,6 +95,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     }
     */
     
+    
 
     // Initialise state
     StateSLAMPoseLandmarks state(Gaussian(mu, S));
@@ -102,12 +104,11 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     Plot plot(state, cam);
 
     int i = 0;
-    double dt = 1/fps;
-    double time = 0;
+    double t = 0;
 
     while (true)
     {
-        std::cout << "Frame: " << i << std::endl;
+        std::cout << "Frame: " << i+1 << std::endl;
         // Get next input frame
         cv::Mat imgin = bufferedVideoReader.read();
         if (imgin.empty())
@@ -115,35 +116,13 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
             break;
         }
 
-        // -Update plot
-        // Get a copy of the image for plot to draw on
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
-
-        /*
-        std::cout << "Detected Marker Corners:" << std::endl;
-        for (int i = 0; i < arucoResult.corners.size(); i++) {
-            std::cout << "Marker " << arucoResult.ids[i] << " Corners: ";
-            for (int j = 0; j < arucoResult.corners[i].size(); j++) {
-                std::cout << "(" << arucoResult.corners[i][j].x << ", " << arucoResult.corners[i][j].y << ") ";
-            }
-            std::cout << std::endl;
-        }
-
-        std::cout << "Elements of y:" << std::endl;
-        for (int i = 0; i < arucoResult.y.size()/8; ++i) {
-            std::cout << "Marker " << arucoResult.ids[i] << " Corners: ";
-            for (int j = 0; j < 4; ++j){
-                std::cout << "(" << arucoResult.y(8 * i + 2 * j) << ", " << arucoResult.y(8 * i + 2 * j + 1) << ") ";
-            }
-            std::cout << std::endl;
-        }
-        */
 
         //Set idsLandmarks 
         state.setIdsLandmarks(arucoResult.ids);
 
-        MeasurementTagBundle MeasurementTagBundle(time, arucoResult.y, cam);
+        MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
 
         MeasurementTagBundle.process(state);
 
@@ -161,7 +140,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         i += 1;
 
-        time = time + dt;
+        t = t + 1/fps;
 
         // Write output frame 
         if (doExport)
@@ -169,6 +148,8 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
             cv::Mat imgout = plot.getFrame();
             bufferedVideoWriter.write(imgout);
         }
+
+        
 
         
         if (interactive == 2 || (interactive == 1 && i + 1 == nFrames))

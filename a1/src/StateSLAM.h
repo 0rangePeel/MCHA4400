@@ -107,10 +107,10 @@ Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x)
     Eigen::VectorX<Scalar> f(x.size());
     f.setZero();
 
-    Eigen::Vector3<Scalar> vBNb        = x.template segment(0,3);
-    Eigen::Vector3<Scalar> omegaBNb    = x.template segment(3,3);
-    Eigen::Vector3<Scalar> rBNn        = x.template segment(6,3);
-    Eigen::Vector3<Scalar> Thetanb     = x.template segment(9,3);
+    Eigen::Vector3<Scalar> vBNb        = x.template segment<3>(0);
+    Eigen::Vector3<Scalar> omegaBNb    = x.template segment<3>(3);
+    Eigen::Vector3<Scalar> rBNn        = x.template segment<3>(6);
+    Eigen::Vector3<Scalar> Thetanb     = x.template segment<3>(9);
 
     Eigen::Matrix3<Scalar> Rnb         = rpy2rot(Thetanb);
 
@@ -129,8 +129,8 @@ Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x)
     //std::cout <<"Tk"<< std::endl;
     //std::cout << Tk << std::endl;
 
-    f.template segment(6, 3) = Rnb * vBNb;
-    f.template segment(9, 3) = Tk * omegaBNb;
+    f.template segment<3>(6) = Rnb * vBNb;
+    f.template segment<3>(9) = Tk * omegaBNb;
 
     return f;
 }
