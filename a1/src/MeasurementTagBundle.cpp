@@ -69,6 +69,7 @@ void MeasurementTagBundle::update(State & state)
     Pose cameraPose;
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
 
+    /*
     std::cout << "muSize " << state.density.mean().size() << std::endl;
     std::cout << "sqrtSize " << state.density.sqrtCov().rows() << " " << state.density.sqrtCov().cols() << std::endl;
 
@@ -88,7 +89,7 @@ void MeasurementTagBundle::update(State & state)
         std::cout << idxtemp << std::endl;
     }
     std::cout << "End of Before" << std::endl;
-
+    */
 
     // Get landmarks
     std::vector<int> idsLandmarks = state.getIdsLandmarks();
@@ -104,7 +105,7 @@ void MeasurementTagBundle::update(State & state)
             state.modifyIdsHistLandmarks(id);
             idsHistLandmarks.push_back(id);
             //std::cout << "Print Id" << std::endl;
-            std::cout << id << std::endl;
+            //std::cout << id << std::endl;
         }
     } 
     else 
@@ -138,36 +139,30 @@ void MeasurementTagBundle::update(State & state)
         }
 
         stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(idsHistSize));
-
-        /*
-        Eigen::Vector3d unitVec(0,0,1);
-        Eigen::Vector3d rBNn_unitVec;
-        Eigen::Matrix3d Rnc = cv::Matrix3d(cameraPose.Rnc);
         
-        rBNn_unitVec = Rnc * unitVec;
-        */
-        
+        // Place landmarks in front of the camera by some amount and rotate 180 back towards the camera
         Eigen::Vector3d rBNn    = stateSLAM.density.mean().segment(6,3);
         Eigen::Vector3d Thetanb = stateSLAM.density.mean().segment(9,3);
         Eigen::Matrix3d Rnb     = rpy2rot(Thetanb);
         Eigen::Vector3d rotVec(0,0,M_PI);// Rotate the around n3
+        //Eigen::Vector3d rotVec(0,0,0);// Rotate the around n3
         Eigen::Vector3d unitVec(1,0,0);
 
         for (int i = densitySize; i < idsHistSize; i=i+6){
             stateSLAM.density.mean().segment<3>(i) = Rnb*unitVec + rBNn;
             stateSLAM.density.mean().segment<3>(i+3) = Thetanb + rotVec;
         }
-        
-        
-        
-        std::cout << "Increase sqrtCov " << std::endl;
+         
+        std::cout << "New Aruco ID Detected" << std::endl;
     }
 
+    /*
     std::cout << "sqrtSize after " << stateSLAM.density.sqrtCov().rows() << std::endl;
     std::cout << "muSize after " << stateSLAM.density.mean().size() << std::endl;
     
     std::cout << "idsSize " << idsLandmarks.size() << std::endl;
     std::cout << "idsHistSize " << idsHistLandmarks.size() << std::endl;
+    */
 
     // Data Association //
     // Create idxLandmarks after everything completed by using idsLandmarks then verfering to idsHistLandmarks 
@@ -188,6 +183,7 @@ void MeasurementTagBundle::update(State & state)
     }
     //std::cout << "idxSize " << idxLandmarks.size() << std::endl;
 
+    /*
     std::cout << "ids After" << std::endl;
     for (const int& idstemp : state.getIdsLandmarks()) {
         std::cout << idstemp << std::endl;
@@ -218,7 +214,9 @@ void MeasurementTagBundle::update(State & state)
         std::cout << mean(i) << " ";
     }
     std::cout << std::endl;
+    */
 
+    //StateSLAMPoseLandmarks poseLandmarkState(stateSLAM.density);
        
     Measurement::update(state);  // Do the actual measurement update
 }

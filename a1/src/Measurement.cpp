@@ -68,8 +68,8 @@ void Measurement::update(State & state)
     Eigen::VectorXd x = state.density.mean(); // Set initial decision variable to prior mean
     Eigen::MatrixXd & S = state.density.sqrtCov();
 
-    std::cout << "mu size: " << x.size() << std::endl;
-    std::cout << "S size: " << S.rows() << std::endl;
+    //std::cout << "mu size: " << x.size() << std::endl;
+    //std::cout << "S size: " << S.rows() << std::endl;
 
     /*
     std::cout << "Measurement.cpp mu Before" << std::endl;
@@ -80,7 +80,7 @@ void Measurement::update(State & state)
     */
 
 
-    constexpr int verbosity = 3; // 0:none, 1:dots, 2:summary, 3:iter
+    constexpr int verbosity = 0; // 0:none, 1:dots, 2:summary, 3:iter
     if (useQuasiNewton)
     {
         // Generate eigendecomposition of initial Hessian (inverse of prior covariance)

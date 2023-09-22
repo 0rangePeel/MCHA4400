@@ -49,6 +49,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     cv::VideoCapture cap(videoPath.string());
     assert(cap.isOpened());
     int nFrames = cap.get(cv::CAP_PROP_FRAME_COUNT);
+    std::cout << "Total Number of Video Frames: " << nFrames << std::endl;
     assert(nFrames > 0);
     double fps = cap.get(cv::CAP_PROP_FPS);
     int codec = cap.get(cv::CAP_PROP_FOURCC);
@@ -124,13 +125,15 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
 
+        //StateSLAMPoseLandmarks poseLandmarkState(state.density);
+
         MeasurementTagBundle.process(state);
 
         //cv::Mat outputframe = arucoResult.imgout;
-        cv::Mat outputframe = imgin;
+        //cv::Mat outputframe = imgin;
 
-        state.view() = outputframe.clone();
-        //state.view() = imgin;
+        //state.view() = outputframe.clone();
+        state.view() = imgin;
         
         // Set local copy of state for plot to use
         plot.setState(state);
@@ -154,6 +157,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         
         if (interactive == 2 || (interactive == 1 && i + 1 == nFrames))
         { 
+            /*
             // Print the detected ARUCO tags and corners for when frame is stopped
             std::cout << "Detected Marker Corners:" << std::endl;
             for (int i = 0; i < arucoResult.corners.size(); i++) {
@@ -163,6 +167,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
                 }
                 std::cout << std::endl;
             }
+            */
             /*
             std::cout << "Measurement : y " << std::endl;
             for (int i = 0; i < arucoResult.y.size(); i++){
