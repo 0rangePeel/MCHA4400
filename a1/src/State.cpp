@@ -14,7 +14,6 @@ State::State(std::size_t n)
     , SQ_(n,n)
     , time_(0)
 {
-    //std::cout << "n: " << n << std::endl;
     SQ_.fill(0);
 }
 
@@ -23,9 +22,7 @@ State::State(const Gaussian<double> & density)
     , SQ_(density.size(),density.size())
     , time_(0)
 {
-    //std::cout << "size(): " << density.size() << std::endl;
     SQ_.fill(0);
-    //std::cout << "size() after: " << SQ_.rows() << std::endl;
 }
 
 std::size_t State::size() const
@@ -92,9 +89,6 @@ Eigen::VectorXd State::RK4SDEHelper(const Eigen::VectorXd & xdw, double dt, Eige
     const std::size_t nx = nxdw/2;
     Eigen::VectorXd x(nx), dw(nx);
 
-    //std::cout << "RK4SDEHelper" <<  std::endl;
-    //std::cout << xdw.size() <<  std::endl;
-
     x       = xdw.head(nx);
     dw      = xdw.tail(nx);
 
@@ -129,9 +123,8 @@ void State::predict(double time)
 
     // p(x, dw) = p(x)*p(dw)
 
-    Eigen::MatrixXd resizedSQ_(density.sqrtCov().rows(),density.sqrtCov().cols());
-    resizedSQ_.setZero();
     // Copy values from the original matrix to the resized matrix using block operations
+    Eigen::MatrixXd resizedSQ_ = Eigen::MatrixXd::Zero(density.sqrtCov().rows(), density.sqrtCov().cols());
     resizedSQ_.block(0, 0, 12, 12) = SQ_.block(0, 0, 12, 12);
     
     Gaussian augmentedDensity = density*Gaussian((resizedSQ_*std::sqrt(dt)).eval());

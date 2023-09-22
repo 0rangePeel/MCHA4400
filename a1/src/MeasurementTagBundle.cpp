@@ -69,28 +69,6 @@ void MeasurementTagBundle::update(State & state)
     Pose cameraPose;
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
 
-    /*
-    std::cout << "muSize " << state.density.mean().size() << std::endl;
-    std::cout << "sqrtSize " << state.density.sqrtCov().rows() << " " << state.density.sqrtCov().cols() << std::endl;
-
-    std::cout << "muSize " << stateSLAM.density.mean().size() << std::endl;
-    std::cout << "sqrtSize " << stateSLAM.density.sqrtCov().rows() << " " << stateSLAM.density.sqrtCov().cols() << std::endl;
-
-    std::cout << "ids Before" << std::endl;
-    for (const int& idstemp : state.getIdsLandmarks()) {
-        std::cout << idstemp << std::endl;
-    }
-    std::cout << "idsHist Before" << std::endl;
-    for (const int& idsHisttemp : state.getIdsHistLandmarks()) {
-        std::cout << idsHisttemp << std::endl;
-    }
-    std::cout << "idx Before" << std::endl;
-    for (std::size_t idxtemp : state.getIdxLandmarks()) {
-        std::cout << idxtemp << std::endl;
-    }
-    std::cout << "End of Before" << std::endl;
-    */
-
     // Get landmarks
     std::vector<int> idsLandmarks = state.getIdsLandmarks();
     std::vector<int> idsHistLandmarks = state.getIdsHistLandmarks();
@@ -104,8 +82,6 @@ void MeasurementTagBundle::update(State & state)
             int id = idsLandmarks[i];
             state.modifyIdsHistLandmarks(id);
             idsHistLandmarks.push_back(id);
-            //std::cout << "Print Id" << std::endl;
-            //std::cout << id << std::endl;
         }
     } 
     else 
@@ -117,14 +93,11 @@ void MeasurementTagBundle::update(State & state)
             //std::cout << "id " << id << std::endl;
             auto it = std::find(idsHistLandmarks.begin(), idsHistLandmarks.end(), id);
             if (it == idsHistLandmarks.end()) {
-                //std::cout << id << " not found in the vector" << std::endl;
                 state.modifyIdsHistLandmarks(id);
                 idsHistLandmarks.push_back(id);
             }
         }
     }
-
-    //std::cout << "sqrtSize* " << (12 + 6*idsHistLandmarks.size()) << std::endl;
 
     // Increase size of sqrtCov matrix and mu array to match number of ArUco Tags
     if (stateSLAM.density.sqrtCov().rows() < (12 + 6*idsHistLandmarks.size()))
@@ -156,14 +129,6 @@ void MeasurementTagBundle::update(State & state)
         std::cout << "New Aruco ID Detected" << std::endl;
     }
 
-    /*
-    std::cout << "sqrtSize after " << stateSLAM.density.sqrtCov().rows() << std::endl;
-    std::cout << "muSize after " << stateSLAM.density.mean().size() << std::endl;
-    
-    std::cout << "idsSize " << idsLandmarks.size() << std::endl;
-    std::cout << "idsHistSize " << idsHistLandmarks.size() << std::endl;
-    */
-
     // Data Association //
     // Create idxLandmarks after everything completed by using idsLandmarks then verfering to idsHistLandmarks 
     // Loop through idsLandmarks and look up values in idsHistLandmarks
@@ -181,42 +146,6 @@ void MeasurementTagBundle::update(State & state)
             //idxLandmarks.push_back(position); // this is not needed
         }
     }
-    //std::cout << "idxSize " << idxLandmarks.size() << std::endl;
-
-    /*
-    std::cout << "ids After" << std::endl;
-    for (const int& idstemp : state.getIdsLandmarks()) {
-        std::cout << idstemp << std::endl;
-    }
-    std::cout << "idsHist After" << std::endl;
-    for (const int& idsHisttemp : state.getIdsHistLandmarks()) {
-        std::cout << idsHisttemp << std::endl;
-    }
-    std::cout << "idx After" << std::endl;
-    for (std::size_t idxtemp : state.getIdxLandmarks()) {
-        std::cout << idxtemp << std::endl;
-    }
-
-    Eigen::MatrixXd sqrtCov = stateSLAM.density.sqrtCov();
-    int n = sqrtCov.rows(); // Assuming a square matrix
-    // Print the diagonal elements
-    std::cout << "Diagonal elements of S:" << std::endl;
-    for (int i = 0; i < n; ++i) {
-        std::cout << sqrtCov(i, i) << " ";
-    }
-    std::cout << std::endl;
-
-    // Assuming stateSLAM.density.mean() is an Eigen array
-    Eigen::ArrayXd mean = stateSLAM.density.mean();
-    // Print the elements of the mean array
-    std::cout << "Mean: ";
-    for (int i = 0; i < mean.size(); ++i) {
-        std::cout << mean(i) << " ";
-    }
-    std::cout << std::endl;
-    */
-
-    //StateSLAMPoseLandmarks poseLandmarkState(stateSLAM.density);
        
     Measurement::update(state);  // Do the actual measurement update
 }
