@@ -20,6 +20,7 @@ ArUcoResult detectAndDrawArUco(const cv::Mat &img, const Camera &cam) {
 
     detector.detectMarkers(img, corners, ids, rejected);
 
+    
     // Optimised aruco tag corner detector
     Eigen::VectorXd y_array(8*corners.size());
     for (int i = 0; i < corners.size(); i++){
@@ -28,10 +29,11 @@ ArUcoResult detectAndDrawArUco(const cv::Mat &img, const Camera &cam) {
             y_array(8 * i + 2 * j + 1) = corners[i][j].y;
         }  
     }
+    
 
     // To get cool pnp stuff //
+    
     /*
-
     cv::Mat cameraMatrix, distCoeffs;
 
     cameraMatrix = cam.cameraMatrix;

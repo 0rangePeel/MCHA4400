@@ -8,14 +8,6 @@
 StateSLAMPoseLandmarks::StateSLAMPoseLandmarks(const Gaussian<double> & density)
     : StateSLAM(density)
 {
-    //SQ_.resize(density.sqrtCov().rows(),density.sqrtCov().cols());
-    //SQ_.fill(0);
-    /*
-    Eigen::Vector6d tuningSQ_(10,10,10,1,1,1);
-    for(int i = 0; i < tuningSQ_.size(); i++){
-        SQ_(i,i) = tuningSQ_(i);
-    }
-    */
     SQ_(0,0) = 10.0;
     SQ_(1,1) = 10.0;
     SQ_(2,2) = 10.0;

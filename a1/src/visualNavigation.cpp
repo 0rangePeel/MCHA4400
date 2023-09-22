@@ -125,14 +125,11 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
 
-        //StateSLAMPoseLandmarks poseLandmarkState(state.density);
-
         MeasurementTagBundle.process(state);
 
         //cv::Mat outputframe = arucoResult.imgout;
-        //cv::Mat outputframe = imgin;
-
         //state.view() = outputframe.clone();
+        
         state.view() = imgin;
         
         // Set local copy of state for plot to use
