@@ -174,36 +174,12 @@ Eigen::Vector2<Scalar> Camera::vectorToPixel(const Eigen::Vector3<Scalar> & rPCc
     Scalar s2 = distCoeffs.at<double>(9);  // Tenth distortion coefficient
     Scalar s3 = distCoeffs.at<double>(10);  // Eleventh distortion coefficient
     Scalar s4 = distCoeffs.at<double>(11);  // Twelvth distortion coefficient
-
-    /*
-    std::cout << "Camera.h k1 = " << k1 << std::endl;
-    std::cout << "Camera.h k2 = " << k2 << std::endl;
-    std::cout << "Camera.h p1 = " << p1 << std::endl;
-    std::cout << "Camera.h p2 = " << p2 << std::endl;
-    std::cout << "Camera.h k3 = " << k3 << std::endl;
-    std::cout << "Camera.h k4 = " << k4 << std::endl;
-    std::cout << "Camera.h k5 = " << k5 << std::endl;
-    std::cout << "Camera.h k6 = " << k6 << std::endl;
-    std::cout << "Camera.h s1 = " << s1 << std::endl;
-    std::cout << "Camera.h s2 = " << s2 << std::endl;
-    std::cout << "Camera.h s3 = " << s3 << std::endl;
-    std::cout << "Camera.h s4 = " << s4 << std::endl;
-    */
     
     // Assuming you have the camera matrix (3x3 matrix) as cameraMatrix 
     Scalar fx = cameraMatrix.at<double>(0, 0);  // Focal length in x
     Scalar fy = cameraMatrix.at<double>(1, 1);  // Focal length in y
     Scalar cx = cameraMatrix.at<double>(0, 2);  // Principal point x-coordinate
     Scalar cy = cameraMatrix.at<double>(1, 2);  // Principal point y-coordinate
-    
-    /*
-    std::cout << "Camera.h cameraMatrix = " << cameraMatrix << std::endl;
-    std::cout << "Camera.h fx = " << fx << std::endl;
-    std::cout << "Camera.h fy = " << fy << std::endl;
-    std::cout << "Camera.h cx = " << cx << std::endl;
-    std::cout << "Camera.h cy = " << cy << std::endl;
-    std::cout << "Camera.h r = " << r << std::endl;
-    */
     
     // Calculate Radial Distortion
     Scalar alpha = k1*r2 + k2*r4 + k3*r6;
@@ -221,11 +197,6 @@ Eigen::Vector2<Scalar> Camera::vectorToPixel(const Eigen::Vector3<Scalar> & rPCc
     // Full Distortion
     Scalar u_ = c * u + dist_Top + thin_Top; 
     Scalar v_ = c * v + dist_Bottom + thin_Bottom; 
-
-    /*
-    std::cout << "Camera.h u_ = " << u_ << std::endl;
-    std::cout << "Camera.h v_ = " << v_ << std::endl;
-    */
    
     // Final Values
     rQOi[0] = fx * u_ + cx;

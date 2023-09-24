@@ -80,6 +80,7 @@
 #include "Camera.h"
 #include "Gaussian.hpp"
 #include "rotation.hpp"
+#include "State.h"
 #include "StateSLAM.h"
 #include "Plot.h"
 
@@ -586,8 +587,23 @@ Plot::Plot(const StateSLAM & state, const Camera & camera)
 
 void Plot::render()
 {
+    Pose cameraPose;
+    
+    // Extract Thetanb from x
+    Eigen::Vector3d thetanb = pState->density.mean().segment<3>(9);
+    
+    // Get Pose Matrix
+    Eigen::Matrix3d Rnb = rpy2rot(thetanb);
+
+    // Fill Pose from camera.h
+    Eigen::Matrix3d Rnc = Rnb * camera.Rbc;
+    cv::eigen2cv(Rnc, cameraPose.Rnc);
+
+    Eigen::Vector3d rBNn = pState->density.mean().segment<3>(6);
+    cv::eigen2cv(rBNn, cameraPose.rCNn); // "Assume that B and C coincide"
+
     double r,g,b;   
-    hsv2rgb(330, 1., 1., r, g, b);
+    //hsv2rgb(330, 1., 1., r, g, b);
     qpCamera.update(pState->cameraPositionDensity(camera));
     qpCamera.getActor()->GetProperty()->SetOpacity(0.1);
     qpCamera.getActor()->GetProperty()->SetColor(r,g,b);
@@ -612,12 +628,39 @@ void Plot::render()
 
     for (std::size_t i = 0; i < pState->numberLandmarks(); ++i)
     {
-        // Add components to render
-        //hsv2rgb(300*(i)/(pState->numberLandmarks()), 1., 1., r, g, b);
+        // Add components to render 
         Eigen::Vector3d rgb;
-        rgb(0) = 255.0;
-        rgb(1) = 0.0;
-        rgb(2) = 0.0;
+        cv::Vec3d idxPoint;
+        Eigen::Vector3d idxTemp = pState->density.mean().segment<3>(12 + 6*i);
+        cv::eigen2cv(idxTemp,idxPoint);
+
+        // Get the current Ids and the Ids History
+        std::vector<int> idsLandmarks = pState->getIdsLandmarks();
+        std::vector<int> idsHistLandmarks = pState->getIdsHistLandmarks();
+
+        // Check to see if Idx in world is within FOV
+        if (camera.isWorldWithinFOV(idxPoint, cameraPose) == 1) {
+            // Check if Ids History matches with current Ids 
+            auto it = std::find(idsLandmarks.begin(), idsLandmarks.end(), idsHistLandmarks[i]);
+            if (it == idsLandmarks.end()) {
+                // Make red if no match i.e. aruco within fov but not detected - blocked or obscured
+                rgb(0) = 255.0;
+                rgb(1) = 0.0;
+                rgb(2) = 0.0;
+            }
+            else{
+                // Make blue if match i.e. aruco within fov and is detected - nominal result
+                rgb(0) = 0.0;
+                rgb(1) = 0.0;
+                rgb(2) = 255.0;
+            }
+        }
+        else {
+            // Make yellow if not in fov - out of camera view enitre - nominal result
+            rgb(0) = 255.0;
+            rgb(1) = 255.0;
+            rgb(2) = 0.0;            
+        }
 
         Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(2, 2); // Assume 1 pixel st.dev. of noise
         Gaussian noise(SR);
