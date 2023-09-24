@@ -17,6 +17,7 @@ set(OLD_GLOB
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPoseLandmarks.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/calibrate.cpp"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/checkfeatures.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/funcmin.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.cpp"
   "C:/Users/olive/Documents/MCHA4400/a1/src/main.cpp"
@@ -42,6 +43,7 @@ set(OLD_GLOB
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPointLandmarks.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/StateSLAMPoseLandmarks.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/calibrate.h"
+  "C:/Users/olive/Documents/MCHA4400/a1/src/checkfeatures.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h"
   "C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.h"
   )

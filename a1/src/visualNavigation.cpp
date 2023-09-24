@@ -16,6 +16,7 @@
 #include "StateSLAMPoseLandmarks.h"
 #include "imagefeatures.h"
 #include "MeasurementTagBundle.h"
+#include "checkfeatures.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)
 {
@@ -51,6 +52,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     int nFrames = cap.get(cv::CAP_PROP_FRAME_COUNT);
     std::cout << "Total Number of Video Frames: " << nFrames << std::endl;
     assert(nFrames > 0);
+    
     double fps = cap.get(cv::CAP_PROP_FPS);
     int codec = cap.get(cv::CAP_PROP_FOURCC);
 
@@ -62,10 +64,14 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     if (doExport)
     {
         cv::Size frameSize;
-        frameSize.width     = cap.get(cv::CAP_PROP_FRAME_WIDTH);
-        frameSize.height    = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
+        //frameSize.width     = cap.get(cv::CAP_PROP_FRAME_WIDTH);
+        frameSize.width     = 1540;
+        //frameSize.height    = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
+        frameSize.height    = 540;
         double outputFps    = fps;
-        videoOut.open(outputPath.string(), codec, outputFps, frameSize);
+        int fourcc = cv::VideoWriter::fourcc('m', 'p', '4', 'v');
+        //videoOut.open(outputPath.string(), codec, outputFps, frameSize);
+        videoOut.open(outputPath.string(), fourcc, outputFps, frameSize);
         bufferedVideoWriter.start(videoOut);
     }
 
@@ -119,6 +125,9 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
+
+        std::cout << "Func Test: " << isPointInsideEllipse(1000,600,cam) << std::endl;
+        std::cout << "Func Test: " << isPointInsideEllipse(0,0,cam) << std::endl;
 
         //Set idsLandmarks 
         state.setIdsLandmarks(arucoResult.ids);
@@ -190,6 +199,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     bufferedVideoReader.stop();
     if (doExport)
     {
+        std::cout << "File Succesfully Exported" << std::endl;
          bufferedVideoWriter.stop();
     }
 }

@@ -108,7 +108,7 @@ CMakeFiles/common.dir/all: _deps/nanobench-build/CMakeFiles/nanobench.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/common.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 19
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/common.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 0
 .PHONY : CMakeFiles/common.dir/rule
@@ -126,15 +126,15 @@ CMakeFiles/common.dir/clean:
 # Target rules for target CMakeFiles/a1.dir
 
 # All Build rule for target.
-CMakeFiles/a1.dir/all: _deps/nanobench-build/CMakeFiles/nanobench.dir/all
 CMakeFiles/a1.dir/all: CMakeFiles/common.dir/all
+CMakeFiles/a1.dir/all: _deps/nanobench-build/CMakeFiles/nanobench.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/a1.dir/build.make CMakeFiles/a1.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/a1.dir/build.make CMakeFiles/a1.dir/build
 .PHONY : CMakeFiles/a1.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/a1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 21
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/a1.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 0
 .PHONY : CMakeFiles/a1.dir/rule
@@ -152,15 +152,15 @@ CMakeFiles/a1.dir/clean:
 # Target rules for target CMakeFiles/tests.dir
 
 # All Build rule for target.
-CMakeFiles/tests.dir/all: _deps/nanobench-build/CMakeFiles/nanobench.dir/all
 CMakeFiles/tests.dir/all: CMakeFiles/common.dir/all
+CMakeFiles/tests.dir/all: _deps/nanobench-build/CMakeFiles/nanobench.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
 .PHONY : CMakeFiles/tests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 21
+	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 22
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 0
 .PHONY : CMakeFiles/tests.dir/rule
@@ -186,7 +186,7 @@ CMakeFiles/run_tests.dir/all: CMakeFiles/a1.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 25
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/run_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /C/Users/olive/Documents/MCHA4400/a1/build/CMakeFiles 0
 .PHONY : CMakeFiles/run_tests.dir/rule

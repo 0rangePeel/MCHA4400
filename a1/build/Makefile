@@ -470,6 +470,30 @@ src/calibrate.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/calibrate.cpp.s
 .PHONY : src/calibrate.cpp.s
 
+src/checkfeatures.obj: src/checkfeatures.cpp.obj
+.PHONY : src/checkfeatures.obj
+
+# target to build an object file
+src/checkfeatures.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/checkfeatures.cpp.obj
+.PHONY : src/checkfeatures.cpp.obj
+
+src/checkfeatures.i: src/checkfeatures.cpp.i
+.PHONY : src/checkfeatures.i
+
+# target to preprocess a source file
+src/checkfeatures.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/checkfeatures.cpp.i
+.PHONY : src/checkfeatures.cpp.i
+
+src/checkfeatures.s: src/checkfeatures.cpp.s
+.PHONY : src/checkfeatures.s
+
+# target to generate assembly for a file
+src/checkfeatures.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/checkfeatures.cpp.s
+.PHONY : src/checkfeatures.cpp.s
+
 src/funcmin.obj: src/funcmin.cpp.obj
 .PHONY : src/funcmin.obj
 
@@ -663,6 +687,9 @@ help:
 	@echo "... src/calibrate.obj"
 	@echo "... src/calibrate.i"
 	@echo "... src/calibrate.s"
+	@echo "... src/checkfeatures.obj"
+	@echo "... src/checkfeatures.i"
+	@echo "... src/checkfeatures.s"
 	@echo "... src/funcmin.obj"
 	@echo "... src/funcmin.i"
 	@echo "... src/funcmin.s"
