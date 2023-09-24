@@ -613,21 +613,21 @@ void Plot::render()
     for (std::size_t i = 0; i < pState->numberLandmarks(); ++i)
     {
         // Add components to render
-        hsv2rgb(300*(i)/(pState->numberLandmarks()), 1., 1., r, g, b);
+        //hsv2rgb(300*(i)/(pState->numberLandmarks()), 1., 1., r, g, b);
         Eigen::Vector3d rgb;
-        rgb(0) = r*255;
-        rgb(1) = g*255;
-        rgb(2) = b*255;
+        rgb(0) = 255.0;
+        rgb(1) = 0.0;
+        rgb(2) = 0.0;
 
         Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(2, 2); // Assume 1 pixel st.dev. of noise
         Gaussian noise(SR);
         Gaussian prQOi = pState->predictFeatureDensity(camera, i, noise);
-        plotGaussianConfidenceEllipse(pState->view(), prQOi, rgb);
 
+        plotGaussianConfidenceEllipse(pState->view(), prQOi, rgb);
         QuadricPlot & qp = qpLandmarks[i];
         qp.update(pState->landmarkPositionDensity(i));
         qp.getActor()->GetProperty()->SetOpacity(0.5);
-        qp.getActor()->GetProperty()->SetColor(r,g,b);
+        qp.getActor()->GetProperty()->SetColor(rgb(0)/255,rgb(1)/255,rgb(2)/255);
         qp.bounds.setExtremity(globalBounds); 
     }
 

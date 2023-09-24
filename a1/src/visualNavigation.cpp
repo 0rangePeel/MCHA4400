@@ -126,13 +126,17 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
 
-        std::cout << "Func Test: " << isPointInsideEllipse(1000,600,cam) << std::endl;
-        std::cout << "Func Test: " << isPointInsideEllipse(0,0,cam) << std::endl;
+        checkFeatureResult checkfeatureResult = checkfeature(arucoResult,cam);
+
+        //std::cout << "Func Test: " << isPointInsideEllipse(1000,600,cam) << std::endl;
+        //std::cout << "Func Test: " << isPointInsideEllipse(200,200,cam) << std::endl;
 
         //Set idsLandmarks 
-        state.setIdsLandmarks(arucoResult.ids);
+        //state.setIdsLandmarks(arucoResult.ids);
+        //MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
 
-        MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
+        state.setIdsLandmarks(checkfeatureResult.ids);
+        MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
 
         MeasurementTagBundle.process(state);
 
@@ -200,6 +204,6 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     if (doExport)
     {
         std::cout << "File Succesfully Exported" << std::endl;
-         bufferedVideoWriter.stop();
+        bufferedVideoWriter.stop();
     }
 }

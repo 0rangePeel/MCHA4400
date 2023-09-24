@@ -16655,7 +16655,9 @@ CMakeFiles/common.dir/src/checkfeatures.cpp.obj: C:/Users/olive/Documents/MCHA44
   C:/msys64/clang64/include/opencv4/opencv2/flann/miniflann.hpp \
   C:/msys64/clang64/include/opencv4/opencv2/flann/defines.h \
   C:/msys64/clang64/include/opencv4/opencv2/flann/config.h \
-  C:/msys64/clang64/include/opencv4/opencv2/core/affine.hpp
+  C:/msys64/clang64/include/opencv4/opencv2/core/affine.hpp \
+  C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h \
+  C:/Users/olive/Documents/MCHA4400/a1/src/checkfeatures.h
 
 CMakeFiles/common.dir/src/funcmin.cpp.obj: C:/Users/olive/Documents/MCHA4400/a1/src/funcmin.cpp \
   C:/msys64/clang64/include/c++/v1/cstddef \
@@ -20095,17 +20097,17 @@ CMakeFiles/common.dir/src/visualNavigation.cpp.obj: C:/Users/olive/Documents/MCH
   C:/Users/olive/Documents/MCHA4400/a1/src/checkfeatures.h
 
 
-C:/Users/olive/Documents/MCHA4400/a1/src/checkfeatures.h:
-
 C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.h:
 
 C:/Users/olive/Documents/MCHA4400/a1/src/visualNavigation.cpp:
 
-C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h:
-
 C:/msys64/clang64/include/opencv4/opencv2/aruco/aruco_calib.hpp:
 
 C:/Users/olive/Documents/MCHA4400/a1/src/funcmin.cpp:
+
+C:/Users/olive/Documents/MCHA4400/a1/src/checkfeatures.h:
+
+C:/Users/olive/Documents/MCHA4400/a1/src/imagefeatures.h:
 
 C:/Users/olive/Documents/MCHA4400/a1/src/calibrate.h:
 
