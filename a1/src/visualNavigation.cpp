@@ -54,7 +54,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     assert(nFrames > 0);
     
     double fps = cap.get(cv::CAP_PROP_FPS);
-    int codec = cap.get(cv::CAP_PROP_FOURCC);
+    //int codec = cap.get(cv::CAP_PROP_FOURCC);
 
     BufferedVideoReader bufferedVideoReader(5);
     bufferedVideoReader.start(cap);
@@ -65,7 +65,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     {
         cv::Size frameSize;
         //frameSize.width     = cap.get(cv::CAP_PROP_FRAME_WIDTH);
-        frameSize.width     = 1540;
+        frameSize.width     = 1624;
         //frameSize.height    = cap.get(cv::CAP_PROP_FRAME_HEIGHT);
         frameSize.height    = 540;
         double outputFps    = fps;
@@ -138,7 +138,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         state.setIdsLandmarks(checkfeatureResult.ids);
         MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
 
-        MeasurementTagBundle.process(state);
+        //MeasurementTagBundle.process(state);
 
         //cv::Mat outputframe = arucoResult.imgout;
         //state.view() = outputframe.clone();
@@ -159,6 +159,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         if (doExport)
         {
             cv::Mat imgout = plot.getFrame();
+            //std::cout << imgout.size() << std::endl;
             bufferedVideoWriter.write(imgout);
         }
 
