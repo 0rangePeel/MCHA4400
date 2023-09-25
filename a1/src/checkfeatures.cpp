@@ -6,8 +6,10 @@
 #include "checkfeatures.h"
 
 bool isPointInsideEllipse(int x, int y, const Camera &cam) {
-    double a = 920.0; // Semi-major axis length
-    double b = 460.0; // Semi-minor axis length
+    //double a = 920.0; // Semi-major axis length
+    //double b = 460.0; // Semi-minor axis length
+    double a = 1920.0/2; // Semi-major axis length
+    double b = 1080.0/2; // Semi-minor axis length
     //double centerX = 968.853; // x-coordinate of the ellipse center
     //double centerY = 581.045; // y-coordinate of the ellipse center
     double centerX = cam.cameraMatrix.at<double>(0, 2); // x-coordinate of the ellipse center
@@ -20,8 +22,8 @@ bool isPointInsideEllipse(int x, int y, const Camera &cam) {
 
     // Distance check
     //double lhs = ((x - centerX) * (x - centerX) / (a * a)) + ((y - centerY) * (y - centerY) / (b * b));
-    double lhs = sqrt(((x - centerX) * (x - centerX) / (a * a)) + ((y - centerY) * (y - centerY) / (b * b)));
-    //double lhs = ((x - a) * (x - a) / (a * a)) + ((y - b) * (y - b) / (b * b));
+    //double lhs = sqrt(((x - centerX) * (x - centerX) / (a * a)) + ((y - centerY) * (y - centerY) / (b * b)));
+    double lhs = ((x - a) * (x - a) / (a * a)) + ((y - b) * (y - b) / (b * b));
     if (lhs <= 1.0) {
         return true;
     } else {

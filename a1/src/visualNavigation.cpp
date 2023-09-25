@@ -83,10 +83,10 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     Eigen::VectorXd mu(12);
     mu.setZero();
     //mu(8) = -0.1; // height
-    mu(8) = -1.8;
+    mu(8) = -1.8; // height (I may be projecting)
     mu(9) = -3 * M_PI/180; // roll
     mu(10) = -4 * M_PI/180; // pitch
-    mu(11) = -3 * M_PI/180; // yaw
+    mu(11) = -1 * M_PI/180; // yaw
 
 
     // Initial state square-root covariance
@@ -130,17 +130,17 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
 
-        //checkFeatureResult checkfeatureResult = checkfeature(arucoResult,cam);
+        checkFeatureResult checkfeatureResult = checkfeature(arucoResult,cam);
 
         //std::cout << "Func Test: " << isPointInsideEllipse(1000,600,cam) << std::endl;
         //std::cout << "Func Test: " << isPointInsideEllipse(200,200,cam) << std::endl;
 
         //Set idsLandmarks 
-        state.setIdsLandmarks(arucoResult.ids);
-        MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
+        //state.setIdsLandmarks(arucoResult.ids);
+        //MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
 
-        //state.setIdsLandmarks(checkfeatureResult.ids);
-        //MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
+        state.setIdsLandmarks(checkfeatureResult.ids);
+        MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
 
         MeasurementTagBundle.process(state);
 
