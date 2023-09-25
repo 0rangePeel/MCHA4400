@@ -93,9 +93,9 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     Eigen::MatrixXd S(12,12);
     S.setIdentity();
     //S.diagonal().array() = 0.1;
-    S.diagonal().array() = 0.01;
+    //S.diagonal().array() = 0.01;
 
-    /*
+    
     for (int i = 0; i < 6; ++i)
     {
         S(i, i) = 0.1;
@@ -104,7 +104,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     {
         S(i, i) = 0.005;
     }
-    */
+    
     
     
 
@@ -130,17 +130,17 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
 
-        checkFeatureResult checkfeatureResult = checkfeature(arucoResult,cam);
+        //checkFeatureResult checkfeatureResult = checkfeature(arucoResult,cam);
 
         //std::cout << "Func Test: " << isPointInsideEllipse(1000,600,cam) << std::endl;
         //std::cout << "Func Test: " << isPointInsideEllipse(200,200,cam) << std::endl;
 
         //Set idsLandmarks 
-        //state.setIdsLandmarks(arucoResult.ids);
-        //MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
+        state.setIdsLandmarks(arucoResult.ids);
+        MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
 
-        state.setIdsLandmarks(checkfeatureResult.ids);
-        MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
+        //state.setIdsLandmarks(checkfeatureResult.ids);
+        //MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
 
         MeasurementTagBundle.process(state);
 

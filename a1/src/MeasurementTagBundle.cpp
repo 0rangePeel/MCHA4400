@@ -108,7 +108,7 @@ void MeasurementTagBundle::update(State & state)
 
         // For the newly added diagonal elements, initialise them to 10 instead of the initial zeros.
         for (int i = densitySize; i < idsHistSize; ++i){
-            stateSLAM.density.sqrtCov()(i, i) = 10.0;
+            stateSLAM.density.sqrtCov()(i, i) = 1.0;
         }
 
         stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(idsHistSize));
