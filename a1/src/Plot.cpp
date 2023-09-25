@@ -575,7 +575,7 @@ Plot::Plot(const StateSLAM & state, const Camera & camera)
     // rFNn
     threeDimRenderer->GetActiveCamera()->SetFocalPoint(0,0,0);
     // rCNn
-    double sc = 2;
+    double sc = 15;
     threeDimRenderer->GetActiveCamera()->SetPosition(-0.75*sc,-0.75*sc,-0.5*sc);
     threeDimRenderer->GetActiveCamera()->SetViewUp(0,0,-1);
 
@@ -654,6 +654,12 @@ void Plot::render()
                 rgb(1) = 0.0;
                 rgb(2) = 255.0;
             }
+
+            Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(2, 2); // Assume 1 pixel st.dev. of noise
+            Gaussian noise(SR);
+            Gaussian prQOi = pState->predictFeatureDensity(camera, i, noise);
+
+            plotGaussianConfidenceEllipse(pState->view(), prQOi, rgb);
         }
         else {
             // Make yellow if not in fov - out of camera view enitre - nominal result
@@ -662,11 +668,7 @@ void Plot::render()
             rgb(2) = 0.0;            
         }
 
-        Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(2, 2); // Assume 1 pixel st.dev. of noise
-        Gaussian noise(SR);
-        Gaussian prQOi = pState->predictFeatureDensity(camera, i, noise);
 
-        plotGaussianConfidenceEllipse(pState->view(), prQOi, rgb);
         QuadricPlot & qp = qpLandmarks[i];
         qp.update(pState->landmarkPositionDensity(i));
         qp.getActor()->GetProperty()->SetOpacity(0.5);

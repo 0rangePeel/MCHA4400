@@ -21,6 +21,7 @@ bool isPointInsideEllipse(int x, int y, const Camera &cam) {
     // Distance check
     //double lhs = ((x - centerX) * (x - centerX) / (a * a)) + ((y - centerY) * (y - centerY) / (b * b));
     double lhs = sqrt(((x - centerX) * (x - centerX) / (a * a)) + ((y - centerY) * (y - centerY) / (b * b)));
+    //double lhs = ((x - a) * (x - a) / (a * a)) + ((y - b) * (y - b) / (b * b));
     if (lhs <= 1.0) {
         return true;
     } else {

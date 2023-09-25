@@ -138,7 +138,7 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         state.setIdsLandmarks(checkfeatureResult.ids);
         MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
 
-        //MeasurementTagBundle.process(state);
+        MeasurementTagBundle.process(state);
 
         //cv::Mat outputframe = arucoResult.imgout;
         //state.view() = outputframe.clone();
