@@ -8,11 +8,19 @@
 StateSLAMPoseLandmarks::StateSLAMPoseLandmarks(const Gaussian<double> & density)
     : StateSLAM(density)
 {
+    /*
     SQ_(0,0) = 10.0;
     SQ_(1,1) = 10.0;
-    SQ_(2,2) = 10.0;
+    SQ_(2,2) = 5.0;
     SQ_(3,3) = 1.0;
     SQ_(4,4) = 1.0;
+    SQ_(5,5) = 1.0;
+    */
+    SQ_(0,0) = 10.0;
+    SQ_(1,1) = 10.0;
+    SQ_(2,2) = 5.0;
+    SQ_(3,3) = 0.5;
+    SQ_(4,4) = 0.5;
     SQ_(5,5) = 1.0;
 }
 
