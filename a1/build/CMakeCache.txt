@@ -903,6 +903,8 @@ utf8cpp_INCLUDE_DIR:PATH=C:/msys64/clang64/include/utf8cpp
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: Blosc_INCLUDE_DIR
+Blosc_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_DIR
 Boost_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CGNS_INCLUDE_DIR
@@ -1395,6 +1397,8 @@ OpenMP_SPECTEST_CXX_:INTERNAL=TRUE
 OpenMP_SPECTEST_C_:INTERNAL=TRUE
 //ADVANCED property for variable: OpenMP_omp_LIBRARY
 OpenMP_omp_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OpenVDB_INCLUDE_DIR
+OpenVDB_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenVR_INCLUDE_DIR
 OpenVR_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenVR_LIBRARY
@@ -2394,6 +2398,8 @@ _Python3_INCLUDE_DIR:INTERNAL=C:/msys64/clang64/include/python3.10
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;12;64;;cp310-mingw_x86_64_clang;;C:/msys64/clang64/lib/python3.10;C:/msys64/clang64/lib/python3.10;C:/msys64/clang64/lib/python3.10/site-packages;C:/msys64/clang64/lib/python3.10/site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=19142134cf5582738614336392694c74
+//Interpreter reason failure
+_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //Path to a library.
 _Python3_LIBRARY_DEBUG:INTERNAL=_Python3_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.
