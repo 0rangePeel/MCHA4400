@@ -126,9 +126,6 @@ Eigen::VectorX<Scalar> StateSLAM::dynamicsImpl(const Eigen::VectorX<Scalar> & x)
           0,                 cos(Thetanb(0)),                -sin(Thetanb(0)),
           0, sin(Thetanb(0))/cos(Thetanb(1)), cos(Thetanb(0))/cos(Thetanb(1));
 
-    //std::cout <<"Tk"<< std::endl;
-    //std::cout << Tk << std::endl;
-
     f.template segment<3>(6) = Rnb * vBNb;
     f.template segment<3>(9) = Tk * omegaBNb;
 

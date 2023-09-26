@@ -599,6 +599,7 @@ void Plot::render()
     Eigen::Matrix3d Rnc = Rnb * camera.Rbc;
     cv::eigen2cv(Rnc, cameraPose.Rnc);
 
+    // Extract rBNn from x
     Eigen::Vector3d rBNn = pState->density.mean().segment<3>(6);
     cv::eigen2cv(rBNn, cameraPose.rCNn); // "Assume that B and C coincide"
 
@@ -654,8 +655,9 @@ void Plot::render()
                 rgb(1) = 0.0;
                 rgb(2) = 255.0;
             }
-
-            Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(2, 2); // Assume 1 pixel st.dev. of noise
+            // Plot (on left hand side) either blue or red ellipse for sigma 3 confidence
+            //Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(2, 2); // Assume 1 pixel st.dev. of noise
+            Eigen::MatrixXd SR = 3.0*Eigen::MatrixXd::Identity(2, 2); // Assume 3 pixel st.dev. of noise
             Gaussian noise(SR);
             Gaussian prQOi = pState->predictFeatureDensity(camera, i, noise);
 
@@ -663,6 +665,7 @@ void Plot::render()
         }
         else {
             // Make yellow if not in fov - out of camera view enitre - nominal result
+            // Note that yellow is not plotted on the left plot
             rgb(0) = 255.0;
             rgb(1) = 255.0;
             rgb(2) = 0.0;            

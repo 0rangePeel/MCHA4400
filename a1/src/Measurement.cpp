@@ -31,14 +31,6 @@ double Measurement::costJointDensity(const Eigen::VectorXd & x, const State & st
     Eigen::VectorXd loglikGrad(x.size());
     double loglik = logLikelihood(state, x, loglikGrad);
     g = -(logpriorGrad + loglikGrad);
-    /*
-    std::cout << "logprior" << std::endl;
-    std::cout << logprior << std::endl;
-    std::cout << "loglik" << std::endl;
-    std::cout << loglik << std::endl;
-    std::cout << "g" << std::endl;  
-    std::cout << g << std::endl;
-    */
     return -(logprior + loglik);
 }
 
@@ -68,71 +60,46 @@ void Measurement::update(State & state)
     Eigen::VectorXd x = state.density.mean(); // Set initial decision variable to prior mean
     Eigen::MatrixXd & S = state.density.sqrtCov();
 
-    //std::cout << "mu size: " << x.size() << std::endl;
-    //std::cout << "S size: " << S.rows() << std::endl;
-
-    /*
-    std::cout << "Measurement.cpp mu Before" << std::endl;
-    std::cout << x << std::endl;
-
-    std::cout << "Measurement.cpp S Before" << std::endl;
-    std::cout << S << std::endl;
-    */
-
-
     constexpr int verbosity = 0; // 0:none, 1:dots, 2:summary, 3:iter
+    //bool useQuasiNewton = 0;
     if (useQuasiNewton)
     {
         // Generate eigendecomposition of initial Hessian (inverse of prior covariance)
         // via an SVD of S = U*D*V.', i.e., (S.'*S)^{-1} = (V*D*U.'*U*D*V.')^{-1} = V*D^{-2}*V.'
         // This avoids the loss of precision associated with directly computing the eigendecomposition of (S.'*S)^{-1}
-        Eigen::JacobiSVD<Eigen::MatrixXd> svd(S, Eigen::ComputeFullV);
-        v = svd.singularValues().array().square().inverse();
-        Q = svd.matrixV();
+        //Eigen::JacobiSVD<Eigen::MatrixXd> svd(S, Eigen::ComputeFullV);
+        //v = svd.singularValues().array().square().inverse();
+        //Q = svd.matrixV();
+
+
+
+        // Current      : If we were doing landmark SLAM with a quasi-Newton method,
+        //                we can purposely introduce negative eigenvalues for newly
+        //                initialised landmarks to force the Hessian and hence initial
+        //                covariance to be approximated correctly.
+
+        // Create J vector and place -1 for each newLandmark states
+        Eigen::VectorXd J(n);
+        J.fill(1.0);
+        for (int i = 0; i < state.numNewLandmarks*6; i++) {
+            J(n - i - 1) = -1;
+        }
+
+        // Eigen Decomposition
+        // Lecture Landmark SLAM 1 p17
+        Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> eigenH(S.transpose()*J.asDiagonal()*S);
+        v = eigenH.eigenvalues().array().inverse();
+        Q = eigenH.eigenvectors();
 
         assert(Q.rows() == n);
         assert(Q.cols() == n);
         assert(v.size() == n);
 
-        // Foreshadowing: If we were doing landmark SLAM with a quasi-Newton method,
-        //                we can purposely introduce negative eigenvalues for newly
-        //                initialised landmarks to force the Hessian and hence initial
-        //                covariance to be approximated correctly.
-
         // Create cost function with prototype V = costFunc(x, g)
         auto costFunc = [&](const Eigen::VectorXd & x, Eigen::VectorXd & g){ return costJointDensity(x, state, g); };
 
         // Minimise cost
-        /*
-        std::cout << "Measurement.cpp - Before Optimisation" << std::endl;
-        std::cout << "x size: " << x.size() << std::endl;
-        std::cout << "Measurement.cpp x" << std::endl;
-        std::cout << x << std::endl;
-        std::cout << "g size: " << g.size() << std::endl;
-        std::cout << "Measurement.cpp g" << std::endl;
-        std::cout << g << std::endl;
-        std::cout << "Q size: " << Q.size() << std::endl;
-        std::cout << "Measurement.cpp Q" << std::endl;
-        std::cout << Q << std::endl;
-        std::cout << "v size: " << v.size() << std::endl;
-        std::cout << "Measurement.cpp v" << std::endl;
-        std::cout << v << std::endl;
-        */
-
         int ret = funcmin::SR1TrustEig(costFunc, x, g, Q, v, verbosity);
-
-        /*
-        std::cout << "Measurement.cpp - After Optimisation" << std::endl;
-        std::cout << "Measurement.cpp x" << std::endl;
-        std::cout << x << std::endl;
-        std::cout << "Measurement.cpp g" << std::endl;
-        std::cout << g << std::endl;
-        std::cout << "Measurement.cpp Q" << std::endl;
-        std::cout << Q << std::endl;
-        std::cout << "Measurement.cpp v" << std::endl;
-        std::cout << v << std::endl;
-        */
-
         assert(ret == 0);
     }
     else
@@ -146,29 +113,8 @@ void Measurement::update(State & state)
     }
     // Set posterior mean to maximum a posteriori (MAP) estimate
     state.density.mean() = x;
-
-    /*
-    std::cout << "Measurement.cpp mean after" << std::endl;
-    std::cout << x << std::endl;
-    std::cout << "Measurement.cpp v after" << std::endl;
-    std::cout << v << std::endl;
-    */
-    
-
     // Post-calculate posterior square-root covariance from Hessian eigendecomposition
     S = v.array().rsqrt().matrix().asDiagonal()*Q.transpose();
-
-    /*
-    std::cout << "Measurement.cpp S after" << std::endl;
-    std::cout << S << std::endl;
-    */
-
     Eigen::HouseholderQR<Eigen::Ref<Eigen::MatrixXd>> qr(S);    // In-place QR decomposition
-    S = S.triangularView<Eigen::Upper>();                       // Safe aliasing
-    
-    /*
-    std::cout << "Measurement.cpp S after triangular" << std::endl;
-    std::cout << S << std::endl;
-    */
-    
+    S = S.triangularView<Eigen::Upper>();                       // Safe aliasing   
 }

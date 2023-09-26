@@ -26,7 +26,7 @@ MeasurementTagBundle::MeasurementTagBundle(double time, const Eigen::VectorXd & 
     const Eigen::Index & ny = y.size();
     //double rms = 1.27127; // Manually put in from Camera Calibration
     double rms = 5;
-    Eigen::MatrixXd SR = rms*Eigen::MatrixXd::Identity(ny, ny); // TODO: Assignment(s)
+    Eigen::MatrixXd SR = rms*Eigen::MatrixXd::Identity(ny, ny);
     noise_ = Gaussian(SR);
 
     useQuasiNewton = true;  
@@ -69,6 +69,8 @@ void MeasurementTagBundle::update(State & state)
     Pose cameraPose;
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
 
+    int numNewLandmarks = 0;
+
     // Get landmarks
     std::vector<int> idsLandmarks = state.getIdsLandmarks();
     std::vector<int> idsHistLandmarks = state.getIdsHistLandmarks();
@@ -82,6 +84,7 @@ void MeasurementTagBundle::update(State & state)
             int id = idsLandmarks[i];
             state.modifyIdsHistLandmarks(id);
             idsHistLandmarks.push_back(id);
+            numNewLandmarks = numNewLandmarks + 1;
         }
     } 
     else 
@@ -95,6 +98,7 @@ void MeasurementTagBundle::update(State & state)
             if (it == idsHistLandmarks.end()) {
                 state.modifyIdsHistLandmarks(id);
                 idsHistLandmarks.push_back(id);
+                numNewLandmarks = numNewLandmarks + 1;
             }
         }
     }
@@ -108,7 +112,7 @@ void MeasurementTagBundle::update(State & state)
 
         // For the newly added diagonal elements, initialise them to 10 instead of the initial zeros.
         for (int i = densitySize; i < idsHistSize; ++i){
-            stateSLAM.density.sqrtCov()(i, i) = 1.0;
+            stateSLAM.density.sqrtCov()(i, i) = 1000.0;
         }
 
         stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(idsHistSize));
@@ -146,46 +150,8 @@ void MeasurementTagBundle::update(State & state)
             //idxLandmarks.push_back(position); // this is not needed
         }
     }
+
+    state.numNewLandmarks = numNewLandmarks;
        
     Measurement::update(state);  // Do the actual measurement update
 }
-
-
-
-
-
-    /*
-    Pose cameraPose;
-    
-    // Extract Thetanb from x
-    Eigen::Vector3d thetanb = x.segment(9, 3);
-    
-    // Get Pose Matrix
-    Eigen::Matrix3d Rnb = rpy2rot(thetanb);
-
-    // Fill Pose from camera.h
-    Eigen::Matrix3d Rnc = Rnb * camera_.Rbc;
-    cv::eigen2cv(Rnc, cameraPose.Rnc);
-
-    Eigen::Vector3d rBNn = x.segment(6, 3);
-    cv::eigen2cv(rBNn, cameraPose.rCNn); // "Assume that B and C coincide"
-
-    std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
-    //for (std::size_t j = 0; j < state.stateSLAM.numberLandmarks(); ++j)
-    
-    for (std::size_t j = 0; j < state.idxLandmarks.size(); ++j)
-    {
-        Eigen::Vector3d murPNn = stateSLAM.landmarkPositionDensity(j).mean();
-        cv::Vec3d rPNn;
-        cv::eigen2cv(murPNn, rPNn);
-        if (camera_.isWorldWithinFOV(rPNn, cameraPose))
-        {
-            std::cout << "Landmark " << j << " is expected to be within camera FOV" << std::endl;
-            state.idxLandmarks.push_back(j);
-        }
-        else
-        {
-            std::cout << "Landmark " << j << " is NOT expected to be within camera FOV" << std::endl;
-        }
-    }
-    */

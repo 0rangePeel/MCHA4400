@@ -37,6 +37,8 @@ public:
     //void modifyIdsHistLandmarks(const std::vector<int>& newIdsHist);
     void modifyIdsHistLandmarks(int newIdsHist);
 
+    int numNewLandmarks;
+
 
 protected:
     Eigen::MatrixXd augmentedDynamics(const Eigen::MatrixXd & X) const;
