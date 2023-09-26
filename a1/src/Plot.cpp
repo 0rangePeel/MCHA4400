@@ -671,7 +671,6 @@ void Plot::render()
             rgb(2) = 0.0;            
         }
 
-
         QuadricPlot & qp = qpLandmarks[i];
         qp.update(pState->landmarkPositionDensity(i));
         qp.getActor()->GetProperty()->SetOpacity(0.5);

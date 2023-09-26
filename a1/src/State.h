@@ -31,10 +31,8 @@ public:
     // Function to modify idsLandmarks using a std::vector input
     void modifyIdsLandmarks(const std::vector<int>& newIds);
     // Function to modify idxLandmarks using a std::vector input
-    //void modifyIdxLandmarks(const std::vector<std::size_t>& newIdx);
     void modifyIdxLandmarks(int newIdx);
     // Function to modify idsHistLandmarks using a std::vector input
-    //void modifyIdsHistLandmarks(const std::vector<int>& newIdsHist);
     void modifyIdsHistLandmarks(int newIdsHist);
 
     int numNewLandmarks;

@@ -26,6 +26,7 @@ MeasurementTagBundle::MeasurementTagBundle(double time, const Eigen::VectorXd & 
     const Eigen::Index & ny = y.size();
     //double rms = 1.27127; // Manually put in from Camera Calibration
     double rms = 5;
+    //double rms = ;
     Eigen::MatrixXd SR = rms*Eigen::MatrixXd::Identity(ny, ny);
     noise_ = Gaussian(SR);
 
@@ -69,7 +70,7 @@ void MeasurementTagBundle::update(State & state)
     Pose cameraPose;
     StateSLAM & stateSLAM = dynamic_cast<StateSLAM &>(state);
 
-    int numNewLandmarks = 0;
+    state.numNewLandmarks = 0;
 
     // Get landmarks
     std::vector<int> idsLandmarks = state.getIdsLandmarks();
@@ -84,7 +85,7 @@ void MeasurementTagBundle::update(State & state)
             int id = idsLandmarks[i];
             state.modifyIdsHistLandmarks(id);
             idsHistLandmarks.push_back(id);
-            numNewLandmarks = numNewLandmarks + 1;
+            state.numNewLandmarks = state.numNewLandmarks + 1;
         }
     } 
     else 
@@ -93,12 +94,11 @@ void MeasurementTagBundle::update(State & state)
         // If mismatch is there, append idsLandmark to end of idsHistLandmark
         // Loop through idsLandmarks and check if each value is in idsHistLandmarks
         for (const int& id : idsLandmarks) {
-            //std::cout << "id " << id << std::endl;
             auto it = std::find(idsHistLandmarks.begin(), idsHistLandmarks.end(), id);
             if (it == idsHistLandmarks.end()) {
                 state.modifyIdsHistLandmarks(id);
                 idsHistLandmarks.push_back(id);
-                numNewLandmarks = numNewLandmarks + 1;
+                state.numNewLandmarks = state.numNewLandmarks + 1;
             }
         }
     }
@@ -111,10 +111,24 @@ void MeasurementTagBundle::update(State & state)
         stateSLAM.density.sqrtCov().conservativeResizeLike(Eigen::MatrixXd::Zero(idsHistSize,idsHistSize));
 
         // For the newly added diagonal elements, initialise them to 10 instead of the initial zeros.
+        /*
         for (int i = densitySize; i < idsHistSize; ++i){
             stateSLAM.density.sqrtCov()(i, i) = 1000.0;
         }
+        */
+        
+        
+        for (int i = densitySize; i < idsHistSize; i=i+6){
+            stateSLAM.density.sqrtCov()(i + 0, i + 0) = 1000.0;
+            stateSLAM.density.sqrtCov()(i + 1, i + 1) = 1000.0;
+            stateSLAM.density.sqrtCov()(i + 2, i + 2) = 1000.0;
+            stateSLAM.density.sqrtCov()(i + 3, i + 3) = M_PI/2;
+            stateSLAM.density.sqrtCov()(i + 4, i + 4) = M_PI/2;
+            stateSLAM.density.sqrtCov()(i + 5, i + 5) = M_PI/2;
+        }
 
+        //std::cout << stateSLAM.density.sqrtCov() << std::endl;
+        
         stateSLAM.density.mean().conservativeResizeLike(Eigen::VectorXd::Zero(idsHistSize));
         
         // Place landmarks in front of the camera by some amount and rotate 180 back towards the camera
@@ -122,7 +136,6 @@ void MeasurementTagBundle::update(State & state)
         Eigen::Vector3d Thetanb = stateSLAM.density.mean().segment(9,3);
         Eigen::Matrix3d Rnb     = rpy2rot(Thetanb);
         Eigen::Vector3d rotVec(0,0,M_PI);// Rotate the around n3
-        //Eigen::Vector3d rotVec(0,0,0);// Rotate the around n3
         Eigen::Vector3d unitVec(1,0,0);
 
         for (int i = densitySize; i < idsHistSize; i=i+6){
@@ -145,13 +158,9 @@ void MeasurementTagBundle::update(State & state)
         if (it != idsHistLandmarks.end()) {
             // id found in idsHistLandmarks, append its position to idxLandmarks
             std::size_t position = std::distance(idsHistLandmarks.begin(), it);
-            //std::cout << position << std::endl;
             state.modifyIdxLandmarks(position);
-            //idxLandmarks.push_back(position); // this is not needed
         }
     }
-
-    state.numNewLandmarks = numNewLandmarks;
        
     Measurement::update(state);  // Do the actual measurement update
 }

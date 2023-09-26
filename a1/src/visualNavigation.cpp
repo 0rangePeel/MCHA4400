@@ -81,9 +81,8 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
     // Initial state mean
     Eigen::VectorXd mu(12);
     mu.setZero();
-    //mu(8) = -0.1; // height
-    mu(8) = -1.7; // height (I may be projecting)
-    mu(9) = -3 * M_PI/180; // roll
+    mu(8)  = -1.7; // height (I may be projecting)
+    mu(9)  = -3 * M_PI/180; // roll
     mu(10) = -4 * M_PI/180; // pitch
     mu(11) = -1 * M_PI/180; // yaw
 

@@ -67,12 +67,13 @@ void Measurement::update(State & state)
         // Generate eigendecomposition of initial Hessian (inverse of prior covariance)
         // via an SVD of S = U*D*V.', i.e., (S.'*S)^{-1} = (V*D*U.'*U*D*V.')^{-1} = V*D^{-2}*V.'
         // This avoids the loss of precision associated with directly computing the eigendecomposition of (S.'*S)^{-1}
-        //Eigen::JacobiSVD<Eigen::MatrixXd> svd(S, Eigen::ComputeFullV);
-        //v = svd.singularValues().array().square().inverse();
-        //Q = svd.matrixV();
+        /*
+        Eigen::JacobiSVD<Eigen::MatrixXd> svd(S, Eigen::ComputeFullV);
+        v = svd.singularValues().array().square().inverse();
+        Q = svd.matrixV();
+        */
 
-
-
+        // Landmark initialisation with SR1  - negative eigenvalues for new landmark states
         // Current      : If we were doing landmark SLAM with a quasi-Newton method,
         //                we can purposely introduce negative eigenvalues for newly
         //                initialised landmarks to force the Hessian and hence initial
@@ -84,12 +85,13 @@ void Measurement::update(State & state)
         for (int i = 0; i < state.numNewLandmarks*6; i++) {
             J(n - i - 1) = -1;
         }
-
         // Eigen Decomposition
-        // Lecture Landmark SLAM 1 p17
+        // Lecture Landmark SLAM 1 p17 - H0 = {S.' * J * S}^-1
         Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> eigenH(S.transpose()*J.asDiagonal()*S);
         v = eigenH.eigenvalues().array().inverse();
         Q = eigenH.eigenvectors();
+
+
 
         assert(Q.rows() == n);
         assert(Q.cols() == n);
