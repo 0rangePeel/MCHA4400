@@ -60,7 +60,7 @@ void Measurement::update(State & state)
     Eigen::VectorXd x = state.density.mean(); // Set initial decision variable to prior mean
     Eigen::MatrixXd & S = state.density.sqrtCov();
 
-    constexpr int verbosity = 0; // 0:none, 1:dots, 2:summary, 3:iter
+    constexpr int verbosity = 2; // 0:none, 1:dots, 2:summary, 3:iter
     //bool useQuasiNewton = 0;
     if (useQuasiNewton)
     {
@@ -72,13 +72,14 @@ void Measurement::update(State & state)
         v = svd.singularValues().array().square().inverse();
         Q = svd.matrixV();
         */
+        
 
         // Landmark initialisation with SR1  - negative eigenvalues for new landmark states
         // Current      : If we were doing landmark SLAM with a quasi-Newton method,
         //                we can purposely introduce negative eigenvalues for newly
         //                initialised landmarks to force the Hessian and hence initial
         //                covariance to be approximated correctly.
-
+        
         // Create J vector and place -1 for each newLandmark states
         Eigen::VectorXd J(n);
         J.fill(1.0);
@@ -90,9 +91,7 @@ void Measurement::update(State & state)
         Eigen::SelfAdjointEigenSolver<Eigen::MatrixXd> eigenH(S.transpose()*J.asDiagonal()*S);
         v = eigenH.eigenvalues().array().inverse();
         Q = eigenH.eigenvectors();
-
-
-
+        
         assert(Q.rows() == n);
         assert(Q.cols() == n);
         assert(v.size() == n);
@@ -103,6 +102,16 @@ void Measurement::update(State & state)
         // Minimise cost
         int ret = funcmin::SR1TrustEig(costFunc, x, g, Q, v, verbosity);
         assert(ret == 0);
+        // VERY HACKY IM SORRY
+        if (ret !=0){
+            std::cout << "Newton Method Time" << std::endl;
+            // Create cost function with prototype V = costFunc(x, g, H)
+            auto costFunc = [&](const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H){ return costJointDensity(x, state, g, H); };
+
+            // Minimise cost
+            int ret = funcmin::NewtonTrustEig(costFunc, x, g, Q, v, verbosity);
+            assert(ret == 0);
+        }
     }
     else
     {

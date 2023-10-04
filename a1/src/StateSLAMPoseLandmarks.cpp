@@ -32,12 +32,45 @@ StateSLAMPoseLandmarks::StateSLAMPoseLandmarks(const Gaussian<double> & density)
     SQ_(4,4) = 0.5;
     SQ_(5,5) = 1.0;
     */
+
+    /*
     SQ_(0,0) = 0.5;
     SQ_(1,1) = 0.5;
     SQ_(2,2) = 0.1;
     SQ_(3,3) = 0.01;
     SQ_(4,4) = 0.001;
     SQ_(5,5) = 0.2;
+    */
+   /*
+    SQ_(0,0) = 0.1;
+    SQ_(1,1) = 0.1;
+    SQ_(2,2) = 0.1;
+    SQ_(3,3) = 0.01;
+    SQ_(4,4) = 0.001;
+    SQ_(5,5) = 0.2;
+    */
+   /* Works really well
+    SQ_(0,0) = 0.1;
+    SQ_(1,1) = 0.1;
+    SQ_(2,2) = 0.1;
+    SQ_(3,3) = 0.01;
+    SQ_(4,4) = 0.01;
+    SQ_(5,5) = 0.01;
+    */
+   /* Pretty decent
+    SQ_(0,0) = 0.1;
+    SQ_(1,1) = 0.1;
+    SQ_(2,2) = 0.1;
+    SQ_(3,3) = 0.01;
+    SQ_(4,4) = 0.001;
+    SQ_(5,5) = 0.01;
+    */
+    SQ_(0,0) = 0.08;
+    SQ_(1,1) = 0.08;
+    SQ_(2,2) = 0.08;
+    SQ_(3,3) = 0.01;
+    SQ_(4,4) = 0.001;
+    SQ_(5,5) = 0.01;
 }
 
 StateSLAM * StateSLAMPoseLandmarks::clone() const
