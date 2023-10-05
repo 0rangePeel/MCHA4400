@@ -13,10 +13,13 @@ MeasurementPointBundle::MeasurementPointBundle(double time, const Eigen::VectorX
 {
     // SR is an upper triangular matrix such that SR.'*SR = R is the measurement noise covariance
     const Eigen::Index & ny = y.size();
-    Eigen::MatrixXd SR = 1.0*Eigen::MatrixXd::Identity(ny, ny); // TODO: Assignment(s)
+    //double rms = 1.27127; // Manually put in from Camera Calibration
+    double rms = 3.5;
+    //double rms = ;
+    Eigen::MatrixXd SR = rms*Eigen::MatrixXd::Identity(ny, ny);
     noise_ = Gaussian(SR);
 
-    // useQuasiNewton = false;
+    useQuasiNewton = true; 
 }
 
 double MeasurementPointBundle::logLikelihood(const State & state, const Eigen::VectorXd & x) const

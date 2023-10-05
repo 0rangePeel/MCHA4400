@@ -20106,6 +20106,7 @@ CMakeFiles/common.dir/src/visualNavigation.cpp.obj: C:/Users/olive/Documents/MCH
   C:/msys64/clang64/include/autodiff/forward/utils/gradient.hpp \
   C:/msys64/clang64/include/autodiff/common/eigen.hpp \
   C:/msys64/clang64/include/autodiff/common/classtraits.hpp \
+  C:/Users/olive/Documents/MCHA4400/a1/src/MeasurementPointBundle.h \
   C:/Users/olive/Documents/MCHA4400/a1/src/checkfeatures.h
 
 

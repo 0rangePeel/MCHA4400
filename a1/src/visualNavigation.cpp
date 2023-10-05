@@ -2,11 +2,13 @@
 #include <string>
 #include <iostream>
 #include <Eigen/Core>
+
 #include <opencv2/core.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/core/eigen.hpp>
 #include <opencv2/imgcodecs.hpp>
+
 #include "BufferedVideo.h"
 #include "visualNavigation.h"
 #include "rotation.hpp"
@@ -16,7 +18,9 @@
 #include "StateSLAMPoseLandmarks.h"
 #include "imagefeatures.h"
 #include "MeasurementTagBundle.h"
+#include "MeasurementPointBundle.h"
 #include "checkfeatures.h"
+#include "dataAssociation.h"
 
 void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const std::filesystem::path & cameraPath, int scenario, int interactive, const std::filesystem::path & outputDirectory)
 {
@@ -205,17 +209,71 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
                 break;
             }
             case 2: {
+                // ------------------------------------------------------------------------
+                // Feature detector
+                // ------------------------------------------------------------------------
                 int maxNumFeatures = 10;
                 std::vector<PointFeature> features = detectFeatures(imgin, maxNumFeatures); // gives features in order of highest to lowest score
                 std::cout << features.size() << " features found in image"  << std::endl;
                 assert(features.size() > 0);
                 assert(features.size() <= maxNumFeatures);
 
+                // ------------------------------------------------------------------------
+                // Populate measurement set Y with elements of the features vector
+                // ------------------------------------------------------------------------
                 Eigen::Matrix<double, 2, Eigen::Dynamic> Y(2, features.size());
                 for (std::size_t i = 0; i < features.size(); ++i)
                 {
                     Y.col(i) << features[i].x, features[i].y;
                 }
+
+                // ------------------------------------------------------------------------
+                // Select landmarks expected to be within the field of view of the camera
+                // ------------------------------------------------------------------------
+                Pose cameraPose;
+    
+                // Extract Thetanb from x
+                Eigen::Vector3d thetanb = state.density.mean().segment<3>(9);
+                
+                // Get Pose Matrix
+                Eigen::Matrix3d Rnb = rpy2rot(thetanb);
+
+                // Fill Pose from camera.h
+                Eigen::Matrix3d Rnc = Rnb * cam.Rbc;
+                cv::eigen2cv(Rnc, cameraPose.Rnc);
+
+                // Extract rBNn from x
+                Eigen::Vector3d rBNn = state.density.mean().segment<3>(6);
+                cv::eigen2cv(rBNn, cameraPose.rCNn); // "Assume that B and C coincide"
+
+                std::vector<std::size_t> idxLandmarks;
+                idxLandmarks.reserve(state.numberLandmarks());  // Reserve maximum possible size to avoid reallocation
+                for (std::size_t j = 0; j < state.numberLandmarks(); ++j)
+                {
+                    Eigen::Vector3d murPNn = state.landmarkPositionDensity(j).mean();
+                    cv::Vec3d rPNn;
+                    cv::eigen2cv(murPNn, rPNn);
+                    if (cam.isWorldWithinFOV(rPNn, cameraPose))
+                    {
+                        std::cout << "Landmark " << j << " is expected to be within camera FOV" << std::endl;
+                        idxLandmarks.push_back(j);
+                    }
+                    else
+                    {
+                        std::cout << "Landmark " << j << " is NOT expected to be within camera FOV" << std::endl;
+                    }
+                }
+
+                // ------------------------------------------------------------------------
+                // Run surprisal nearest neighbours
+                // ------------------------------------------------------------------------
+                std::vector<int> idx;
+                double surprisal = snn(state, idxLandmarks, Y, cam, idx);
+                std::cout << "Surprisal = " << surprisal << std::endl;
+
+                
+
+                MeasurementPointBundle MeasurementPointBundle(t, Y, cam);
 
                 break;
             }

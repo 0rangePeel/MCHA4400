@@ -494,6 +494,30 @@ src/checkfeatures.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/checkfeatures.cpp.s
 .PHONY : src/checkfeatures.cpp.s
 
+src/dataAssociation.obj: src/dataAssociation.cpp.obj
+.PHONY : src/dataAssociation.obj
+
+# target to build an object file
+src/dataAssociation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/dataAssociation.cpp.obj
+.PHONY : src/dataAssociation.cpp.obj
+
+src/dataAssociation.i: src/dataAssociation.cpp.i
+.PHONY : src/dataAssociation.i
+
+# target to preprocess a source file
+src/dataAssociation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/dataAssociation.cpp.i
+.PHONY : src/dataAssociation.cpp.i
+
+src/dataAssociation.s: src/dataAssociation.cpp.s
+.PHONY : src/dataAssociation.s
+
+# target to generate assembly for a file
+src/dataAssociation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/common.dir/build.make CMakeFiles/common.dir/src/dataAssociation.cpp.s
+.PHONY : src/dataAssociation.cpp.s
+
 src/funcmin.obj: src/funcmin.cpp.obj
 .PHONY : src/funcmin.obj
 
@@ -690,6 +714,9 @@ help:
 	@echo "... src/checkfeatures.obj"
 	@echo "... src/checkfeatures.i"
 	@echo "... src/checkfeatures.s"
+	@echo "... src/dataAssociation.obj"
+	@echo "... src/dataAssociation.i"
+	@echo "... src/dataAssociation.s"
 	@echo "... src/funcmin.obj"
 	@echo "... src/funcmin.i"
 	@echo "... src/funcmin.s"
