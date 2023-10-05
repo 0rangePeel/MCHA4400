@@ -74,10 +74,65 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         bufferedVideoWriter.start(videoOut);
     }
 
-    // Visual navigation
+    // Visual Navigation Initialisation //
+    // Initial state mean
+    /*
+    Eigen::VectorXd mu(12);
+    mu.setZero();
+    // Initial state square-root covariance
+    Eigen::MatrixXd S(12,12);
+    S.setIdentity();  
 
-    // Initialisation
+    //StateSLAMPoseLandmarks state(Gaussian(mu, S));
+    StateSLAMPointLandmarks state(Gaussian(mu, S));
+    
 
+    // Scenario Initialisation
+    switch (scenario) {
+        case 1:
+            // Initial state mean
+            Eigen::VectorXd mu(12);
+            mu.setZero();
+            mu(8)  = -1.7; // height (I may be projecting)
+            mu(9)  = -3 * M_PI/180; // roll
+            mu(10) = -4 * M_PI/180; // pitch
+            mu(11) = -1 * M_PI/180; // yaw
+
+
+            // Initial state square-root covariance
+            Eigen::MatrixXd S(12,12);
+            S.setIdentity();
+            //S.diagonal().array() = 0.1;
+            //S.diagonal().array() = 0.01;
+
+            
+            for (int i = 0; i < 6; ++i)
+            {
+                S(i, i) = 0.1;
+            }
+            for (int i = 6; i < 12; ++i)
+            {
+                S(i, i) = 0.005;
+            }
+            
+            // Initialise state
+            StateSLAMPoseLandmarks state(Gaussian(mu, S));
+
+            break;
+        case 2:
+            Eigen::VectorXd mu(12);
+            mu.setZero();
+            // Initial state square-root covariance
+            Eigen::MatrixXd S(12,12);
+            S.setIdentity();  
+
+            StateSLAMPointLandmarks state(Gaussian(mu, S));
+            break;
+        default:
+            std::cout << "Incorrenct Scenario - Must be either 1 or 2" << std::endl;
+    }
+    */
+    /*
     // Initial state mean
     Eigen::VectorXd mu(12);
     mu.setZero();
@@ -103,9 +158,20 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
         S(i, i) = 0.005;
     }
     
-
     // Initialise state
     StateSLAMPoseLandmarks state(Gaussian(mu, S));
+    */
+    
+    Eigen::VectorXd mu(12);
+    mu.setZero();
+    // Initial state square-root covariance
+    Eigen::MatrixXd S(12,12);
+    S.setIdentity();  
+
+    StateSLAMPointLandmarks state(Gaussian(mu, S));
+    
+
+
 
     // Initialise plot
     Plot plot(state, cam);
@@ -123,19 +189,36 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
             break;
         }
 
+        switch (scenario) {
+            case 1: {
+                std::cout << "Scenario 1" << std::endl;
+                ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
+                checkFeatureResult checkfeatureResult = checkfeature(arucoResult,cam);
 
-        ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
+                //Set idsLandmarks 
+                //state.setIdsLandmarks(arucoResult.ids);
+                //MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
 
-        checkFeatureResult checkfeatureResult = checkfeature(arucoResult,cam);
+                state.setIdsLandmarks(checkfeatureResult.ids);
+                MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
 
-        //Set idsLandmarks 
-        //state.setIdsLandmarks(arucoResult.ids);
-        //MeasurementTagBundle MeasurementTagBundle(t, arucoResult.y, cam);
+                MeasurementTagBundle.process(state);
+                break;
+            }
+            case 2: {
+                std::cout << "Scenario 2" << std::endl;
+                int maxNumFeatures = 10;
+                std::vector<PointFeature> features = detectFeatures(imgin, maxNumFeatures);
+                std::cout << features.size() << " features found in image"  << std::endl;
+                assert(features.size() > 0);
+                assert(features.size() <= maxNumFeatures);
 
-        state.setIdsLandmarks(checkfeatureResult.ids);
-        MeasurementTagBundle MeasurementTagBundle(t, checkfeatureResult.y, cam);
-
-        MeasurementTagBundle.process(state);
+                break;
+            }
+            default:
+                std::cout << "Incorrenct Scenario - Must be either 1 or 2" << std::endl;
+        }
+        
 
         //cv::Mat outputframe = arucoResult.imgout;
         //state.view() = outputframe.clone();

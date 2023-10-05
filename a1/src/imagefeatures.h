@@ -5,6 +5,16 @@
 #include "Camera.h"
 #include <Eigen/Core>
 
+struct PointFeature
+{
+    PointFeature();
+    PointFeature(const double & score_, const double & x_, const double & y_);
+    double score, x, y;
+    bool operator<(const PointFeature & other) const;   // used for std::sort
+};
+
+std::vector<PointFeature> detectFeatures(const cv::Mat & img, const int & maxNumFeatures);
+
 struct ArUcoResult {
     cv::Mat imgout;
     std::vector<int> ids;
