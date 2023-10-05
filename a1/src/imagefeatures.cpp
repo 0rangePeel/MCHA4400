@@ -99,7 +99,7 @@ std::vector<PointFeature> detectFeatures(const cv::Mat & img, const int & maxNum
 
     // Print Max Features
     for (int i = 0; i < std::min(NumFeatures,maxNumFeatures); ++i) {
-        // std::cout << "  idx: " << i << "  at point: (" << x[indices[i]] << "," << y[indices[i]] << ")      Eigenvalue: " << score[indices[i]] << std::endl;
+        //std::cout << "  idx: " << i << "  at point: (" << x[indices[i]] << "," << y[indices[i]] << ")      Eigenvalue: " << score[indices[i]] << std::endl;
         PointFeature feature(score[indices[i]], x[indices[i]], y[indices[i]]);
         features.push_back(feature);
     }

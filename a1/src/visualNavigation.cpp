@@ -191,7 +191,6 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
 
         switch (scenario) {
             case 1: {
-                std::cout << "Scenario 1" << std::endl;
                 ArUcoResult arucoResult = detectAndDrawArUco(imgin, cam);
                 checkFeatureResult checkfeatureResult = checkfeature(arucoResult,cam);
 
@@ -206,12 +205,17 @@ void runVisualNavigationFromVideo(const std::filesystem::path & videoPath, const
                 break;
             }
             case 2: {
-                std::cout << "Scenario 2" << std::endl;
                 int maxNumFeatures = 10;
-                std::vector<PointFeature> features = detectFeatures(imgin, maxNumFeatures);
+                std::vector<PointFeature> features = detectFeatures(imgin, maxNumFeatures); // gives features in order of highest to lowest score
                 std::cout << features.size() << " features found in image"  << std::endl;
                 assert(features.size() > 0);
                 assert(features.size() <= maxNumFeatures);
+
+                Eigen::Matrix<double, 2, Eigen::Dynamic> Y(2, features.size());
+                for (std::size_t i = 0; i < features.size(); ++i)
+                {
+                    Y.col(i) << features[i].x, features[i].y;
+                }
 
                 break;
             }

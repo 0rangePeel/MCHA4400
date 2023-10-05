@@ -21,35 +21,34 @@ MeasurementPointBundle::MeasurementPointBundle(double time, const Eigen::VectorX
 
 double MeasurementPointBundle::logLikelihood(const State & state, const Eigen::VectorXd & x) const
 {
-    const StateSLAM & stateSLAM = dynamic_cast<const StateSLAM &>(state);
-
-    // Select visible landmarks
-    std::vector<std::size_t> idxLandmarks(stateSLAM.numberLandmarks());
-    // TODO: Assignment(s)
-    std::iota(idxLandmarks.begin(), idxLandmarks.end(), 0); // Select all landmarks
-
-    Eigen::VectorXd h = stateSLAM.predictFeatureBundle(x, camera_, idxLandmarks);
-
-    Gaussian likelihood(h, noise_.sqrtCov());
-    return likelihood.log(y_);
+    const StateSLAMPointLandmarks & stateSLAM = dynamic_cast<const StateSLAMPointLandmarks &>(state);
+    return logLikelihoodImpl(x, stateSLAM, state.getIdxLandmarks());
 }
 
 double MeasurementPointBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g) const
 {
     // Evaluate gradient for SR1 and Newton methods
-    // TODO: Assignment(s)
+    const StateSLAMPointLandmarks & stateSLAM = dynamic_cast<const StateSLAMPointLandmarks &>(state);
+
     g.resize(x.size());
     g.setZero();
-    return logLikelihood(state, x);
+    Eigen::VectorX<autodiff::dual> xdual = x.cast<autodiff::dual>();
+    autodiff::dual fdual;
+    g = gradient(&MeasurementPointBundle::logLikelihoodImpl<autodiff::dual>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual);
+    return val(fdual);
 }
 
 double MeasurementPointBundle::logLikelihood(const State & state, const Eigen::VectorXd & x, Eigen::VectorXd & g, Eigen::MatrixXd & H) const
 {
-    // Evaluate Hessian for Newton method
-    // TODO: Assignment(s)
+    // Evaluate Hessian for Newton method  
+    const StateSLAMPointLandmarks & stateSLAM = dynamic_cast<const StateSLAMPointLandmarks &>(state);
+
     H.resize(x.size(), x.size());
     H.setZero();
-    return logLikelihood(state, x, g);
+    Eigen::VectorX<autodiff::dual2nd> xdual = x.cast<autodiff::dual2nd>();
+    autodiff::dual2nd fdual;
+    H = hessian(&MeasurementPointBundle::logLikelihoodImpl<autodiff::dual2nd>, wrt(xdual), at(this, xdual, stateSLAM, state.getIdxLandmarks()), fdual, g);
+    return val(fdual);
 }
 
 void MeasurementPointBundle::update(State & state)
